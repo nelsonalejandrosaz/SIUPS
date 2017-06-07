@@ -25,3 +25,10 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::get('/alumnos_lista', 'AlumnoController@alumnos_lista');
+
+Route::get('/alumnos_carga_masiva', function () {
+    return view('alumnos.alumnos_carga_masiva');
+});
+
+
+Route::post('import_csv_file', 'AlumnoController@import_csv_file');
