@@ -14,9 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('formAlum', function () {
-    return view('formularioAlumno');
-});
+Route::get('formularioAlumno','AlumnoController@formularioAlumno'); 
 
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {

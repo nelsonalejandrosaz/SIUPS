@@ -1,11 +1,5 @@
-@extends('adminlte::layouts.app')
 
-
-@section('htmlheader_title')
-  formularioAlumno
-@endsection
-@section('main-content')
-  Hola Mundo
+  
   <!-- Single button -->
 <div class="btn-group">
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -73,4 +67,3 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-@endsection
