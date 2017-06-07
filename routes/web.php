@@ -24,4 +24,4 @@ Route::group(['middleware' => 'auth'], function () {
     #adminlte_routes
 });
 
-Route::get('/alumnoslista', 'AlumnoController@alumnos_lista');
+Route::get('/alumnos_lista', 'AlumnoController@alumnos_lista');
