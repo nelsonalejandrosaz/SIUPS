@@ -30,36 +30,15 @@
                       <th>Escuela</th>
                       <th>Accion</th>
                     </tr>
+                    @foreach($alumnos as $alumno)
                     <tr>
-                      <td>AA17001</td>
-                      <td>Aranda Aranda</td>
-                      <td>Jose jose</td>
-                      <td>Sistemas Informaticos</span></td>
+                      <td>{{$alumno->carnet}}</td>
+                      <td>{{$alumno->nombre}}</td>
+                      <td>{{$alumno->apellido}}</td>
+                      <td>Aun no</span></td>
                       <td><a href="#" class="btn btn-warning"><span class="fa fa-edit"></span></a>  <a href="#" class="btn btn-info"><span class="fa fa-eye"></span></a></td>
                     </tr>
-                    <!-- Eliminar despues solo para ver vista  -->
-                    <tr>
-                      <td>AA17001</td>
-                      <td>Aranda Aranda</td>
-                      <td>Jose jose</td>
-                      <td>Sistemas Informaticos</span></td>
-                      <td><a href="#" class="btn btn-warning"><span class="fa fa-edit"></span></a>  <a href="#" class="btn btn-info"><span class="fa fa-eye"></span></a></td>
-                    </tr>
-                    <tr>
-                      <td>AA17001</td>
-                      <td>Aranda Aranda</td>
-                      <td>Jose jose</td>
-                      <td>Sistemas Informaticos</span></td>
-                      <td><a href="#" class="btn btn-warning"><span class="fa fa-edit"></span></a>  <a href="#" class="btn btn-info"><span class="fa fa-eye"></span></a></td>
-                    </tr>
-                    <tr>
-                      <td>AA17001</td>
-                      <td>Aranda Aranda</td>
-                      <td>Jose jose</td>
-                      <td>Sistemas Informaticos</span></td>
-                      <td><a href="#" class="btn btn-warning"><span class="fa fa-edit"></span></a>  <a href="#" class="btn btn-info"><span class="fa fa-eye"></span></a></td>
-                    </tr>
-                    <!-- fin eliminar -->
+                    @endforeach
                   </table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
