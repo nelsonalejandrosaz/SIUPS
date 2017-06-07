@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Alumno_escuelas extends Model
+class Alumno_escuela extends Model
 {
     //
      protected $fillable = [
@@ -13,11 +13,11 @@ class Alumno_escuelas extends Model
 
     public function alumno()
     {
-        return $this->hasOne('App\Alumno');
+        return $this->belongsTo('App\Alumno');
     }
 
      public function escuela()
     {
-        return $this->hasMany('App\Escuela');
+        return $this->belongsTo('App\Escuela');
     }
 }
