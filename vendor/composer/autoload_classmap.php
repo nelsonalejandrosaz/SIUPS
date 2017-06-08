@@ -50,6 +50,7 @@ return array(
     'Acacha\\User\\Http\\Middleware\\GuestUser' => $vendorDir . '/acacha/user/src/Http/Middleware/GuestUser.php',
     'Acacha\\User\\Providers\\GuestUserServiceProvider' => $vendorDir . '/acacha/user/src/Providers/GuestUserServiceProvider.php',
     'App\\Alumno' => $baseDir . '/app/Alumno.php',
+    'App\\Alumno_escuela' => $baseDir . '/app/Alumno_escuela.php',
     'App\\Alumno_escuelas' => $baseDir . '/app/Alumno_escuelas.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Escuela' => $baseDir . '/app/Escuela.php',

@@ -48,8 +48,8 @@
                 <ul class="treeview-menu">
                     <li><a href="alumnos_lista">Lista</a></li>
                     <li><a href="alumnos_carga_masiva">Cargar CSV</a></li>
-                    <li><a href="#">Ingresar </a></li>
-                    
+                    <li><a href="alumno_registro_manual">Carga Manual</a></li>
+
                 </ul>
             </li>
 

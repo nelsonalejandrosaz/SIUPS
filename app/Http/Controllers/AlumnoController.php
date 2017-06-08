@@ -46,4 +46,9 @@ class AlumnoController extends Controller
 		$alumnos_escuela = Alumno_escuela::all();
         return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela]);
 	}
+
+   public function registroAlumno()
+  {
+    return view('alumnos.alumno_registro_manual');
+  }
 }

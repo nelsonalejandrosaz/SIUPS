@@ -386,6 +386,7 @@ class ComposerStaticInitb4baef3bbb93a683b31ff46275186bb6
         'Acacha\\User\\Http\\Middleware\\GuestUser' => __DIR__ . '/..' . '/acacha/user/src/Http/Middleware/GuestUser.php',
         'Acacha\\User\\Providers\\GuestUserServiceProvider' => __DIR__ . '/..' . '/acacha/user/src/Providers/GuestUserServiceProvider.php',
         'App\\Alumno' => __DIR__ . '/../..' . '/app/Alumno.php',
+        'App\\Alumno_escuela' => __DIR__ . '/../..' . '/app/Alumno_escuela.php',
         'App\\Alumno_escuelas' => __DIR__ . '/../..' . '/app/Alumno_escuelas.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Escuela' => __DIR__ . '/../..' . '/app/Escuela.php',
