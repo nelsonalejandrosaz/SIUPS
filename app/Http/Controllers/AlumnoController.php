@@ -13,4 +13,10 @@ class AlumnoController extends Controller
     return view('alumnos.alumno_registro_manual');
   }
 
+  public function guardarAlumno(Request $request)
+  {
+    
+    dd($request->all());
+  }
+
 }
