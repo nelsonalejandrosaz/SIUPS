@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('formularioAlumno','AlumnoController@formularioAlumno'); 
+Route::get('/alumno_registro_manual','AlumnoController@registroAlumno'); 
 
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {

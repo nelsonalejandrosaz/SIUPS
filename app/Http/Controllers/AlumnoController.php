@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 class AlumnoController extends Controller
 {
 
-  public function formularioAlumno()
+  public function registroAlumno()
   {
-    return view('formularioAlumno');
+    return view('alumnos.alumno_registro_manual');
   }
 
 }
