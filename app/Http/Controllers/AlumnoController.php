@@ -18,7 +18,7 @@ class AlumnoController extends Controller
         return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela]);
     }
 
-    public function import_csv_file(){
+    public function import_csv_file(Request $request){
 		Excel::load(Input::file('csv_file'), function($hoja){
 			$hoja->each(function($fila){
 				$alumno = new Alumno;
@@ -43,8 +43,8 @@ class AlumnoController extends Controller
 				// return $fila;
 			});
 		});
-		$alumnos_escuela = Alumno_escuela::all();
-        return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela]);
+		$request->session()->flash('alert-success', 'User was successful added!');
+    	return redirect('alumnos_lista');
 	}
 
    public function registroAlumno()
