@@ -32,3 +32,5 @@ Route::get('/alumnos_carga_masiva', function () {
 
 
 Route::post('import_csv_file', 'AlumnoController@import_csv_file');
+
+Route::get('/alumno_registro_manual', 'AlumnoController@registroAlumno');
