@@ -130,6 +130,7 @@ return array(
     'Dotenv\\Exception\\ValidationException' => $vendorDir . '/vlucas/phpdotenv/src/Exception/ValidationException.php',
     'Dotenv\\Loader' => $vendorDir . '/vlucas/phpdotenv/src/Loader.php',
     'Dotenv\\Validator' => $vendorDir . '/vlucas/phpdotenv/src/Validator.php',
+    'EscuelaSeeder' => $baseDir . '/database/seeds/EscuelaSeeder.php',
     'Facebook\\WebDriver\\Chrome\\ChromeDriver' => $vendorDir . '/facebook/webdriver/lib/Chrome/ChromeDriver.php',
     'Facebook\\WebDriver\\Chrome\\ChromeDriverService' => $vendorDir . '/facebook/webdriver/lib/Chrome/ChromeDriverService.php',
     'Facebook\\WebDriver\\Chrome\\ChromeOptions' => $vendorDir . '/facebook/webdriver/lib/Chrome/ChromeOptions.php',

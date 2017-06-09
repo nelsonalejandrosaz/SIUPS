@@ -466,6 +466,7 @@ class ComposerStaticInitb4baef3bbb93a683b31ff46275186bb6
         'Dotenv\\Exception\\ValidationException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/ValidationException.php',
         'Dotenv\\Loader' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Loader.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'EscuelaSeeder' => __DIR__ . '/../..' . '/database/seeds/EscuelaSeeder.php',
         'Facebook\\WebDriver\\Chrome\\ChromeDriver' => __DIR__ . '/..' . '/facebook/webdriver/lib/Chrome/ChromeDriver.php',
         'Facebook\\WebDriver\\Chrome\\ChromeDriverService' => __DIR__ . '/..' . '/facebook/webdriver/lib/Chrome/ChromeDriverService.php',
         'Facebook\\WebDriver\\Chrome\\ChromeOptions' => __DIR__ . '/..' . '/facebook/webdriver/lib/Chrome/ChromeOptions.php',

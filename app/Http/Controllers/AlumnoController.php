@@ -71,7 +71,7 @@ class AlumnoController extends Controller
     $alumno = Alumno::where('carnet','=',$request->carnet)->first();
 
     $escuela = new Escuela;
-    $escuela = Escuela::where('codigo','=','SI')->first();
+    $escuela = Escuela::where('codigo','=','I10515')->first();
 
     Alumno_escuela::firstOrCreate(['alumno_id' => $alumno->id, 'escuela_id' => $escuela->id]);
 

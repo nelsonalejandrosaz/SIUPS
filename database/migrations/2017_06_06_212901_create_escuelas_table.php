@@ -16,7 +16,7 @@ class CreateEscuelasTable extends Migration
         Schema::create('escuelas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('codigo', 10)->unique();
-            $table->string('nombre', 25);
+            $table->string('nombre', 100);
             $table->timestamps();
         });
     }

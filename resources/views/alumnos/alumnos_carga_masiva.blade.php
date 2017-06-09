@@ -4,6 +4,9 @@
 	{{ trans('adminlte_lang::message.home') }}
 @endsection
 
+@section('contentheader_title', 'Carga de alumnos')
+@section('contentheader_description', '')
+
 
 @section('main-content')
 	<div class="col-md-12">
@@ -32,11 +35,9 @@
 
      
       <div class="box-footer">
-       
-                          <button type="submit" class="btn btn-primary" >Cargar Datos</button>
-        
-      </div>
-
+        <button type="submit" class="btn btn-lg btn-default">Cancelar</button>
+        <button type="submit" class="btn btn-lg btn-success pull-right">Cargar alumnos</button>
+      </div><!-- /.box-footer -->
        
 
 

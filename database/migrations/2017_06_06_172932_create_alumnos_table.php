@@ -16,13 +16,13 @@ class CreateAlumnosTable extends Migration
         Schema::create('alumnos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('carnet',7)->unique();
-            $table->string('nombre',50);
-            $table->string('apellido',50);
-            $table->string('direccion',50);
-            $table->string('telefono',50);
-            $table->string('correo',50);
-            $table->string('lugar_trabajo',50);
-            $table->string('telefono_trabajo',50); 
+            $table->string('nombre',100);
+            $table->string('apellido',100);
+            $table->string('direccion',500)->nullable();
+            $table->string('telefono',100)->nullable();
+            $table->string('correo',100)->nullable();
+            $table->string('lugar_trabajo',100)->nullable();
+            $table->string('telefono_trabajo',100)->nullable(); 
             $table->timestamps();
         });
     }

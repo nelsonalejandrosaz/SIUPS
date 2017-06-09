@@ -4,6 +4,9 @@
 	{{ trans('adminlte_lang::message.home') }}
 @endsection
 
+@section('contentheader_title', 'Ingreso de alumno')
+@section('contentheader_description', '')
+
 
 @section('main-content')
 
@@ -12,7 +15,7 @@
 <div class="row">
   <div class="col-md-12">
     <!-- Horizontal Form -->
-              <div class="box box-info">
+              <div class="box box-primary">
                 <div class="box-header with-border">
                   <h3 class="box-title">Datos del Alumno</h3>
                 </div><!-- /.box-header -->
@@ -77,7 +80,7 @@
                       </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
-                    <button type="submit" class="btn btn-lg btn-default">Cancelar</button>
+                    <a href="alumnos_lista" class="btn btn-lg btn-default">Cancelar</a>
                     <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
                   </div><!-- /.box-footer -->
 
