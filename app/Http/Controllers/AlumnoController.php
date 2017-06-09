@@ -52,4 +52,30 @@ class AlumnoController extends Controller
   {
     return view('alumnos.alumno_registro_manual');
   }
+
+  public function guardarAlumno(Request $request)
+  {
+    //dd($request->all());
+
+    $alumno = new Alumno;
+    $alumno->carnet = $request->carnet;
+    $alumno->nombre = $request->nombre;
+    $alumno->apellido = $request->apellido;
+    $alumno->telefono = $request->telefono;
+    $alumno->lugar_trabajo = $request->lugar_trabajo;
+    $alumno->telefono_trabajo = $request->telefono_trabajo;
+    $alumno->correo = $request->correo;
+    $alumno->direccion = $request->direccion;
+
+
+    Alumno::firstOrCreate($alumno->toArray());
+    $alumno = Alumno::where('carnet','=',$request->carnet)->first();
+
+    $escuela = new Escuela;
+    $escuela = Escuela::where('codigo','=','SI')->first();
+
+    Alumno_escuela::firstOrCreate(['alumno_id' => $alumno->id, 'escuela_id' => $escuela->id]);
+
+    return "Funciono!" ;
+  }
 }
