@@ -38,3 +38,9 @@ Route::get('/alumnos_carga_masiva', function () {
 Route::post('import_csv_file', 'AlumnoController@import_csv_file');
 
 Route::get('/alumno_registro_manual', 'AlumnoController@registroAlumno');
+
+Route::name('alumno_editar')->get('/alumno_editar/{id}', 'AlumnoController@editarAlumno');
+
+Route::name('alumno_editar_guardar')->post('/alumno_editar/{id}', 'AlumnoController@editarAlumnoGuardar');
+
+Route::name('alumno_ver')->get('/alumno_ver/{id}', 'AlumnoController@verAlumno');

@@ -77,4 +77,31 @@ class AlumnoController extends Controller
 
     return redirect('alumnos_lista/1') ;
   }
+
+  public function editarAlumno($id = 1)
+  {
+      $alumno = Alumno::find($id);
+      return view('alumnos.alumno_editar')->with(['alumno' => $alumno]);
+  }
+
+  public function editarAlumnoGuardar(Request $request, $id){
+    $alumno = Alumno::find($id);
+    $alumno->carnet = $request->carnet;
+    $alumno->nombre = $request->nombre;
+    $alumno->apellido = $request->apellido;
+    $alumno->telefono = $request->telefono;
+    $alumno->lugar_trabajo = $request->lugar_trabajo;
+    $alumno->telefono_trabajo = $request->telefono_trabajo;
+    $alumno->correo = $request->correo;
+    $alumno->direccion = $request->direccion;
+    $alumno->update();
+    return redirect('alumnos_lista/1');
+  }
+
+    public function verAlumno($id)
+  {
+      $alumno = Alumno::find($id);
+      return view('alumnos.alumno_ver')->with(['alumno' => $alumno]);
+  }
+
 }
