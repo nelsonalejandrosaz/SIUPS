@@ -7,6 +7,14 @@
 
 @section('main-content')
 
+  @if($exito == 1)
+    <div class="alert alert-success alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4>  <i class="icon fa fa-check"></i> ¡Exelente!</h4>
+      Los datos se han cargado con exito.
+    </div>
+  @endif
+
 	<div class="row">
             <div class="col-xs-12">
               <div class="box">
@@ -44,5 +52,6 @@
               </div><!-- /.box -->
             </div>
           </div>
+
 
 @endsection

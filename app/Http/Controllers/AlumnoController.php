@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Input;
 class AlumnoController extends Controller
 {
 
-    public function alumnos_lista()
+    public function AlumnosLista($exito = 0)
     {
         $alumnos_escuela = Alumno_escuela::all();
-        return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela]);
+        return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela])->with(['exito' => $exito]);
     }
 
     public function import_csv_file(Request $request){
@@ -44,8 +44,7 @@ class AlumnoController extends Controller
 				// return $fila;
 			});
 		});
-		$request->session()->flash('alert-success', 'User was successful added!');
-    	return redirect('alumnos_lista');
+    	return redirect('alumnos_lista/1');
 	}
 
    public function registroAlumno()
@@ -76,6 +75,6 @@ class AlumnoController extends Controller
 
     Alumno_escuela::firstOrCreate(['alumno_id' => $alumno->id, 'escuela_id' => $escuela->id]);
 
-    return "Funciono!" ;
+    return redirect('alumnos_lista/1') ;
   }
 }
