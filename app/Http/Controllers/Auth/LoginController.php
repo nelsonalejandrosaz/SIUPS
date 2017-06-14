@@ -49,7 +49,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
 
+        $this->clearLoginAttempts($request);
+
+        foreach ($this->guard()->user()->rol as $role) {
+          if($role->nombre=="admin"){
+            return redirect('home/admin');
+          }elseif ($role->nombre=="jefe") {
+            return redirect('home/jefe');
+          }elseif ($role->nombre=="secretaria") {
+            return redirect('home/secretaria');
+          }elseif ($role->nombre=="coordinador_Sups") {
+            return redirect('home/coordinador');
+          }
+        }
+    }
     /**
      * Returns field name to use at login.
      *

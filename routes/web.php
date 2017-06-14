@@ -34,8 +34,23 @@ Route::get('/alumnos_carga_masiva', function () {
     return view('alumnos.alumnos_carga_masiva');
 });
 
+Route::get('permisoDenegado', function () {
+    return view('errores.permisoDenegado');
+});
+
+/********************************
+*Rutas para validar roles
+********************************/
+Route::GET('home/jefe', 'JefeController@index');
+Route::GET('home/secretaria', 'SecretariaController@index');
+Route::GET('home/admin', 'AdminController@index');
+Route::GET('home/coordinador', 'CoordinadorController@index');
+/********************************
+* Fin Rutas para validar roles
+********************************/
 
 Route::post('import_csv_file', 'AlumnoController@import_csv_file');
+
 
 Route::get('/alumno_registro_manual', 'AlumnoController@registroAlumno');
 

@@ -9,6 +9,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Controllers\Controller;
 
 /**
  * Class HomeController
@@ -16,6 +18,7 @@ use Illuminate\Http\Request;
  */
 class HomeController extends Controller
 {
+    use AuthenticatesUsers;
     /**
      * Create a new controller instance.
      *
@@ -33,6 +36,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('adminlte::home');
+      foreach ($this->guard()->user()->rol as $role) {
+        if($role->nombre=="admin"){
+          return redirect('home/admin');
+        }elseif ($role->nombre=="jefe") {
+          return redirect('home/jefe');
+        }elseif ($role->nombre=="secretaria") {
+          return redirect('home/secretaria');
+        }elseif ($role->nombre=="coordinador_Sups") {
+          return redirect('home/coordinador');
+        }
+      }
     }
 }
