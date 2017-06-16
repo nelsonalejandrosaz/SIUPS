@@ -19,7 +19,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Datos del Alumno</h3>
                 </div><!-- /.box-header -->
-                <form class="form-horizontal" action="{{ route('alumno_registro_manual_bd') }}" method="post">
+                <form class="form-horizontal" action="{{ route('alumnoNuevoPost') }}" method="post">
                 {{ csrf_field() }}
 
                   <!-- inicio box-body -->
@@ -80,7 +80,7 @@
                       </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
-                    <a href="alumnos_lista" class="btn btn-lg btn-default">Cancelar</a>
+                    <a href="{{ route('alumnoLista') }}" class="btn btn-lg btn-default">Cancelar</a>
                     <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
                   </div><!-- /.box-footer -->
 

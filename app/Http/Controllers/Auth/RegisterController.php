@@ -33,7 +33,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view('adminlte::auth.register');
+        return view('adminlte::auth.registro');
     }
 
     /**
@@ -80,8 +80,11 @@ class RegisterController extends Controller
     {
         $fields = [
             'name'     => $data['name'],
+            'apellido' => $data['apellido'],
             'email'    => $data['email'],
+            'user' => $data['user'],
             'password' => bcrypt($data['password']),
+            'escuela_id' => $data['escuela_id'],
         ];
         if (config('auth.providers.users.field','email') === 'username' && isset($data['username'])) {
             $fields['username'] = $data['username'];

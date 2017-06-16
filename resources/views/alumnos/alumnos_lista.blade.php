@@ -47,7 +47,7 @@
                       <td>{{$alumno_escuela->alumno->apellido}}</td>
                       <td>{{$alumno_escuela->alumno->nombre}}</td>
                       <td>{{$alumno_escuela->escuela->nombre}}</td>
-                      <td><a href="{{ route('alumno_editar', ['id' => $alumno_escuela->alumno->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>  <a href="{{ route('alumno_ver', ['id' => $alumno_escuela->alumno->id]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a></td>
+                      <td><a href="{{ route('alumnoEditar', ['id' => $alumno_escuela->alumno->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>  <a href="{{ route('alumnoVer', ['id' => $alumno_escuela->alumno->id]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a></td>
                     </tr>
                     @endforeach
                   </table>

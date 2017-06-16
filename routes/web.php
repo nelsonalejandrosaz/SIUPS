@@ -11,13 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::name('alumno_registro_manual_bd')->post('/alumno_registro_manual','AlumnoController@guardarAlumno');
-Route::get('/alumno_registro_manual','AlumnoController@registroAlumno');
-
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {
 //        // Uses Auth Middleware
@@ -27,33 +20,56 @@ Route::group(['middleware' => 'auth'], function () {
     #adminlte_routes
 });
 
-Route::get('alumnos_lista/{exito?}', 'AlumnoController@AlumnosLista');
-
-
-Route::get('/alumnos_carga_masiva', function () {
-    return view('alumnos.alumnos_carga_masiva');
-});
-
-Route::get('permisoDenegado', function () {
-    return view('errores.permisoDenegado');
+Route::get('/', function () {
+    return view('welcome');
 });
 
 /********************************
 *Rutas para validar roles
 ********************************/
-Route::GET('home/jefe', 'JefeController@index');
-Route::GET('home/secretaria', 'SecretariaController@index');
-Route::GET('home/admin', 'AdminController@index');
-Route::GET('home/coordinador', 'CoordinadorController@index');
+Route::name('inicioJefe')->get('home/jefe', 'JefeController@index');
+Route::name('inicioSecretaria')->get('home/secretaria', 'SecretariaController@index');
+Route::name('inicioAdmin')->get('home/admin', 'AdminController@index');
+Route::name('inicioCoordinador')->get('home/coordinador', 'CoordinadorController@index');
 /********************************
 * Fin Rutas para validar roles
 ********************************/
 
+/********************************
+*Rutas para gestion alumnos
+********************************/
+Route::name('alumnoLista')->get('/alumnos', 'AlumnoController@AlumnosLista');
+Route::name('alumnoCargaCSV')->get('/alumnos/cargaCSV', function () {
+    return view('alumnos.alumnos_carga_masiva');
+});
+Route::name('alumnoNuevo')->get('/alumno/nuevo','AlumnoController@registroAlumno');
+Route::name('alumnoNuevoPost')->post('/alumnos/nuevo','AlumnoController@guardarAlumno');
+Route::name('alumnoVer')->get('/alumnos/{id}', 'AlumnoController@verAlumno');
+Route::name('alumnoEditar')->get('/alumnos/{id}/editar', 'AlumnoController@editarAlumno');
 Route::post('import_csv_file', 'AlumnoController@import_csv_file');
 
 
-Route::name('alumno_editar')->get('/alumno_editar/{id}', 'AlumnoController@editarAlumno');
 
-Route::name('alumno_editar_guardar')->post('/alumno_editar/{id}', 'AlumnoController@editarAlumnoGuardar');
 
-Route::name('alumno_ver')->get('/alumno_ver/{id}', 'AlumnoController@verAlumno');
+
+
+
+
+
+
+
+
+Route::get('permisoDenegado', function () {
+    return view('errores.permisoDenegado');
+});
+
+
+
+
+
+
+
+
+// Route::name('alumno_editar_guardar')->post('/alumno_editar/{id}', 'AlumnoController@editarAlumnoGuardar');
+
+

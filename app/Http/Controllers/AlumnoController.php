@@ -9,13 +9,14 @@ use App\Alumno;
 use App\Escuela;
 use Excel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 
 class AlumnoController extends Controller
 {
 
     public function AlumnosLista($exito = 0)
     {
-        $alumnos_escuela = Alumno_escuela::all();
+        $alumnos_escuela = Alumno_escuela::where('escuela_id', Auth::user()->escuela_id)->get();
         return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela])->with(['exito' => $exito]);
     }
 
@@ -71,11 +72,12 @@ class AlumnoController extends Controller
     $alumno = Alumno::where('carnet','=',$request->carnet)->first();
 
     $escuela = new Escuela;
-    $escuela = Escuela::where('codigo','=','I10515')->first();
+    // $escuela->id = Auth::user()->escuela->id;
+    $escuela = Escuela::where('id', Auth::user()->escuela_id)->first();
 
     Alumno_escuela::firstOrCreate(['alumno_id' => $alumno->id, 'escuela_id' => $escuela->id]);
 
-    return redirect('alumnos_lista/1') ;
+    return redirect()->route('alumnoLista') ;
   }
 
   public function editarAlumno($id = 1)

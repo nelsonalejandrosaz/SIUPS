@@ -44,7 +44,9 @@
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="{{ trans('adminlte_lang::message.password') }}" name="password"/>
+                        <input type="hidden" class="form-control" value="apellido" name="apellido"/>
+                        <input type="hidden" class="form-control" value="admin" name="user"/>
+                        <input type="hidden" class="form-control" value="1" name="escuela_id"/>
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">

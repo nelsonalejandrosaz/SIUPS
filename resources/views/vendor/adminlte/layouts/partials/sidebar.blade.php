@@ -13,7 +13,7 @@
                 <div class="pull-left info">
                     <p>{{ Auth::user()->name }}</p>
                     <!-- Status -->
-                    <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('adminlte_lang::message.online') }}</a>
+                    <a href="#"><i class="fa fa-circle text-success"></i> {{ Auth::user()->escuela->nombre }}</a>
                 </div>
             </div>
         @endif
@@ -38,31 +38,31 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-users'></i> <span>Estudiantes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="alumnos_lista">Lista</a></li>
-                    <li><a href="alumnos_carga_masiva">Cargar CSV</a></li>
-                    <li><a href="alumno_registro_manual">Carga Manual</a></li>
+                    <li><a href="{{ route('alumnoLista') }}">Lista</a></li>
+                    <li><a href="{{ route('alumnoCargaCSV') }}">Cargar CSV</a></li>
+                    <li><a href="{{ route('alumnoNuevo') }}">Carga Manual</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#"><i class='fa fa-newspaper-o'></i> <span>Expedientes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="alumnos_lista">Lista</a></li>
-                    <li><a href="alumnos_carga_masiva">Cargar CSV</a></li>
-                    <li><a href="alumno_registro_manual">Carga Manual</a></li>
+                    <li><a href="#">Lista</a></li>
+                    <li><a href="#">Cargar CSV</a></li>
+                    <li><a href="#">Carga Manual</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#"><i class='fa fa-briefcase'></i> <span>Servicios Sociales</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="alumnos_lista">Lista Servicios Sociales</a></li>
-                    <li><a href="alumnos_carga_masiva">Ingresar servicio Social</a></li>
+                    <li><a href="#">Lista Servicios Sociales</a></li>
+                    <li><a href="#">Ingresar servicio Social</a></li>
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#"><i class='fa fa-line-chart'></i> <span>Informes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="alumnos_lista">Lista Servicios Sociales</a></li>
-                    <li><a href="alumnos_carga_masiva">Ingresar servicio Social</a></li>
+                    <li><a href="#">Lista Servicios Sociales</a></li>
+                    <li><a href="#">Ingresar servicio Social</a></li>
                 </ul>
             </li>
 

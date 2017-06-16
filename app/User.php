@@ -13,13 +13,19 @@ class User extends Authenticatable
     {
       return $this->belongsToMany(rol::class, 'rol_users');
     }
+
+    public function escuela()
+    {
+        return $this->belongsTo('App\Escuela');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'apellido', 'email', 'username', 'password',
     ];
 
     /**

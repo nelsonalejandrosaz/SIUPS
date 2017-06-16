@@ -16,7 +16,7 @@ class Alumno_escuela extends Model
         return $this->belongsTo('App\Alumno');
     }
 
-     public function escuela()
+    public function escuela()
     {
         return $this->belongsTo('App\Escuela');
     }
