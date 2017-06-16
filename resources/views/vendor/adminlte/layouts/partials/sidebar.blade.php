@@ -39,15 +39,17 @@
                 <a href="#"><i class='fa fa-users'></i> <span>Estudiantes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('alumnoLista') }}">Lista</a></li>
-                    <li><a href="{{ route('alumnoCargaCSV') }}">Cargar CSV</a></li>
-                    <li><a href="{{ route('alumnoNuevo') }}">Carga Manual</a></li>
+                    @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
+                        <li><a href="{{ route('alumnoCargaCSV') }}">Cargar CSV</a></li>
+                        <li><a href="{{ route('alumnoNuevo') }}">Carga Manual</a></li>
+                    @endif
                 </ul>
             </li>
             <li class="treeview">
                 <a href="#"><i class='fa fa-newspaper-o'></i> <span>Expedientes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="#">Lista</a></li>
-                    <li><a href="#">Cargar CSV</a></li>
+                    <li><a href="#"></a></li>
                     <li><a href="#">Carga Manual</a></li>
                 </ul>
             </li>
