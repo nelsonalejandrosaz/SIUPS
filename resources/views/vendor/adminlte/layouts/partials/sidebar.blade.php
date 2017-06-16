@@ -13,7 +13,7 @@
                 <div class="pull-left info">
                     <p>{{ Auth::user()->name }}</p>
                     <!-- Status -->
-                    <a href="#"><i class="fa fa-circle text-success"></i> {{ Auth::user()->escuela->nombre }}</a>
+                    <a href="#"><i class="fa fa-circle text-success"></i> </a>
                 </div>
             </div>
         @endif

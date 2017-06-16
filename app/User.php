@@ -12,6 +12,7 @@ class User extends Authenticatable
     public function rol()
     {
       return $this->belongsToMany(rol::class, 'rol_users');
+        // return $this->hasOne('App\rol_user');
     }
 
     public function escuela()

@@ -16,7 +16,11 @@ class AlumnoController extends Controller
 
     public function AlumnosLista($exito = 0)
     {
-        $alumnos_escuela = Alumno_escuela::where('escuela_id', Auth::user()->escuela_id)->get();
+        if (Auth::user()->rol[0]->id == 2) {
+          $alumnos_escuela = Alumno_escuela::all();
+        } else {
+          $alumnos_escuela = Alumno_escuela::where('escuela_id', Auth::user()->escuela_id)->get();
+        }        
         return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela])->with(['exito' => $exito]);
     }
 
@@ -45,7 +49,7 @@ class AlumnoController extends Controller
 				// return $fila;
 			});
 		});
-    	return redirect('alumnos_lista/1');
+    	return redirect()->route('alumnoLista');
 	}
 
    public function registroAlumno()

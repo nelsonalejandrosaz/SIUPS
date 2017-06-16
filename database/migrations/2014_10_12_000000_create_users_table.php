@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email',40)->unique();
             $table->string('username',40)->unique();
             $table->string('password');
-            $table->integer('escuela_id')->unsigned();
+            $table->integer('escuela_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

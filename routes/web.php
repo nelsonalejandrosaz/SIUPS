@@ -46,7 +46,7 @@ Route::name('alumnoNuevo')->get('/alumno/nuevo','AlumnoController@registroAlumno
 Route::name('alumnoNuevoPost')->post('/alumnos/nuevo','AlumnoController@guardarAlumno');
 Route::name('alumnoVer')->get('/alumnos/{id}', 'AlumnoController@verAlumno');
 Route::name('alumnoEditar')->get('/alumnos/{id}/editar', 'AlumnoController@editarAlumno');
-Route::post('import_csv_file', 'AlumnoController@import_csv_file');
+Route::name('alumnoCargaCSVPost')->post('import_csv_file', 'AlumnoController@import_csv_file');
 
 
 

@@ -14,7 +14,7 @@ class RolSeeder extends Seeder
     {
         rol::create(['nombre' => 'admin',]);
         rol::create(['nombre' => 'jefe',]);
+        rol::create(['nombre' => 'coordinador_Sups',]);
         rol::create(['nombre' => 'secretaria',]);
-        rol::create(['nombre' => 'coordinador',]);
     }
 }
