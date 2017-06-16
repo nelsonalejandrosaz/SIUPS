@@ -19,7 +19,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Datos del Alumno</h3>
                 </div><!-- /.box-header -->
-                <form class="form-horizontal" action="{{ route('alumno_editar_guardar') }}" method="post">
+                <form class="form-horizontal" action="{{ route('alumnoEditarPost', ['id'=> $alumno->id]) }}" method="post">
                 {{ csrf_field() }}
 
                   <!-- inicio box-body -->

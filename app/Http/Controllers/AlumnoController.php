@@ -25,6 +25,9 @@ class AlumnoController extends Controller
     }
 
     public function import_csv_file(Request $request){
+       $this->validate($request,[
+        'csv_file'=>'required',
+      ]);
 		Excel::load(Input::file('csv_file'), function($hoja){
 			$hoja->each(function($fila){
 				$alumno = new Alumno;
@@ -60,7 +63,12 @@ class AlumnoController extends Controller
   public function guardarAlumno(Request $request)
   {
     //dd($request->all());
-
+    $this->validate($request, [
+        'carnet'=>'required|size:7',
+        'nombre'=>'required',
+        'apellido'=>'required',
+        'correo'=>'email',
+      ]);
     $alumno = new Alumno;
     $alumno->carnet = $request->carnet;
     $alumno->nombre = $request->nombre;
@@ -101,7 +109,7 @@ class AlumnoController extends Controller
     $alumno->correo = $request->correo;
     $alumno->direccion = $request->direccion;
     $alumno->update();
-    return redirect('alumnos_lista/1');
+   return redirect()->route('alumnoLista') ;
   }
 
     public function verAlumno($id)
