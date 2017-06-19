@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Auth;
 class AlumnoController extends Controller
 {
 
-    public function AlumnosLista($exito = 0)
+    public function AlumnosLista()
     {
         if (Auth::user()->rol[0]->id == 2) {
           $alumnos_escuela = Alumno_escuela::all();
         } else {
           $alumnos_escuela = Alumno_escuela::where('escuela_id', Auth::user()->escuela_id)->get();
         }        
-        return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela])->with(['exito' => $exito]);
+        return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela]);
     }
 
     public function import_csv_file(Request $request){

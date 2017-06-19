@@ -45,7 +45,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><b>Servicio Social</b></a>
+                <a class="navbar-brand" href="#"><b>SIUPS</b></a>
             </div>
             <div class="navbar-collapse collapse">
                 <!--<ul class="nav navbar-nav">
@@ -57,7 +57,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">{{ trans('adminlte_lang::message.login') }}</a></li>
-                        <li><a href="{{ url('/register') }}">{{ trans('adminlte_lang::message.register') }}</a></li>
+                        <!-- <li><a href="{{ url('/register') }}">{{ trans('adminlte_lang::message.register') }}</a></li> -->
                     @else
                         <li><a href="/home">{{ Auth::user()->name }}</a></li>
                     @endif
@@ -72,8 +72,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
             <div class="container">
                 <div class="row centered">
                     <div class="col-lg-12">
-                        <h1><b>Servicio Social</b></h1>
-                        <h3>Esto es la aplicacion web de <a href="https://laravel.com/"> Servicio Social</a></h3>
+                        <h1><b>Servicio Social FIA</b></h1>
+                        <h3>Esto es la aplicacion web del <a href="http://www.fia.ues.edu.sv/">Servicio Social de la FIA</a></h3>
                         <h3><a href="#" class="btn btn-lg btn-success">Ver proyectos disponibles</a></h3>
                     </div>
                     <div class="col-lg-2">
@@ -81,7 +81,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                         <img class="hidden-xs hidden-sm hidden-md" src="{{ asset('/img/arrow1.png') }}">
                     </div>
                     <div class="col-lg-8">
-                        <img class="img-responsive" src="{{ asset('/img/app-bg.png') }}" alt="">
+                        <!-- <img class="img-responsive" src="{{ asset('/img/app-bg.png') }}" alt=""> -->
+                        <img class="img-responsive center-block" src="{{ asset('/img/ues-logo-mediano.svg') }}" alt="">
                     </div>
                     <div class="col-lg-2">
                         <br>
@@ -97,15 +98,25 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     <footer>
         <div id="c">
             <div class="container">
-                <p>
-                    <a href="https://github.com/acacha/adminlte-laravel"></a><b>admin-lte-laravel</b></a>. {{ trans('adminlte_lang::message.descriptionpackage') }}.<br/>
-                    <strong>Copyright &copy; 2015 <a href="http://acacha.org">Acacha.org</a>.</strong> {{ trans('adminlte_lang::message.createdby') }} <a href="http://acacha.org/sergitur">Sergi Tur Badenas</a>. {{ trans('adminlte_lang::message.seecode') }} <a href="https://github.com/acacha/adminlte-laravel">Github</a>
-                    <br/>
-                    AdminLTE {{ trans('adminlte_lang::message.createdby') }} Abdullah Almsaeed <a href="https://almsaeedstudio.com/">almsaeedstudio.com</a>
-                    <br/>
-                    Pratt Landing Page PROVA {{ trans('adminlte_lang::message.createdby') }} <a href="http://www.blacktie.co">BLACKTIE.CO</a>
-                </p>
-
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3 style="color: white;">Universidad de El Salvador</h3>
+                        <p>Facultad de Ingeniería y Arquitectura
+                            <br>Ciudad Universitaria, Final de Av.Mártires y Héroes del 30 julio, San Salvador, El Salvador, América 
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3 style="color: white;">Contactanos</h3>
+                        <p>decanato@fia.ues.edu.sv 
+                        <br>Tel.: (+503) 2235-1035
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p>
+                        <strong>Copyright &copy; 2017 </strong> - Universidad de El Salvador - Facultad de Ingeniería y Arquitectura
+                    </p>
+                </div>
             </div>
         </div>
     </footer>

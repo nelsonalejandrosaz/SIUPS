@@ -35,6 +35,7 @@
             <!-- Optionally, you can add icons to the links -->
             <li ><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>Inicio</span></a></li>
             <!-- Links para la gestion de alumnos -->
+            @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" || Auth::user()->rol[0]->nombre == "jefe" )
             <li class="treeview">
                 <a href="#"><i class='fa fa-users'></i> <span>Estudiantes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
@@ -45,21 +46,32 @@
                     @endif
                 </ul>
             </li>
+            @endif
+            <!-- Fin links gestion de alumnos -->
+            <!-- Links para la gestion de expedientes -->
+            @if( Auth::user()->rol[0]->nombre != "admin" )
             <li class="treeview">
                 <a href="#"><i class='fa fa-newspaper-o'></i> <span>Expedientes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="#">Lista</a></li>
-                    <li><a href="#"></a></li>
-                    <li><a href="#">Carga Manual</a></li>
+                    <li><a href="#">Expedientes en curso</a></li>
                 </ul>
             </li>
+            @endif
+            <!-- Fin de Links para la gestion de expedientes -->
+            <!-- Links para la gestion de Servicios Sociales -->
+            @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" || Auth::user()->rol[0]->nombre == "jefe" )
             <li class="treeview">
                 <a href="#"><i class='fa fa-briefcase'></i> <span>Servicios Sociales</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="#">Lista Servicios Sociales</a></li>
-                    <li><a href="#">Ingresar servicio Social</a></li>
+                    <li><a href="#">Ingresar Servicio Social</a></li>
                 </ul>
             </li>
+            @endif
+            <!-- Fin Links para la gestion de Servicios Sociales -->
+            <!-- Links para los informes diversos -->
+            @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" || Auth::user()->rol[0]->nombre == "jefe" )
             <li class="treeview">
                 <a href="#"><i class='fa fa-line-chart'></i> <span>Informes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
@@ -67,6 +79,19 @@
                     <li><a href="#">Ingresar servicio Social</a></li>
                 </ul>
             </li>
+            @endif
+            <!-- Fin Links para los informes diversos -->
+            <!-- Links para la gestion de Servicios Sociales -->
+            @if( Auth::user()->rol[0]->nombre == "admin" )
+            <li class="treeview">
+                <a href="#"><i class='fa fa-users'></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="#">Lista usuarios</a></li>
+                    <li><a href="#">Ingresar usuario</a></li>
+                </ul>
+            </li>
+            @endif
+            <!-- Links para la gestion de Servicios Sociales -->
 
         </ul><!-- /.sidebar-menu -->
 

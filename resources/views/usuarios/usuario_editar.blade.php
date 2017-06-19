@@ -4,7 +4,7 @@
 	{{ trans('adminlte_lang::message.home') }}
 @endsection
 
-@section('contentheader_title', 'Editar alumno')
+@section('contentheader_title', 'Mi perfil')
 @section('contentheader_description', '')
 
 
@@ -17,7 +17,7 @@
     <!-- Horizontal Form -->
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Datos del Alumno</h3>
+                  <h3 class="box-title">Editar mi perfil</h3>
                 </div><!-- /.box-header -->
                 <form class="form-horizontal" action="{{ route('alumnoEditarPost', ['id'=> $alumno->id]) }}" method="post">
                 {{ csrf_field() }}

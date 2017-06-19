@@ -43,7 +43,7 @@
 
      
       <div class="box-footer">
-        <button type="submit" class="btn btn-lg btn-default">Cancelar</button>
+        <a href="{{ route('alumnoLista') }}" class="btn btn-lg btn-default">Cancelar</a>
         <button type="submit" class="btn btn-lg btn-success pull-right">Cargar alumnos</button>
       </div><!-- /.box-footer -->
        

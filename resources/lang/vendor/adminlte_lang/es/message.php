@@ -17,13 +17,13 @@ return [
     'someproblems'            => 'Hay algunos problemas con su entrada.',
     'siginsession'            => 'Inicia sesión para acceder',
     'remember'                => 'Recuérdame',
-    'buttonsign'              => 'Iniciar Sesión',
+    'buttonsign'              => 'Ingresar',
     'forgotpassword'          => 'Olvidé mi contraseña',
     'registermember'          => 'Registar un nuevo miembro',
     'terms'                   => 'Estoy de acuerdo con las',
     'conditions'              => 'Términos y Condiciones',
     'register'                => 'Registro',
-    'login'                   => 'Iniciar Sesión',
+    'login'                   => 'Ingresar',
     'membreship'              => 'Ya soy miembro',
     'passwordclickreset'      => 'Haga clic aquí para restablecer la contraseña:',
     'signGithub'              => 'Entra con Github',
@@ -131,4 +131,5 @@ return [
     'loggedin'                => 'Login correcto!',
     'entering'                => 'Entrando...',
     'registered'              => 'Usuario registrado!',
+    'alumnoslista'            => 'Lista de Alumnos'
 ];
