@@ -59,9 +59,17 @@ Route::name('inicioCoordinador')->get('home/coordinador', 'CoordinadorController
 * Fin Rutas para validar roles
 ********************************/
 
-
-
 Route::get('permisoDenegado', function () {
     return view('errores.permisoDenegado');
-});
 
+
+/********************************
+*Rutas para Servicio Social
+********************************/
+Route::name('servicioSocialNuevo')->get('/ServicioSocial/nuevo','UsuarioController@registroServicioSocial')->middleware('coordinador');
+Route::name('servicioSocialNuevoPost')->post('/ServicioSocial/nuevo','ServicioSocialController@guardarServicioSocial')->middleware('coordinador');
+
+/************************************
+*Fin de la rutas para servicio social
+*************************************/
+});
