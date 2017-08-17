@@ -66,7 +66,7 @@ Route::get('permisoDenegado', function () {
 /********************************
 *Rutas para Servicio Social
 ********************************/
-Route::name('servicioSocialNuevo')->get('/ServicioSocial/nuevo','UsuarioController@registroServicioSocial')->middleware('coordinador');
+Route::name('servicioSocialNuevo')->get('/ServicioSocial/nuevo','ServicioSocialController@registroServicioSocial')->middleware('coordinador');
 Route::name('servicioSocialNuevoPost')->post('/ServicioSocial/nuevo','ServicioSocialController@guardarServicioSocial')->middleware('coordinador');
 
 /************************************

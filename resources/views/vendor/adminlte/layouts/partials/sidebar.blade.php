@@ -68,13 +68,14 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-briefcase'></i> <span>Servicios Sociales</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Lista Servicios Sociales</a></li>
-                    <li><a href="#">Ingresar Servicio Social</a></li>
+                    <li><a href="">Lista Servicios Sociales</a></li>
+                    <li><a href="servicioSocialNuevo">Ingresar Servicio Social</a></li>
                 </ul>
             </li>
             @endif
-            <!-- Fin Links para la gestion de Servicios Sociales -->
-            <!-- Links para los informes diversos -->
+
+            <!--   ESTO ESTA REPETIDO  
+
             @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" || Auth::user()->rol[0]->nombre == "jefe" )
             <li class="treeview">
                 <a href="#"><i class='fa fa-line-chart'></i> <span>Informes</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -84,6 +85,11 @@
                 </ul>
             </li>
             @endif
+
+            -->
+
+
+
             <!-- Fin Links para los informes diversos -->
             <!-- Links para la gestion de Servicios Sociales -->
             @if( Auth::user()->rol[0]->nombre == "admin" )
