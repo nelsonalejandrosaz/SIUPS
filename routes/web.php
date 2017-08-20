@@ -65,3 +65,17 @@ Route::get('permisoDenegado', function () {
     return view('errores.permisoDenegado');
 });
 
+
+
+/******************************************
+**      NUEVAS RUTAS PARA USUARIO       ***
+******************************************/
+
+Route::name('usuariosLista')->get('/usuarios', 'UsuarioController@UsuariosLista');
+Route::name('agregarusuario')->get('Agregar/usuario','UsuarioController@AgregarUsuario')->middleware('jefe');
+Route::name('usuarioNuevoPost')->post('usuarios/nuevo','UsuarioController@guardarusuario')->middleware('jefe');
+
+
+/******************************************
+**      NUEVAS RUTAS PARA USUARIO       ***
+******************************************/
