@@ -74,7 +74,9 @@ Route::get('permisoDenegado', function () {
 Route::name('usuariosLista')->get('/usuarios', 'UsuarioController@UsuariosLista');
 Route::name('agregarusuario')->get('Agregar/usuario','UsuarioController@AgregarUsuario')->middleware('jefe');
 Route::name('usuarioNuevoPost')->post('usuarios/nuevo','UsuarioController@guardarusuario')->middleware('jefe');
-
+Route::name('usuarioVer')->get('/usuarios/{id}', 'UsuarioController@verUsuario')->middleware('jefe');
+Route::name('usuarioEditar')->get('/usuarios/{id}/editar', 'UsuarioController@editarUsuario')->middleware('jefe');
+	Route::name('usuarioEditarPost')->post('/usuarios/{id}/editar','UsuarioController@editarUsuarioGuardar')->middleware('jefe');
 
 /******************************************
 **      NUEVAS RUTAS PARA USUARIO       ***

@@ -104,9 +104,9 @@
             <!--Links para el CRUD de usuarios (ARNULFO)-->
             @if( Auth::user()->rol[0]->nombre == "jefe" )
             <li class="treeview">
-                <a href="{{ route('usuariosLista') }}"><i class='fa fa-users'></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-users'></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Lista usuarios</a></li>
+                    <li><a href="{{ route('usuariosLista') }}">Lista usuarios</a></li>
                     <li><a href="{{ route('agregarusuario') }}">Ingresar usuario</a></li>
                 </ul>
             </li>

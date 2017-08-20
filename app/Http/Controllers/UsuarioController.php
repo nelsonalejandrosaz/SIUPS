@@ -48,4 +48,28 @@ class UsuarioController extends Controller
     	]);
     return redirect()->route('usuariosLista') ;
     }
+
+     public function verUsuario($id)
+  {
+      $usuario = User::find($id);
+      return view('usuarios.usuarioVer')->with(['usuario' => $usuario]);
+  }
+
+  public function editarUsuario($id = 1)
+  {
+      $usuario = User::find($id);
+      return view('usuarios.usuarioEditar')->with(['usuario' => $usuario]);
+  }
+
+  public function editarUsuarioGuardar(Request $request, $id){
+    $usuario = User::find($id);
+    $usuario->username = $request->input('username');
+    $usuario->name = $request->input('nombre');
+    $usuario->apellido = $request->input('apellido');
+    $usuario->email = $request->input('correo');
+    $usuario->password = bcrypt($request->input('password'));
+    $usuario->save();
+    session()->flash('mensaje', 'Usuario modificado corectamente');
+   return redirect()->route('usuariosLista') ;
+  }
 }

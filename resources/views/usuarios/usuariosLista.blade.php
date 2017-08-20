@@ -32,7 +32,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Rol</th>
-                <th>escuela</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -44,9 +44,9 @@
               <td>{{$usuario->rol_id}}</td>
               <td align="center">
                 @if( Auth::user()->rol[0]->nombre == "jefe" )
-                <a href="{{ route('alumnoEditar', ['id' => $usuario->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+                <a href="{{ route('usuarioEditar', ['id' => $usuario->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
                 @endif  
-                <a href="{{ route('alumnoVer', ['id' => $usuario->id]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a>
+                <a href="{{ route('usuarioVer', ['id' => $usuario->id]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a>
               </td>
             </tr>
             @endforeach
