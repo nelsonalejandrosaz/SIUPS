@@ -14,8 +14,7 @@ class AddRolColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('Users', function (Blueprint $table) {
-            $table->integer('rol_id')->unsigned();
-            $table->foreign('rol_id')->references('id')->on('rols');
+            
         });
     }
 
@@ -27,8 +26,7 @@ class AddRolColumnToUsersTable extends Migration
     public function down()
     {
         Schema::table('Users', function (Blueprint $table) {
-            $table->dropForeign('user_rol_id_foreign');
-            $table->dropColumn('rol_id');
+            
         });
     }
 }

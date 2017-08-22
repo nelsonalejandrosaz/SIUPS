@@ -4,7 +4,7 @@
 	{{ trans('adminlte_lang::message.alumnoslista') }}
 @endsection
 
-@section('contentheader_title', 'Lista de alumnos')
+@section('contentheader_title', 'Lista de usuarios')
 @section('contentheader_description', '')
 
 
@@ -22,7 +22,7 @@
     <div class="col-xs-12">
       <div class="box box-primary">
         <div class="box-header">
-          <h3 class="box-title">Lista de alumnos</h3>
+          <h3 class="box-title">Lista de usuarios</h3>
         </div><!-- /.box-header -->
         <div class="box-body table-responsive">
           <table id="tablaAlumnos" class="table table-hover">
@@ -41,7 +41,7 @@
               <td>{{$usuario->username}}</td>
               <td>{{$usuario->name}}</td>
               <td>{{$usuario->apellido}}</td>
-              <td>{{$usuario->rol_id}}</td>
+              <td>{{$usuario->rol[0]->nombre}}</td>
               <td align="center">
                 @if( Auth::user()->rol[0]->nombre == "jefe" )
                 <a href="{{ route('usuarioEditar', ['id' => $usuario->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>

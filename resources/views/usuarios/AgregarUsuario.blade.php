@@ -4,7 +4,7 @@
 	{{ trans('adminlte_lang::message.home') }}
 @endsection
 
-@section('contentheader_title', 'Ingreso de alumno')
+@section('contentheader_title', 'Ingreso de usuario')
 @section('contentheader_description', '')
 
 
@@ -44,28 +44,28 @@
                       <div class="col-xs-6">
                         <h4 class="box-title">Datos personales</h4>
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
-                          <div class="col-sm-10">
+                          <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
+                          <div class="col-sm-9">
                             <input type="text" class="form-control" placeholder="AA17001" name="username">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Nombre:</label>
-                          <div class="col-sm-10">
+                          <label for="inputPassword3" class="col-sm-3 control-label">Nombre:</label>
+                          <div class="col-sm-9">
                             <input type="text" class="form-control" placeholder="Nombre" name="nombre">
                           </div>
                         </div>
                         <div class="form-group">
 
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Apellido:</label>
-                          <div class="col-sm-10">
+                          <label for="inputPassword3" class="col-sm-3 control-label">Apellido:</label>
+                          <div class="col-sm-9">
                             <input type="text" class="form-control" placeholder="Apellido" name="apellido">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Correo:</label>
-                          <div class="col-sm-10">
+                          <label for="inputPassword3" class="col-sm-3 control-label">Correo:</label>
+                          <div class="col-sm-9">
                             <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correo">
                           </div>
                         </div>
@@ -73,28 +73,28 @@
                       <div class="col-xs-6">
                         <h4 class="box-title">Datos de puesto</h4>
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Rol</label>
-                          <div class="col-sm-10">
+                          <label for="inputEmail3" class="col-sm-3 control-label">Rol</label>
+                          <div class="col-sm-12">
                             <select class="form-control" name="rol">
                               @foreach($rols as $rol)
-                                <option>{{$rol->id}}</option>
+                                <option value="{{$rol->id}}">{{$rol->nombre}}</option>
                               @endforeach
                             </select>
                           </div>
                         </div>
                           <div class="form-group">
                           <label for="inputEmail4" class="col-sm-3 control-label">Escuela</label>
-                          <div class="col-sm-9">
+                          <div class="col-sm-12">
                             <select class="form-control" name="escuela">
                               @foreach($escuelas as $escuela)
-                                <option>{{$escuela->nombre}}</option>
+                                <option value="{{$escuela->id}}">{{$escuela->nombre}}</option>
                               @endforeach
                             </select>
                           </div>
                         </div>
                          <div class="form-group">
                           <label for="inputPassword5" class="col-sm-4 control-label">Contraseña:</label>
-                          <div class="col-sm-8">
+                          <div class="col-sm-12">
                             <input type="password" class="form-control" placeholder="Contraseña" name="password">
                           </div>
                         </div>

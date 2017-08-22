@@ -4,7 +4,7 @@
 	{{ trans('adminlte_lang::message.home') }}
 @endsection
 
-@section('contentheader_title', 'Ver alumno')
+@section('contentheader_title', 'Ver usuario')
 @section('contentheader_description', '')
 
 
@@ -17,7 +17,7 @@
     <!-- Horizontal Form -->
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Datos del Alumno</h3>
+                  <h3 class="box-title">Datos del Usuario</h3>
                 </div><!-- /.box-header -->
                 <form class="form-horizontal" action="" method="post">
                 {{ csrf_field() }}
@@ -27,8 +27,8 @@
                       <div class="col-xs-6">
                         <h4 class="box-title">Datos personales</h4>
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Username:</label>
-                          <div class="col-sm-10">
+                          <label for="inputEmail3" class="col-sm-3 control-label">Username:</label>
+                          <div class="col-sm-9">
                             <input type="text" class="form-control" value="{{ $usuario->username }}" name="username" disabled="">
                           </div>
                         </div>
@@ -57,13 +57,13 @@
                         <div class="form-group">
                           <label for="inputEmail3" class="col-sm-2 control-label">Rol</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $usuario->rol_id }}" name="Rol" disabled="">
+                            <input type="text" class="form-control" value="{{ $usuario->rol[0]->nombre}}" name="Rol" disabled="">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Escuela</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $usuario->escuela }}" name="escuela" disabled="">
+                            <input type="text" class="form-control" value="{{ $usuario->escuela->nombre }}" name="escuela" disabled="">
                           </div>
                         </div>
                       </div>

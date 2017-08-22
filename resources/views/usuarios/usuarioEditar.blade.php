@@ -4,7 +4,7 @@
 	{{ trans('adminlte_lang::message.home') }}
 @endsection
 
-@section('contentheader_title', 'Editar alumno')
+@section('contentheader_title', 'Editar usuario')
 @section('contentheader_description', '')
 
 
@@ -27,9 +27,9 @@
                       <div class="col-xs-6">
                         <h4 class="box-title">Datos personales</h4>
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $usuario->Username }}" name="username">
+                          <label for="inputEmail3" class="col-sm-3 control-label">Username:</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" value="{{ $usuario->username }}" name="username">
                           </div>
                         </div>
                         <div class="form-group">
@@ -56,7 +56,7 @@
                         <div class="form-group">
                           <label for="inputEmail3" class="col-sm-2 control-label">Rol</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $usuario->rol_id }}" name="Rol">
+                            <input type="text" class="form-control" value="{{ $usuario->rol_user}}" name="Rol">
                           </div>
                         </div>
                         <div class="form-group">
