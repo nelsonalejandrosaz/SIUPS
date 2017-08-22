@@ -60,12 +60,14 @@
                             <input type="text" class="form-control" value="{{ $usuario->rol[0]->nombre}}" name="Rol" disabled="">
                           </div>
                         </div>
+                         @if($usuario->rol[0]->nombre =='coordinador_Sups') 
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Escuela</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" value="{{ $usuario->escuela->nombre }}" name="escuela" disabled="">
                           </div>
                         </div>
+                        @endif
                       </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">

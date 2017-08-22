@@ -56,21 +56,23 @@
                         <div class="form-group">
                           <label for="inputEmail3" class="col-sm-2 control-label">Rol</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $usuario->rol_user}}" name="Rol">
+                            <input type="text" class="form-control" value="{{ $usuario->rol[0]->nombre}}" name="Rol">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword5" class="col-sm-2 control-label">Contraseña:</label>
-                          <div class="col-sm-10">
+                          <label for="inputPassword5" class="col-sm-3 control-label">Contraseña:</label>
+                          <div class="col-sm-9">
                             <input type="text" class="form-control" value="{{ $usuario->password }}" name="password">
                           </div>
                         </div>
+                        @if($usuario->rol[0]->nombre =='coordinador_Sups')
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Escuela</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $usuario->escuela }}" name="Escuela">
+                            <input type="text" class="form-control" value="{{ $usuario->escuela->nombre }}" name="Escuela">
                           </div>
                         </div>
+                        @endif
                       </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
