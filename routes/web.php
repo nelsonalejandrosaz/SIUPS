@@ -81,3 +81,9 @@ Route::name('usuarioEditar')->get('/usuarios/{id}/editar', 'UsuarioController@ed
 /******************************************
 **      NUEVAS RUTAS PARA USUARIO       ***
 ******************************************/
+
+/******************************************
+**      NUEVAS RUTAS PARA SERVICIO SOCIAL       ***
+******************************************/
+
+Route::name('ServicioSocialNuevo')->get('/ServicioSocial/Nuevo', 'ServicioSocialController@IngresarServicioSocial');
