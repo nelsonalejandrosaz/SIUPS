@@ -112,7 +112,20 @@
             </li>
             @endif
 
-            <!--Links para el CRUD de usuarios-->
+            <!--/Links para el CRUD de usuarios-->
+
+            <!--Links para el CRUD de tutores-->
+
+            @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
+            <li class="treeview">
+                <a href="#"><i class='fa fa-users'></i> <span>Tutores</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('tutoresLista') }}">Lista tutores</a></li>
+                    <li><a href="{{ route('agregarTutor') }}">Ingresar tutor</a></li>
+                </ul>
+            </li>
+            @endif
+            <!--/Links para el CRUD de tutores-->
         </ul><!-- /.sidebar-menu -->
 
 

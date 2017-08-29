@@ -11,7 +11,7 @@
 @section('main-content')
 
 
-<!--comienza la vista del formulario de registro alumnos-->
+<!--comienza la vista del formulario de registro usuarios-->
 <div class="row">
   <div class="col-md-12">
     <!-- Horizontal Form -->

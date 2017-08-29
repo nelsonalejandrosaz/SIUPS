@@ -11,7 +11,7 @@
 @section('main-content')
 
 
-<!--comienza la vista del formulario de registro alumnos-->
+<!--comienza la vista del formulario de registro usuarios-->
 <div class="row">
   <div class="col-md-12">
     <!-- Horizontal Form -->
@@ -19,7 +19,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Editar mi perfil</h3>
                 </div><!-- /.box-header -->
-                <form class="form-horizontal" action="{{ route('alumnoEditarPost', ['id'=> $alumno->id]) }}" method="post">
+                <form class="form-horizontal" action="{{ route('usuarioEditarPost', ['id'=> $usuario->id]) }}" method="post">
                 {{ csrf_field() }}
 
                   <!-- inicio box-body -->
@@ -29,37 +29,37 @@
                         <div class="form-group">
                           <label for="inputEmail3" class="col-sm-2 control-label">Carnet:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $alumno->carnet }}" name="carnet">
+                            <input type="text" class="form-control" value="{{ $usuario->carnet }}" name="carnet">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Nombre:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $alumno->nombre }}" name="nombre">
+                            <input type="text" class="form-control" value="{{ $usuario->nombre }}" name="nombre">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Apellido:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $alumno->apellido }}" name="apellido">
+                            <input type="text" class="form-control" value="{{ $usuario->apellido }}" name="apellido">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Correo:</label>
                           <div class="col-sm-10">
-                            <input type="email" class="form-control" value="{{ $alumno->correo }}" name="correo">
+                            <input type="email" class="form-control" value="{{ $usuario->correo }}" name="correo">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Telefono:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $alumno->telefono }}" name="telefono">
+                            <input type="text" class="form-control" value="{{ $usuario->telefono }}" name="telefono">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Direccion:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $alumno->direccion }}" name="direccion">
+                            <input type="text" class="form-control" value="{{ $usuario->direccion }}" name="direccion">
                           </div>
                         </div>
                       </div>
@@ -68,19 +68,19 @@
                         <div class="form-group">
                           <label for="inputEmail3" class="col-sm-2 control-label">Lugar de trabajo</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $alumno->lugar_trabajo }}" name="lugar_trabajo">
+                            <input type="text" class="form-control" value="{{ $usuario->lugar_trabajo }}" name="lugar_trabajo">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Telefono de trabajo</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $alumno->telefono_trabajo }}" name="telefono_trabajo">
+                            <input type="text" class="form-control" value="{{ $usuario->telefono_trabajo }}" name="telefono_trabajo">
                           </div>
                         </div>
                       </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
-                    <a href="{{ route('alumnoLista') }}" class="btn btn-lg btn-default">Cancelar</a>
+                    <a href="{{ route('usuarioLista') }}" class="btn btn-lg btn-default">Cancelar</a>
                     <button type="submit" class="btn btn-lg btn-success pull-right">Guardar cambios</button>
                   </div><!-- /.box-footer -->
 

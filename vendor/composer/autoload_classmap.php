@@ -93,6 +93,7 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateRolUsersTable' => $baseDir . '/database/migrations/2017_06_08_180201_create_rol_users_table.php',
     'CreateRolsTable' => $baseDir . '/database/migrations/2017_06_08_173457_create_rols_table.php',
+    'CreateTutorTable' => $baseDir . '/database/migrations/2017_08_29_155804_create_tutor_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'Creativeorange\\Gravatar\\Exceptions\\InvalidEmailException' => $vendorDir . '/creativeorange/gravatar/src/Exceptions/InvalidEmailException.php',
     'Creativeorange\\Gravatar\\Facades\\Gravatar' => $vendorDir . '/creativeorange/gravatar/src/Facades/Gravatar.php',

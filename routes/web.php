@@ -9,6 +9,15 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
+|			***** INDICE *****
+|
+|	Nombre				N° de linea
+|
+|1.Gestion Alumnos 			25
+|2.Validar roles			61
+|3.Rutas para usuarios 		80
+|4.Rutas para tutores 		96
+|
 */
 
 Route::group(['middleware' => 'auth'], function () {
@@ -72,12 +81,38 @@ Route::get('permisoDenegado', function () {
 ******************************************/
 
 Route::name('usuariosLista')->get('/usuarios', 'UsuarioController@UsuariosLista');
+
 Route::name('agregarusuario')->get('Agregar/usuario','UsuarioController@AgregarUsuario')->middleware('jefe');
+
 Route::name('usuarioNuevoPost')->post('usuarios/nuevo','UsuarioController@guardarusuario')->middleware('jefe');
+
 Route::name('usuarioVer')->get('/usuarios/{id}', 'UsuarioController@verUsuario')->middleware('jefe');
+
 Route::name('usuarioEditar')->get('/usuarios/{id}/editar', 'UsuarioController@editarUsuario')->middleware('jefe');
-	Route::name('usuarioEditarPost')->post('/usuarios/{id}/editar','UsuarioController@editarUsuarioGuardar')->middleware('jefe');
+
+Route::name('usuarioEditarPost')->post('/usuarios/{id}/editar','UsuarioController@editarUsuarioGuardar')->middleware('jefe');
 
 /******************************************
 **      NUEVAS RUTAS PARA USUARIO       ***
+******************************************/
+
+
+/******************************************
+**      NUEVAS RUTAS PARA TUTORES       ***
+******************************************/
+
+Route::name('tutoresLista')->get('/tutores', 'TutorController@TutoresLista');
+
+Route::name('agregarTutor')->get('Agregar/Tutor','TutorController@AgregarTutor')->middleware('coordinador');
+
+Route::name('TutorNuevoPost')->post('Tutores/nuevo','TutorController@guardarTutor')->middleware('coordinador');
+
+Route::name('TutorVer')->get('/Tutores/{id}', 'TutorController@verTutor')->middleware('coordinador');
+
+Route::name('TutorEditar')->get('/Tutores/{id}/editar', 'TutorController@editarTutor')->middleware('coordinador');
+
+	Route::name('TutorEditarPost')->post('/Tutores/{id}/editar','TutorController@editarTutorGuardar')->middleware('coordinador');
+
+/******************************************
+**      NUEVAS RUTAS PARA TUTORES       ***
 ******************************************/
