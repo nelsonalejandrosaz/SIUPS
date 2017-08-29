@@ -17,6 +17,8 @@
 |2.Validar roles			61
 |3.Rutas para usuarios 		80
 |4.Rutas para tutores 		96
+|4. Rutas para SS 			101
+|5.Rutas para tutores 		110
 |
 */
 
@@ -77,7 +79,7 @@ Route::get('permisoDenegado', function () {
 
 
 /******************************************
-**      NUEVAS RUTAS PARA USUARIO       ***
+**      NUEVAS RUTAS PARA USUARIO    Arnulfo   ***
 ******************************************/
 
 Route::name('usuariosLista')->get('/usuarios', 'UsuarioController@UsuariosLista');
@@ -93,12 +95,20 @@ Route::name('usuarioEditar')->get('/usuarios/{id}/editar', 'UsuarioController@ed
 Route::name('usuarioEditarPost')->post('/usuarios/{id}/editar','UsuarioController@editarUsuarioGuardar')->middleware('jefe');
 
 /******************************************
-**      NUEVAS RUTAS PARA USUARIO       ***
+**     FIN NUEVAS RUTAS PARA USUARIO       ***
 ******************************************/
+
+/******************************************
+**      NUEVAS RUTAS PARA SERVICIO SOCIAL Kevin      ***
+******************************************/
+
+Route::name('ServicioSocialNuevo')->get('/ServicioSocial/Nuevo', 'ServicioSocialController@IngresarServicioSocial');
+
+
 
 
 /******************************************
-**      NUEVAS RUTAS PARA TUTORES       ***
+**      NUEVAS RUTAS PARA TUTORES    Arnulfo   ***
 ******************************************/
 
 Route::name('tutoresLista')->get('/tutores', 'TutorController@TutoresLista');
