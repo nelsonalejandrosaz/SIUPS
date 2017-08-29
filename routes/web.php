@@ -16,7 +16,6 @@
 |1.Gestion Alumnos 			25
 |2.Validar roles			61
 |3.Rutas para usuarios 		80
-|4.Rutas para tutores 		96
 |4. Rutas para SS 			101
 |5.Rutas para tutores 		110
 |
