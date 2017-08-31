@@ -49,35 +49,35 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Nombres:</label>
                   <div class="col-sm-10">
-                    <input type="text" value="{{old('nombre')}}" class="form-control" placeholder="Juan" name="nombre">
+                    <input type="text" class="form-control" placeholder="Juan" name="nombre" value="{{old('nombre')}}">
                   </div>
                 </div>
                 {{-- apellidos --}}
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Apellidos:</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Pérez" name="apellido">
+                    <input type="text" class="form-control" placeholder="Pérez" name="apellido" value="{{ old('apellido') }}">
                   </div>
                 </div>
                 {{-- DUI --}}
                 <div class="form-group">
                   <label class="col-sm-2 control-label">DUI:</label>
                   <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="04058030-9" name="dui">
+                  <input type="text" class="form-control" placeholder="04058030-9" name="dui" value="{{ old('dui') }}">
                   </div>
                 </div>
                 {{-- correo --}}
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Correo:</label>
                   <div class="col-sm-10">
-                  <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correo">
+                  <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correo" value="{{ old('correo') }}">
                   </div>
                 </div>
                 {{-- telefono --}}
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Telefono:</label>
                   <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="2222-2222" name="telefono">
+                  <input type="text" class="form-control" placeholder="2222-2222" name="telefono" value="{{ old('telefono') }}">
                   </div>
                 </div>
               </div>
@@ -87,28 +87,28 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">Nombre:</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="Nombre de la Institucion" name="organizacion">
+                  <input type="text" class="form-control" placeholder="Nombre de la Institucion" name="organizacion" value="{{ old('organizacion') }}">
                 </div>
               </div>
               {{-- telefono organizacion  --}}
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Telefono:</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="2222-2222" name="telefonoOrganizacion">
+                  <input type="text" class="form-control" placeholder="2222-2222" name="telefonoOrganizacion" value="{{ old('telefonoOrganizacion') }}">
                 </div>
               </div>
               {{-- correo --}}
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Correo:</label>
                 <div class="col-sm-10">
-                <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correoOrganizacion">
+                <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correoOrganizacion" value="{{ old('correoOrganizacion') }}">
                 </div>
               </div>
               {{-- direccion organizacion --}}
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Direccion:</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="Direccion de la institucion" name="direccionOrganizacion">
+                  <input type="text" class="form-control" placeholder="Direccion de la institucion" name="direccionOrganizacion" value="{{ old('direccionOrganizacion') }}">
                 </div>
               </div>
             </div>
