@@ -134,7 +134,7 @@ Route::name('beneficiarioLista')->get('/usuario', 'BeneficiarioController@Benefi
 Route::name('beneficiarioNuevo')->get('/usuario/nuevo','BeneficiarioController@BeneficiarioNuevo');
 Route::name('beneficiarioNuevoPost')->post('/usuario/nuevo','BeneficiarioController@BeneficiarioNuevoPost');
 Route::name('beneficiarioEditar')->get('/usuario/{id}/editar', 'BeneficiarioController@BeneficiarioEditar');
-Route::name('beneficiarioEditarPost')->post('/usuario/{id}/editar','BeneficiarioController@BeneficiarioEdtiarPost'
+Route::name('beneficiarioEditarPost')->post('/usuario/{id}/editar','BeneficiarioController@BeneficiarioEdtiarPost');
 
 
 

@@ -46,7 +46,8 @@
               <td>{{$beneficiario->correo}}</td>
               <td>{{$beneficiario->telefono}}</td>
               <td>{{$beneficiario->organizacion}}</td>
-              <td>{{$beneficiario->telOrganizacion}}</td>
+              <td>{{$beneficiario->telefonoOrganizacion}}</td>
+
 
               <td align="center">
                 @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )

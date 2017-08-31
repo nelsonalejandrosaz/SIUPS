@@ -44,7 +44,7 @@
           <!-- inicio box-body -->
           <div class="box-body">
               <div class="col-xs-6">
-                <h4 class="box-title">Datos del contecto</h4>
+                <h4 class="box-title">Datos del contacto</h4>
                 {{-- nombre --}}
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Nombres:</label>
@@ -85,36 +85,36 @@
               <h4 class="box-title">Datos de organizacion</h4>
               {{-- nombre organizacion --}}
               <div class="form-group">
-                <label class="col-sm-2 control-label">Nombre de la organización:</label>
+                <label class="col-sm-2 control-label">Nombre :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="Lugar de trabajo" name="organizacion">
+                  <input type="text" class="form-control" placeholder="Nombre de la Institucion" name="organizacion">
                 </div>
               </div>
               {{-- telefono organizacion  --}}
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Telefono de organización:</label>
+                <label for="inputPassword3" class="col-sm-2 control-label">Telefono :</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" placeholder="2222-2222" name="telefonoOrganizacion">
                 </div>
               </div>
               {{-- correo --}}
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Correo organización:</label>
+                <label for="inputPassword3" class="col-sm-2 control-label">Correo :</label>
                 <div class="col-sm-10">
                 <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correoOrganizacion">
                 </div>
               </div>
               {{-- direccion organizacion --}}
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Direccion organización:</label>
+                <label for="inputPassword3" class="col-sm-2 control-label">Direccion :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="Direccion" name="direccionOrganizacion">
+                  <input type="text" class="form-control" placeholder="Direccion de la institucion" name="direccionOrganizacion">
                 </div>
               </div>
             </div>
           </div><!-- /.box-body -->
         <div class="box-footer">
-        <a href="{{ route('organizacionLista') }}" class="btn btn-lg btn-default">Cancelar</a>
+        <a href="{{ route('beneficiarioLista') }}" class="btn btn-lg btn-default">Cancelar</a>
         <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
         </div><!-- /.box-footer -->
       </form>

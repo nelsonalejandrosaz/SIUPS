@@ -131,8 +131,8 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-institution'></i> <span>Beneficiarios</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('tutoresLista') }}">Lista Beneficiarios</a></li>
-                    <li><a href="{{ route('agregarTutor') }}">Ingresar Beneficiario</a></li>
+                    <li><a href="{{ route('beneficiarioLista') }}">Lista Beneficiarios</a></li>
+                    <li><a href="{{ route('beneficiarioNuevo') }}">Ingresar Beneficiario</a></li>
                 </ul>
             </li>
             @endif
