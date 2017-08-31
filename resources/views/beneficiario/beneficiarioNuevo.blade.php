@@ -85,28 +85,28 @@
               <h4 class="box-title">Datos de organizacion</h4>
               {{-- nombre organizacion --}}
               <div class="form-group">
-                <label class="col-sm-2 control-label">Nombre :</label>
+                <label class="col-sm-2 control-label">Nombre:</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" placeholder="Nombre de la Institucion" name="organizacion">
                 </div>
               </div>
               {{-- telefono organizacion  --}}
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Telefono :</label>
+                <label for="inputPassword3" class="col-sm-2 control-label">Telefono:</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" placeholder="2222-2222" name="telefonoOrganizacion">
                 </div>
               </div>
               {{-- correo --}}
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Correo :</label>
+                <label for="inputPassword3" class="col-sm-2 control-label">Correo:</label>
                 <div class="col-sm-10">
                 <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correoOrganizacion">
                 </div>
               </div>
               {{-- direccion organizacion --}}
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Direccion :</label>
+                <label for="inputPassword3" class="col-sm-2 control-label">Direccion:</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" placeholder="Direccion de la institucion" name="direccionOrganizacion">
                 </div>
