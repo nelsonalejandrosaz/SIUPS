@@ -22,15 +22,21 @@ class BeneficiarioController extends Controller
     public function BeneficiarioNuevoPost(Request $request){
     	// Logica de validacion
     	$this->validate($request, [
-        'nombre' 		=> 'required|unique:posts|max:255',
+        'nombre' 		=> 'required',
         'apellido' 		=> 'required',
         'dui' 			=> 'required|min:9|max:10',
-        'correo'		=> 'email',
-        'correoOrganizacion' => 'email',
+        'correo'		=> 'email|nullable',
+        'correoOrganizacion' => 'email|nullable',
 	    ]);
 	    // Fin validacion
 	    Beneficiario::create($request->only('nombre','apellido','dui','correo','telefono','organizacion','telefonoOrganizacion','correoOrganizacion','direccionOrganizacion'));
 	    session()->flash('mensaje', 'Beneficiario ingresado con exito');
     	return redirect()->route('beneficiarioLista');
     }
+
+    public function beneficiarioEditar($id = 1)
+  	{
+      $beneficiario = Beneficiario::find($id);
+      return view('beneficiario.beneficiarioEditar')->with(['beneficiario' => $beneficiario]);
+  	}
 }

@@ -18,12 +18,12 @@ class CreateBeneficiariosTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('dui');
-            $table->string('correo')->nulleable();
-            $table->string('telefono')->nulleable();
-            $table->string('organizacion')->nulleable();
-            $table->string('telefonoOrganizacion')->nulleable();
-            $table->string('correoOrganizacion')->nulleable();
-            $table->string('direccionOrganizacion')->nulleable();
+            $table->string('correo')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('organizacion')->nullable();
+            $table->string('telefonoOrganizacion')->nullable();
+            $table->string('correoOrganizacion')->nullable();
+            $table->string('direccionOrganizacion')->nullable();
             $table->timestamps();
         });
     }

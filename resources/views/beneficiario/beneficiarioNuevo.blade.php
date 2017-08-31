@@ -49,7 +49,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Nombres:</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" placeholder="Juan" name="nombre">
+                    <input type="text" value="{{old('nombre')}}" class="form-control" placeholder="Juan" name="nombre">
                   </div>
                 </div>
                 {{-- apellidos --}}
