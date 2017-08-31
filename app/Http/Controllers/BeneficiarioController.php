@@ -42,6 +42,15 @@ class BeneficiarioController extends Controller
 
   	public function beneficiarioEditarPost(Request $request, $id)
   	{
+      // Logica de validacion
+      $this->validate($request, [
+        'nombre'    => 'required',
+        'apellido'    => 'required',
+        'dui'       => 'required|min:9|max:10',
+        'correo'    => 'email|nullable',
+        'correoOrganizacion' => 'email|nullable',
+      ]);
+      // Fin validacion
     	$beneficiario = Beneficiario::find($id);
     	$beneficiario->nombre = $request->input('nombre');
     	$beneficiario->apellido = $request->input('apellido');
