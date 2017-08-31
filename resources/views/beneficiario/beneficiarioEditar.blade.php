@@ -39,7 +39,7 @@
       <div class="box-header with-border">
         <h3 class="box-title">Datos de la organización</h3>
       </div><!-- /.box-header -->
-      <form class="form-horizontal" action="{{ route('beneficiarioEditarPost') }}" method="post">
+      <form class="form-horizontal" action="{{ route('beneficiarioEditarPost', ['id' => $beneficiario->id]) }}" method="post">
         {{ csrf_field() }}
           <!-- inicio box-body -->
           <div class="box-body">
