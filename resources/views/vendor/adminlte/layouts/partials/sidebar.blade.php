@@ -125,11 +125,11 @@
                 </ul>
             </li>
             @endif
-            <!--/Links para el CRUD de tutores-->
+            <!--/Links para el CRUD de beneficiarios-->
 
              @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
             <li class="treeview">
-                <a href="#"><i class='fa fa-users'></i> <span>Beneficiarios</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-institution'></i> <span>Beneficiarios</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('tutoresLista') }}">Lista Beneficiarios</a></li>
                     <li><a href="{{ route('agregarTutor') }}">Ingresar Beneficiario</a></li>

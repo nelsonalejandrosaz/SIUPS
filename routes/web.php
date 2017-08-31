@@ -125,3 +125,11 @@ Route::name('TutorEditar')->get('/Tutores/{id}/editar', 'TutorController@editarT
 /******************************************
 **      NUEVAS RUTAS PARA TUTORES       ***
 ******************************************/
+
+
+/******************************************
+**      NUEVAS RUTAS PARA BENEFICIARIOS  ***
+******************************************/
+
+
+
