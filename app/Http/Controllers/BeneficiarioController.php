@@ -34,9 +34,9 @@ class BeneficiarioController extends Controller
     	return redirect()->route('beneficiarioLista');
     }
 
-    public function beneficiarioEditar(Request $request)
+    public function beneficiarioEditar($id)
   	{
-      $beneficiario = Beneficiario::find($request->id);
+      $beneficiario = Beneficiario::find($id);
       return view('beneficiario.beneficiarioEditar')->with(['beneficiario' => $beneficiario]);
   	}
 
@@ -66,9 +66,9 @@ class BeneficiarioController extends Controller
    		return redirect()->route('beneficiarioLista') ;
   	}
 
-    public function beneficiarioVer(Request $request)
+    public function beneficiarioVer($id)
     {
-      $beneficiario = Beneficiario::find($request->id);
+      $beneficiario = Beneficiario::find($id);
       return view('beneficiario.beneficiarioVer')->with(['beneficiario' => $beneficiario]);
     }
 
