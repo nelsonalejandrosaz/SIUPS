@@ -39,4 +39,22 @@ class BeneficiarioController extends Controller
       $beneficiario = Beneficiario::find($id);
       return view('beneficiario.beneficiarioEditar')->with(['beneficiario' => $beneficiario]);
   	}
+
+  	public function beneficiarioEditarPost(Request $request, $id)
+  	{
+    	$beneficiario = Beneficiario::find($id);
+    	$beneficiario->nombre = $request->input('nombre');
+    	$beneficiario->apellido = $request->input('apellido');
+    	$beneficiario->dui = $request->input('dui');
+    	$beneficiario->correo = $request->input('correo');
+    	$beneficiario->telefono = $request->input('telefono');
+    	$beneficiario->organizacion = $request->input('organizacion');
+    	$beneficiario->telefonoorganizacion = $request->input('telefonoOrganizacion');
+    	$beneficiario->correoOrganizacion = $request->input('correoOrganizacion');
+    	$beneficiario->direccionOrganizacion = $request->input('direccionOrganizacion');
+    	$beneficiario->save();
+    	session()->flash('mensaje', 'Beneficiario modificado corectamente');
+   		return redirect()->route('beneficiarioLista') ;
+  	}
+
 }
