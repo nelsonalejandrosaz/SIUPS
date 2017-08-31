@@ -35,6 +35,7 @@
                 <th>Telefono</th>
                 <th>Organizacion</th>
                 <th>Tel Organizacion</th>
+                <th>Accion</th>
               </tr>
             </thead>
             <tbody>
@@ -47,8 +48,6 @@
               <td>{{$beneficiario->telefono}}</td>
               <td>{{$beneficiario->organizacion}}</td>
               <td>{{$beneficiario->telefonoOrganizacion}}</td>
-
-
               <td align="center">
                 @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
                 <a href="{{ route('beneficiarioEditar', ['id' => $beneficiario->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
@@ -66,10 +65,40 @@
     </div>
   </div>
 
-  <!-- <script>
-    $(document).ready(function(){
-    $('#tablaAlumnos').DataTable();
-    });
-  </script> -->
+@endsection
 
+@section('JSExtras')
+<!-- DataTables -->
+<script src="{{ asset('/plugins/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/plugins/dataTables.bootstrap.min.js') }}"></script>
+<script>
+$(function () {
+  $("#tablaBeneficiarios").DataTable(
+  {
+    language: {
+    processing:     "Procesando...",
+    search:         "Buscar:",
+    lengthMenu:     "Mostrar _MENU_ registros",
+    info:           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty:      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    infoFiltered:   "(filtrado de un total de _MAX_ registros)",
+    infoPostFix:    "",
+    loadingRecords: "Cargando...",
+    zeroRecords:    "No se encontraron resultados",
+    emptyTable:     "Ningún dato disponible en esta tabla",
+    paginate: {
+      first:      "Primero",
+      previous:   "Anterior",
+      next:       "Siguiente",
+      last:       "Último"
+    },
+    aria: {
+      sortAscending:  ": Activar para ordenar la columna de manera ascendente",
+      sortDescending: ": Activar para ordenar la columna de manera descendente"
+    }
+    }
+  } 
+  );
+});
+</script>
 @endsection
