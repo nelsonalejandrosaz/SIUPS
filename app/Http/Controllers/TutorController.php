@@ -17,7 +17,7 @@ class TutorController extends Controller
 
     public function AgregarTutor(){
     	
-    	return view ('tutor.AgregarTutor');
+    	return view ('tutor.tutorAgregar');
     }
 
 
@@ -25,7 +25,7 @@ class TutorController extends Controller
     public function guardarTutor(Request $request)
   	{
     $this->validate($request, [
-        'dui'=>'required|max:10',
+        'dui'=>'required|size:10',
         'nombre'=>'required',
         'apellido'=>'required',
         'correo'=>'email',
@@ -47,7 +47,7 @@ class TutorController extends Controller
      public function verTutor($id)
   	{
       $tutor = Tutor::find($id);
-      return view('tutor.tutorver')->with(['tutor' => $tutor]);
+      return view('tutor.tutorVer')->with(['tutor' => $tutor]);
   	}
 
 
@@ -64,7 +64,7 @@ class TutorController extends Controller
     	$tutor = Tutor::find($id);
     	$tutor->nombre = $request->input('nombre');
     	$tutor->apellido = $request->input('apellido');
-    	$tutor->email = $request->input('correo');
+    	$tutor->correo = $request->input('correo');
     	$tutor->dui = $request->input('dui');
     	$tutor->carnet = $request->input('carnet');
     	$tutor->save();

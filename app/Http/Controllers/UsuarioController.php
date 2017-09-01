@@ -21,7 +21,7 @@ class UsuarioController extends Controller
     public function AgregarUsuario(){
     	$rols=Rol::all();
     	$escuelas=Escuela::all();
-    	return view ('usuarios.AgregarUsuario',compact('rols','escuelas'));
+    	return view ('usuarios.usuarioAgregar',compact('rols','escuelas'));
     }
 
 

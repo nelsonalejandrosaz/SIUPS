@@ -4,7 +4,7 @@
 	{{ trans('adminlte_lang::message.home') }}
 @endsection
 
-@section('contentheader_title', 'Ingreso de usuario')
+@section('contentheader_title', 'Ingresar Tutor')
 @section('contentheader_description', '')
 
 
@@ -34,21 +34,15 @@
     <!-- Horizontal Form -->
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Datos del usuario</h3>
+                  <h3 class="box-title">Datos del Tutor</h3>
                 </div><!-- /.box-header -->
-                <form class="form-horizontal" action="{{ route('usuarioNuevoPost') }}" method="post">
+                <form class="form-horizontal" action="{{ route('TutorNuevoPost') }}" method="post">
                 {{ csrf_field() }}
 
                   <!-- inicio box-body -->
                     <div class="box-body">
                       <div class="col-xs-6">
                         <h4 class="box-title">Datos personales</h4>
-                        <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="AA17001" name="username">
-                          </div>
-                        </div>
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-3 control-label">Nombre:</label>
                           <div class="col-sm-9">
@@ -73,38 +67,25 @@
                       <div class="col-xs-6">
                         <h4 class="box-title">Datos de puesto</h4>
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-3 control-label">Rol</label>
-                          <div class="col-sm-12">
-                            <select class="form-control" name="rol">
-                              @foreach($rols as $rol)
-                                <option value="{{$rol->id}}">{{$rol->nombre}}</option>
-                              @endforeach
-                            </select>
+                          <label for="inputEmail3" class="col-sm-4 control-label">DUI</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="09915467-6" name="dui">
                           </div>
                         </div>
                           <div class="form-group">
-                          <label for="inputEmail4" class="col-sm-3 control-label">Escuela</label>
-                          <div class="col-sm-12">
-                            <select class="form-control" name="escuela">
-                              @foreach($escuelas as $escuela)
-                                <option value="{{$escuela->id}}">{{$escuela->nombre}}</option>
-                              @endforeach
-                            </select>
+                          <label for="inputEmail4" class="col-sm-4 control-label">Carnet</label>
+                          <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="MW21054" name="carnet">
                           </div>
                         </div>
-                         <div class="form-group">
-                          <label for="inputPassword5" class="col-sm-4 control-label">Contraseña:</label>
-                          <div class="col-sm-12">
-                            <input type="password" class="form-control" placeholder="Contraseña" name="password">
-                          </div>
-                        </div>
-
                       </div>
                     </div><!-- /.box-body -->
-                    <div class="box-footer">
-                    <a href="{{ route('usuariosLista') }}" class="btn btn-lg btn-default">Cancelar</a>
+
+                    <div class="box-footer col-md-12">
+                    <a href="{{ route('tutoresLista') }}" class="btn btn-lg btn-default">Cancelar</a>
                     <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
                   </div><!-- /.box-footer -->
+                    
 
                 </form>
               </div><!-- /.box -->
