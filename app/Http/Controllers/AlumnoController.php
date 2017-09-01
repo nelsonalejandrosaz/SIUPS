@@ -40,7 +40,7 @@ class AlumnoController extends Controller
 				$alumno->correo = $fila->correo;
 				$alumno->lugar_trabajo = $fila->lugar_trabajo;
 				$alumno->telefono_trabajo = $fila->telefono_trabajo;
-				Alumno::firstOrNew($alumno->toArray());
+				Alumno::firstOrCreate($alumno->toArray());
 				$alumno = Alumno::where('carnet','=',$fila->carnet)->first();
 				$escuela = new Escuela;
 				$escuela = Escuela::where('codigo','=',$fila->codigo_escuela)->first(); //revisar
@@ -48,7 +48,7 @@ class AlumnoController extends Controller
 				$alumno_escuela->alumno()->associate($alumno);
 				$alumno_escuela->escuela()->associate($escuela);
 				// $alumno_escuela->save();
-				Alumno_escuela::firstOrNew(['alumno_id' => $alumno_escuela->alumno->id, 'escuela_id' => $alumno_escuela->escuela->id]);
+				Alumno_escuela::firstOrCreate(['alumno_id' => $alumno_escuela->alumno->id, 'escuela_id' => $alumno_escuela->escuela->id]);
 				// Alumno::firstOrCreate($fila->toArray());
 				// return $fila;
 			});

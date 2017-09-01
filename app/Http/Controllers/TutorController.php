@@ -52,7 +52,7 @@ class TutorController extends Controller
 
 
 
-  	public function editarTutor($id = 1)
+  	public function editarTutor($id = 1) //REVISAR?
   	{
       $tutor = Tutor::find($id);
       return view('tutor.tutorEditar')->with(['tutor' => $tutor]);

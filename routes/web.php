@@ -125,3 +125,16 @@ Route::name('TutorEditar')->get('/Tutores/{id}/editar', 'TutorController@editarT
 /******************************************
 **      NUEVAS RUTAS PARA TUTORES       ***
 ******************************************/
+
+
+/******************************************
+**      NUEVAS RUTAS PARA BENEFICIARIOS  ***
+******************************************/
+Route::name('beneficiarioLista')->get('/beneficiario', 'BeneficiarioController@BeneficiarioLista');
+Route::name('beneficiarioNuevo')->get('/beneficiario/nuevo','BeneficiarioController@BeneficiarioNuevo');
+Route::name('beneficiarioNuevoPost')->post('/beneficiario/nuevo','BeneficiarioController@BeneficiarioNuevoPost');
+Route::name('beneficiarioEditar')->get('/beneficiario/{id}/editar', 'BeneficiarioController@BeneficiarioEditar');
+Route::name('beneficiarioEditarPost')->post('/beneficiario/{id}/editar','BeneficiarioController@BeneficiarioEditarPost');
+Route::name('beneficiarioVer')->get('/beneficiario/{id}/ver', 'BeneficiarioController@BeneficiarioVer');
+
+
