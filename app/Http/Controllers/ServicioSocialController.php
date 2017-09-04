@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Servicio_Social;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
@@ -87,4 +88,12 @@ class ServicioSocialController extends Controller
 //      return view('alumnos.alumno_ver')->with(['alumno' => $alumno]);
 //  }
 
+=======
+
+class ServicioSocialController extends Controller
+{
+    public function IngresarServicioSocial(){
+    	return view ('serviciosocial.registro_servicio_social');
+    }
+>>>>>>> master
 }

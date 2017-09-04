@@ -68,8 +68,13 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-briefcase'></i> <span>Servicios Sociales</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
+<<<<<<< HEAD
                     <li><a href="">Lista Servicios Sociales</a></li>
                     <li><a href="servicioSocialNuevo">Ingresar Servicio Social</a></li>
+=======
+                    <li><a href="#">Lista Servicios Sociales</a></li>
+                    <li><a href="{{route('ServicioSocialNuevo')}}">Ingresar Servicio Social</a></li>
+>>>>>>> master
                 </ul>
             </li>
             @endif
@@ -80,8 +85,8 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-line-chart'></i> <span>Informes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Lista Servicios Sociales</a></li>
-                    <li><a href="#">Ingresar servicio Social</a></li>
+                    <li><a href="#">Lista de informes</a></li>
+                    <li><a href="#">Generar Informes</a></li>
                 </ul>
             </li>
             @endif
@@ -101,7 +106,48 @@
                 </ul>
             </li>
             @endif
+
+
             <!-- Links para la gestion de Servicios Sociales -->
+
+
+            
+            <!--Links para el CRUD de usuarios (ARNULFO)-->
+            @if( Auth::user()->rol[0]->nombre == "jefe" )
+            <li class="treeview">
+                <a href="#"><i class='fa fa-users'></i> <span>Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('usuariosLista') }}">Lista usuarios</a></li>
+                    <li><a href="{{ route('agregarusuario') }}">Ingresar usuario</a></li>
+                </ul>
+            </li>
+            @endif
+
+            <!--/Links para el CRUD de usuarios-->
+
+            <!--Links para el CRUD de tutores-->
+
+            @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
+            <li class="treeview">
+                <a href="#"><i class='fa fa-users'></i> <span>Tutores</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('tutoresLista') }}">Lista tutores</a></li>
+                    <li><a href="{{ route('agregarTutor') }}">Ingresar tutor</a></li>
+                </ul>
+            </li>
+            @endif
+            <!--/Links para el CRUD de beneficiarios-->
+
+             @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
+            <li class="treeview">
+                <a href="#"><i class='fa fa-institution'></i> <span>Beneficiarios</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('beneficiarioLista') }}">Lista Beneficiarios</a></li>
+                    <li><a href="{{ route('beneficiarioNuevo') }}">Ingresar Beneficiario</a></li>
+                </ul>
+            </li>
+            @endif
+
 
         </ul><!-- /.sidebar-menu -->
 
