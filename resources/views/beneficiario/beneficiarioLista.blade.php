@@ -1,10 +1,10 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.alumnoslista') }}
+	{{ trans('adminlte_lang::message.beneiciarioslista') }}
 @endsection
 
-@section('contentheader_title', 'Lista de alumnos')
+@section('contentheader_title', 'Lista de beneficiarios')
 @section('contentheader_description', '')
 
 
@@ -22,31 +22,37 @@
     <div class="col-xs-12">
       <div class="box box-primary">
         <div class="box-header">
-          <h3 class="box-title">Lista de alumnos</h3>
+          <h3 class="box-title">Lista de Beneficiarios</h3>
         </div><!-- /.box-header -->
         <div class="box-body table-responsive">
-          <table id="tablaAlumnos" class="table table-hover">
+          <table id="tablaBeneficiarios" class="table table-hover">
             <thead>
               <tr>
-                <th>Carnet</th>
-                <th>Apellidos</th>
-                <th>Nombres</th>
-                <th>Escuela</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>DUI</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Organizacion</th>
+                <th>Tel Organizacion</th>
                 <th>Accion</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($alumnos_escuela as $alumno_escuela)
+             @foreach($beneficiarios as $beneficiario)
               <tr>
-              <td>{{$alumno_escuela->alumno->carnet}}</td>
-              <td>{{$alumno_escuela->alumno->apellido}}</td>
-              <td>{{$alumno_escuela->alumno->nombre}}</td>
-              <td>{{$alumno_escuela->escuela->nombre}}</td>
+              <td>{{$beneficiario->nombre}}</td>
+              <td>{{$beneficiario->apellido}}</td>
+              <td>{{$beneficiario->dui}}</td>
+              <td>{{$beneficiario->correo}}</td>
+              <td>{{$beneficiario->telefono}}</td>
+              <td>{{$beneficiario->organizacion}}</td>
+              <td>{{$beneficiario->telefonoOrganizacion}}</td>
               <td align="center">
                 @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
-                <a href="{{ route('alumnoEditar', ['id' => $alumno_escuela->alumno->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+                <a href="{{ route('beneficiarioEditar', ['id' => $beneficiario->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
                 @endif  
-                <a href="{{ route('alumnoVer', ['id' => $alumno_escuela->alumno->id]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a>
+                <a href="{{ route('beneficiarioVer', ['id' => $beneficiario->id]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a> 
               </td>
             </tr>
             @endforeach
@@ -59,12 +65,6 @@
     </div>
   </div>
 
-  <!-- <script>
-    $(document).ready(function(){
-    $('#tablaAlumnos').DataTable();
-    });
-  </script> -->
-
 @endsection
 
 @section('JSExtras')
@@ -73,7 +73,7 @@
 <script src="{{ asset('/plugins/dataTables.bootstrap.min.js') }}"></script>
 <script>
 $(function () {
-  $("#tablaAlumnos").DataTable(
+  $("#tablaBeneficiarios").DataTable(
   {
     language: {
     processing:     "Procesando...",
