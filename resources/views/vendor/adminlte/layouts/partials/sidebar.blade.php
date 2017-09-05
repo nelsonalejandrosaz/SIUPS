@@ -13,7 +13,7 @@
                 <div class="pull-left info">
                     <p>{{ Auth::user()->name }}</p>
                     <!-- Status -->
-                  @if(Auth::user()->rol[0]->nombre =='admin'| Auth::user()->rol[0]->nombre == 'jefe'| Auth::user()->rol[0]->nombre == 'secretaria') 
+                  @if(Auth::user()->rol[0]->nombre =='admin'| Auth::user()->rol[0]->nombre == 'jefe'| Auth::user()->rol[0]->nombre == 'secretaria')
                     <a href="#"><i class="fa fa-circle text-success"></i>{{Auth::user()->rol[0]->nombre}}</a>
                     @else
                     <a href="#"><i class="fa fa-circle text-success"></i>{{Auth::user()->escuela->nombre}}</a>
@@ -68,18 +68,14 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-briefcase'></i> <span>Servicios Sociales</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-<<<<<<< HEAD
-                    <li><a href="">Lista Servicios Sociales</a></li>
-                    <li><a href="servicioSocialNuevo">Ingresar Servicio Social</a></li>
-=======
                     <li><a href="#">Lista Servicios Sociales</a></li>
-                    <li><a href="{{route('ServicioSocialNuevo')}}">Ingresar Servicio Social</a></li>
->>>>>>> master
+                    <li><a href="{{route('servicioSocialNuevo')}}">Ingresar Servicio Social</a></li>
+
                 </ul>
             </li>
             @endif
 
-            <!--   ESTO ESTA REPETIDO  
+            <!--   ESTO ESTA REPETIDO
 
             @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" || Auth::user()->rol[0]->nombre == "jefe" )
             <li class="treeview">
@@ -111,7 +107,7 @@
             <!-- Links para la gestion de Servicios Sociales -->
 
 
-            
+
             <!--Links para el CRUD de usuarios (ARNULFO)-->
             @if( Auth::user()->rol[0]->nombre == "jefe" )
             <li class="treeview">

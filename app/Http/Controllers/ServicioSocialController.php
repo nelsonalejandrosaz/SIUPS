@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
+
 use App\Servicio_Social;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
@@ -12,15 +12,15 @@ use Illuminate\Database\QueryException;
 
 class ServicioSocialController extends Controller
 {
-
-  //  public function AlumnosLista()
+//todavia no funciona
+  //  public function SSLista()
   //  {
   //      if (Auth::user()->rol[0]->id == 2) {
-  //        $alumnos_escuela = Alumno_escuela::all();
+  //        $serviciosocial = ServicioSocial::all();
   //      } else {
-  //        $alumnos_escuela = Alumno_escuela::where('escuela_id', Auth::user()->escuela_id)->get();
-  //      }
-  //      return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela]);
+  //      $serviciosocial = ServicioSocial::where('escuela_id', Auth::user()->escuela_id)->get();
+  //    }
+  //    return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela]);
   //  }
 
 
@@ -36,7 +36,7 @@ class ServicioSocialController extends Controller
         'nombreSS'=>'required|size:150',
         'inicioSS'=>'required',
         'horastSS'=>'required',
-        'entidaddSS'=>'email',
+        'entidaddSS'=>'required',
       ]);
     $serviciosocial  = new Servicio_Social ;
     $serviciosocial->nombreSS = $request->nombreSS;
@@ -44,8 +44,7 @@ class ServicioSocialController extends Controller
         $serviciosocial->finSS = $request->finSS;
           $serviciosocial->horastSS = $request->horastSS;
             $serviciosocial->horasaSS = $request->horasaSS;
-              $serviciosocial->entidaddSS = $request->entidaddSS;
-                $serviciosocial->entidadiSS = $request->entidadiSS;
+
 
     if ((Servicio_Social::where('nombreSS','=',$request->nombreSS)->first()) == null) {
       Servicio_Social::firstOrCreate($serviciosocial->toArray());
@@ -86,14 +85,4 @@ class ServicioSocialController extends Controller
 //  {
 //      $alumno = Alumno::find($id);
 //      return view('alumnos.alumno_ver')->with(['alumno' => $alumno]);
-//  }
-
-=======
-
-class ServicioSocialController extends Controller
-{
-    public function IngresarServicioSocial(){
-    	return view ('serviciosocial.registro_servicio_social');
-    }
->>>>>>> master
-}
+ }

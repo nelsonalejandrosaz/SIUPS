@@ -4,38 +4,29 @@
 	{{ trans('adminlte_lang::message.home') }}
 @endsection
 
-<<<<<<< HEAD
-@section('contentheader_title', 'Ingreso de alumno')
-=======
-@section('contentheader_title', 'Ingreso de Servicio Social')
->>>>>>> master
-@section('contentheader_description', '')
 
+@section('contentheader_title', 'Ingreso de Servicio Social')
+
+@section('contentheader_description', '')
 
 @section('main-content')
 
-<<<<<<< HEAD
+
 <!--Mensaje de error Servicio Social-->
-=======
->>>>>>> master
+
 @if(count($errors)>0)
     <div class="alert alert-danger alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <h4>  <i class="icon fa fa-check"></i> Error</h4>
       @foreach($errors->all() as $error)
-<<<<<<< HEAD
+
       <li>{{$error}}
       </li> @endforeach
     </div>
   @endif
 <!--Mensaje de Advertencia Servicio Social-->
-=======
-      <li>{{$error}} 
-      </li> @endforeach
-    </div>
-  @endif
 
->>>>>>> master
+
 @if(session()->has('advertencia'))
     <div class="alert alert-danger alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -44,7 +35,7 @@
     </div>
 @endif
 
-<<<<<<< HEAD
+
 <!--comienza la vista del formulario de registro Servicio Social-->
 <div class="row">
   <div class="col-md-12">
@@ -110,7 +101,7 @@
                       </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
-                    <a href="{{ route('alumnoLista') }}" class="btn btn-lg btn-default">Cancelar</a>
+                    <a href="{{ route('servicioSocialLista') }}" class="btn btn-lg btn-default">Cancelar</a>
                     <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
                   </div><!-- /.box-footer -->
 
@@ -120,16 +111,3 @@
 </div>
 
 @endsection
-=======
-<!--comienza la vista del formulario de registro alumnos-->
-<div class="row">
-  <div class="col-md-12">
-    <!-- Horizontal Form -->
-
-    <h1>Me vale pija, ya funcionó</h1>
-              <!-- /.box -->
-  </div>
-</div>
-
-@endsection
->>>>>>> master

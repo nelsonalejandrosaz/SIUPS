@@ -15,8 +15,8 @@
 |
 |1.Gestion Alumnos 			25
 |2.Validar roles			61
-|3.Rutas para usuarios 		80
-|4. Rutas para SS 			101
+|3. Rutas para SS 			80
+|4.Rutas para usuarios 		90
 |5.Rutas para tutores 		110
 |
 */
@@ -36,13 +36,13 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::name('alumnoEditarPost')->post('/alumnos/{id}/editar','AlumnoController@editarAlumnoGuardar')->middleware('coordinador');
 	Route::name('alumnoCargaCSVPost')->post('import_csv_file', 'AlumnoController@import_csv_file')->middleware('coordinador');
 	/********************************
-	* Fin Rutas para gestion de roles
+	* Fin Rutas para gestion alumnos
 	********************************/
 });
 
 Route::group(['middleware' => 'admin'], function () {
 /********************************
-	*Rutas para gestion alumnos
+	*Rutas para gestion Usuario
 	********************************/
 	Route::name('usuarioLista')->get('/usuario', 'UsuarioController@AlumnosLista');
 	Route::name('usuarioNuevo')->get('/usuario/nuevo','UsuarioController@registroAlumno');
@@ -50,7 +50,7 @@ Route::group(['middleware' => 'admin'], function () {
 	Route::name('usuarioEditar')->get('/usuario/{id}/editar', 'UsuarioController@editarAlumno');
 	Route::name('usuarioEditarPost')->post('/usuario/{id}/editar','UsuarioController@editarAlumnoGuardar');
 	/********************************
-	* Fin Rutas para validar roles
+	* Fin Rutas para gestion Usuario
 	********************************/
 });
 
@@ -72,19 +72,8 @@ Route::name('inicioCoordinador')->get('home/coordinador', 'CoordinadorController
 Route::get('permisoDenegado', function () {
     return view('errores.permisoDenegado');
 
-
-<<<<<<< HEAD
-/********************************
-*Rutas para Servicio Social
-********************************/
-Route::name('servicioSocialNuevo')->get('/ServicioSocial/nuevo','ServicioSocialController@registroServicioSocial')->middleware('coordinador');
-Route::name('servicioSocialNuevoPost')->post('/ServicioSocial/nuevo','ServicioSocialController@guardarServicioSocial')->middleware('coordinador');
-
-/************************************
-*Fin de la rutas para servicio social
-*************************************/
 });
-=======
+
 
 /******************************************
 **      NUEVAS RUTAS PARA USUARIO    Arnulfo   ***
@@ -110,7 +99,7 @@ Route::name('usuarioEditarPost')->post('/usuarios/{id}/editar','UsuarioControlle
 **      NUEVAS RUTAS PARA SERVICIO SOCIAL Kevin      ***
 ******************************************/
 
-Route::name('ServicioSocialNuevo')->get('/ServicioSocial/Nuevo', 'ServicioSocialController@IngresarServicioSocial');
+//Route::name('ServicioSocialNuevo')->get('/ServicioSocial/Nuevo', 'ServicioSocialController@IngresarServicioSocial');
 
 
 
@@ -147,4 +136,14 @@ Route::name('beneficiarioEditarPost')->post('/beneficiario/{id}/editar','Benefic
 Route::name('beneficiarioVer')->get('/beneficiario/{id}/ver', 'BeneficiarioController@BeneficiarioVer');
 
 
->>>>>>> master
+
+/********************************
+*Rutas para Servicio Social - Juan
+********************************/
+Route::name('servicioSocialNuevo')->get('/ServicioSocial/nuevo','ServicioSocialController@registroServicioSocial')->middleware('coordinador');
+Route::name('servicioSocialNuevoPost')->post('/ServicioSocial/nuevo','ServicioSocialController@guardarServicioSocial')->middleware('coordinador');
+Route::name('servicioSocialLista')->post('/ServicioSocial/Lista','ServicioSocialController@SSLista')->middleware('coordinador');
+
+/************************************
+*Fin de la rutas para servicio social
+*************************************/
