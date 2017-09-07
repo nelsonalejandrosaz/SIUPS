@@ -1736,6 +1736,7 @@ return array(
     'Monolog\\Processor\\UidProcessor' => $vendorDir . '/monolog/monolog/src/Monolog/Processor/UidProcessor.php',
     'Monolog\\Processor\\WebProcessor' => $vendorDir . '/monolog/monolog/src/Monolog/Processor/WebProcessor.php',
     'Monolog\\Registry' => $vendorDir . '/monolog/monolog/src/Monolog/Registry.php',
+    'MunicipioSeeder' => $baseDir . '/database/seeds/MunicipioSeeder.php',
     'PHPExcel' => $vendorDir . '/phpoffice/phpexcel/Classes/PHPExcel.php',
     'PHPExcel_Autoloader' => $vendorDir . '/phpoffice/phpexcel/Classes/PHPExcel/Autoloader.php',
     'PHPExcel_Best_Fit' => $vendorDir . '/phpoffice/phpexcel/Classes/PHPExcel/Shared/trend/bestFitClass.php',

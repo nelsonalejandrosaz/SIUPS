@@ -2072,6 +2072,7 @@ class ComposerStaticInitb4baef3bbb93a683b31ff46275186bb6
         'Monolog\\Processor\\UidProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/UidProcessor.php',
         'Monolog\\Processor\\WebProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Processor/WebProcessor.php',
         'Monolog\\Registry' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Registry.php',
+        'MunicipioSeeder' => __DIR__ . '/../..' . '/database/seeds/MunicipioSeeder.php',
         'PHPExcel' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel.php',
         'PHPExcel_Autoloader' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Autoloader.php',
         'PHPExcel_Best_Fit' => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes/PHPExcel/Shared/trend/bestFitClass.php',
