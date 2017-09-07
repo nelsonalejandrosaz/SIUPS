@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 //use App\Servicio_Social;
-use App\SocialServicio;
+use App\ServicioSocial;
 use App\Beneficiario;
 use App\Tutor;
 use Illuminate\Support\Facades\Input;
@@ -17,8 +17,11 @@ class ServicioSocialController extends Controller
 
    public function ServicioSocialLista()
     {
-       $SocialServicios = SocialServicio::all();
-       return view('serviciosocial.servicioSocialLista')-with(['SocialServicios' => $SocialServicios]);
+      //$SocialServicios = SocialServicio::all();
+      $serviciossociales=ServicioSocial::all();
+     //return view('serviciosocial.servicioSocialLista')-with(['SocialServicios' => $SocialServicios]);
+      return view('serviciosocial.servicioSocialLista')->with(['serviciossociales' => $serviciossociales]);;
+
     }
 
 

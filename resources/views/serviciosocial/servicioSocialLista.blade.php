@@ -1,22 +1,30 @@
-extends('adminlte::layouts.app')
+@extends('adminlte::layouts.app')
 
+{{-- Titulo de la pagina --}}
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.beneiciarioslista') }}
+  Lista de beneficiarios
 @endsection
 
-@section('contentheader_title', 'Lista de beneficiarios')
-@section('contentheader_description', '')
+{{-- Seccion para agregar estilos CSS extras a los que se cargan por defecto --}}
+@section('CSSExtras')
 
+@endsection
 
+{{-- Titulo del header --}}
+@section('contentheader_title')
+  Lista de beneficiarios
+@endsection
+
+{{-- Descripcion del header OPCIONAL --}}
+@section('contentheader_description')
+ 
+@endsection
+
+{{-- Seccion principal de la aplicacion --}}
 @section('main-content')
 
-@if(session()->has('mensaje'))
-    <div class="alert alert-success alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4>  <i class="icon fa fa-check"></i> Exito</h4>
-      {{ session()->get('mensaje') }}
-    </div>
-  @endif
+{{-- Include de los mensajes de errror --}}
+@include('partials.alertamensajes')
 
 	<div class="row">
     <div class="col-xs-12">
@@ -29,34 +37,41 @@ extends('adminlte::layouts.app')
             <thead>
               <tr>
                 <th>Nombre</th>
-                <th>inicioSS</th>
-                <th>finSS</th>
-                <th>horas Totales </th>
-                <th>Horas del alumno</th>
-                <th>Beneficiario</th>
                 <th>Tutor</th>
+                <th>Beneficiario</th>
+                <th>Municipio</th>
+                <th>Horas Totales</th>
+                <th>Numero Estudiantes Requeridos</th>
+                <th>Estado</th>
                 <th>Accion</th>
               </tr>
             </thead>
-            <tbody>
-             @foreach($serviciosocials as $serviciosocial)
+
+             <tbody>
+             @foreach($serviciossociales as $serviciosocial)
               <tr>
               <td>{{$serviciosocial->nombre}}</td>
-              <td>{{$serviciosocial->inicioSS}}</td>
-              <td>{{$serviciosocial->finSS}}</td>
-              <td>{{$serviciosocial->horastSS}}</td>
-              <td>{{$serviciosocial->horasaSS}}</td>
-              <td>{{$serviciosocial->beneficiarioSS}}</td>
-              <td>{{$serviciosocial->tutorSS}}</td>
-            <!--  <td align="center">
+              <td>{{$serviciosocial->tutor_id}}</td>
+              <td>{{$serviciosocial->beneficiario_id}}</td>
+              <td>{{$serviciosocial->municipio_id}}</td>
+              <td>{{$serviciosocial->horas_totales}}</td>
+              <td>{{$serviciosocial->numero_estudiante}}</td>
+              <td>{{$serviciosocial->estado_id}}</td>
+              <td align="center">
                 @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
-                <a href="{{ route('beneficiarioEditar', ['id' => $beneficiario->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
-                @endif
-                <a href="{{ route('beneficiarioVer', ['id' => $beneficiario->id]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a>
-              </td>-->
+                <a href="{{ route('servicioSocialEditar', ['id' => $serviciosocial->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+                @endif  
+                <a href="{{ route('servicioSocialVer', ['id' => $serviciosocial->id]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a> 
+              </td>
             </tr>
             @endforeach
             </tbody>
+         
+
+
+
+
+
             <tfoot>
             </tfoot>
           </table>
