@@ -1,0 +1,39 @@
+Rutas de la app
+
+-- Rutas de usuarios -- 
+/inicio/{rol} 			-> Inicio segun el rol
+
+-- Gestion de usuarios -- 
+/usuarios				-> Lista de usuarios en el sistema
+/usuarios/{id}			-> Ver usuario por id
+/usuarios/{id}/editar 	-> Editar usuario por id
+/usuario/nuevo			-> Nuevo usuario
+/usuario/{id}/eliminar	-> Eliminar usuario por id
+
+
+-- Gestion de alumnos --
+/alumnos				-> Lista de alumnos
+/alumnos/{id}			-> Ver alumno por id
+/alumno/{id}/editar		-> Editar alumno por id
+/alumno/nuevo			-> Agregar alumno manualmente
+/alumno/cargacsv		-> Carga de alumno por CSV
+
+-- Exepciones de la app --
+/permisodenegado		-> Permino denegado
+
+
+-- Primera iteración --
+Diseño de las pantallas de usuario
+Validación de los usuarios
+Gestión de los alumnos
+
+-- Segunda iteración iteración --
+Gestion de los usuarios del sistema??
+Gestión de los expedientes de los alumnos
+Gestión de los servicios sociales
+Asignación de los alumnos a los distintos SS
+
+-- Tercera iteración --
+Visualización de los expedientes en proceso
+Generación de los reportes estadísticos
+Generación de los certificado de cumplimiento del servicio social
