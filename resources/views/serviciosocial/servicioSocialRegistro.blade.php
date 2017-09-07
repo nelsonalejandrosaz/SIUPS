@@ -127,8 +127,8 @@ Nuevo Servicio Social
           <label class="col-sm-3 control-label">Departamento:</label>
           <div class="col-sm-8">
             <select class="form-control select2" name="tutorSS">
-             @foreach($Tutors as $Tutor)
-             <option value="{{ $Tutor->id }}">{{ $Tutor->nombre }} {{$Tutor->apellido}}</option>
+             @foreach($departamentos as $departamento)
+             <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
              @endforeach
            </select>
          </div>
@@ -139,8 +139,8 @@ Nuevo Servicio Social
           <label class="col-sm-3 control-label">Municipio:</label>
           <div class="col-sm-8">
             <select class="form-control select2" name="tutorSS">
-             @foreach($Tutors as $Tutor)
-             <option value="{{ $Tutor->id }}">{{ $Tutor->nombre }} {{$Tutor->apellido}}</option>
+             @foreach($municipios as $municipio)
+             <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
              @endforeach
            </select>
          </div>
