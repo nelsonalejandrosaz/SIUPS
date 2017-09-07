@@ -1,35 +1,30 @@
 @extends('adminlte::layouts.app')
 
+{{-- Titulo de la pagina --}}
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.home') }}
+  Modificar beneficiario
 @endsection
 
+{{-- Seccion para agregar estilos CSS extras a los que se cargan por defecto --}}
+@section('CSSExtras')
+
+@endsection
+
+{{-- Titulo del header --}}
 @section('contentheader_title')
-  Nuevo tutor
+  Modificar beneficiario
 @endsection
 
-@section('contentheader_description', '')
+{{-- Descripcion del header OPCIONAL --}}
+@section('contentheader_description')
+ 
+@endsection
 
-
+{{-- Seccion principal de la aplicacion --}}
 @section('main-content')
 
-@if(count($errors)>0)
-    <div class="alert alert-danger alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4>  <i class="icon fa fa-check"></i> Error</h4>
-      @foreach($errors->all() as $error)
-      <li>{{$error}} 
-      </li> @endforeach
-    </div>
-  @endif
-
-@if(session()->has('advertencia'))
-    <div class="alert alert-danger alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4>  <i class="icon fa fa-check"></i> Error</h4>
-      {{ session()->get('advertencia') }}
-    </div>
-@endif
+{{-- Include de los mensajes de errror --}}
+@include('partials.alertaerror')
 
 <!--comienza la vista del formulario de registro alumnos-->
 <div class="row">
@@ -121,5 +116,10 @@
     </div><!-- /.box -->
   </div>
 </div>
+
+@endsection
+
+{{-- Seccion para insertar JS extras a los que se cargan por defecto --}}
+@section('JSExtras')
 
 @endsection

@@ -6,7 +6,7 @@
 @endsection
 
 {{-- Seccion para agregar estilos CSS extras a los que se cargan por defecto --}}
-@section('CSSx')
+@section('CSSExtras')
 
 @endsection
 
@@ -120,6 +120,6 @@
 @endsection
 
 {{-- Seccion para insertar JS extras a los que se cargan por defecto --}}
-@section('JSx')
+@section('JSExtras')
 
 @endsection

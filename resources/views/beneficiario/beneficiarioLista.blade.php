@@ -1,22 +1,30 @@
 @extends('adminlte::layouts.app')
 
+{{-- Titulo de la pagina --}}
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.beneiciarioslista') }}
+  Lista de beneficiarios
 @endsection
 
-@section('contentheader_title', 'Lista de beneficiarios')
-@section('contentheader_description', '')
+{{-- Seccion para agregar estilos CSS extras a los que se cargan por defecto --}}
+@section('CSSExtras')
 
+@endsection
 
+{{-- Titulo del header --}}
+@section('contentheader_title')
+  Lista de beneficiarios
+@endsection
+
+{{-- Descripcion del header OPCIONAL --}}
+@section('contentheader_description')
+ 
+@endsection
+
+{{-- Seccion principal de la aplicacion --}}
 @section('main-content')
 
-@if(session()->has('mensaje'))
-    <div class="alert alert-success alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4>  <i class="icon fa fa-check"></i> Exito</h4>
-      {{ session()->get('mensaje') }}
-    </div>
-  @endif
+{{-- Include de los mensajes de errror --}}
+@include('partials.alertamensajes')
  
 	<div class="row">
     <div class="col-xs-12">
