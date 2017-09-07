@@ -7,6 +7,10 @@
 
     <link href="{{ asset('/css/all.css') }}" rel="stylesheet" type="text/css" />
 
+    @yield('CSSExtras')
+
+    <link href="{{ asset('/css/all.css') }}" rel="stylesheet" type="text/css" />
+
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('/plugins/dataTables.bootstrap.css') }}">
 
