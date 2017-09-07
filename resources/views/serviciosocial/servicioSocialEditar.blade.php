@@ -36,7 +36,7 @@ Nuevo Servicio Social
       <div class="box-header with-border">
         <h3 class="box-title">Datos del Servicio Social</h3>
       </div><!-- /.box-header -->
-      <form class="form-horizontal" action="{{ route('servicioSocialEditarPost') }},['id' => $servicioSocial->id]) }}" method="post">
+      <form class="form-horizontal" action="{{ route('servicioSocialEditarPost' ,['id' => $servicioSocial->id]) }}" method="post">
         {{ csrf_field() }}
 
         <!-- inicio box-body -->
@@ -102,9 +102,17 @@ Nuevo Servicio Social
             <label class="col-sm-3 control-label">Entidad beneficiaria:</label>
             <div class="col-sm-8">
               <select class="form-control select2" name="tutorSS">
-               @foreach($Beneficiarios as $Beneficiario)
-               <option value="{{ $Beneficiario->id }}">{{ $Beneficiario->nombre }} {{$Beneficiario->apellido}} | {{ $Beneficiario->organizacion }}</option>
+
+              @foreach($Beneficiarios as $Beneficiario)
+                @if($Beneficiario->id == $ServicioSocial->beneficiario_id)
+                <option selected value="{{ $Beneficiario->id }}">{{ $Beneficiario->nombre }} {{$Beneficiario->apellido}} | {{ $Beneficiario->organizacion }}</option>
+                
+                @else
+                 <option value="{{ $Beneficiario->id }}">{{ $Beneficiario->nombre }} {{$Beneficiario->apellido}} | {{ $Beneficiario->organizacion }}</option>
+                @endif
                @endforeach
+
+
              </select>
            </div>
 

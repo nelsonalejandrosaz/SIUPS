@@ -69,5 +69,16 @@ class ServicioSocialController extends Controller
 
   }
 
+   public function servicioSocialEditar($id)
+    {
+    $servicioSocial = ServicioSocial::find($id);
+    $Beneficiarios = Beneficiario::all();
+    $Tutors = Tutor::all();
+    $departamentos = Departamento::all();
+    $municipios = Municipio::all();
+    return view('servicioSocial.servicioSocialEditar')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios]);
+
+    }
+
 
  }
