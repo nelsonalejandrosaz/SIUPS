@@ -44,7 +44,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Datos del Servicio Social</h3>
                 </div><!-- /.box-header -->
-                <form class="form-horizontal" action="{{ route('alumnoNuevoPost') }}" method="post">
+                <form class="form-horizontal" action="{{ route('servicioSocialNuevoPost') }}" method="post">
                 {{ csrf_field() }}
 
                   <!-- inicio box-body -->
@@ -57,17 +57,31 @@
                             <input type="text" class="form-control" placeholder="Nombre del Proyecto" name="nombreSS">
                           </div>
                         </div>
+												<!--aqui pongo la prueba del date picker-->
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Inicio del Servicio social:</label>
-                          <div class="col-sm-10">
-                            <input type="date"  class="form-control" name="inicioSS">
-                          </div>
-                        </div>
+                          <div class="col-sm-3">
+													<div class="input-group date">
+                  			<div class="input-group-addon">
+                    		<i class="fa fa-calendar"></i>
+                  				</div>
+                  				<input type="text" class="form-control pull-right" id="datepicker" name="inicioSS">
+                				</div>
+												</div>
+												</div>
+												<!--aqui termina la prueba del date picker-->
+
+
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Fin del Servicio social:</label>
-                          <div class="col-sm-10">
-                            <input type="date"  class="form-control" name="finSS">
-                          </div>
+													<div class="col-sm-3">
+													<div class="input-group date">
+												<div class="input-group-addon">
+												<i class="fa fa-calendar"></i>
+													</div>
+													<input type="text" class="form-control pull-right" id="datepicker" name="finSS">
+												</div>
+												</div>
                         </div>
 
                         <div class="form-group">
@@ -88,15 +102,22 @@
                         <h4 class="box-title">Datos de solicitante del Servicio Social</h4>
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Entidad beneficiaria:</label>
-                          <div class="col-sm-10">
+
+												  <div class="col-sm-6">
                             <input type="text" class="form-control" placeholder="Nombre de la entidad solicitante" name="entidaddSS">
-                          </div>
+
+													</div>
+
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Entidad beneficiaria:</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="Nombre de la entidad solicitante" name="entidadiSS">
-                          </div>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Nombre del Tutor:</label>
+                          <div class="col-sm-6">
+														<select class="form-control select2" name="tutorSS">
+															@foreach($Tutors as $Tutor)
+				      								<option value="{{ $Tutor->id }}">{{ $Tutor->nombre }} {{$Tutor->apellido}}</option>
+			      									@endforeach
+														</select>
+													</div>
                         </div>
                       </div>
                     </div><!-- /.box-body -->

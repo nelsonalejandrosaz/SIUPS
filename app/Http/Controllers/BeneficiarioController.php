@@ -15,7 +15,7 @@ class BeneficiarioController extends Controller
 		}
 
 	public function BeneficiarioNuevo(){
-    	
+
     	return view ('beneficiario.beneficiarioNuevo');
     }
 

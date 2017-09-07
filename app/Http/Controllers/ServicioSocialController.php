@@ -4,52 +4,54 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use App\Servicio_Social;
+//use App\Servicio_Social;
+use App\SocialServicio;
+use App\Beneficiario;
+use App\Tutor;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
 
 class ServicioSocialController extends Controller
 {
-//todavia no funciona
-  //  public function SSLista()
-  //  {
-  //      if (Auth::user()->rol[0]->id == 2) {
-  //        $serviciosocial = ServicioSocial::all();
-  //      } else {
-  //      $serviciosocial = ServicioSocial::where('escuela_id', Auth::user()->escuela_id)->get();
-  //    }
-  //    return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela]);
-  //  }
+
+   public function ServicioSocialLista()
+    {
+       $SocialServicios = SocialServicio::all();
+       return view('serviciosocial.servicioSocialLista')-with(['SocialServicios' => $SocialServicios]);
+    }
 
 
-   public function registroServicioSocial()
+   public function ServicioSocialRegistro()
   {
-    return view('serviciosocial.registro_servicio_social');
+    $Beneficiarios = Beneficiario::all();
+    $Tutors = Tutor::all();
+    return view('serviciosocial.servicioSocialRegistro')->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors]);
+
   }
 
-  public function guardarServicioSocial(Request $request)
+  public function ServicioSocialGuardar(Request $request)
   {
-    //dd($request->all());
+
     $this->validate($request, [
         'nombreSS'=>'required|size:150',
         'inicioSS'=>'required',
         'horastSS'=>'required',
-        'entidaddSS'=>'required',
+        'beneficiarioSS'=>'required',
+        'tutorSS'=>'required',
       ]);
-    $serviciosocial  = new Servicio_Social ;
+    $serviciosocial  = new SocialServicio ;
     $serviciosocial->nombreSS = $request->nombreSS;
       $serviciosocial->inicioSS = $request->inicioSS;
         $serviciosocial->finSS = $request->finSS;
-          $serviciosocial->horastSS = $request->horastSS;
-            $serviciosocial->horasaSS = $request->horasaSS;
+          $serviciosocial->beneficiarioSS = $request->horastSS;
+            $serviciosocial->tutorSS = $request->horasaSS;
 
 
-    if ((Servicio_Social::where('nombreSS','=',$request->nombreSS)->first()) == null) {
-      Servicio_Social::firstOrCreate($serviciosocial->toArray());
+    if ((SocialServicio::where('nombreSS','=',$request->nombreSS)->first()) == null) {
+      SocialServicio::firstOrCreate($serviciosocia->toArray());
 
-      Servicio_Social::firstOrCreate(['nombreSS' => $nombreSS->nombreSS,]);
+      SocialServicio::firstOrCreate(['nombreSS' => $nombreSS->nombreSS,]);
       session()->flash('mensaje', 'Ingresado con exito');
       //return redirect()->route('') ;
     } else {
@@ -60,29 +62,5 @@ class ServicioSocialController extends Controller
 
   }
 
-//  public function editarAlumno($id = 1)
-//{
-//      $alumno = Alumno::find($id);
-//      return view('alumnos.alumno_editar')->with(['alumno' => $alumno]);
-//  }
 
-//  public function editarAlumnoGuardar(Request $request, $id){
-//    $alumno = Alumno::find($id);
-//    $alumno->carnet = $request->carnet;
-//    $alumno->nombre = $request->nombre;
-//    $alumno->apellido = $request->apellido;
-//    $alumno->telefono = $request->telefono;
-//    $alumno->lugar_trabajo = $request->lugar_trabajo;
-//    $alumno->telefono_trabajo = $request->telefono_trabajo;
-//    $alumno->correo = $request->correo;
-//    $alumno->direccion = $request->direccion;
-//    $alumno->update();
-//    session()->flash('mensaje', 'Alumno modificado corectamente');
-//   return redirect()->route('alumnoLista') ;
-//  }
-
-//    public function verAlumno($id)
-//  {
-//      $alumno = Alumno::find($id);
-//      return view('alumnos.alumno_ver')->with(['alumno' => $alumno]);
  }
