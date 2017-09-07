@@ -45,7 +45,7 @@ Nuevo Servicio Social
             <h4 class="box-title">Servicio Social</h4>
             {{-- Nombre SS --}}
             <div class="form-group">
-            <label class="col-sm-3 control-label">Nombre:</label>
+              <label class="col-sm-3 control-label">Nombre:</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" placeholder="Nombre del Proyecto" name="nombreSS" value="{{ $servicioSocial->nombre }}">
               </div>
@@ -59,7 +59,7 @@ Nuevo Servicio Social
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="date" class="form-control pull-right" id="datepicker" name="inicioSS" value="{{ $servicioSocial->fecha_ingreso }}>
+                  <input type="date" class="form-control pull-right" id="datepicker" name="inicioSS" value="{{ $servicioSocial->fecha_ingreso }}">
                 </div>
               </div>
             </div>
@@ -72,7 +72,7 @@ Nuevo Servicio Social
                 <div class="input-group-addon">
                   <i class="fa fa-calendar"></i>
                 </div>
-                <input type="date" class="form-control pull-right" id="datepicker" name="finSS" value="{{ $servicioSocial->fecha_fin }}>>
+                <input type="date" class="form-control pull-right" id="datepicker" name="finSS" value="{{ $servicioSocial->fecha_fin }}">>
               </div>
             </div>
           </div>
@@ -81,7 +81,7 @@ Nuevo Servicio Social
           <div class="form-group">
             <label class="col-sm-3 control-label">Horas totales del servicio social:</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control" name="horastSS" value="{{ $servicioSocial->horas_totales }}>
+              <input type="number" class="form-control" name="horastSS" value="{{ $servicioSocial->horas_totales }}">
             </div>
           </div>
 
@@ -89,7 +89,7 @@ Nuevo Servicio Social
           <div class="form-group">
             <label class="col-sm-3 control-label">Numero Estudiantes:</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control" name="horasaSS" value="{{ $servicioSocial->numero_estudiantes }}>
+              <input type="number" class="form-control" name="horasaSS" value="{{ $servicioSocial->numero_estudiantes }}">
             </div>
           </div>
 
@@ -103,34 +103,34 @@ Nuevo Servicio Social
             <div class="col-sm-8">
               <select class="form-control select2" name="tutorSS">
 
-              @foreach($Beneficiarios as $Beneficiario)
-                @if($Beneficiario->id == $ServicioSocial->beneficiario_id)
+                @foreach($Beneficiarios as $Beneficiario)
+                @if($Beneficiario->id == $servicioSocial->beneficiario_id)
                 <option selected value="{{ $Beneficiario->id }}">{{ $Beneficiario->nombre }} {{$Beneficiario->apellido}} | {{ $Beneficiario->organizacion }}</option>
                 
                 @else
-                 <option value="{{ $Beneficiario->id }}">{{ $Beneficiario->nombre }} {{$Beneficiario->apellido}} | {{ $Beneficiario->organizacion }}</option>
+                <option value="{{ $Beneficiario->id }}">{{ $Beneficiario->nombre }} {{$Beneficiario->apellido}} | {{ $Beneficiario->organizacion }}</option>
                 @endif
+                @endforeach
+
+
+              </select>
+            </div>
+
+          </div>
+
+          {{-- Tutor SS --}}
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Nombre del Tutor:</label>
+            <div class="col-sm-8">
+              <select class="form-control select2" name="tutorSS">
+               @foreach($Tutors as $Tutor)
+               <option value="{{ $Tutor->id }}">{{ $Tutor->nombre }} {{$Tutor->apellido}}</option>
                @endforeach
-
-
              </select>
            </div>
-
          </div>
 
-         {{-- Tutor SS --}}
-         <div class="form-group">
-          <label class="col-sm-3 control-label">Nombre del Tutor:</label>
-          <div class="col-sm-8">
-            <select class="form-control select2" name="tutorSS">
-             @foreach($Tutors as $Tutor)
-             <option value="{{ $Tutor->id }}">{{ $Tutor->nombre }} {{$Tutor->apellido}}</option>
-             @endforeach
-           </select>
-         </div>
-       </div>
-
-       {{-- Departamento SS --}}
+         {{-- Departamento SS --}}
          <div class="form-group">
           <label class="col-sm-3 control-label">Departamento:</label>
           <div class="col-sm-8">
@@ -143,23 +143,23 @@ Nuevo Servicio Social
        </div>
 
        {{-- Municipio SS --}}
-         <div class="form-group">
-          <label class="col-sm-3 control-label">Municipio:</label>
-          <div class="col-sm-8">
-            <select class="form-control select2" name="tutorSS">
-             @foreach($Tutors as $Tutor)
-             <option value="{{ $Tutor->id }}">{{ $Tutor->nombre }} {{$Tutor->apellido}}</option>
-             @endforeach
-           </select>
-         </div>
+       <div class="form-group">
+        <label class="col-sm-3 control-label">Municipio:</label>
+        <div class="col-sm-8">
+          <select class="form-control select2" name="tutorSS">
+           @foreach($Tutors as $Tutor)
+           <option value="{{ $Tutor->id }}">{{ $Tutor->nombre }} {{$Tutor->apellido}}</option>
+           @endforeach
+         </select>
        </div>
      </div>
+   </div>
 
-   </div><!-- /.box-body -->
-   <div class="box-footer">
-    <a href="{{ route('servicioSocialLista') }}" class="btn btn-lg btn-default">Cancelar</a>
-    <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
-  </div><!-- /.box-footer -->
+ </div><!-- /.box-body -->
+ <div class="box-footer">
+  <a href="{{ route('servicioSocialLista') }}" class="btn btn-lg btn-default">Cancelar</a>
+  <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
+</div><!-- /.box-footer -->
 
 </form>
 </div><!-- /.box -->
