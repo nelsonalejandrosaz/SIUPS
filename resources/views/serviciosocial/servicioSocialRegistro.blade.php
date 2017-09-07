@@ -101,8 +101,8 @@
                       <div class="col-xs-12">
                         <h4 class="box-title">Datos de solicitante del Servicio Social</h4>
                         <div class="form-group">
+                          <label for="inputPassword3" class="col-sm-2 control-label">Entidad beneficiaria:</label>
 												  <div class="col-sm-6">
-                            <input type="text" class="form-control" placeholder="Nombre de la entidad solicitante" name="entidaddSS">
 														<select class="form-control select2" name="tutorSS">
 															@foreach($Beneficiarios as $Beneficiario)
 				      								<option value="{{ $Beneficiario->id }}">{{ $Beneficiario->nombre }} {{$Beneficiario->apellido}}</option>
