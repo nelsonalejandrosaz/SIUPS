@@ -41,8 +41,8 @@ class UsuarioController extends Controller
     	'name' => $request->input('nombre'),
    		'apellido' => $request->input('apellido'),
     	'email' => $request->input('correo'),
-    	'rol_id' => $request->get('rol'),
-    	'escuela'=>$request->get('escuela'),
+    	'rol_id' => $request->input('rol'),
+    	'escuela'=>$request->input('escuela'),
     	'password' => bcrypt($request->input('password')),
 
     	]);
