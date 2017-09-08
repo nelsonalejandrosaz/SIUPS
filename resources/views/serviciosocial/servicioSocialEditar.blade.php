@@ -72,7 +72,7 @@ Nuevo Servicio Social
                 <div class="input-group-addon">
                   <i class="fa fa-calendar"></i>
                 </div>
-                <input type="date" class="form-control pull-right" id="datepicker" name="finSS" value="{{ $servicioSocial->fecha_fin }}">>
+                <input type="date" class="form-control pull-right" id="datepicker" name="finSS" value="{{ $servicioSocial->fecha_fin }}">
               </div>
             </div>
           </div>
