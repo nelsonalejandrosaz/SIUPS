@@ -43,115 +43,152 @@ Nuevo Servicio Social
         <div class="box-body">
           <div class="col-sm-6">
             <h4 class="box-title">Servicio Social</h4>
+            
             {{-- Nombre SS --}}
             <div class="form-group">
-            <label class="col-sm-3 control-label">Nombre:</label>
+              <label class="col-sm-3 control-label">Nombre:</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Nombre del Proyecto" name="nombreSS">
-              </div>
-            </div>
-            
-            {{-- Fecha ingreso --}}
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Inicio del Servicio social:</label>
-              <div class="col-sm-9">
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="date" class="form-control pull-right" id="datepicker" name="inicioSS">
-                </div>
+                <input type="text" class="form-control" placeholder="Nombre del Proyecto" name="nombre">
               </div>
             </div>
 
-            {{-- Fecha fin SS --}}
+            {{-- Modalidad SS --}}
             <div class="form-group">
-              <label class="col-sm-3 control-label">Fin del Servicio social:</label>
+              <label class="col-sm-3 control-label">Modalidad:</label>
               <div class="col-sm-9">
-               <div class="input-group date">
+                <select class="form-control select2" style="width: 100%;" name="modalidad_id">
+                 @foreach($modalidades as $modalidad)
+                 <option value="{{ $modalidad->id }}">{{ $modalidad->nombre }}</option>
+                 @endforeach
+               </select>
+             </div>
+           </div>
+
+           {{-- Fecha ingreso --}}
+           <div class="form-group">
+            <label class="col-sm-3 control-label">Inicio del Servicio social:</label>
+            <div class="col-sm-9">
+              <div class="input-group date">
                 <div class="input-group-addon">
                   <i class="fa fa-calendar"></i>
                 </div>
-                <input type="date" class="form-control pull-right" id="datepicker" name="finSS">
+                <input type="date" class="form-control pull-right" id="datepicker" name="fecha_ingreso">
               </div>
             </div>
           </div>
 
-          {{-- Horas totales SS --}}
+          {{-- Fecha fin SS --}}
           <div class="form-group">
-            <label class="col-sm-3 control-label">Horas totales del servicio social:</label>
+            <label class="col-sm-3 control-label">Fin del Servicio social:</label>
             <div class="col-sm-9">
-              <input type="number" class="form-control" name="horastSS">
+             <div class="input-group date">
+              <div class="input-group-addon">
+                <i class="fa fa-calendar"></i>
+              </div>
+              <input type="date" class="form-control pull-right" id="datepicker" name="fecha_fin">
             </div>
           </div>
-
-          {{-- Numero de alumnos --}}
-          <div class="form-group">
-            <label class="col-sm-3 control-label">Horas por alumno:</label>
-            <div class="col-sm-9">
-              <input type="number" class="form-control" name="horasaSS">
-            </div>
-          </div>
-
         </div>
 
-        <div class="col-sm-6">
-          <h4 class="box-title">Datos de solicitante del Servicio Social</h4>
-          {{-- Solicitante SS --}}
-          <div class="form-group">
-            <label class="col-sm-3 control-label">Entidad beneficiaria:</label>
-            <div class="col-sm-8">
-              <select class="form-control select2" name="tutorSS">
-               @foreach($Beneficiarios as $Beneficiario)
-               <option value="{{ $Beneficiario->id }}">{{ $Beneficiario->nombre }} {{$Beneficiario->apellido}} | {{ $Beneficiario->organizacion }}</option>
-               @endforeach
-             </select>
-           </div>
+        {{-- Horas totales SS --}}
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Horas totales del servicio social:</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" placeholder="2000" name="horas_totales">
+          </div>
+        </div>
 
-         </div>
+        {{-- Numero de alumnos --}}
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Numero de alumnos:</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" placeholder="5" name="numero_estudiantes">
+          </div>
+        </div>
 
-         {{-- Tutor SS --}}
-         <div class="form-group">
-          <label class="col-sm-3 control-label">Nombre del Tutor:</label>
-          <div class="col-sm-8">
-            <select class="form-control select2" name="tutorSS">
-             @foreach($Tutors as $Tutor)
-             <option value="{{ $Tutor->id }}">{{ $Tutor->nombre }} {{$Tutor->apellido}}</option>
+      </div>
+
+      <div class="col-sm-6">
+        <h4 class="box-title">Datos de solicitante del Servicio Social</h4>
+        {{-- Solicitante SS --}}
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Entidad beneficiaria:</label>
+          <div class="col-sm-9">
+            <select class="form-control select2" style="width: 100%;" name="beneficiario_id">
+             @foreach($Beneficiarios as $Beneficiario)
+             <option value="{{ $Beneficiario->id }}">{{ $Beneficiario->nombre }} {{$Beneficiario->apellido}} | {{ $Beneficiario->organizacion }}</option>
              @endforeach
            </select>
          </div>
        </div>
 
-       {{-- Departamento SS --}}
-         <div class="form-group">
-          <label class="col-sm-3 control-label">Departamento:</label>
-          <div class="col-sm-8">
-            <select class="form-control select2" name="tutorSS">
-             @foreach($departamentos as $departamento)
-             <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
-             @endforeach
-           </select>
-         </div>
-       </div>
-
-       {{-- Municipio SS --}}
-         <div class="form-group">
-          <label class="col-sm-3 control-label">Municipio:</label>
-          <div class="col-sm-8">
-            <select class="form-control select2" name="tutorSS">
-             @foreach($municipios as $municipio)
-             <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
-             @endforeach
-           </select>
-         </div>
+       {{-- Tutor SS --}}
+       <div class="form-group">
+        <label class="col-sm-3 control-label">Nombre del Tutor:</label>
+        <div class="col-sm-9">
+          <select class="form-control select2" style="width: 100%;" name="tutor_id">
+           @foreach($Tutors as $Tutor)
+           <option value="{{ $Tutor->id }}">{{ $Tutor->nombre }} {{$Tutor->apellido}}</option>
+           @endforeach
+         </select>
        </div>
      </div>
 
-   </div><!-- /.box-body -->
-   <div class="box-footer">
-    <a href="{{ route('servicioSocialLista') }}" class="btn btn-lg btn-default">Cancelar</a>
-    <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
-  </div><!-- /.box-footer -->
+     {{-- Departamento SS --}}
+     <div class="form-group">
+      <label class="col-sm-3 control-label">Departamento:</label>
+      <div class="col-sm-9">
+        <select class="form-control select2" style="width: 100%;" name="departamento_id">
+         @foreach($departamentos as $departamento)
+         <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+         @endforeach
+       </select>
+     </div>
+   </div>
+
+   {{-- Municipio SS --}}
+   <div class="form-group">
+    <label class="col-sm-3 control-label">Municipio:</label>
+    <div class="col-sm-9">
+      <select class="form-control select2" style="width: 100%;" name="municipio_id">
+       @foreach($municipios as $municipio)
+       <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
+       @endforeach
+     </select>
+   </div>
+ </div>
+
+        {{-- Beneficiarios directos SS --}}
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Beneficiarios directos:</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" placeholder="15" name="beneficiarios_directos">
+          </div>
+        </div>
+
+        {{-- Beneficiarios indirectos SS --}}
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Beneficiarios indirectos:</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" placeholder="100" name="beneficiarios_indirectos">
+          </div>
+        </div>
+
+        {{-- Monto SS --}}
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Monto:</label>
+          <div class="col-sm-9">
+            <input type="number" class="form-control" placeholder="2000" name="monto">
+          </div>
+        </div>
+
+</div>
+
+</div><!-- /.box-body -->
+<div class="box-footer">
+  <a href="{{ route('servicioSocialLista') }}" class="btn btn-lg btn-default">Cancelar</a>
+  <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
+</div><!-- /.box-footer -->
 
 </form>
 </div><!-- /.box -->

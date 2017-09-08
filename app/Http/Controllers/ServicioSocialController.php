@@ -9,6 +9,7 @@ use App\Beneficiario;
 use App\Tutor;
 use App\Departamento;
 use App\Municipio;
+use App\Modalidad;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
@@ -32,7 +33,8 @@ class ServicioSocialController extends Controller
     $Tutors = Tutor::all();
     $departamentos = Departamento::all();
     $municipios = Municipio::all();
-    return view('serviciosocial.servicioSocialRegistro')->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios]);
+    $modalidades = Modalidad::all();
+    return view('serviciosocial.servicioSocialRegistro')->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades' => $modalidades]);
 
   }
 
