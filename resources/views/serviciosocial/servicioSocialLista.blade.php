@@ -61,7 +61,7 @@
                @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
                 <a href="{{ route('servicioSocialEditar', ['id' => $serviciosocial->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
                 @endif  
-       
+                 <a href="{{ route('servicioSocialVer', ['id' => $serviciosocial->id]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a> 
               </td>
             </tr>
             @endforeach

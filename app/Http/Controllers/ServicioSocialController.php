@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-//use App\Servicio_Social;
 use App\ServicioSocial;
 use App\Beneficiario;
 use App\Tutor;
@@ -68,7 +67,7 @@ class ServicioSocialController extends Controller
 
 
   }
-
+  //Funcion para editar un servicio social 
    public function servicioSocialEditar($id)
     {
     $servicioSocial = ServicioSocial::find($id);
@@ -79,6 +78,15 @@ class ServicioSocialController extends Controller
     return view('servicioSocial.servicioSocialEditar')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios]);
 
     }
-
+    //funcion para ver un servicio social
+     public function servicioSocialVer($id)
+    {
+    $servicioSocial = ServicioSocial::find($id);
+    $Beneficiarios = Beneficiario::all();
+    $Tutors = Tutor::all();
+    $departamentos = Departamento::all();
+    $municipios = Municipio::all();
+      return view('servicioSocial.servicioSocialVer')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios]);
+    }
 
  }

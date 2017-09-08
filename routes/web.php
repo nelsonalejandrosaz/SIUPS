@@ -138,14 +138,14 @@ Route::name('beneficiarioVer')->get('/beneficiario/{id}/ver', 'BeneficiarioContr
 
 
 /********************************
-*Rutas para Servicio Social - Juan
+*Rutas para Servicio Social 
 ********************************/
 Route::name('servicioSocialLista')->get('/ServicioSocial/Lista','ServicioSocialController@ServicioSocialLista')->middleware('coordinador');
 Route::name('servicioSocialNuevo')->get('/ServicioSocial/nuevo','ServicioSocialController@ServicioSocialRegistro')->middleware('coordinador');
 Route::name('servicioSocialNuevoPost')->post('/ServicioSocial/nuevo','ServicioSocialController@ServicioSocialGuardar')->middleware('coordinador');
 Route::name('servicioSocialEditar')->get('/ServicioSocial/{id}/editar', 'ServicioSocialController@ServicioSocialEditar');
 Route::name('servicioSocialEditarPost')->post('/ServicioSocial/{id}/editar','ServicioSocialController@ServicioSocialEditarPost');
-
+Route::name('servicioSocialVer')->get('/ServicioSocial/{id}/ver', 'ServicioSocialController@ServicioSocialVer');
 /************************************
 *Fin de la rutas para servicio social
 *************************************/
