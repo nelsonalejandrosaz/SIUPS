@@ -26,7 +26,7 @@ class CreateServicioSocialTable extends Migration
             $table->integer('beneficiarios_directos')->nullable();
             $table->integer('beneficiarios_indirectos')->nullable();
             $table->integer('estado_id')->unsigned();
-            $table->integer('horas_totales');
+            $table->integer('horas_totales')->nullable();
             $table->integer('numero_estudiantes');
             $table->integer('modalidad_id')->unsigned();
             $table->timestamps();

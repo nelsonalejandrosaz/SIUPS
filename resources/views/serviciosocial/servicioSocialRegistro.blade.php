@@ -43,6 +43,9 @@ Nuevo Servicio Social
         <div class="box-body">
           <div class="col-sm-6">
             <h4 class="box-title">Servicio Social</h4>
+
+            {{-- Estado SS --}}
+            <input type="hidden" class="form-control" value="1" name="estado_id">
             
             {{-- Nombre SS --}}
             <div class="form-group">

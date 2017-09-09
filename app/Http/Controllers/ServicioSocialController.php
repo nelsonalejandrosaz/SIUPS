@@ -38,37 +38,26 @@ class ServicioSocialController extends Controller
 
   }
 
-  public function ServicioSocialGuardar(Request $request)
-  {
+  public function ServicioSocialGuardar(Request $request){
 
     $this->validate($request, [
-        'nombreSS'=>'required|size:150',
-        'inicioSS'=>'required',
-        'horastSS'=>'required',
-        'beneficiarioSS'=>'required',
-        'tutorSS'=>'required',
+      'nombre'=>'required',
+      'fecha_ingreso'=>'required',
+      'numero_estudiantes'=>'required|numeric',
       ]);
-    $serviciosocial  = new SocialServicio ;
-    $serviciosocial->nombreSS = $request->nombreSS;
-      $serviciosocial->inicioSS = $request->inicioSS;
-        $serviciosocial->finSS = $request->finSS;
-          $serviciosocial->beneficiarioSS = $request->horastSS;
-            $serviciosocial->tutorSS = $request->horasaSS;
+    // $serviciosocial  = new SocialServicio ;
+    // $serviciosocial->nombreSS = $request->nombreSS;
+    //   $serviciosocial->inicioSS = $request->inicioSS;
+    //     $serviciosocial->finSS = $request->finSS;
+    //       $serviciosocial->beneficiarioSS = $request->horastSS;
+    //         $serviciosocial->tutorSS = $request->horasaSS;
 
-
-    if ((SocialServicio::where('nombreSS','=',$request->nombreSS)->first()) == null) {
-      SocialServicio::firstOrCreate($serviciosocia->toArray());
-
-      SocialServicio::firstOrCreate(['nombreSS' => $nombreSS->nombreSS,]);
-      session()->flash('mensaje', 'Ingresado con exito');
-      //return redirect()->route('') ;
-    } else {
-      session()->flash('advertencia', 'Servicio social ya existente');
-      //return redirect()->route('alumnoNuevo') ;
-    }
-
+    ServicioSocial::create($request->only('nombre','tutor_id','beneficiario_id','municipio_id','fecha_ingreso','fecha_fin','monto','beneficiarios_directos','beneficiarios_indirectos','estado_id','horas_totales','numero_estudiantes','modalidad_id'));
+    session()->flash('mensaje', 'Ingresado con exito');
+    return redirect()->route('servicioSocialLista');
 
   }
+
   //Funcion para editar un servicio social 
    public function servicioSocialEditar($id)
     {
