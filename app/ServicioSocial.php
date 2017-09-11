@@ -12,4 +12,22 @@ class ServicioSocial extends Model
     ];
 
     protected $table='servicio_social';
+
+    public function municipio()
+    {
+        return $this->belongsTo('App\Municipio');
+    }
+    public function beneficiario()
+    {
+        return $this->belongsTo('App\Beneficiario');
+    }
+     public function estado()
+    {
+        return $this->belongsTo('App\Estado');
+    }
+    public function tutor()
+    {
+        return $this->belongsTo('App\Tutor');
+    }
+
 }

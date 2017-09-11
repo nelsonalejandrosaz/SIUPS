@@ -41,7 +41,7 @@
                 <th>Beneficiario</th>
                 <th>Municipio</th>
                 <th>Horas Totales</th>
-                <th>Numero Estudiantes Requeridos</th>
+                <th>Estudiantes Requeridos</th>
                 <th>Estado</th>
                 <th>Accion</th>
               </tr>
@@ -51,12 +51,12 @@
              @foreach($serviciossociales as $serviciosocial)
               <tr>
               <td>{{$serviciosocial->nombre}}</td>
-              <td>{{$serviciosocial->tutor_id}}</td>
-              <td>{{$serviciosocial->beneficiario_id}}</td>
-              <td>{{$serviciosocial->municipio_id}}</td>
+              <td>{{$serviciosocial->tutor->nombre}}</td>
+              <td>{{$serviciosocial->beneficiario->nombre}}</td>
+              <td>{{$serviciosocial->municipio->nombre}}</td>
               <td>{{$serviciosocial->horas_totales}}</td>
               <td>{{$serviciosocial->numero_estudiantes}}</td>
-              <td>{{$serviciosocial->estado_id}}</td>
+              <td>{{$serviciosocial->estado->nombre}}</td>
               <td align="center">
                @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
                 <a href="{{ route('servicioSocialEditar', ['id' => $serviciosocial->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
