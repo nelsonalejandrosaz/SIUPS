@@ -36,7 +36,7 @@ Editar Servicio Social
       <div class="box-header with-border">
         <h3 class="box-title">Datos del Servicio Social</h3>
       </div><!-- /.box-header -->
-      <form class="form-horizontal" action="{{ route('servicioSocialNuevoPost' , ['id' => $servicioSocial->id]) }}" method="post">
+      <form class="form-horizontal" action="{{ route('servicioSocialEditarPost' , ['id' => $servicioSocial->id]) }}" method="post">
         {{ csrf_field() }}
 
         <!-- inicio box-body -->
@@ -114,7 +114,26 @@ Editar Servicio Social
           </div>
         </div>
 
-      </div>
+       {{-- Estado SS --}}
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Estado:</label>
+              <div class="col-sm-9">
+                <select class="form-control select2" style="width: 100%;" name="estado_id">
+                 @foreach($estados as $estado)
+                 @if($estado->id==$servicioSocial->estado_id)
+                 <option selected value="{{ $estado->id }}" >{{ $estado->nombre }}</option>
+                 @else
+                  <option value="{{ $estado->id }}" >{{ $estado->nombre }}</option>
+                @endif
+
+                 @endforeach
+               </select>
+             </div>
+           </div> 
+
+    </div>
+
+     
 
       <div class="col-sm-6">
         <h4 class="box-title">Datos de solicitante del Servicio Social</h4>
@@ -186,7 +205,7 @@ Editar Servicio Social
         <div class="form-group">
           <label class="col-sm-3 control-label">Beneficiarios directos:</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control"  name="beneficiarios_directos" >
+            <input type="number" class="form-control"  name="beneficiarios_directos" value="{{$servicioSocial->beneficiarios_directos}}">
           </div>
         </div>
 

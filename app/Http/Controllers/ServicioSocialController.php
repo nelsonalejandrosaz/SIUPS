@@ -10,6 +10,7 @@ use App\Tutor;
 use App\Departamento;
 use App\Municipio;
 use App\Modalidad;
+use App\Estado;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
@@ -59,17 +60,49 @@ class ServicioSocialController extends Controller
   }
 
   //Funcion para editar un servicio social 
-   public function servicioSocialEditar($id)
+   public function ServicioSocialEditar($id)
     {
     $servicioSocial = ServicioSocial::find($id);
     $Beneficiarios = Beneficiario::all();
     $Tutors = Tutor::all();
+    $estados = Estado::all();
     $departamentos = Departamento::all();
     $municipios = Municipio::all();
     $modalidades = Modalidad::all();
-    return view('servicioSocial.servicioSocialEditar')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades]);
+    return view('servicioSocial.servicioSocialEditar')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
 
     }
+    //funcion Post para editar al servicio social
+    public function ServicioSocialEditarPost(Request $request, $id)
+    {
+      // Logica de validacion
+      $this->validate($request, [
+      'nombre'=>'required',
+      'fecha_ingreso'=>'required',
+      'numero_estudiantes'=>'required|numeric',
+      ]);
+      // Fin validacion
+    $servicioSocial = ServicioSocial::find($id);
+      $servicioSocial->nombre = $request->input('nombre');
+      $servicioSocial->tutor_id = $request->input('tutor_id');
+      $servicioSocial->beneficiario_id = $request->input('beneficiario_id');
+      $servicioSocial->municipio_id = $request->input('municipio_id');
+      $servicioSocial->fecha_ingreso = $request->input('fecha_ingreso');
+      $servicioSocial->fecha_fin = $request->input('fecha_fin');
+      $servicioSocial->monto = $request->input('monto');
+      $servicioSocial->beneficiarios_directos = $request->input('beneficiarios_directos');
+      $servicioSocial->beneficiarios_indirectos = $request->input('beneficiarios_indirectos');
+      $servicioSocial->estado_id = $request->input('estado_id');
+      $servicioSocial->horas_totales = $request->input('horas_totales');
+      $servicioSocial->numero_estudiantes = $request->input('numero_estudiantes');
+      $servicioSocial->modalidad_id = $request->input('modalidad_id');
+      $servicioSocial->save();
+      session()->flash('mensaje', 'Servicio modificado corectamente');
+       return redirect()->route('servicioSocialLista');
+    }
+
+
+
     //funcion para ver un servicio social
      public function servicioSocialVer($id)
     {
