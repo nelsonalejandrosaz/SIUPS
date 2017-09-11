@@ -12,6 +12,6 @@ class Municipio extends Model
 
     public function municipio_ss()
     {
-        return $this->hasMany('App\ServicioSocial');
+        return $this->hasMany('App\ServicioSocial');//para sacar todos los servicios soiales de ese municipio
     }
 }

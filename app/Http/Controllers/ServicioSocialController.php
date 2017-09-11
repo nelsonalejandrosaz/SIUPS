@@ -106,12 +106,14 @@ class ServicioSocialController extends Controller
     //funcion para ver un servicio social
      public function servicioSocialVer($id)
     {
-    $servicioSocial = ServicioSocial::find($id);
+   $servicioSocial = ServicioSocial::find($id);
     $Beneficiarios = Beneficiario::all();
     $Tutors = Tutor::all();
+    $estados = Estado::all();
     $departamentos = Departamento::all();
     $municipios = Municipio::all();
-      return view('servicioSocial.servicioSocialVer')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios]);
+    $modalidades = Modalidad::all();
+    return view('servicioSocial.servicioSocialVer')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
     }
 
  }
