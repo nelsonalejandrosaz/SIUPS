@@ -30,7 +30,7 @@
 
 <!--comienza la vista del formulario de registro alumnos-->
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-xs-12" >
     <!-- Horizontal Form -->
               <div class="box box-primary">
                 <div class="box-header with-border">

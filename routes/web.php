@@ -149,3 +149,7 @@ Route::name('servicioSocialVer')->get('/ServicioSocial/{id}/ver', 'ServicioSocia
 /************************************
 *Fin de la rutas para servicio social
 *************************************/
+
+/********************************
+*Rutas para Expediente
+********************************/
