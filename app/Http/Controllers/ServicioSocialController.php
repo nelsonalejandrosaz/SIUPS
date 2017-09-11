@@ -66,7 +66,8 @@ class ServicioSocialController extends Controller
     $Tutors = Tutor::all();
     $departamentos = Departamento::all();
     $municipios = Municipio::all();
-    return view('servicioSocial.servicioSocialEditar')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios]);
+    $modalidades = Modalidad::all();
+    return view('servicioSocial.servicioSocialEditar')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades]);
 
     }
     //funcion para ver un servicio social
