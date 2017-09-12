@@ -27,6 +27,7 @@ Ver Servicio Social
 
 {{-- Include de los mensajes de errror --}}
 @include('partials.alertaerror')
+@include('partials.alertamensajes')
 
 <!--comienza la vista del formulario de registro Servicio Social-->
 <div class="row">
@@ -232,7 +233,9 @@ Ver Servicio Social
 
 </div><!-- /.box-body -->
 <div class="box-footer">
-  <a href="{{ route('servicioSocialLista') }}" class="btn btn-lg btn-default">Cancelar</a>
+  <a href="{{ route('servicioSocialLista') }}" class="btn btn-lg btn-default">Ver Lista</a>
+
+  <a href="{{ route('servicioSocialEditar',['id'=>$servicioSocial->id]) }}" class="btn btn-lg btn-warning pull-right">Editar</a>
 </div><!-- /.box-footer -->
 
 </form>

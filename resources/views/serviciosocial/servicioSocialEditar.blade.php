@@ -27,6 +27,7 @@ Editar Servicio Social
 
 {{-- Include de los mensajes de errror --}}
 @include('partials.alertaerror')
+@include('partials.alertamensajes')
 
 <!--comienza la vista del formulario de registro Servicio Social-->
 <div class="row">
@@ -234,6 +235,7 @@ Editar Servicio Social
 <div class="box-footer">
   <a href="{{ route('servicioSocialLista') }}" class="btn btn-lg btn-default">Cancelar</a>
   <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
+  
 </div><!-- /.box-footer -->
 
 </form>

@@ -2,7 +2,7 @@
 
 {{-- Titulo de la pagina --}}
 @section('htmlheader_title')
-  Lista de beneficiarios
+  Lista de Servicios Sociales
 @endsection
 
 {{-- Seccion para agregar estilos CSS extras a los que se cargan por defecto --}}
@@ -12,7 +12,7 @@
 
 {{-- Titulo del header --}}
 @section('contentheader_title')
-  Lista de beneficiarios
+  Lista de Servicios Sociales
 @endsection
 
 {{-- Descripcion del header OPCIONAL --}}

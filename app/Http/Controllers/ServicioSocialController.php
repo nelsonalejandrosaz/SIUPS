@@ -74,7 +74,7 @@ class ServicioSocialController extends Controller
        'numero_estudiantes' => $request->input('numero_estudiantes'),
        'modalidad_id' => $request->input('modalidad_id'),]);
      
-      return redirect()->route('servicioSocialLista') ;
+      return redirect()->route('servicioSocialVer') ;
       
 
   }
@@ -117,8 +117,8 @@ class ServicioSocialController extends Controller
       $servicioSocial->numero_estudiantes = $request->input('numero_estudiantes');
       $servicioSocial->modalidad_id = $request->input('modalidad_id');
       $servicioSocial->save();
-      session()->flash('mensaje', 'Servicio modificado corectamente');
-       return redirect()->route('servicioSocialLista');
+      session()->flash('message', 'Servicio modificado corectamente');
+       return redirect()->route('servicioSocialVer',['id' => $servicioSocial->id]);
     }
 
 
@@ -134,6 +134,7 @@ class ServicioSocialController extends Controller
     $municipios = Municipio::all();
     $modalidades = Modalidad::all();
     return view('servicioSocial.servicioSocialVer')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
+    return redirect()->route('servicioSocialEditar',['id' => $servicioSocial->id]);
     }
 
  }
