@@ -89,7 +89,7 @@ class AlumnoController extends Controller
       $escuela = Escuela::where('id', Auth::user()->escuela_id)->first();
       Alumno_escuela::firstOrCreate(['alumno_id' => $alumno->id, 'escuela_id' => $escuela->id]);
       session()->flash('mensaje', 'Alumno ingresado con exito');
-      return redirect()->route('alumnoLista') ;
+      return redirect()->route('alumnoVer',['id'=>$alumno->id]) ;
     } else {
       session()->flash('advertencia', 'Alumno ya existe');
       return redirect()->route('alumnoNuevo') ;
@@ -123,7 +123,7 @@ class AlumnoController extends Controller
     $alumno->direccion = $request->direccion;
     $alumno->update();
     session()->flash('mensaje', 'Alumno modificado corectamente');
-   return redirect()->route('alumnoLista') ;
+   return redirect()->route('alumnoVer',['id'=>$alumno->id]) ;
   }
 
     public function verAlumno($id)

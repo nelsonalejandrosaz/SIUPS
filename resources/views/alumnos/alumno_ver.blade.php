@@ -80,7 +80,8 @@
                       </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
-                    <a href=" {{ route('alumnoLista') }} " class="btn btn-lg btn-default">Regresar</a>
+                    <a href=" {{ route('alumnoLista') }} " class="btn btn-lg btn-default">Ver Lista</a>
+                     <a href="{{ route('alumnoEditar',['id'=>$alumno->id]) }}" class="btn btn-lg btn-warning pull-right">Editar</a>
                     <!-- <button type="submit" class="btn btn-lg btn-success pull-right">Guardar cambios</button> -->
                   </div><!-- /.box-footer -->
 
