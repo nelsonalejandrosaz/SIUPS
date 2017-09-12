@@ -29,9 +29,10 @@ class BeneficiarioController extends Controller
         'correoOrganizacion' => 'email|nullable',
 	    ]);
 	    // Fin validacion
-	    Beneficiario::create($request->only('nombre','apellido','dui','correo','telefono','organizacion','telefonoOrganizacion','correoOrganizacion','direccionOrganizacion'));
-	    session()->flash('mensaje', 'Beneficiario ingresado con exito');
-    	return redirect()->route('beneficiarioLista');
+	    $beneficiario=Beneficiario::create($request->only('nombre','apellido','dui','correo','telefono','organizacion','telefonoOrganizacion','correoOrganizacion','direccionOrganizacion'));
+	    session()->flash('message.level', 'success');
+      session()->flash('message.content', 'El beneficiario fue agregado con Exito');
+    	return redirect()->route('beneficiarioVer',['id'=>$beneficiario->id]);
     }
 
     public function beneficiarioEditar($id)
@@ -63,7 +64,7 @@ class BeneficiarioController extends Controller
     	$beneficiario->direccionOrganizacion = $request->input('direccionOrganizacion');
     	$beneficiario->save();
     	session()->flash('mensaje', 'Beneficiario modificado corectamente');
-   		return redirect()->route('beneficiarioLista') ;
+   		return redirect()->route('beneficiarioVer',['id' => $beneficiario->id]) ;
   	}
 
     public function beneficiarioVer($id)

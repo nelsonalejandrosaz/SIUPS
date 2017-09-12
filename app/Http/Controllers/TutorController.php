@@ -39,7 +39,7 @@ class TutorController extends Controller
     	'dui' => $request->get('dui'),
     	'carnet'=>$request->get('carnet'),
     	]);
-    return redirect()->route('tutoresLista') ;
+    return redirect()->route('TutorVer',['id'=>$Tutor->id]) ;
     }
 
 
@@ -68,7 +68,8 @@ class TutorController extends Controller
     	$tutor->dui = $request->input('dui');
     	$tutor->carnet = $request->input('carnet');
     	$tutor->save();
-    	session()->flash('mensaje', 'Tutor modificado corectamente');
-   		return redirect()->route('tutoresLista') ;
+    	
+   		return redirect()->route('TutorVer',['id'=>$tutor->id]) ;
+      session()->flash('mensaje', 'Tutor modificado corectamente');
   	}
 }

@@ -19,7 +19,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Datos del Tutor</h3>
                 </div><!-- /.box-header -->
-                <form class="form-horizontal" action="" method="post">
+                <form class="form-horizontal" action="{{ route('TutorEditarPost' , ['id' => $tutor->id]) }}" method="post">
                 {{ csrf_field() }}
 
                   <!-- inicio box-body -->
@@ -59,7 +59,8 @@
                       </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
-                    <a href=" {{ route('tutoresLista') }} " class="btn btn-lg btn-default">Regresar</a>
+                    <a href=" {{ route('tutoresLista') }} " class="btn btn-lg btn-default">Ver Lista</a>
+                    <a href="{{ route('TutorEditar',['id'=>$tutor->id]) }}" class="btn btn-lg btn-warning pull-right">Editar</a>
                     <!-- <button type="submit" class="btn btn-lg btn-success pull-right">Guardar cambios</button> -->
                   </div><!-- /.box-footer -->
 

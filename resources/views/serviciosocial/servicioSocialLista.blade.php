@@ -36,14 +36,14 @@
           <table id="tablaServicioSocial" class="table table-hover">
             <thead>
               <tr>
-                <th>Nombre</th>
-                <th>Tutor</th>
-                <th>Beneficiario</th>
-                <th>Municipio</th>
-                <th>Horas Totales</th>
-                <th>Estudiantes Requeridos</th>
-                <th>Estado</th>
-                <th>Accion</th>
+                <th style="width:30%">Nombre</th>
+                <th style="width:15%">Tutor</th>
+                <th style="width:15% ">Beneficiario</th>
+                <th style="width:10%">Municipio</th>
+                
+                <th style="width:10%">Estudiantes Requeridos</th>
+                <th style="width:10%">Estado</th>
+                <th style="width:10% ">Accion</th>
               </tr>
             </thead>
 
@@ -58,7 +58,7 @@
               @endif
               <td>{{$serviciosocial->beneficiario->nombre}}</td>
               <td>{{$serviciosocial->municipio->nombre}}</td>
-              <td>{{$serviciosocial->horas_totales}}</td>
+              
               <td>{{$serviciosocial->numero_estudiantes}}</td>
               <td>{{$serviciosocial->estado->nombre}}</td>
               <td align="center">

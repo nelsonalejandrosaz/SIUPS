@@ -24,7 +24,7 @@
 @section('main-content')
 
 {{-- Include de los mensajes de errror --}}
-@include('partials.alertaerror')
+@include('partials.alertamensajes')
 
 <!--comienza la vista del formulario de registro alumnos-->
 <div class="row">
@@ -109,8 +109,9 @@
             </div>
           </div><!-- /.box-body -->
         <div class="box-footer">
-        <a href="{{ route('beneficiarioLista') }}" class="btn btn-lg btn-default">Regresar</a>
+        <a href="{{ route('beneficiarioLista') }}" class="btn btn-lg btn-default">Ver Lista</a>
         
+        <a href="{{ route('beneficiarioEditar',['id'=>$beneficiario->id]) }}" class="btn btn-lg btn-warning pull-right">Editar</a>
         </div><!-- /.box-footer -->
       </form>
     </div><!-- /.box -->
