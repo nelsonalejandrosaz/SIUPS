@@ -41,6 +41,6 @@ class CreateServicioSocialTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('servicio_social');
     }
 }
