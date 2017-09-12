@@ -69,7 +69,9 @@
                 <a href="#"><i class='fa fa-briefcase'></i> <span>Servicios Sociales</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('servicioSocialLista')}}">Lista Servicios Sociales</a></li>
+                     @if( Auth::user()->rol[0]->nombre == "coordinador_Sups")
                     <li><a href="{{route('servicioSocialNuevo')}}">Ingresar Servicio Social</a></li>
+                     @endif
                 </ul>
             </li>
             @endif

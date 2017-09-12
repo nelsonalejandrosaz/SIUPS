@@ -11,6 +11,7 @@ use App\Departamento;
 use App\Municipio;
 use App\Modalidad;
 use App\Estado;
+use App\Escuela;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
@@ -20,8 +21,11 @@ class ServicioSocialController extends Controller
 
    public function ServicioSocialLista()
     {
-      //$SocialServicios = SocialServicio::all();
-      $serviciossociales=ServicioSocial::all();
+       if (Auth::user()->rol[0]->id == 2) {
+          $serviciossociales = ServicioSocial::all();
+        } else {
+          $serviciossociales = ServicioSocial::where('escuela_id', Auth::user()->escuela_id)->get();
+        }        
      //return view('serviciosocial.servicioSocialLista')-with(['SocialServicios' => $SocialServicios]);
       return view('serviciosocial.servicioSocialLista')->with(['serviciossociales' => $serviciossociales]);;
 
@@ -45,7 +49,8 @@ class ServicioSocialController extends Controller
       'nombre'=>'required',
       'fecha_ingreso'=>'required',
       'numero_estudiantes'=>'required|numeric',
-      ]);
+      'beneficiario_id'=>'required',
+      ],['beneficiario_id.required'=>'Beneficiario es obligatorio.Click aca para crear un beneficiario']);
     // $serviciosocial  = new SocialServicio ;
     // $serviciosocial->nombreSS = $request->nombreSS;
     //   $serviciosocial->inicioSS = $request->inicioSS;
@@ -53,9 +58,24 @@ class ServicioSocialController extends Controller
     //       $serviciosocial->beneficiarioSS = $request->horastSS;
     //         $serviciosocial->tutorSS = $request->horasaSS;
 
-    ServicioSocial::create($request->only('nombre','tutor_id','beneficiario_id','municipio_id','fecha_ingreso','fecha_fin','monto','beneficiarios_directos','beneficiarios_indirectos','estado_id','horas_totales','numero_estudiantes','modalidad_id'));
-    session()->flash('mensaje', 'Ingresado con exito');
-    return redirect()->route('servicioSocialLista');
+   $ServicioSocial = ServicioSocial::create([
+      'nombre' =>$request->input('nombre'),
+      'escuela_id' => Auth::user()->escuela_id,
+      'tutor_id' => $request->input('tutor_id'),
+      'beneficiario_id' => $request->input('beneficiario_id'),
+      'municipio_id' => $request->input('municipio_id'),
+      'fecha_ingreso' => $request->input('fecha_ingreso'),
+      'fecha_fin' => $request->input('fecha_fin'),
+      'monto' => $request->input('monto'),
+      'beneficiarios_directos' => $request->input('beneficiarios_directos'),
+      'beneficiarios_indirectos' => $request->input('beneficiarios_indirectos'),
+      'estado_id' => $request->input('estado_id'),
+       'horas_totales' => $request->input('horas_totales'),
+       'numero_estudiantes' => $request->input('numero_estudiantes'),
+       'modalidad_id' => $request->input('modalidad_id'),]);
+     
+      return redirect()->route('servicioSocialLista') ;
+      
 
   }
 

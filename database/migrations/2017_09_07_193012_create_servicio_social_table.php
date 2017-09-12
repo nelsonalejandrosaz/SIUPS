@@ -16,6 +16,7 @@ class CreateServicioSocialTable extends Migration
         //
          Schema::create('servicio_social', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('escuela_id')->unsigned();
             $table->string('nombre');
             $table->integer('tutor_id')->unsigned()->nullable();
             $table->integer('beneficiario_id')->unsigned();

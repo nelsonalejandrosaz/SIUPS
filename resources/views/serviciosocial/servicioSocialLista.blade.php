@@ -51,7 +51,11 @@
              @foreach($serviciossociales as $serviciosocial)
               <tr>
               <td>{{$serviciosocial->nombre}}</td>
+              @if ($serviciosocial->tutor != null)
               <td>{{$serviciosocial->tutor->nombre}}</td>
+              @else
+               <td>Sin Tutor</td>
+              @endif
               <td>{{$serviciosocial->beneficiario->nombre}}</td>
               <td>{{$serviciosocial->municipio->nombre}}</td>
               <td>{{$serviciosocial->horas_totales}}</td>

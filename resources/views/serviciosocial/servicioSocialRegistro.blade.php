@@ -118,6 +118,7 @@ Nuevo Servicio Social
           <label class="col-sm-3 control-label">Entidad beneficiaria:</label>
           <div class="col-sm-9">
             <select class="form-control select2" style="width: 100%;" name="beneficiario_id">
+             <option selected value="" disabled>Seleccione el Beneficiario</option>
              @foreach($Beneficiarios as $Beneficiario)
              <option value="{{ $Beneficiario->id }}" @if(old('beneficiario_id')==$Beneficiario->id) {{'selected'}}@endif>{{ $Beneficiario->nombre }} {{$Beneficiario->apellido}} | {{ $Beneficiario->organizacion }}</option>
              @endforeach
@@ -130,6 +131,7 @@ Nuevo Servicio Social
         <label class="col-sm-3 control-label">Nombre del Tutor:</label>
         <div class="col-sm-9">
           <select class="form-control select2" style="width: 100%;" name="tutor_id">
+           <option selected value="" disabled>Seleccione el Tutor</option>
            @foreach($Tutors as $Tutor)
            <option value="{{ $Tutor->id }}" @if(old('tutor_id')==$Tutor->id){{'selected'}}@endif>{{ $Tutor->nombre }} {{$Tutor->apellido}}</option>
            @endforeach

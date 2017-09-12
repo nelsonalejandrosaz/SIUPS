@@ -157,11 +157,14 @@ Ver Servicio Social
        <div class="form-group">
         <label class="col-sm-3 control-label">Nombre del Tutor:</label>
         <div class="col-sm-9">
-          <select class="form-control select2" style="width: 100%;" name="tutor_id" disabled="true">
+         <select class="form-control select2" style="width: 100%;" name="tutor_id" disabled="true">
+          <option selected value="" disabled>Seleccione el Tutor</option>
            @foreach($Tutors as $Tutor)
            @if($Tutor->id == $servicioSocial->tutor_id)
+
            <option selected value="{{ $Tutor->id }}">{{ $Tutor->nombre }} {{$Tutor->apellido}}</option>
            @else
+
            <option value="{{ $Tutor->id }}">{{ $Tutor->nombre }} {{$Tutor->apellido}}</option>
            @endif
            @endforeach
