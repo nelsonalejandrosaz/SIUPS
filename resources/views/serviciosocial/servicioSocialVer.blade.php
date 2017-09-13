@@ -234,8 +234,9 @@ Ver Servicio Social
 </div><!-- /.box-body -->
 <div class="box-footer">
   <a href="{{ route('servicioSocialLista') }}" class="btn btn-lg btn-default">Ver Lista</a>
-
+ @if( Auth::user()->rol[0]->nombre == "coordinador_Sups")
   <a href="{{ route('servicioSocialEditar',['id'=>$servicioSocial->id]) }}" class="btn btn-lg btn-warning pull-right">Editar</a>
+  @endif
 </div><!-- /.box-footer -->
 
 </form>

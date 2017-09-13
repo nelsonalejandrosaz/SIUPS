@@ -46,7 +46,7 @@
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-3 control-label">Nombre:</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                            <input type="text" class="form-control" placeholder="Nombre" name="nombre" value="{{ old('nombre') }}">
                           </div>
                         </div>
                         <div class="form-group">
@@ -54,13 +54,13 @@
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-3 control-label">Apellido:</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="Apellido" name="apellido">
+                            <input type="text" class="form-control" placeholder="Apellido" name="apellido" value="{{ old('apellido') }}">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-3 control-label">Correo:</label>
                           <div class="col-sm-9">
-                            <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correo">
+                            <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correo" value="{{ old('correo') }}">
                           </div>
                         </div>
                       </div>
@@ -69,13 +69,13 @@
                         <div class="form-group">
                           <label for="inputEmail3" class="col-sm-4 control-label">DUI</label>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" placeholder="09915467-6" name="dui">
+                            <input type="text" class="form-control" placeholder="09915467-6" name="dui" value="{{ old('dui') }}">
                           </div>
                         </div>
                           <div class="form-group">
                           <label for="inputEmail4" class="col-sm-4 control-label">Carnet</label>
                           <div class="col-sm-8">
-                            <input type="text" class="form-control" placeholder="MW21054" name="carnet">
+                            <input type="text" class="form-control" placeholder="MW21054" name="carnet" value="{{ old('carnet') }}">
                           </div>
                         </div>
                       </div>

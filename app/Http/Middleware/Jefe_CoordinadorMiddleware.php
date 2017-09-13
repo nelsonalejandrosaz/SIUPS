@@ -14,13 +14,16 @@ class Jefe_CoordinadorMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
+    /*para que jefe pueda ver servicios sociales junto con el coordinador*/
     public function handle($request, Closure $next)
     {
+        if(Auth::user()){
       foreach (Auth::user()->rol as $role) {
         if ($role->nombre=='jefe' | $role->nombre=='coordinador_Sups'){
         return $next($request);
         }
       }
+  }
         return redirect('permisoDenegado');
     }
 

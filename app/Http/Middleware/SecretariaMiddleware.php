@@ -14,11 +14,14 @@ class SecretariaMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {  foreach (Auth::user()->rol as $role) {
+    {
+    if(Auth::user()){
+      foreach (Auth::user()->rol as $role) {
         if ($role->nombre=='secretaria'){
         return $next($request);
         }
       }
+  }
         return redirect('permisoDenegado');
     }
 }

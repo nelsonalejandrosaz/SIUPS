@@ -55,12 +55,21 @@
                             <input type="text" class="form-control" value="{{ $tutor->dui}}" name="dui" disabled="">
                           </div>
                         </div>
+
+                        <div class="form-group">
+                          <label for="inputCarnet" class="col-sm-2 control-label">Carnet</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" value="{{ $tutor->carnet}}" name="dui" disabled="">
+                          </div>
+                        </div>
                          
                       </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
                     <a href=" {{ route('tutoresLista') }} " class="btn btn-lg btn-default">Ver Lista</a>
+                    @if( Auth::user()->rol[0]->nombre == "coordinador_Sups")
                     <a href="{{ route('TutorEditar',['id'=>$tutor->id]) }}" class="btn btn-lg btn-warning pull-right">Editar</a>
+                    @endif
                     <!-- <button type="submit" class="btn btn-lg btn-success pull-right">Guardar cambios</button> -->
                   </div><!-- /.box-footer -->
 

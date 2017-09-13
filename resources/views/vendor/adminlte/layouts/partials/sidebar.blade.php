@@ -107,23 +107,27 @@
 
             <!--Links para el CRUD de tutores-->
 
-            @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
+            @if( Auth::user()->rol[0]->nombre == "coordinador_Sups"|| Auth::user()->rol[0]->nombre == "jefe" )
             <li class="treeview">
                 <a href="#"><i class='fa fa-users'></i> <span>Tutores</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('tutoresLista') }}">Lista tutores</a></li>
+                    @if( Auth::user()->rol[0]->nombre == "coordinador_Sups")
                     <li><a href="{{ route('agregarTutor') }}">Ingresar tutor</a></li>
+                    @endif
                 </ul>
             </li>
             @endif
             <!--/Links para el CRUD de beneficiarios-->
 
-             @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
+             @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" || Auth::user()->rol[0]->nombre == "jefe")
             <li class="treeview">
                 <a href="#"><i class='fa fa-institution'></i> <span>Beneficiarios</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('beneficiarioLista') }}">Lista Beneficiarios</a></li>
+                     @if( Auth::user()->rol[0]->nombre == "coordinador_Sups")
                     <li><a href="{{ route('beneficiarioNuevo') }}">Ingresar Beneficiario</a></li>
+                    @endif
                 </ul>
             </li>
             @endif

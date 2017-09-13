@@ -17,7 +17,7 @@ class CreateBeneficiariosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('dui');
+            $table->string('dui',10)->unique();
             $table->string('correo')->nullable();
             $table->string('telefono')->nullable();
             $table->string('organizacion')->nullable();

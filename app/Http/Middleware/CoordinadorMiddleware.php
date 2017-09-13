@@ -15,11 +15,13 @@ class CoordinadorMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if(Auth::user()){
       foreach (Auth::user()->rol as $role) {
         if ($role->nombre=='coordinador_Sups'){
         return $next($request);
         }
       }
+  }
         return redirect('permisoDenegado');
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
+
 class JefeMiddleware
 {
     /**
@@ -16,11 +17,14 @@ class JefeMiddleware
      */
     public function handle($request, Closure $next)
     {
-      foreach (Auth::user()->rol as $role) {
+        if(Auth::user()){
+        foreach (Auth::user()->rol as $role) {
         if ($role->nombre=='jefe'){
         return $next($request);
         }
       }
+  }
         return redirect('permisoDenegado');
     }
+
 }

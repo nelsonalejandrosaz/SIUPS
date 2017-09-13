@@ -86,7 +86,7 @@ Route::get('permisoDenegado', function () {
 **      NUEVAS RUTAS PARA USUARIO    Arnulfo   ***
 ******************************************/
 
-Route::name('usuariosLista')->get('/usuarios', 'UsuarioController@UsuariosLista');
+Route::name('usuariosLista')->get('/usuarios', 'UsuarioController@UsuariosLista')->middleware('jefe');
 
 Route::name('agregarusuario')->get('Agregar/usuario','UsuarioController@AgregarUsuario')->middleware('jefe');
 
@@ -103,25 +103,16 @@ Route::name('usuarioEditarPost')->post('/usuarios/{id}/editar','UsuarioControlle
 ******************************************/
 
 /******************************************
-**      NUEVAS RUTAS PARA SERVICIO SOCIAL Kevin      ***
+**      NUEVAS RUTAS PARA TUTORES      ***
 ******************************************/
 
-//Route::name('ServicioSocialNuevo')->get('/ServicioSocial/Nuevo', 'ServicioSocialController@IngresarServicioSocial');
-
-
-
-
-/******************************************
-**      NUEVAS RUTAS PARA TUTORES    Arnulfo   ***
-******************************************/
-
-Route::name('tutoresLista')->get('/tutores', 'TutorController@TutoresLista');
+Route::name('tutoresLista')->get('/tutores', 'TutorController@TutoresLista')->middleware('Jefe_Coordinador');
 
 Route::name('agregarTutor')->get('Agregar/Tutor','TutorController@AgregarTutor')->middleware('coordinador');
 
 Route::name('TutorNuevoPost')->post('Tutores/nuevo','TutorController@guardarTutor')->middleware('coordinador');
 
-Route::name('TutorVer')->get('/Tutores/{id}', 'TutorController@verTutor')->middleware('coordinador');
+Route::name('TutorVer')->get('/Tutores/{id}', 'TutorController@verTutor')->middleware('Jefe_Coordinador');
 
 Route::name('TutorEditar')->get('/Tutores/{id}/editar', 'TutorController@editarTutor')->middleware('coordinador');
 
@@ -135,12 +126,12 @@ Route::name('TutorEditar')->get('/Tutores/{id}/editar', 'TutorController@editarT
 /******************************************
 **      NUEVAS RUTAS PARA BENEFICIARIOS  ***
 ******************************************/
-Route::name('beneficiarioLista')->get('/beneficiario', 'BeneficiarioController@BeneficiarioLista');
-Route::name('beneficiarioNuevo')->get('/beneficiario/nuevo','BeneficiarioController@BeneficiarioNuevo');
-Route::name('beneficiarioNuevoPost')->post('/beneficiario/nuevo','BeneficiarioController@BeneficiarioNuevoPost');
-Route::name('beneficiarioEditar')->get('/beneficiario/{id}/editar', 'BeneficiarioController@BeneficiarioEditar');
-Route::name('beneficiarioEditarPost')->post('/beneficiario/{id}/editar','BeneficiarioController@BeneficiarioEditarPost');
-Route::name('beneficiarioVer')->get('/beneficiario/{id}/ver', 'BeneficiarioController@BeneficiarioVer');
+Route::name('beneficiarioLista')->get('/beneficiario', 'BeneficiarioController@BeneficiarioLista')->middleware('Jefe_Coordinador');
+Route::name('beneficiarioNuevo')->get('/beneficiario/nuevo','BeneficiarioController@BeneficiarioNuevo')->middleware('coordinador');
+Route::name('beneficiarioNuevoPost')->post('/beneficiario/nuevo','BeneficiarioController@BeneficiarioNuevoPost')->middleware('coordinador');
+Route::name('beneficiarioEditar')->get('/beneficiario/{id}/editar', 'BeneficiarioController@BeneficiarioEditar')->middleware('coordinador');
+Route::name('beneficiarioEditarPost')->post('/beneficiario/{id}/editar','BeneficiarioController@BeneficiarioEditarPost')->middleware('coordinador');
+Route::name('beneficiarioVer')->get('/beneficiario/{id}/ver', 'BeneficiarioController@BeneficiarioVer')->middleware('Jefe_Coordinador');
 
 
 

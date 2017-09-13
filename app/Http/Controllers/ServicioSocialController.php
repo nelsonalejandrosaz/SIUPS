@@ -29,6 +29,7 @@ class ServicioSocialController extends Controller
 
     public function serviciosDisponiblesVer($id)
     {
+      
    $servicioSocial = ServicioSocial::find($id);
     $Beneficiarios = Beneficiario::all();
     $Tutors = Tutor::all();
