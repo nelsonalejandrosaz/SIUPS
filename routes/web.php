@@ -20,6 +20,13 @@
 |5.Rutas para tutores 		110
 |
 */
+/********************************
+*Rutas para Servicio Sociales Disponibles al publico
+********************************/
+Route::name('serviciosDisponibles')->get('/serviciosDisponibles','ServicioSocialController@ServiciosDisponibles');
+Route::name('serviciosDisponiblesVer')->get('/serviciosDisponibles/{id}/ver','ServicioSocialController@ServiciosDisponiblesVer');
+/**********************************
+**********************************/
 
 Route::group(['middleware' => 'auth'], function () {
 	/********************************

@@ -19,7 +19,28 @@ use Illuminate\Database\QueryException;
 class ServicioSocialController extends Controller
 {
 
-   public function ServicioSocialLista()
+   public function ServiciosDisponibles()
+    {
+       $serviciossociales = ServicioSocial::all();      
+     //return view('serviciosocial.servicioSocialLista')-with(['SocialServicios' => $SocialServicios]);
+      return view('serviciosDisponibles.serviciosDisponibles')->with(['serviciossociales' => $serviciossociales]);;
+
+    }
+
+    public function serviciosDisponiblesVer($id)
+    {
+   $servicioSocial = ServicioSocial::find($id);
+    $Beneficiarios = Beneficiario::all();
+    $Tutors = Tutor::all();
+    $estados = Estado::all();
+    $departamentos = Departamento::all();
+    $municipios = Municipio::all();
+    $modalidades = Modalidad::all();
+    return view('serviciosDisponibles.serviciosDisponiblesVer')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
+
+    }
+
+     public function ServicioSocialLista()
     {
        if (Auth::user()->rol[0]->id == 2) {
           $serviciossociales = ServicioSocial::all();
@@ -30,6 +51,7 @@ class ServicioSocialController extends Controller
       return view('serviciosocial.servicioSocialLista')->with(['serviciossociales' => $serviciossociales]);;
 
     }
+
 
 
    public function ServicioSocialRegistro()
