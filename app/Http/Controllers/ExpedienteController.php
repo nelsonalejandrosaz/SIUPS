@@ -18,7 +18,7 @@ class ExpedienteController extends Controller
     }
     public function ExpedienteVer($carnet)
     {
-    	$alumno_escuela = Alumno_escuela::where('carnet',$carnet)->get();
+    	$alumno_escuela = Alumno_escuela::where('carnet',$carnet)->first();
     	return view('expediente.expedienteVer')->with(['alumno_escuela' =>$alumno_escuela]);
     }
 }
