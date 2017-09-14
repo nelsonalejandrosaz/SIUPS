@@ -49,7 +49,8 @@ class AlumnoController extends Controller
 				$alumno_escuela->alumno()->associate($alumno);
 				$alumno_escuela->escuela()->associate($escuela);
 				// $alumno_escuela->save();
-				Alumno_escuela::firstOrCreate(['alumno_id' => $alumno_escuela->alumno->id, 'escuela_id' => $alumno_escuela->escuela->id]);
+				$ae = Alumno_escuela::firstOrCreate(['carnet' => $alumno->carnet, 'escuela_id' => $escuela->id]);
+        Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1]);
 				// Alumno::firstOrCreate($fila->toArray());
 				// return $fila;
 			});
