@@ -50,7 +50,7 @@ class AlumnoController extends Controller
 				$alumno_escuela->escuela()->associate($escuela);
 				// $alumno_escuela->save();
 				$ae = Alumno_escuela::firstOrCreate(['carnet' => $alumno->carnet, 'escuela_id' => $escuela->id]);
-        Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1]);
+        Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1, 'observaciones' => 'Ninguna']);
 				// Alumno::firstOrCreate($fila->toArray());
 				// return $fila;
 			});
@@ -91,7 +91,7 @@ class AlumnoController extends Controller
       $escuela = Escuela::where('id', Auth::user()->escuela_id)->first();
       $ae = Alumno_escuela::create(['carnet' => $alumno->carnet, 'escuela_id' => $escuela->id]);
       // Se crea el Expediente del alumno con el estado sin abrir
-      Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1]);
+      Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1, 'observaciones' => 'Ninguna']);
       session()->flash('mensaje', 'Alumno ingresado con exito');
       return redirect()->route('alumnoVer',['carnet'=>$alumno->carnet]);
     } else { 
@@ -109,7 +109,7 @@ class AlumnoController extends Controller
       $escuela = Escuela::where('id', Auth::user()->escuela_id)->first();
       $ae = Alumno_escuela::create(['carnet' => $alumno->carnet, 'escuela_id' => $escuela->id]);
       // Se crea el Expediente del alumno con el estado sin abrir
-      Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1]);
+      Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1, 'observaciones' => 'Ninguna']);
       session()->flash('mensaje', 'Alumno ingresado con exito');
       return redirect()->route('alumnoVer',['carnet'=>$alumno->carnet]) ;         
     }
