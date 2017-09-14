@@ -57,7 +57,7 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-newspaper-o'></i> <span>Expedientes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Lista</a></li>
+                    <li><a href="{{ route('expedienteLista') }}">Lista</a></li>
                     <li><a href="#">Expedientes en curso</a></li>
                 </ul>
             </li>

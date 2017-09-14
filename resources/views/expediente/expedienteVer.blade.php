@@ -2,7 +2,7 @@
 
 {{-- Titulo de la pagina --}}
 @section('htmlheader_title')
-	Expediente de {{$alumno_escuela->alumno->nombre}}
+	Expediente de {{$alumno_escuela}}
 @endsection
 
 {{-- Seccion para agregar estilos CSS extras a los que se cargan por defecto --}}
@@ -32,7 +32,20 @@
     <!-- Horizontal Form -->
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title">Datos de la ficha de beneficiario</h3>
+        <h2 class="box-title">Hoja de Expediente</h2>
+        <h4>Universidad de El Salvador</h4>
+        <h4>Facultad de Ingenieria y Arquitectura</h4>
+        <h4>Escuela de ingenierias de [escuela]</h4>
+        <h4>Subunidad de proyeccion Social</h4>
+        <br>
+        <h4>Resumen de Servicio Social Desarrollado</h4>
+        <br>
+        <h5>Datos de inscripcion</h5>
+        <p>Alumno</p>
+        <p>Carnet</p>
+        <p>Direccion</p>
+        <p>Telefono</p>
+        <p>Correo Electronico</p>
       </div><!-- /.box-header -->
       
     </div><!-- /.box -->

@@ -151,4 +151,5 @@ Route::name('servicioSocialVer')->get('/ServicioSocial/{id}/ver', 'ServicioSocia
 /********************************
 *Rutas para Expediente
 ********************************/
+Route::name('expedienteLista')->get('/expediente', 'ExpedienteController@ExpedienteLista');
 Route::name('expedienteVer')->get('/expediente/{carnet}','ExpedienteController@ExpedienteVer');
