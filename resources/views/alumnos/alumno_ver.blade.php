@@ -82,7 +82,7 @@
                     <div class="box-footer">
                     <a href=" {{ route('alumnoLista') }} " class="btn btn-lg btn-default">Ver Lista</a>
                      @if( Auth::user()->rol[0]->nombre == "coordinador_Sups")
-                     <a href="{{ route('alumnoEditar',['id'=>$alumno->id]) }}" class="btn btn-lg btn-warning pull-right">Editar</a>
+                     <a href="{{ route('alumnoEditar',['carnet' => $alumno->carnet]) }}" class="btn btn-lg btn-warning pull-right">Editar</a>
                      @endif
                     <!-- <button type="submit" class="btn btn-lg btn-success pull-right">Guardar cambios</button> -->
                   </div><!-- /.box-footer -->

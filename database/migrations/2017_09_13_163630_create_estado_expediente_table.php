@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlumnosEscuelasTable extends Migration
+class CreateEstadoExpedienteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateAlumnosEscuelasTable extends Migration
      */
     public function up()
     {
-        Schema::create('alumno_escuelas', function (Blueprint $table) {
+        Schema::create('estado_expedientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('carnet');
-            $table->integer('escuela_id')->unsigned();
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateAlumnosEscuelasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alumno_escuelas');
+        Schema::dropIfExists('estado_expedientes');
     }
 }

@@ -21,8 +21,7 @@ class CreateExpedientesTable extends Migration
             $table->text('observaciaciones')->nullable();
             $table->integer('totalHoras')->nullable();
             $table->integer('totalMontos')->nullable();
-            $table->string('estado');
-            $table->string('carnet');
+            $table->integer('estado_expediente_id')->unsigned();
             $table->timestamps();
         });
     }

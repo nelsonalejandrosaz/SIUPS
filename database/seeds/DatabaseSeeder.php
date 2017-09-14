@@ -18,9 +18,10 @@ class DatabaseSeeder extends Seeder
           $this->call(DepartamentoSeeder::class);
           $this->call(MunicipioSeeder::class);
           $this->call(ModalidadesSeeder::class);
-         $this->call(EstadosSeeder::class);
-         $this->call(TutorSeeder::class);
-         $this->call(BeneficiariosSeeder::class);
+          $this->call(EstadosSeeder::class);
+          $this->call(TutorSeeder::class);
+          $this->call(BeneficiariosSeeder::class);
+          $this->call(Estado_expedienteSeeder::class);
 
     }
 }

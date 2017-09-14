@@ -44,9 +44,9 @@
               <td>{{$alumno_escuela->escuela->nombre}}</td>
               <td align="center">
                 @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
-                <a href="{{ route('alumnoEditar', ['id' => $alumno_escuela->alumno->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+                <a href="{{ route('alumnoEditar', ['carnet' => $alumno_escuela->alumno->carnet]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
                 @endif  
-                <a href="{{ route('alumnoVer', ['id' => $alumno_escuela->alumno->id]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a>
+                <a href="{{ route('alumnoVer', ['carnet' => $alumno_escuela->alumno->carnet]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a>
               </td>
             </tr>
             @endforeach

@@ -38,9 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
 	})->middleware('coordinador');
 	Route::name('alumnoNuevo')->get('/alumnos/nuevo','AlumnoController@registroAlumno')->middleware('coordinador');
 	Route::name('alumnoNuevoPost')->post('/alumnos/nuevo','AlumnoController@guardarAlumno')->middleware('coordinador');
-	Route::name('alumnoVer')->get('/alumnos/{id}', 'AlumnoController@verAlumno');
-	Route::name('alumnoEditar')->get('/alumnos/{id}/editar', 'AlumnoController@editarAlumno')->middleware('coordinador');
-	Route::name('alumnoEditarPost')->post('/alumnos/{id}/editar','AlumnoController@editarAlumnoGuardar')->middleware('coordinador');
+	Route::name('alumnoVer')->get('/alumnos/{carnet}', 'AlumnoController@verAlumno');
+	Route::name('alumnoEditar')->get('/alumnos/{carnet}/editar', 'AlumnoController@editarAlumno')->middleware('coordinador');
+	Route::name('alumnoEditarPost')->post('/alumnos/{carnet}/editar','AlumnoController@editarAlumnoGuardar')->middleware('coordinador');
 	Route::name('alumnoCargaCSVPost')->post('import_csv_file', 'AlumnoController@import_csv_file')->middleware('coordinador');
 	/********************************
 	* Fin Rutas para gestion alumnos
