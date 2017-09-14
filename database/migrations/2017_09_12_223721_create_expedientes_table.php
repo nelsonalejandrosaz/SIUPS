@@ -18,7 +18,7 @@ class CreateExpedientesTable extends Migration
             $table->integer('alumno_escuela_id')->unsigned();
             $table->date('fecha_apertura')->nullable();
             $table->date('fecha_cierre')->nullable();
-            $table->text('observaciaciones')->nullable();
+            $table->text('observaciones')->nullable();
             $table->integer('totalHoras')->nullable();
             $table->integer('totalMontos')->nullable();
             $table->integer('estado_expediente_id')->unsigned();

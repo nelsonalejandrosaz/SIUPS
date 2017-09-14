@@ -40,6 +40,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Estado</th>
+                <th>Observaciones</th>
                 <th>Accion</th>
               </tr>
             </thead>
@@ -50,6 +51,7 @@
               <td>{{$alumno_escuela->alumno->nombre}}</td>
               <td>{{$alumno_escuela->alumno->apellido}}</td>
               <td>{{$alumno_escuela->expediente->estado_expediente->nombre}}</td>
+              <td>{{$alumno_escuela->expediente->observaciones}}</td>
               <td align="center">
                 <a href="{{ route('expedienteVer', ['carnet' => $alumno_escuela->carnet]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a> 
               </td>
