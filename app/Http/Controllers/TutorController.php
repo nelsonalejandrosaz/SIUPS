@@ -25,7 +25,7 @@ class TutorController extends Controller
     public function guardarTutor(Request $request)
   	{
     $this->validate($request, [
-        'dui'=>'required|size:10',
+        'dui'=>'required|size:10|unique',
         'nombre'=>'required',
         'apellido'=>'required',
         'correo'=>'email',

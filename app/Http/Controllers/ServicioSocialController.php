@@ -29,16 +29,14 @@ class ServicioSocialController extends Controller
 
     public function serviciosDisponiblesVer($id)
     {
-      
-   $servicioSocial = ServicioSocial::find($id);
-    $Beneficiarios = Beneficiario::all();
-    $Tutors = Tutor::all();
-    $estados = Estado::all();
-    $departamentos = Departamento::all();
-    $municipios = Municipio::all();
-    $modalidades = Modalidad::all();
-    return view('serviciosDisponibles.serviciosDisponiblesVer')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
-
+      $servicioSocial = ServicioSocial::find($id);
+      $Beneficiarios = Beneficiario::all();
+        $Tutors = Tutor::all();
+        $estados = Estado::all();
+        $departamentos = Departamento::all();
+        $municipios = Municipio::all();
+        $modalidades = Modalidad::all();
+        return view('serviciosDisponibles.serviciosDisponiblesVer')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
     }
 
      public function ServicioSocialLista()
@@ -106,6 +104,7 @@ class ServicioSocialController extends Controller
    public function ServicioSocialEditar($id)
     {
     $servicioSocial = ServicioSocial::find($id);
+    if ( Auth::user()->escuela_id == $servicioSocial->escuela->id ) {
     $Beneficiarios = Beneficiario::all();
     $Tutors = Tutor::all();
     $estados = Estado::all();
@@ -113,7 +112,8 @@ class ServicioSocialController extends Controller
     $municipios = Municipio::all();
     $modalidades = Modalidad::all();
     return view('servicioSocial.servicioSocialEditar')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
-
+    } 
+    return redirect()->route('permisoDenegado');
     }
     //funcion Post para editar al servicio social
     public function ServicioSocialEditarPost(Request $request, $id)
@@ -150,6 +150,7 @@ class ServicioSocialController extends Controller
      public function servicioSocialVer($id)
     {
    $servicioSocial = ServicioSocial::find($id);
+    if ( Auth::user()->escuela_id == $servicioSocial->escuela->id ) {
     $Beneficiarios = Beneficiario::all();
     $Tutors = Tutor::all();
     $estados = Estado::all();
@@ -157,7 +158,8 @@ class ServicioSocialController extends Controller
     $municipios = Municipio::all();
     $modalidades = Modalidad::all();
     return view('servicioSocial.servicioSocialVer')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
-
+    }
+    return redirect()->route('permisoDenegado');
     }
 
  }

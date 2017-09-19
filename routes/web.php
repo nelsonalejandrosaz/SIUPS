@@ -76,7 +76,7 @@ Route::name('inicioCoordinador')->get('home/coordinador', 'CoordinadorController
 * Fin Rutas para validar roles
 ********************************/
 
-Route::get('permisoDenegado', function () {
+Route::name('permisoDenegado')->get('permisoDenegado', function () {
     return view('errores.permisoDenegado');
 
 });
