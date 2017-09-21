@@ -103,7 +103,7 @@ Editar Servicio Social
         <div class="form-group">
           <label class="col-sm-3 control-label">Horas totales del servicio social:</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="horas_totales" value="{{$servicioSocial->horas_totales}}">
+            <input type="number" class="form-control" name="horas_totales" value="{{$servicioSocial->horas_totales}}" min="0">
           </div>
         </div>
 
@@ -111,7 +111,7 @@ Editar Servicio Social
         <div class="form-group">
           <label class="col-sm-3 control-label">Numero de alumnos:*</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="numero_estudiantes" value="{{$servicioSocial->numero_estudiantes}}">
+            <input type="number" class="form-control" name="numero_estudiantes" value="{{$servicioSocial->numero_estudiantes}}" min="1">
           </div>
         </div>
 
@@ -209,7 +209,7 @@ Editar Servicio Social
         <div class="form-group">
           <label class="col-sm-3 control-label">Beneficiarios directos:</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control"  name="beneficiarios_directos" value="{{$servicioSocial->beneficiarios_directos}}">
+            <input type="number" class="form-control"  name="beneficiarios_directos" value="{{$servicioSocial->beneficiarios_directos}}" min="0">
           </div>
         </div>
 
@@ -217,7 +217,7 @@ Editar Servicio Social
         <div class="form-group">
           <label class="col-sm-3 control-label">Beneficiarios indirectos:</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="beneficiarios_indirectos" value="{{$servicioSocial->beneficiarios_indirectos}}">
+            <input type="number" class="form-control" name="beneficiarios_indirectos" value="{{$servicioSocial->beneficiarios_indirectos}}" min="0">
           </div>
         </div>
 
@@ -225,7 +225,7 @@ Editar Servicio Social
         <div class="form-group">
           <label class="col-sm-3 control-label">Monto:</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" name="monto" value="{{$servicioSocial->monto}}">
+            <input type="number" class="form-control" name="monto" value="{{$servicioSocial->monto}}" min="0">
           </div>
         </div>
 

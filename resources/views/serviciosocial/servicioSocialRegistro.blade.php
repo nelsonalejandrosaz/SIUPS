@@ -101,7 +101,7 @@ Nuevo Servicio Social
         <div class="form-group">
           <label class="col-sm-3 control-label">Horas totales del servicio social:</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" placeholder="2000" name="horas_totales" value="{{old('horas_totales')}}">
+            <input type="number" class="form-control" placeholder="2000" name="horas_totales" value="{{old('horas_totales')}}" min="0">
           </div>
         </div>
 
@@ -109,7 +109,7 @@ Nuevo Servicio Social
         <div class="form-group">
           <label class="col-sm-3 control-label">Numero de alumnos:*</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" placeholder="5" name="numero_estudiantes" value="{{old('numero_estudiantes')}}">
+            <input type="number" class="form-control" placeholder="5" name="numero_estudiantes" value="{{old('numero_estudiantes')}}" min="1">
           </div>
         </div>
 
@@ -170,7 +170,7 @@ Nuevo Servicio Social
         <div class="form-group">
           <label class="col-sm-3 control-label">Beneficiarios directos:</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" placeholder="15" name="beneficiarios_directos" value="{{old('beneficiarios_directos')}}">
+            <input type="number" class="form-control" placeholder="15" name="beneficiarios_directos" value="{{old('beneficiarios_directos')}}" min="0">
           </div>
         </div>
 
@@ -178,7 +178,7 @@ Nuevo Servicio Social
         <div class="form-group">
           <label class="col-sm-3 control-label">Beneficiarios indirectos:</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" placeholder="100" name="beneficiarios_indirectos" value="{{old('beneficiarios_indirectos')}}">
+            <input type="number" class="form-control" placeholder="100" name="beneficiarios_indirectos" value="{{old('beneficiarios_indirectos')}}" min="0">
           </div>
         </div>
 
@@ -186,7 +186,7 @@ Nuevo Servicio Social
         <div class="form-group">
           <label class="col-sm-3 control-label">Monto:</label>
           <div class="col-sm-9">
-            <input type="number" class="form-control" placeholder="2000" name="monto" value="{{old('monto')}}">
+            <input type="number" class="form-control" placeholder="2000" name="monto" value="{{old('monto')}}"  min="0">
           </div>
         </div>
 

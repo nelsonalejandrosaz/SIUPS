@@ -74,7 +74,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">DUI:*</label>
                   <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="04058030-9" name="dui" value="{{ old('dui') }}">
+                  <input type="text" class="form-control" placeholder="04058030-9" name="dui" value="{{ old('dui') }}" pattern="[0-9]{8}?[-]{1}?[0-9]{1}">
                   </div>
                 </div>
                {{-- carnet --}}

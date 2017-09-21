@@ -62,15 +62,15 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Carnet:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">DUI:*</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $tutor->carnet }}" name="carnet">
+                            <input type="text" class="form-control" value="{{ $tutor->dui }}" name="dui" pattern="[0-9]{8}?[-]{1}?[0-9]{1}">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Dui:*</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Carnet:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $tutor->dui }}" name="dui">
+                            <input type="text" class="form-control" value="{{ $tutor->carnet }}" name="carnet">
                           </div>
                         </div>
                       </div>

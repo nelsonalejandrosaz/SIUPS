@@ -70,7 +70,7 @@
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Telefono:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="2222-2222" name="telefono">
+                            <input type="text" class="form-control" placeholder="2222-2222" name="telefono" minlength="8" maxlength="11">
                           </div>
                         </div>
                         <div class="form-group">
@@ -89,7 +89,7 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Telefono de trabajo</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label" minlength="8" maxlength="11">Telefono de trabajo</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" placeholder="2222-2222" name="telefono_trabajo">
                           </div>

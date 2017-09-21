@@ -58,7 +58,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">DUI:*</label>
                   <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{ $beneficiario->dui}}" name="dui">
+                  <input type="text" class="form-control" value="{{ $beneficiario->dui}}" name="dui" pattern="[0-9]{8}?[-]{1}?[0-9]{1}">
                   </div>
                 </div>
                 {{-- correo --}}
@@ -72,7 +72,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Telefono:</label>
                   <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{ $beneficiario->telefono }}" name="telefono">
+                  <input type="text" class="form-control" value="{{ $beneficiario->telefono }}" name="telefono" minlength="8" maxlength="11">
                   </div>
                 </div>
               </div>
@@ -89,7 +89,7 @@
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Telefono :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{ $beneficiario->telefono_organizacion }}" name="telefono_organizacion">
+                  <input type="text" class="form-control" value="{{ $beneficiario->telefono_organizacion }}" name="telefono_organizacion" minlength="8" maxlength="11">
                 </div>
               </div>
               {{-- correo --}}
