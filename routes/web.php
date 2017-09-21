@@ -38,7 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
 	})->middleware('coordinador');
 	Route::name('alumnoNuevo')->get('/alumnos/nuevo','AlumnoController@registroAlumno')->middleware('coordinador');
 	Route::name('alumnoNuevoPost')->post('/alumnos/nuevo','AlumnoController@guardarAlumno')->middleware('coordinador');
-	Route::name('alumnoVer')->get('/alumnos/{carnet}', 'AlumnoController@verAlumno');
+	Route::name('alumnoVer')->get('/alumnos/{carnet}', 'AlumnoController@verAlumno')->middleware('Jefe_Coordinador');
 	Route::name('alumnoEditar')->get('/alumnos/{carnet}/editar', 'AlumnoController@editarAlumno')->middleware('coordinador');
 	Route::name('alumnoEditarPost')->post('/alumnos/{carnet}/editar','AlumnoController@editarAlumnoGuardar')->middleware('coordinador');
 	Route::name('alumnoCargaCSVPost')->post('import_csv_file', 'AlumnoController@import_csv_file')->middleware('coordinador');
@@ -151,8 +151,8 @@ Route::name('servicioSocialVer')->get('/ServicioSocial/{id}/ver', 'ServicioSocia
 /********************************
 *Rutas para Expediente
 ********************************/
-Route::name('expedienteLista')->get('/expediente', 'ExpedienteController@ExpedienteLista');
-Route::name('expedienteVer')->get('/expediente/{carnet}','ExpedienteController@ExpedienteVer');
+Route::name('expedienteLista')->get('/expediente', 'ExpedienteController@ExpedienteLista')->middleware('Jefe_Coordinador');
+Route::name('expedienteVer')->get('/expediente/{carnet}','ExpedienteController@ExpedienteVer')->middleware('Jefe_Coordinador');
 
 
 // Rutas para buscar municipios
