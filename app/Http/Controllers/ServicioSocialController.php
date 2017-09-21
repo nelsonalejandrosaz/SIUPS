@@ -71,7 +71,8 @@ class ServicioSocialController extends Controller
       'fecha_ingreso'=>'required',
       'numero_estudiantes'=>'required|numeric',
       'beneficiario_id'=>'required',
-      ],['beneficiario_id.required'=>'Beneficiario es obligatorio.Click aca para crear un beneficiario']);
+       'modalidad_id' =>'required',
+      ],['beneficiario_id.required'=>'Beneficiario es obligatorio']);
     // $serviciosocial  = new SocialServicio ;
     // $serviciosocial->nombreSS = $request->nombreSS;
     //   $serviciosocial->inicioSS = $request->inicioSS;

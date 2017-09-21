@@ -60,9 +60,13 @@ Nuevo Servicio Social
               <label class="col-sm-3 control-label">Modalidad:*</label>
               <div class="col-sm-9">
                 <select class="form-control select2" style="width: 100%;" name="modalidad_id">
-                 @foreach($modalidades as $modalidad)
-                 <option value="{{ $modalidad->id }}" @if(old('modalidad_id')==$modalidad->id){{'selected'}} @endif>{{ $modalidad->nombre }}</option>
+                
+                  <option selected value="" disabled>Seleccione la modalidad </option>
+                   @foreach($modalidades as $modalidad)
+                   <option value="{{ $modalidad->id }}"@if(old('modalidad_id')==$modalidad->id){{'selected'}} @endif>{{ $modalidad->nombre }}</option>
                  @endforeach
+
+                  
                </select>
              </div>
            </div>

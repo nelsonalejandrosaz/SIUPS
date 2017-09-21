@@ -37,11 +37,11 @@
             <thead>
               <tr>
                 <th style="width:30%">Nombre</th>
-                <th style="width:15%">Tutor</th>
+                
                 <th style="width:15% ">Beneficiario</th>
                 <th style="width:10%">Municipio</th>
                 
-                <th style="width:10%">Estudiantes Requeridos</th>
+                <th style="width:8%">Estudiantes Requeridos</th>
                 <th style="width:10%">Estado</th>
                 <th style="width:10% ">Accion</th>
               </tr>
@@ -51,11 +51,7 @@
              @foreach($serviciossociales as $serviciosocial)
               <tr>
               <td>{{$serviciosocial->nombre}}</td>
-              @if ($serviciosocial->tutor != null)
-              <td>{{$serviciosocial->tutor->nombre}}</td>
-              @else
-               <td>Sin Tutor</td>
-              @endif
+             
               <td>{{$serviciosocial->beneficiario->nombre}}</td>
               <td>{{$serviciosocial->municipio->nombre}}</td>
               
