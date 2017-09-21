@@ -117,9 +117,16 @@ class AlumnoController extends Controller
 
   public function editarAlumno($carnet)
   {
+     $alumno_escuela=Alumno_escuela::where('carnet',$carnet)->first();
+    if ( Auth::user()->escuela_id == $alumno_escuela->escuela->id || Auth::user()->rol[0]->nombre=='jefe') {
+
       $alumno = Alumno::find($carnet);
       return view('alumnos.alumno_editar')->with(['alumno' => $alumno]);
-  }
+       }
+     return redirect()->route('permisoDenegado');
+   }
+
+  
 
   public function editarAlumnoGuardar(Request $request){
     $alumno = Alumno::find($request->carnet);
