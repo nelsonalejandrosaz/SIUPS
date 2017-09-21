@@ -107,16 +107,48 @@ class Handler implements ExceptionHandlerContract
     public function render($request, Exception $e)
     {
         $e = $this->prepareException($e);
+        // Verificamos si el debug esta activo
+        if (config('app.debug')) {
+            if ($e instanceof ValidationException) {
+                return $this->convertValidationExceptionToResponse($e, $request);
+            }elseif ($e instanceof AuthenticationException) {
+                return $this->unauthenticated($request, $e);
+            }
+                // Creamos una nueva instancia de la clase Run
+            $whoops = new \Whoops\Run;
+                // Registramos el manejador "pretty handler"
+            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 
-        if ($e instanceof HttpResponseException) {
-            return $e->getResponse();
-        } elseif ($e instanceof AuthenticationException) {
-            return $this->unauthenticated($request, $e);
-        } elseif ($e instanceof ValidationException) {
-            return $this->convertValidationExceptionToResponse($e, $request);
+                // Retornamos una nueva respuesta
+            return response()->make(
+                $whoops->handleException($e),
+                method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500,
+                method_exists($e, 'getHeaders') ? $e->getHeaders() : []
+            );
         }
 
-        return $this->prepareResponse($request, $e);
+        // if ($e instanceof HttpResponseException) {
+        //     return $e->getResponse();
+        // } elseif ($e instanceof AuthenticationException) {
+        //     return $this->unauthenticated($request, $e);
+        // } elseif ($e instanceof ValidationException) {
+        //     return $this->convertValidationExceptionToResponse($e, $request);
+        // }
+
+        // return $this->prepareResponse($request, $e);
+
+
+        // $e = $this->prepareException($e);
+
+        // if ($e instanceof HttpResponseException) {
+        //     return $e->getResponse();
+        // } elseif ($e instanceof AuthenticationException) {
+        //     return $this->unauthenticated($request, $e);
+        // } elseif ($e instanceof ValidationException) {
+        //     return $this->convertValidationExceptionToResponse($e, $request);
+        // }
+
+        // return $this->prepareResponse($request, $e);
     }
 
     /**

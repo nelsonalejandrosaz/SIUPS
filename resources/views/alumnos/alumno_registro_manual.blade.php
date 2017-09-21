@@ -46,7 +46,7 @@
                         <div class="form-group">
                           <label for="inputEmail3" class="col-sm-2 control-label">Carnet:*</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="AA17001" name="carnet">
+                            <input type="text" class="form-control" placeholder="AA17001" name="carnet" pattern="[A-Za-z]{2}?[0-9]{5}">
                           </div>
                         </div>
                         <div class="form-group">

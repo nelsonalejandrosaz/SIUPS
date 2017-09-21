@@ -153,3 +153,7 @@ Route::name('servicioSocialVer')->get('/ServicioSocial/{id}/ver', 'ServicioSocia
 ********************************/
 Route::name('expedienteLista')->get('/expediente', 'ExpedienteController@ExpedienteLista');
 Route::name('expedienteVer')->get('/expediente/{carnet}','ExpedienteController@ExpedienteVer');
+
+
+// Rutas para buscar municipios
+Route::name('municipiosPorDep')->get('/municipios/{id}', 'ServicioSocialController@municipiosPorDepartamento');

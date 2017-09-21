@@ -163,4 +163,10 @@ class ServicioSocialController extends Controller
     return redirect()->route('permisoDenegado');
     }
 
+    public function municipiosPorDepartamento($id)
+    {
+      $municipios = Municipio::where('departamento_id',$id)->get();
+      return \Response::json($municipios);
+    }
+
  }
