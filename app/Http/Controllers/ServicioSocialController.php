@@ -110,7 +110,7 @@ class ServicioSocialController extends Controller
     $Tutors = Tutor::all();
     $estados = Estado::all();
     $departamentos = Departamento::all();
-    $municipios = Municipio::all();
+    $municipios = Municipio::where('departamento_id',$servicioSocial->municipio->departamento_id)->get();
     $modalidades = Modalidad::all();
     return view('servicioSocial.servicioSocialEditar')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
     } 

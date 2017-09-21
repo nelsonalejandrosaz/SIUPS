@@ -179,7 +179,7 @@ Ver Servicio Social
       <div class="col-sm-9">
         <select class="form-control select2" style="width: 100%;" name="departamento_id" disabled="true">
          @foreach($departamentos as $departamento)
-          @if($departamento->id == $servicioSocial->departamento_id)
+          @if($departamento->id == $servicioSocial->municipio->departamento_id)
          <option selected value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
          @else
          <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>

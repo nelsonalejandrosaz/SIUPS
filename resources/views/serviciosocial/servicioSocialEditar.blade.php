@@ -177,9 +177,9 @@ Editar Servicio Social
      <div class="form-group">
       <label class="col-sm-3 control-label">Departamento:</label>
       <div class="col-sm-9">
-        <select class="form-control select2" style="width: 100%;" name="departamento_id">
+        <select class="form-control select2" id="select2Dep" style="width: 100%;" name="departamento_id">
          @foreach($departamentos as $departamento)
-          @if($departamento->id == $servicioSocial->departamento_id)
+          @if($departamento->id == $servicioSocial->municipio->departamento_id)
          <option selected value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
          @else
          <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
@@ -193,7 +193,7 @@ Editar Servicio Social
    <div class="form-group">
     <label class="col-sm-3 control-label">Municipio:</label>
     <div class="col-sm-9">
-      <select class="form-control select2" style="width: 100%;" name="municipio_id">
+      <select class="form-control select2" id="select2Mup" style="width: 100%;" name="municipio_id">
        @foreach($municipios as $municipio)
         @if($municipio->id == $servicioSocial->municipio_id)
        <option selected value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
@@ -253,6 +253,21 @@ Editar Servicio Social
   $(function () {
     //Initialize Select2 Elements
     $(".select2").select2();
+    $select2Dep = $('#select2Dep');
+    $select2Mup = $('#select2Mup');
+    // $select2Dep.select2();
+    // $select2Mup.select2();
+
+    $select2Dep.change(function(event){
+      $.get("/municipios/"+$select2Dep.val(),function(response,state){
+        $select2Mup.select2('destroy');
+        $select2Mup.empty();
+        for (var i = 0; i < response.length; i++) {
+          $('#select2Mup').append("<option value='"+response[i].id+"'>"+response[i].nombre+"</option>");
+        }
+        $select2Mup.select2();
+      })
+    })
 
   });
 </script>
