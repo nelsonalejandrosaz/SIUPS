@@ -12,10 +12,15 @@ class ExpedienteController extends Controller
 {
     public function ExpedienteLista()
     {
-        $alumnos_escuela = Alumno_escuela::where('escuela_id',Auth::user()->escuela_id)->get();
+        if (Auth::user()->rol[0]->nombre == 'jefe') {
+            $alumnos_escuela = Alumno_escuela::all();    
+        } else {
+            $alumnos_escuela = Alumno_escuela::where('escuela_id',Auth::user()->escuela_id)->get();            
+        }
         // $alumnos_escuela = Alumno_escuela::all();
         return view('expediente.expedienteLista')->with(['alumnos_escuela' =>$alumnos_escuela]);
     }
+    
     public function ExpedienteVer($carnet)
     {
     	$alumno_escuela = Alumno_escuela::where('carnet',$carnet)->first();
