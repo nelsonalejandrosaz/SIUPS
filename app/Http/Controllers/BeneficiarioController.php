@@ -62,7 +62,8 @@ class BeneficiarioController extends Controller
       ]);
       $beneficiario = Beneficiario::find($id);
       // Fin validacion
-      if((Beneficiario::where('dui','=',$request->dui)->first()) == null)
+      if((Beneficiario::where('dui','=',$request->dui)->first()) == null||
+        $beneficiario->dui == $request->dui )
 
     {
     	$beneficiario = Beneficiario::find($id);

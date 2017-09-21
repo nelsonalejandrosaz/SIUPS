@@ -75,8 +75,10 @@ class TutorController extends Controller
         'apellido'=>'required',
         'correo'=>'email',
         ]);
+       //verifica que dui de tutor nos e repita
         $tutor = Tutor::find($id);
-        if((Tutor::where('dui','=',$request->dui)->first()) == null)
+        if((Tutor::where('dui','=',$request->dui)->first()) == null||
+        $tutor->dui == $request->dui)
      {
 
     	$tutor = Tutor::find($id);
