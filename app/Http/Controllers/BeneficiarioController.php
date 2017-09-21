@@ -29,11 +29,19 @@ class BeneficiarioController extends Controller
         'correo_organizacion' => 'email|nullable',
 	    ]);
 	    // Fin validacion
+      // si el dui que estan metiendo no existe lo crea
+      if((Beneficiario::where('dui','=',$request->dui)->first()) == null)
+    {
 	    $beneficiario=Beneficiario::create($request->only('nombre','apellido','dui','correo','telefono','organizacion','telefono_organizacion','correo_organizacion','direccion_organizacion'));
 	    session()->flash('message.level', 'success');
       session()->flash('message.content', 'El beneficiario fue agregado con Exito');
     	return redirect()->route('beneficiarioVer',['id'=>$beneficiario->id]);
+        }
+    else { 
+      session()->flash('message.content', 'Dui de ese beneficiario ya existe'); 
+      return redirect()->route('beneficiarioNuevo') ;}
     }
+
 
     public function beneficiarioEditar($id)
   	{
