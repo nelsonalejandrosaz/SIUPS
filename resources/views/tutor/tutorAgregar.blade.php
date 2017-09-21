@@ -46,14 +46,14 @@
                 <h4 class="box-title">Datos del contacto</h4>
                 {{-- nombre --}}
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Nombres:</label>
+                  <label class="col-sm-2 control-label">Nombres:*</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" placeholder="Juan" name="nombre" value="{{old('nombre')}}">
                   </div>
                 </div>
                 {{-- apellidos --}}
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Apellidos:</label>
+                  <label class="col-sm-2 control-label">Apellidos:*</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" placeholder="Pérez" name="apellido" value="{{ old('apellido') }}">
                   </div>
@@ -61,7 +61,7 @@
                 
                 {{-- correo --}}
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">Correo:</label>
+                  <label class="col-sm-2 control-label">Correo:*</label>
                   <div class="col-sm-10">
                   <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correo" value="{{ old('correo') }}">
                   </div>
@@ -72,7 +72,7 @@
               
               {{-- DUI --}}
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">DUI:</label>
+                  <label class="col-sm-2 control-label">DUI:*</label>
                   <div class="col-sm-10">
                   <input type="text" class="form-control" placeholder="04058030-9" name="dui" value="{{ old('dui') }}">
                   </div>

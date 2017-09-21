@@ -50,7 +50,7 @@ Editar Servicio Social
             
             {{-- Nombre SS --}}
             <div class="form-group">
-              <label class="col-sm-3 control-label">Nombre:</label>
+              <label class="col-sm-3 control-label">Nombre:*</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" placeholder="Nombre del Proyecto" name="nombre" value="{{$servicioSocial->nombre}}">
               </div>
@@ -58,7 +58,7 @@ Editar Servicio Social
 
             {{-- Modalidad SS --}}
             <div class="form-group">
-              <label class="col-sm-3 control-label">Modalidad:</label>
+              <label class="col-sm-3 control-label">Modalidad:*</label>
               <div class="col-sm-9">
                 <select class="form-control select2" style="width: 100%;" name="modalidad_id">
                  @foreach($modalidades as $modalidad)
@@ -75,7 +75,7 @@ Editar Servicio Social
 
            {{-- Fecha ingreso --}}
            <div class="form-group">
-            <label class="col-sm-3 control-label">Inicio del Servicio social:</label>
+            <label class="col-sm-3 control-label">Inicio del Servicio social:*</label>
             <div class="col-sm-9">
               <div class="input-group date">
                 <div class="input-group-addon">
@@ -109,7 +109,7 @@ Editar Servicio Social
 
         {{-- Numero de alumnos --}}
         <div class="form-group">
-          <label class="col-sm-3 control-label">Numero de alumnos:</label>
+          <label class="col-sm-3 control-label">Numero de alumnos:*</label>
           <div class="col-sm-9">
             <input type="number" class="form-control" name="numero_estudiantes" value="{{$servicioSocial->numero_estudiantes}}">
           </div>

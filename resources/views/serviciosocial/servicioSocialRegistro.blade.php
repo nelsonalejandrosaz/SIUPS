@@ -49,7 +49,7 @@ Nuevo Servicio Social
             
             {{-- Nombre SS --}}
             <div class="form-group">
-              <label class="col-sm-3 control-label">Nombre:</label>
+              <label class="col-sm-3 control-label">Nombre:*</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" placeholder="Nombre del Proyecto" name="nombre" value="{{old('nombre')}}">
               </div>
@@ -57,7 +57,7 @@ Nuevo Servicio Social
 
             {{-- Modalidad SS --}}
             <div class="form-group">
-              <label class="col-sm-3 control-label">Modalidad:</label>
+              <label class="col-sm-3 control-label">Modalidad:*</label>
               <div class="col-sm-9">
                 <select class="form-control select2" style="width: 100%;" name="modalidad_id">
                  @foreach($modalidades as $modalidad)
@@ -69,7 +69,7 @@ Nuevo Servicio Social
 
            {{-- Fecha ingreso --}}
            <div class="form-group">
-            <label class="col-sm-3 control-label">Inicio del Servicio social:</label>
+            <label class="col-sm-3 control-label">Inicio del Servicio social:*</label>
             <div class="col-sm-9">
               <div class="input-group date">
                 <div class="input-group-addon">
@@ -103,7 +103,7 @@ Nuevo Servicio Social
 
         {{-- Numero de alumnos --}}
         <div class="form-group">
-          <label class="col-sm-3 control-label">Numero de alumnos:</label>
+          <label class="col-sm-3 control-label">Numero de alumnos:*</label>
           <div class="col-sm-9">
             <input type="number" class="form-control" placeholder="5" name="numero_estudiantes" value="{{old('numero_estudiantes')}}">
           </div>
@@ -115,10 +115,10 @@ Nuevo Servicio Social
         <h4 class="box-title">Datos de solicitante del Servicio Social</h4>
         {{-- Solicitante SS --}}
         <div class="form-group">
-          <label class="col-sm-3 control-label">Entidad beneficiaria:</label>
+          <label class="col-sm-3 control-label">Entidad beneficiaria:*</label>
           <div class="col-sm-9">
             <select class="form-control select2" style="width: 100%;" name="beneficiario_id">
-             <option selected value="" disabled>Seleccione el Beneficiario</option>
+             <option selected value="" disabled>Seleccione el Beneficiario </option>
              @foreach($Beneficiarios as $Beneficiario)
              <option value="{{ $Beneficiario->id }}" @if(old('beneficiario_id')==$Beneficiario->id) {{'selected'}}@endif>{{ $Beneficiario->nombre }} {{$Beneficiario->apellido}} | {{ $Beneficiario->organizacion }}</option>
              @endforeach

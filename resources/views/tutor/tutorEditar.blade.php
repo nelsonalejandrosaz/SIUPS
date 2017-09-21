@@ -28,19 +28,19 @@
                         <h4 class="box-title">Datos personales</h4>
                         
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Nombre:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Nombre:*</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" value="{{ $tutor->nombre }}" name="nombre">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Apellido:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Apellido:*</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" value="{{ $tutor->apellido }}" name="apellido">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Correo:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Correo:*</label>
                           <div class="col-sm-10">
                             <input type="email" class="form-control" value="{{ $tutor->correo }}" name="correo">
                           </div>
@@ -52,7 +52,7 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Dui:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Dui:*</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" value="{{ $tutor->dui }}" name="dui">
                           </div>
