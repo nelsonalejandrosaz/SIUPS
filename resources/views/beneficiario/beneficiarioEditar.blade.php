@@ -89,21 +89,21 @@
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Telefono :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{ $beneficiario->telefonoOrganizacion }}" name="telefonoOrganizacion">
+                  <input type="text" class="form-control" value="{{ $beneficiario->telefono_organizacion }}" name="telefono_organizacion">
                 </div>
               </div>
               {{-- correo --}}
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Correo :</label>
                 <div class="col-sm-10">
-                <input type="email" class="form-control" value="{{ $beneficiario->correoOrganizacion }}" name="correoOrganizacion">
+                <input type="email" class="form-control" value="{{ $beneficiario->correo_organizacion }}" name="correo_organizacion">
                 </div>
               </div>
               {{-- direccion organizacion --}}
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Direccion :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{ $beneficiario->direccionOrganizacion }}" name="direccionOrganizacion">
+                  <input type="text" class="form-control" value="{{ $beneficiario->direccion_organizacion }}" name="direccion_organizacion">
                 </div>
               </div>
             </div>
