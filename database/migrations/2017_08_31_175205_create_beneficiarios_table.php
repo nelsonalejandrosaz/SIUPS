@@ -21,9 +21,9 @@ class CreateBeneficiariosTable extends Migration
             $table->string('correo')->nullable();
             $table->string('telefono')->nullable();
             $table->string('organizacion')->nullable();
-            $table->string('telefonoOrganizacion')->nullable();
-            $table->string('correoOrganizacion')->nullable();
-            $table->string('direccionOrganizacion')->nullable();
+            $table->string('telefono_organizacion')->nullable();
+            $table->string('correo_organizacion')->nullable();
+            $table->string('direccion_organizacion')->nullable();
             $table->timestamps();
         });
     }

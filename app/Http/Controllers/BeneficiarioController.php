@@ -26,10 +26,10 @@ class BeneficiarioController extends Controller
         'apellido' 		=> 'required',
         'dui' 			=> 'required|min:9|max:10',
         'correo'		=> 'email|nullable',
-        'correoOrganizacion' => 'email|nullable',
+        'correo_organizacion' => 'email|nullable',
 	    ]);
 	    // Fin validacion
-	    $beneficiario=Beneficiario::create($request->only('nombre','apellido','dui','correo','telefono','organizacion','telefonoOrganizacion','correoOrganizacion','direccionOrganizacion'));
+	    $beneficiario=Beneficiario::create($request->only('nombre','apellido','dui','correo','telefono','organizacion','telefono_organizacion','correo_organizacion','direccion_organizacion'));
 	    session()->flash('message.level', 'success');
       session()->flash('message.content', 'El beneficiario fue agregado con Exito');
     	return redirect()->route('beneficiarioVer',['id'=>$beneficiario->id]);
@@ -49,7 +49,7 @@ class BeneficiarioController extends Controller
         'apellido'    => 'required',
         'dui'       => 'required|min:9|max:10',
         'correo'    => 'email|nullable',
-        'correoOrganizacion' => 'email|nullable',
+        'correo_organizacion' => 'email|nullable',
       ]);
       // Fin validacion
     	$beneficiario = Beneficiario::find($id);
@@ -59,9 +59,9 @@ class BeneficiarioController extends Controller
     	$beneficiario->correo = $request->input('correo');
     	$beneficiario->telefono = $request->input('telefono');
     	$beneficiario->organizacion = $request->input('organizacion');
-    	$beneficiario->telefonoorganizacion = $request->input('telefonoOrganizacion');
-    	$beneficiario->correoOrganizacion = $request->input('correoOrganizacion');
-    	$beneficiario->direccionOrganizacion = $request->input('direccionOrganizacion');
+    	$beneficiario->telefono_organizacion = $request->input('telefono_organizacion');
+    	$beneficiario->correo_organizacion = $request->input('correo_organizacion');
+    	$beneficiario->direccion_organizacion = $request->input('direccion_organizacion');
     	$beneficiario->save();
     	session()->flash('mensaje', 'Beneficiario modificado corectamente');
    		return redirect()->route('beneficiarioVer',['id' => $beneficiario->id]) ;

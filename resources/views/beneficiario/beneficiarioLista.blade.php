@@ -55,7 +55,7 @@
               <td>{{$beneficiario->correo}}</td>
               <td>{{$beneficiario->telefono}}</td>
               <td>{{$beneficiario->organizacion}}</td>
-              <td>{{$beneficiario->telefonoOrganizacion}}</td>
+              <td>{{$beneficiario->telefono_organizacion}}</td>
               <td align="center">
                 @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
                 <a href="{{ route('beneficiarioEditar', ['id' => $beneficiario->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
