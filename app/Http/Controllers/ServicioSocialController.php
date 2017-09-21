@@ -152,7 +152,7 @@ class ServicioSocialController extends Controller
      public function servicioSocialVer($id)
     {
    $servicioSocial = ServicioSocial::find($id);
-    if ( Auth::user()->escuela_id == $servicioSocial->escuela->id ) {
+    if ( Auth::user()->escuela_id == $servicioSocial->escuela->id || Auth::user()->rol[0]->nombre=='jefe') {
     $Beneficiarios = Beneficiario::all();
     $Tutors = Tutor::all();
     $estados = Estado::all();
