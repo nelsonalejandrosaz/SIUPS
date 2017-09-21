@@ -138,8 +138,13 @@ class AlumnoController extends Controller
 
     public function verAlumno($carnet)
   {
+    //para que un coordinador de otra escuela no pueda ver los alumnos de otra escuela si introduce el carnet
+    $alumno_escuela=Alumno_escuela::where('carnet',$carnet)->first();
+    if ( Auth::user()->escuela_id == $alumno_escuela->escuela->id || Auth::user()->rol[0]->nombre=='jefe') {
+
       $alumno = Alumno::where('carnet',$carnet)->first();
       return view('alumnos.alumno_ver')->with(['alumno' => $alumno]);
   }
-
+  return redirect()->route('permisoDenegado');
+}
 }
