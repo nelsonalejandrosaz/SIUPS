@@ -140,7 +140,7 @@ Editar Servicio Social
         <h4 class="box-title">Datos de solicitante del Servicio Social</h4>
         {{-- Solicitante SS --}}
         <div class="form-group">
-          <label class="col-sm-3 control-label">Entidad beneficiaria:</label>
+          <label class="col-sm-3 control-label">Entidad beneficiaria:*</label>
           <div class="col-sm-9">
             <select class="form-control select2" style="width: 100%;" name="beneficiario_id">
              @foreach($Beneficiarios as $Beneficiario)
@@ -175,7 +175,7 @@ Editar Servicio Social
 
      {{-- Departamento SS --}}
      <div class="form-group">
-      <label class="col-sm-3 control-label">Departamento:</label>
+      <label class="col-sm-3 control-label">Departamento:*</label>
       <div class="col-sm-9">
         <select class="form-control select2" id="select2Dep" style="width: 100%;" name="departamento_id">
          @foreach($departamentos as $departamento)
@@ -191,7 +191,7 @@ Editar Servicio Social
 
    {{-- Municipio SS --}}
    <div class="form-group">
-    <label class="col-sm-3 control-label">Municipio:</label>
+    <label class="col-sm-3 control-label">Municipio:*</label>
     <div class="col-sm-9">
       <select class="form-control select2" id="select2Mup" style="width: 100%;" name="municipio_id">
        @foreach($municipios as $municipio)

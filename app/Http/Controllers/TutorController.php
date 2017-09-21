@@ -31,6 +31,9 @@ class TutorController extends Controller
         'correo'=>'email',
         
       ]);
+
+     if((Tutor::where('dui','=',$request->dui)->first()) == null)
+     {
     $Tutor = Tutor::create([
 
     	'nombre' => $request->input('nombre'),
@@ -40,6 +43,11 @@ class TutorController extends Controller
     	'carnet'=>$request->get('carnet'),
     	]);
     return redirect()->route('TutorVer',['id'=>$Tutor->id]) ;
+    }
+    else { 
+      //si ya existe muestra mensaje error 
+      session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor'); 
+      return redirect()->route('agregarTutor') ;}
     }
 
 
@@ -67,6 +75,9 @@ class TutorController extends Controller
         'apellido'=>'required',
         'correo'=>'email',
         ]);
+        $tutor = Tutor::find($id);
+        if((Tutor::where('dui','=',$request->dui)->first()) == null)
+     {
 
     	$tutor = Tutor::find($id);
     	$tutor->nombre = $request->input('nombre');
@@ -78,5 +89,11 @@ class TutorController extends Controller
     	
    		return redirect()->route('TutorVer',['id'=>$tutor->id]) ;
       session()->flash('mensaje', 'Tutor modificado corectamente');
-  	}
+    }
+  	else { 
+      //si ya existe muestra mensaje error 
+      session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor'); 
+       return view('tutor.tutorEditar')->with(['tutor' => $tutor]);
+     }
+    }
 }

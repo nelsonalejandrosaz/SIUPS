@@ -38,6 +38,7 @@ class BeneficiarioController extends Controller
     	return redirect()->route('beneficiarioVer',['id'=>$beneficiario->id]);
         }
     else { 
+      //si ya existe muestra mensaje error 
       session()->flash('message.content', 'Dui de ese beneficiario ya existe'); 
       return redirect()->route('beneficiarioNuevo') ;}
     }
@@ -59,7 +60,11 @@ class BeneficiarioController extends Controller
         'correo'    => 'email|nullable',
         'correo_organizacion' => 'email|nullable',
       ]);
+      $beneficiario = Beneficiario::find($id);
       // Fin validacion
+      if((Beneficiario::where('dui','=',$request->dui)->first()) == null)
+
+    {
     	$beneficiario = Beneficiario::find($id);
     	$beneficiario->nombre = $request->input('nombre');
     	$beneficiario->apellido = $request->input('apellido');
@@ -73,7 +78,14 @@ class BeneficiarioController extends Controller
     	$beneficiario->save();
     	session()->flash('mensaje', 'Beneficiario modificado corectamente');
    		return redirect()->route('beneficiarioVer',['id' => $beneficiario->id]) ;
-  	}
+    }
+    else { 
+      //si ya existe muestra mensaje error 
+      session()->flash('message.content', 'Dui de ese beneficiario ya existe, introduzca uno nuevo'); 
+      return view('beneficiario.beneficiarioEditar')->with(['beneficiario' => $beneficiario]);
+    }
+  }
+
 
     public function beneficiarioVer($id)
     {
