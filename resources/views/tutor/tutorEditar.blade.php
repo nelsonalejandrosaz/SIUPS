@@ -1,14 +1,30 @@
 @extends('adminlte::layouts.app')
 
+{{-- Titulo de la pagina --}}
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.home') }}
+  Modificar tutor
 @endsection
 
-@section('contentheader_title', 'Perfil Tutor')
-@section('contentheader_description', '')
+{{-- Seccion para agregar estilos CSS extras a los que se cargan por defecto --}}
+@section('CSSExtras')
 
+@endsection
 
+{{-- Titulo del header --}}
+@section('contentheader_title')
+  Modificar tutor
+@endsection
+
+{{-- Descripcion del header OPCIONAL --}}
+@section('contentheader_description')
+ 
+@endsection
+
+{{-- Seccion principal de la aplicacion --}}
 @section('main-content')
+
+{{-- Include de los mensajes de errror --}}
+@include('partials.alertaerror')
 
 
 <!--comienza la vista del formulario de editar tutores-->

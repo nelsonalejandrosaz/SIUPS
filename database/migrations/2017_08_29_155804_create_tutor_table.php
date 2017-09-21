@@ -18,7 +18,7 @@ class CreateTutorTable extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->string('carnet')->nullable();
-            $table->string('dui');
+            $table->string('dui',10)->unique();
             $table->string('correo');
             $table->timestamps();
         });

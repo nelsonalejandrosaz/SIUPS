@@ -25,7 +25,7 @@ class TutorController extends Controller
     public function guardarTutor(Request $request)
   	{
     $this->validate($request, [
-        'dui'=>'required|size:10|unique',
+        'dui'=>'required|size:10',
         'nombre'=>'required',
         'apellido'=>'required',
         'correo'=>'email',
@@ -61,6 +61,13 @@ class TutorController extends Controller
 
   	public function editarTutorGuardar(Request $request, $id)
   	{
+       $this->validate($request, [
+        'dui'=>'required|size:10',
+        'nombre'=>'required',
+        'apellido'=>'required',
+        'correo'=>'email',
+        ]);
+
     	$tutor = Tutor::find($id);
     	$tutor->nombre = $request->input('nombre');
     	$tutor->apellido = $request->input('apellido');
