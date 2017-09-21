@@ -44,25 +44,25 @@
                       <div class="col-xs-6">
                         <h4 class="box-title">Datos personales</h4>
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Carnet:</label>
+                          <label for="inputEmail3" class="col-sm-2 control-label">Carnet:*</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" placeholder="AA17001" name="carnet">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Nombre:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Nombre:*</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" placeholder="Nombre" name="nombre">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Apellido:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Apellido:*</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" placeholder="Apellido" name="apellido">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Correo:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Correo:*</label>
                           <div class="col-sm-10">
                             <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correo">
                           </div>
