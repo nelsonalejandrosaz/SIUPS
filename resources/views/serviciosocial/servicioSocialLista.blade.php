@@ -38,12 +38,12 @@
               <tr>
                 <th style="width:30%">Nombre</th>
                 
-                <th style="width:15% ">Beneficiario</th>
+                <th style="width:10% ">Beneficiario</th>
                 <th style="width:10%">Municipio</th>
                 
                 <th style="width:8%">Estudiantes Requeridos</th>
                 <th style="width:10%">Estado</th>
-                <th style="width:10% ">Accion</th>
+                <th style="width:15% ">Accion</th>
               </tr>
             </thead>
 
@@ -60,8 +60,11 @@
               <td align="center">
                @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
                 <a href="{{ route('servicioSocialEditar', ['id' => $serviciosocial->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+
+                <a href="#" class="btn btn-success"><span class="fa fa-user-plus"></span></a> 
                 @endif  
                  <a href="{{ route('servicioSocialVer', ['id' => $serviciosocial->id]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a> 
+
               </td>
             </tr>
             @endforeach
