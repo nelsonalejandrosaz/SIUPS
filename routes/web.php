@@ -153,6 +153,18 @@ Route::name('servicioSocialVer')->get('/ServicioSocial/{id}/ver', 'ServicioSocia
 ********************************/
 Route::name('expedienteLista')->get('/expediente', 'ExpedienteController@ExpedienteLista')->middleware('Jefe_Coordinador');
 Route::name('expedienteVer')->get('/expediente/{carnet}','ExpedienteController@ExpedienteVer')->middleware('Jefe_Coordinador');
+/************************************
+*Fin de la rutas para expediente
+*************************************/
+
+/****************************************
+*Rutas para Asignacion de Servicio Social
+***************************************/
+Route::name('asignacionServicio')->get('/ServicioSocial','ServicioSocialController@AsignacionServicio')->middleware('coordinador');
+
+/************************************
+*Fin de la rutas para asignacion de servicio social
+*************************************/
 
 
 // Rutas para buscar municipios
