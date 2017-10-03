@@ -113,7 +113,7 @@ class ServicioSocialController extends Controller
     $departamentos = Departamento::all();
     $municipios = Municipio::where('departamento_id',$servicioSocial->municipio->departamento_id)->get();
     $modalidades = Modalidad::all();
-    return view('servicioSocial.servicioSocialEditar')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
+    return view('serviciosocial.servicioSocialEditar')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
     } 
     return redirect()->route('permisoDenegado');
     }
@@ -159,7 +159,7 @@ class ServicioSocialController extends Controller
     $departamentos = Departamento::all();
     $municipios = Municipio::all();
     $modalidades = Modalidad::all();
-    return view('servicioSocial.servicioSocialVer')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
+    return view('serviciosocial.servicioSocialVer')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
     }
     return redirect()->route('permisoDenegado');
     }
