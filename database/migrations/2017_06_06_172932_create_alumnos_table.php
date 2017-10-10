@@ -14,8 +14,9 @@ class CreateAlumnosTable extends Migration
     public function up()
     {
         Schema::create('alumnos', function (Blueprint $table) {
-            $table->increments('id');
+            // $table->increments('id');
             $table->string('carnet',7)->unique();
+            $table->primary('carnet');
             $table->string('nombre',100);
             $table->string('apellido',100);
             $table->string('direccion',500)->nullable();

@@ -74,7 +74,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                     <div class="col-lg-12">
                         <h1><b>Servicio Social FIA</b></h1>
                         <h3>Esto es la aplicacion web del <a href="http://www.fia.ues.edu.sv/">Servicio Social de la FIA</a></h3>
-                        <h3><a href="#" class="btn btn-lg btn-success">Ver proyectos disponibles</a></h3>
+                        <h3><a href="{{route('serviciosDisponibles')}}" class="btn btn-lg btn-success">Ver proyectos disponibles </a></h3>
                     </div>
                     <div class="col-lg-2">
                         <h5>El grupo 5 de diseño es el mejor!</h5>

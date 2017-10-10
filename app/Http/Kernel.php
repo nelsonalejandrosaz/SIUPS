@@ -56,6 +56,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'jefe' => \App\Http\Middleware\JefeMiddleware::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'Jefe_Coordinador' => \App\Http\Middleware\Jefe_CoordinadorMiddleware::class,
         'secretaria' => \App\Http\Middleware\SecretariaMiddleware::class,
         'coordinador' => \App\Http\Middleware\CoordinadorMiddleware::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,

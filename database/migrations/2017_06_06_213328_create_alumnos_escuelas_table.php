@@ -15,10 +15,8 @@ class CreateAlumnosEscuelasTable extends Migration
     {
         Schema::create('alumno_escuelas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('alumno_id')->unsigned();
-            $table->foreign('alumno_id')->references('id')->on('alumnos');
+            $table->string('carnet');
             $table->integer('escuela_id')->unsigned();
-            $table->foreign('escuela_id')->references('id')->on('escuelas');
             $table->timestamps();
         });
     }

@@ -1,14 +1,30 @@
 @extends('adminlte::layouts.app')
 
+{{-- Titulo de la pagina --}}
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.home') }}
+  Modificar tutor
 @endsection
 
-@section('contentheader_title', 'Perfil Tutor')
-@section('contentheader_description', '')
+{{-- Seccion para agregar estilos CSS extras a los que se cargan por defecto --}}
+@section('CSSExtras')
 
+@endsection
 
+{{-- Titulo del header --}}
+@section('contentheader_title')
+  Modificar tutor
+@endsection
+
+{{-- Descripcion del header OPCIONAL --}}
+@section('contentheader_description')
+ 
+@endsection
+
+{{-- Seccion principal de la aplicacion --}}
 @section('main-content')
+
+{{-- Include de los mensajes de errror --}}
+@include('partials.alertaerror')
 
 
 <!--comienza la vista del formulario de editar tutores-->
@@ -28,33 +44,33 @@
                         <h4 class="box-title">Datos personales</h4>
                         
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Nombre:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Nombre:*</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" value="{{ $tutor->nombre }}" name="nombre">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Apellido:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Apellido:*</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" value="{{ $tutor->apellido }}" name="apellido">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Correo:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Correo:*</label>
                           <div class="col-sm-10">
                             <input type="email" class="form-control" value="{{ $tutor->correo }}" name="correo">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputPassword3" class="col-sm-2 control-label">DUI:*</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" value="{{ $tutor->dui }}" name="dui" pattern="[0-9]{8}?[-]{1}?[0-9]{1}">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Carnet:</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" value="{{ $tutor->carnet }}" name="carnet">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Dui:</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $tutor->dui }}" name="dui">
                           </div>
                         </div>
                       </div>

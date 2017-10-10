@@ -19,7 +19,7 @@
                 <div class="box-header with-border">
                   <h3 class="box-title">Datos del Alumno</h3>
                 </div><!-- /.box-header -->
-                <form class="form-horizontal" action="{{ route('alumnoEditarPost', ['id'=> $alumno->id]) }}" method="post">
+                <form class="form-horizontal" action="{{ route('alumnoEditarPost', ['carnet'=> $alumno->carnet]) }}" method="post">
                 {{ csrf_field() }}
 
                   <!-- inicio box-body -->
@@ -29,7 +29,7 @@
                         <div class="form-group">
                           <label for="inputEmail3" class="col-sm-2 control-label">Carnet:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $alumno->carnet }}" name="carnet">
+                            <input type="text" class="form-control" value="{{ $alumno->carnet }}" pattern="[A-Za-z]{2}?[0-9]{5}" name="carnet">
                           </div>
                         </div>
                         <div class="form-group">
@@ -53,7 +53,7 @@
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Telefono:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $alumno->telefono }}" name="telefono">
+                            <input type="text" class="form-control" minlenght="8" maxlength="11" value="{{ $alumno->telefono }}" name="telefono">
                           </div>
                         </div>
                         <div class="form-group">
@@ -74,7 +74,7 @@
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Telefono de trabajo</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" value="{{ $alumno->telefono_trabajo }}" name="telefono_trabajo">
+                            <input type="text" class="form-control" minlength="8" maxlength="11" value="{{ $alumno->telefono_trabajo }}" name="telefono_trabajo">
                           </div>
                         </div>
                       </div>

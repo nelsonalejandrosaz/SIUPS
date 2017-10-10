@@ -1,35 +1,30 @@
 @extends('adminlte::layouts.app')
 
+{{-- Titulo de la pagina --}}
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.home') }}
+  Ver beneficiario
 @endsection
 
+{{-- Seccion para agregar estilos CSS extras a los que se cargan por defecto --}}
+@section('CSSExtras')
+
+@endsection
+
+{{-- Titulo del header --}}
 @section('contentheader_title')
-  Nuevo tutor
+  Ver beneficiario
 @endsection
 
-@section('contentheader_description', '')
+{{-- Descripcion del header OPCIONAL --}}
+@section('contentheader_description')
+ 
+@endsection
 
-
+{{-- Seccion principal de la aplicacion --}}
 @section('main-content')
 
-@if(count($errors)>0)
-    <div class="alert alert-danger alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4>  <i class="icon fa fa-check"></i> Error</h4>
-      @foreach($errors->all() as $error)
-      <li>{{$error}} 
-      </li> @endforeach
-    </div>
-  @endif
-
-@if(session()->has('advertencia'))
-    <div class="alert alert-danger alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4>  <i class="icon fa fa-check"></i> Error</h4>
-      {{ session()->get('advertencia') }}
-    </div>
-@endif
+{{-- Include de los mensajes de errror --}}
+@include('partials.alertamensajes')
 
 <!--comienza la vista del formulario de registro alumnos-->
 <div class="row">
@@ -37,7 +32,7 @@
     <!-- Horizontal Form -->
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title">Datos de la organización</h3>
+        <h3 class="box-title">Datos de la ficha del beneficiario</h3>
       </div><!-- /.box-header -->
       <form class="form-horizontal" action="{{ route('beneficiarioEditarPost', ['id' => $beneficiario->id]) }}" method="post">
         {{ csrf_field() }}
@@ -94,32 +89,39 @@
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Telefono :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{ $beneficiario->telefonoOrganizacion }}" name="telefonoOrganizacion" disabled="true">
+                  <input type="text" class="form-control" value="{{ $beneficiario->telefono_organizacion }}" name="telefonoOrganizacion" disabled="true">
                 </div>
               </div>
               {{-- correo --}}
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Correo :</label>
                 <div class="col-sm-10">
-                <input type="email" class="form-control" value="{{ $beneficiario->correoOrganizacion }}" name="correoOrganizacion" disabled="true">
+                <input type="email" class="form-control" value="{{ $beneficiario->correo_organizacion }}" name="correoOrganizacion" disabled="true">
                 </div>
               </div>
               {{-- direccion organizacion --}}
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Direccion :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" value="{{ $beneficiario->direccionOrganizacion }}" name="direccionOrganizacion" disabled="true">
+                  <input type="text" class="form-control" value="{{ $beneficiario->direccion_organizacion }}" name="direccionOrganizacion" disabled="true">
                 </div>
               </div>
             </div>
           </div><!-- /.box-body -->
         <div class="box-footer">
-        <a href="{{ route('beneficiarioLista') }}" class="btn btn-lg btn-default">Regresar</a>
-        
+        <a href="{{ route('beneficiarioLista') }}" class="btn btn-lg btn-default">Ver Lista</a>
+         @if( Auth::user()->rol[0]->nombre == "coordinador_Sups")
+        <a href="{{ route('beneficiarioEditar',['id'=>$beneficiario->id]) }}" class="btn btn-lg btn-warning pull-right">Editar</a>
+        @endif
         </div><!-- /.box-footer -->
       </form>
     </div><!-- /.box -->
   </div>
 </div>
+
+@endsection
+
+{{-- Seccion para insertar JS extras a los que se cargan por defecto --}}
+@section('JSExtras')
 
 @endsection

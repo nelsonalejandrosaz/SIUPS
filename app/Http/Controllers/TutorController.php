@@ -31,6 +31,9 @@ class TutorController extends Controller
         'correo'=>'email',
         
       ]);
+
+     if((Tutor::where('dui','=',$request->dui)->first()) == null)
+     {
     $Tutor = Tutor::create([
 
     	'nombre' => $request->input('nombre'),
@@ -39,7 +42,12 @@ class TutorController extends Controller
     	'dui' => $request->get('dui'),
     	'carnet'=>$request->get('carnet'),
     	]);
-    return redirect()->route('tutoresLista') ;
+    return redirect()->route('TutorVer',['id'=>$Tutor->id]) ;
+    }
+    else { 
+      //si ya existe muestra mensaje error 
+      session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor'); 
+      return redirect()->route('agregarTutor') ;}
     }
 
 
@@ -61,6 +69,18 @@ class TutorController extends Controller
 
   	public function editarTutorGuardar(Request $request, $id)
   	{
+       $this->validate($request, [
+        'dui'=>'required|size:10',
+        'nombre'=>'required',
+        'apellido'=>'required',
+        'correo'=>'email',
+        ]);
+       //verifica que dui de tutor nos e repita
+        $tutor = Tutor::find($id);
+        if((Tutor::where('dui','=',$request->dui)->first()) == null||
+        $tutor->dui == $request->dui)
+     {
+
     	$tutor = Tutor::find($id);
     	$tutor->nombre = $request->input('nombre');
     	$tutor->apellido = $request->input('apellido');
@@ -68,7 +88,14 @@ class TutorController extends Controller
     	$tutor->dui = $request->input('dui');
     	$tutor->carnet = $request->input('carnet');
     	$tutor->save();
-    	session()->flash('mensaje', 'Tutor modificado corectamente');
-   		return redirect()->route('tutoresLista') ;
-  	}
+    	
+   		return redirect()->route('TutorVer',['id'=>$tutor->id]) ;
+      session()->flash('mensaje', 'Tutor modificado corectamente');
+    }
+  	else { 
+      //si ya existe muestra mensaje error 
+      session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor'); 
+       return view('tutor.tutorEditar')->with(['tutor' => $tutor]);
+     }
+    }
 }

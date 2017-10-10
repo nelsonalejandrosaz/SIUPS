@@ -13,12 +13,12 @@ class CreateTutorTable extends Migration
      */
     public function up()
     {
-        Schema::create('Tutors', function (Blueprint $table) {
+        Schema::create('tutors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
             $table->string('carnet')->nullable();
-            $table->string('dui');
+            $table->string('dui',10)->unique();
             $table->string('correo');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateTutorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Tutor');
+        Schema::dropIfExists('tutors');
     }
 }

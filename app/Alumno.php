@@ -13,7 +13,10 @@ class Alumno extends Model
 
     public function alumno_escuela()
     {
-        return $this->hasMany('App\Alumno_escuela');
+        return $this->hasMany('App\Alumno_escuela','carnet','carnet');
     }
+
+    protected $primaryKey = 'carnet';
+    public $incrementing = false;
 
 }

@@ -15,11 +15,18 @@
 |
 |1.Gestion Alumnos 			25
 |2.Validar roles			61
-|3.Rutas para usuarios 		80
-|4. Rutas para SS 			101
+|3. Rutas para SS 			80
+|4.Rutas para usuarios 		90
 |5.Rutas para tutores 		110
 |
 */
+/********************************
+*Rutas para Servicio Sociales Disponibles al publico
+********************************/
+Route::name('serviciosDisponibles')->get('/serviciosDisponibles','ServicioSocialController@ServiciosDisponibles');
+Route::name('serviciosDisponiblesVer')->get('/serviciosDisponibles/{id}/ver','ServicioSocialController@ServiciosDisponiblesVer');
+/**********************************
+**********************************/
 
 Route::group(['middleware' => 'auth'], function () {
 	/********************************
@@ -31,18 +38,18 @@ Route::group(['middleware' => 'auth'], function () {
 	})->middleware('coordinador');
 	Route::name('alumnoNuevo')->get('/alumnos/nuevo','AlumnoController@registroAlumno')->middleware('coordinador');
 	Route::name('alumnoNuevoPost')->post('/alumnos/nuevo','AlumnoController@guardarAlumno')->middleware('coordinador');
-	Route::name('alumnoVer')->get('/alumnos/{id}', 'AlumnoController@verAlumno');
-	Route::name('alumnoEditar')->get('/alumnos/{id}/editar', 'AlumnoController@editarAlumno')->middleware('coordinador');
-	Route::name('alumnoEditarPost')->post('/alumnos/{id}/editar','AlumnoController@editarAlumnoGuardar')->middleware('coordinador');
+	Route::name('alumnoVer')->get('/alumnos/{carnet}', 'AlumnoController@verAlumno')->middleware('Jefe_Coordinador');
+	Route::name('alumnoEditar')->get('/alumnos/{carnet}/editar', 'AlumnoController@editarAlumno')->middleware('coordinador');
+	Route::name('alumnoEditarPost')->post('/alumnos/{carnet}/editar','AlumnoController@editarAlumnoGuardar')->middleware('coordinador');
 	Route::name('alumnoCargaCSVPost')->post('import_csv_file', 'AlumnoController@import_csv_file')->middleware('coordinador');
 	/********************************
-	* Fin Rutas para gestion de roles
+	* Fin Rutas para gestion alumnos
 	********************************/
 });
 
 Route::group(['middleware' => 'admin'], function () {
 /********************************
-	*Rutas para gestion alumnos
+	*Rutas para gestion Usuario
 	********************************/
 	Route::name('usuarioLista')->get('/usuario', 'UsuarioController@AlumnosLista');
 	Route::name('usuarioNuevo')->get('/usuario/nuevo','UsuarioController@registroAlumno');
@@ -50,7 +57,7 @@ Route::group(['middleware' => 'admin'], function () {
 	Route::name('usuarioEditar')->get('/usuario/{id}/editar', 'UsuarioController@editarAlumno');
 	Route::name('usuarioEditarPost')->post('/usuario/{id}/editar','UsuarioController@editarAlumnoGuardar');
 	/********************************
-	* Fin Rutas para validar roles
+	* Fin Rutas para gestion Usuario
 	********************************/
 });
 
@@ -69,19 +76,17 @@ Route::name('inicioCoordinador')->get('home/coordinador', 'CoordinadorController
 * Fin Rutas para validar roles
 ********************************/
 
-
-
-Route::get('permisoDenegado', function () {
+Route::name('permisoDenegado')->get('permisoDenegado', function () {
     return view('errores.permisoDenegado');
-});
 
+});
 
 
 /******************************************
 **      NUEVAS RUTAS PARA USUARIO    Arnulfo   ***
 ******************************************/
 
-Route::name('usuariosLista')->get('/usuarios', 'UsuarioController@UsuariosLista');
+Route::name('usuariosLista')->get('/usuarios', 'UsuarioController@UsuariosLista')->middleware('jefe');
 
 Route::name('agregarusuario')->get('Agregar/usuario','UsuarioController@AgregarUsuario')->middleware('jefe');
 
@@ -98,25 +103,16 @@ Route::name('usuarioEditarPost')->post('/usuarios/{id}/editar','UsuarioControlle
 ******************************************/
 
 /******************************************
-**      NUEVAS RUTAS PARA SERVICIO SOCIAL Kevin      ***
+**      NUEVAS RUTAS PARA TUTORES      ***
 ******************************************/
 
-Route::name('ServicioSocialNuevo')->get('/ServicioSocial/Nuevo', 'ServicioSocialController@IngresarServicioSocial');
-
-
-
-
-/******************************************
-**      NUEVAS RUTAS PARA TUTORES    Arnulfo   ***
-******************************************/
-
-Route::name('tutoresLista')->get('/tutores', 'TutorController@TutoresLista');
+Route::name('tutoresLista')->get('/tutores', 'TutorController@TutoresLista')->middleware('Jefe_Coordinador');
 
 Route::name('agregarTutor')->get('Agregar/Tutor','TutorController@AgregarTutor')->middleware('coordinador');
 
 Route::name('TutorNuevoPost')->post('Tutores/nuevo','TutorController@guardarTutor')->middleware('coordinador');
 
-Route::name('TutorVer')->get('/Tutores/{id}', 'TutorController@verTutor')->middleware('coordinador');
+Route::name('TutorVer')->get('/Tutores/{id}', 'TutorController@verTutor')->middleware('Jefe_Coordinador');
 
 Route::name('TutorEditar')->get('/Tutores/{id}/editar', 'TutorController@editarTutor')->middleware('coordinador');
 
@@ -130,11 +126,34 @@ Route::name('TutorEditar')->get('/Tutores/{id}/editar', 'TutorController@editarT
 /******************************************
 **      NUEVAS RUTAS PARA BENEFICIARIOS  ***
 ******************************************/
-Route::name('beneficiarioLista')->get('/beneficiario', 'BeneficiarioController@BeneficiarioLista');
-Route::name('beneficiarioNuevo')->get('/beneficiario/nuevo','BeneficiarioController@BeneficiarioNuevo');
-Route::name('beneficiarioNuevoPost')->post('/beneficiario/nuevo','BeneficiarioController@BeneficiarioNuevoPost');
-Route::name('beneficiarioEditar')->get('/beneficiario/{id}/editar', 'BeneficiarioController@BeneficiarioEditar');
-Route::name('beneficiarioEditarPost')->post('/beneficiario/{id}/editar','BeneficiarioController@BeneficiarioEditarPost');
-Route::name('beneficiarioVer')->get('/beneficiario/{id}/ver', 'BeneficiarioController@BeneficiarioVer');
+Route::name('beneficiarioLista')->get('/beneficiario', 'BeneficiarioController@BeneficiarioLista')->middleware('Jefe_Coordinador');
+Route::name('beneficiarioNuevo')->get('/beneficiario/nuevo','BeneficiarioController@BeneficiarioNuevo')->middleware('coordinador');
+Route::name('beneficiarioNuevoPost')->post('/beneficiario/nuevo','BeneficiarioController@BeneficiarioNuevoPost')->middleware('coordinador');
+Route::name('beneficiarioEditar')->get('/beneficiario/{id}/editar', 'BeneficiarioController@BeneficiarioEditar')->middleware('coordinador');
+Route::name('beneficiarioEditarPost')->post('/beneficiario/{id}/editar','BeneficiarioController@BeneficiarioEditarPost')->middleware('coordinador');
+Route::name('beneficiarioVer')->get('/beneficiario/{id}/ver', 'BeneficiarioController@BeneficiarioVer')->middleware('Jefe_Coordinador');
 
 
+
+/********************************
+*Rutas para Servicio Social 
+********************************/
+Route::name('servicioSocialLista')->get('/ServicioSocial/Lista','ServicioSocialController@ServicioSocialLista')->middleware('Jefe_Coordinador');
+Route::name('servicioSocialNuevo')->get('/ServicioSocial/nuevo','ServicioSocialController@ServicioSocialRegistro')->middleware('coordinador');
+Route::name('servicioSocialNuevoPost')->post('/ServicioSocial/nuevo','ServicioSocialController@ServicioSocialGuardar')->middleware('coordinador');
+Route::name('servicioSocialEditar')->get('/ServicioSocial/{id}/editar', 'ServicioSocialController@ServicioSocialEditar');
+Route::name('servicioSocialEditarPost')->post('/ServicioSocial/{id}/editar','ServicioSocialController@ServicioSocialEditarPost');
+Route::name('servicioSocialVer')->get('/ServicioSocial/{id}/ver', 'ServicioSocialController@ServicioSocialVer');
+/************************************
+*Fin de la rutas para servicio social
+*************************************/
+
+/********************************
+*Rutas para Expediente
+********************************/
+Route::name('expedienteLista')->get('/expediente', 'ExpedienteController@ExpedienteLista')->middleware('Jefe_Coordinador');
+Route::name('expedienteVer')->get('/expediente/{carnet}','ExpedienteController@ExpedienteVer')->middleware('Jefe_Coordinador');
+
+
+// Rutas para buscar municipios
+Route::name('municipiosPorDep')->get('/municipios/{id}', 'ServicioSocialController@municipiosPorDepartamento');

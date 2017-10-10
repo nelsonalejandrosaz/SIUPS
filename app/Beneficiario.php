@@ -8,6 +8,11 @@ class Beneficiario extends Model
 {
     //
      protected $fillable = [
-        'nombre','apellido','dui','correo','telefono','organizacion','telefonoOrganizacion','correoOrganizacion','direccionOrganizacion',
+        'nombre','apellido','dui','correo','telefono','organizacion','telefono_organizacion','correo_organizacion','direccion_organizacion',
     ];
+
+    public function beneficiario_ss()
+    {
+        return $this->hasMany('App\ServicioSocial');
+    }
 }

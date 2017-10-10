@@ -22,7 +22,7 @@
 
       <div class="box box-primary">
                       <div class="box-header">
-                        <h3 class="box-title">Cargar Datos de Usuarios</h3>
+                        <h3 class="box-title">Cargar Datos de Alumnos</h3>
                       </div><!-- /.box-header -->
      
       <div id="notificacion_resul_fcdu"></div>
@@ -37,7 +37,7 @@
      
 
       <div class="form-group col-xs-12"  >
-             <label>Agregar Archivo de Excel </label>
+             <label>Agregar Archivo de Excel *</label>
               <input name="csv_file" id="csv_file" type="file" /><br /><br />
       </div>
 

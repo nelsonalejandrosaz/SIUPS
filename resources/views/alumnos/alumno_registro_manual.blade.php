@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	{{ trans('adminlte_lang::message.home') }}
+	Ingresar alumno
 @endsection
 
 @section('contentheader_title', 'Ingreso de alumno')
@@ -30,7 +30,7 @@
 
 <!--comienza la vista del formulario de registro alumnos-->
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-xs-12" >
     <!-- Horizontal Form -->
               <div class="box box-primary">
                 <div class="box-header with-border">
@@ -44,25 +44,25 @@
                       <div class="col-xs-6">
                         <h4 class="box-title">Datos personales</h4>
                         <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label">Carnet:</label>
+                          <label for="inputEmail3" class="col-sm-2 control-label">Carnet:*</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="AA17001" name="carnet">
+                            <input type="text" class="form-control" placeholder="AA17001" name="carnet" pattern="[A-Za-z]{2}?[0-9]{5}">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Nombre:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Nombre:*</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" placeholder="Nombre" name="nombre">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Apellido:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Apellido:*</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" placeholder="Apellido" name="apellido">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Correo:</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label">Correo:*</label>
                           <div class="col-sm-10">
                             <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correo">
                           </div>
@@ -70,7 +70,7 @@
                         <div class="form-group">
                           <label for="inputPassword3" class="col-sm-2 control-label">Telefono:</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="2222-2222" name="telefono">
+                            <input type="text" class="form-control" placeholder="2222-2222" name="telefono" minlength="8" maxlength="11">
                           </div>
                         </div>
                         <div class="form-group">
@@ -89,7 +89,7 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputPassword3" class="col-sm-2 control-label">Telefono de trabajo</label>
+                          <label for="inputPassword3" class="col-sm-2 control-label" minlength="8" maxlength="11">Telefono de trabajo</label>
                           <div class="col-sm-10">
                             <input type="text" class="form-control" placeholder="2222-2222" name="telefono_trabajo">
                           </div>
