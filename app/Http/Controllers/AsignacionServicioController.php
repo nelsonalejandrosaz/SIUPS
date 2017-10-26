@@ -8,7 +8,7 @@ use App\Tutor;
 use App\Alumno_escuela;
 use Illuminate\Support\Facades\Auth;
 use App\Estado;
-use App\Expediente_Servicio_Social;
+use App\Expediente_servicio_social;
 
 class AsignacionServicioController extends Controller
 {
@@ -37,7 +37,7 @@ class AsignacionServicioController extends Controller
     	   $estado_ss_estudiante = $request->input('estado_ss_estudiante');
     	   $maximo_estudiantes= sizeof($estudiantes);
     	   for ($i=0; $i<$maximo_estudiantes ; $i++) { 
-    	   	$expediente_servicio_social = Expediente_Servicio_Social::create([
+    	   	$expediente_servicio_social = Expediente_servicio_social::create([
     	   			'expediente_alumno_id' =>$estudiantes[$i],
     			    'servicio_social_id' => $id,
       				'horas_ganadas' => $horas_ganadas[$i],

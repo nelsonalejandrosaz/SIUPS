@@ -122,7 +122,7 @@ Asignar alumnos a Servicio Social
           </th>
         </tr>
 
-        @if($hayalumnos)
+        @isset($alumnos_asignados)
         @foreach($alumnos_asignados as $alumno)
         <tr>
 
@@ -164,48 +164,16 @@ Asignar alumnos a Servicio Social
          </td>
        </tr>
        @endforeach
-       
-       @else
-       <tr>
-        <td>
-          1
-        </td>
-        <td>
-          <select class="form-control select2" style="width: 100%;" name="estudiantes[]" id="selectProductos">
-            <option selected value="" disabled>Seleccione el alumno</option>
-            @foreach($alumnos_escuela as $alumno_escuela)
-
-            <option value="{{ $alumno_escuela->expediente->id }}">{{ $alumno_escuela->carnet }} | {{$alumno_escuela->alumno->apellido}} {{$alumno_escuela->alumno->nombre}}</option>
-
-            @endforeach
-          </select>
-        </td>
-        <td>
-          <input type="number" class="form-control" value="0" name="horas_ganadas[]" required>
-        </td>
-        <td>
-          <select class="form-control select2" style="width: 100%;" name="estado_ss_estudiante[]" id="selectEstado">
-           @foreach($estados as $estado)
-           @if($estado->codigo != 'DIS')
-           <option value="{{ $estado->id }}" >{{ $estado->nombre }}</option>
-           @endif
-           @endforeach
-         </select>
-       </td>
-       <td align="center">
-
-       </td>
-     </tr>
-     @endif
-   </table>
- </div>
+       @endisset
+     </table>
+   </div>
 
 
 
 
-</div><!-- /.box-body -->
+ </div><!-- /.box-body -->
 
-<div class="box-footer">
+ <div class="box-footer">
   <a href="" class="btn btn-lg btn-default">Cancelar</a>
   <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
 </div>
@@ -213,26 +181,42 @@ Asignar alumnos a Servicio Social
 </div><!-- /.box -->
 
 
-@endsection
+<div class="hidden">
+  <select class="form-control select2" style="width: 100%;" name="estudiantes[]" id="selectProductos">
+    <option selected value="" disabled>Seleccione el alumno</option>
+    @foreach($alumnos_escuela as $alumno_escuela)
 
-{{-- Seccion para insertar JS extras a los que se cargan por defecto --}}
-@section('JSExtras')
-<!-- Select2 -->
-<script src="{{asset('/plugins/select2.full.min.js')}}"></script>
+    <option value="{{ $alumno_escuela->expediente->id }}">{{ $alumno_escuela->carnet }} | {{$alumno_escuela->alumno->apellido}} {{$alumno_escuela->alumno->nombre}}</option>
 
-<script>
+    @endforeach
+  </select>
+  <select class="form-control select2" style="width: 100%;" name="estado_ss_estudiante[]" id="selectEstado">
+   @foreach($estados as $estado)
+   @if($estado->codigo != 'DIS')
+   <option value="{{ $estado->id }}" >{{ $estado->nombre }}</option>
+   @endif
+   @endforeach
+ </select>
+ @endsection
+
+ {{-- Seccion para insertar JS extras a los que se cargan por defecto --}}
+ @section('JSExtras')
+ <!-- Select2 -->
+ <script src="{{asset('/plugins/select2.full.min.js')}}"></script>
+
+ <script>
   $(document).on('ready', funcionPrincipal());
 
   function funcionPrincipal() {
     $("body").on( "click", ".btn-danger",funcionEliminarProducto);
     $(".select2").select2();
   }
-  var numero = 2;
+  var numero = 1;
   var numeroMax = $('#numeroEstudiante').val();
   var numeroEstudiante = 1;
 
   function funcionNuevoProducto() {
-    if (numeroEstudiante < numeroMax) {
+    if (numeroEstudiante <= numeroMax) {
 
       copia = $('#selectProductos').clone(false);
       copiaEstado = $('#selectEstado').clone(false);
