@@ -79,7 +79,7 @@ Asignar alumnos a Servicio Social
       </div>
 
       <div class="col-md-6">
-        
+
         {{-- Numero de alumnos --}}
         <div class="form-group">
           <label class="col-sm-3 control-label">Numero de alumnos:</label>
@@ -88,28 +88,45 @@ Asignar alumnos a Servicio Social
           </div>
         </div>
 
-      </div>
+        {{-- Estado SS --}}
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Estado del Servicio Social:</label>
+          <div class="col-sm-9">
+            <select class="form-control select2" style="width: 100%;" name="estado_id">
+             @foreach($estados as $estado)
+             @if($estado->id==$servicioSocial->estado_id)
+             <option selected value="{{ $estado->id }}" >{{ $estado->nombre }}</option>
+             @else
+             <option value="{{ $estado->id }}" >{{ $estado->nombre }}</option>
+             @endif
+             @endforeach
+           </select>
+         </div>
+       </div> 
 
-            {{-- Fila --}}
-      <div class="col-sm-12">
-        {{-- Tabla de productos --}}
-        <table class="table table-bordered" id="tblProductos">
-          <tr>
-            <th style="width: 5%">#</th>
-            <th style="width: 45%">Alumno</th>
-            <th style="width: 20%">Horas asignadas</th>
-            <th style="width: 10%">
-              <button class="btn btn-success" id="btnNuevoProducto" onclick="funcionNuevoProducto()" type="button">
-                          <span class="fa fa-plus"></span>  Agregar
-                      </button>
-            </th>
-          </tr>
-          <tr>
-            <td>
-              1
-            </td>
-            <td>
-              <select class="form-control select2" style="width: 100%;" name="tutor_id" id="selectProductos">
+     </div>
+
+     {{-- Fila --}}
+     <div class="col-sm-12">
+      {{-- Tabla de productos --}}
+      <table class="table table-bordered" id="tblProductos">
+        <tr>
+          <th style="width: 5%">#</th>
+          <th style="width: 45%">Alumno</th>
+          <th style="width: 20%">Horas ganadas</th>
+          <th style="width: 20%">Estado estudiante</th>
+          <th style="width: 10%">
+            <button class="btn btn-success" id="btnNuevoProducto" onclick="funcionNuevoProducto()" type="button">
+              <span class="fa fa-plus"></span>  Agregar
+            </button>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            <select class="form-control select2" style="width: 100%;" name="tutor_id" id="selectProductos">
               <option selected value="" disabled>Seleccione el alumno</option>
               @foreach($alumnos_escuela as $alumno_escuela)
               {{-- @if($alumno->id == $servicioSocial->tutor_id) --}}
@@ -119,27 +136,36 @@ Asignar alumnos a Servicio Social
               {{-- @endif --}}
               @endforeach
             </select>
-            </td>
-            <td>
-              <input type="number" class="form-control" value="0" name="horas[]" required>
-            </td>
-            <td align="center">
+          </td>
+          <td>
+            <input type="number" class="form-control" value="0" name="horas_ganadas[]" required>
+          </td>
+          <td>
+            <select class="form-control select2" style="width: 100%;" name="estado_ss_estudiante" id="selectEstado">
+             @foreach($estados as $estado)
+             @if($estado->codigo != 'DIS')
+             <option value="{{ $estado->id }}" >{{ $estado->nombre }}</option>
+             @endif
+             @endforeach
+           </select>
+         </td>
+         <td align="center">
 
-            </td>
-          </tr>
-        </table>
-      </div>
+         </td>
+       </tr>
+     </table>
+   </div>
 
 
 
 
-    </div><!-- /.box-body -->
+ </div><!-- /.box-body -->
 
-    <div class="box-footer">
-      <a href="" class="btn btn-lg btn-default">Cancelar</a>
-      <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
-    </div>
-  </form>
+ <div class="box-footer">
+  <a href="" class="btn btn-lg btn-default">Cancelar</a>
+  <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
+</div>
+</form>
 </div><!-- /.box -->
 
 
@@ -155,6 +181,7 @@ Asignar alumnos a Servicio Social
 
   function funcionPrincipal() {
     $("body").on( "click", ".btn-danger",funcionEliminarProducto);
+    $(".select2").select2();
   }
   var numero = 2;
   var numeroMax = $('#numeroEstudiante').val();
@@ -163,7 +190,8 @@ Asignar alumnos a Servicio Social
   function funcionNuevoProducto() {
     if (numeroEstudiante < numeroMax) {
 
-        copia = $('#selectProductos').clone(false);
+      copia = $('#selectProductos').clone(false);
+      copiaEstado = $('#selectEstado').clone(false);
       $('#tblProductos')
       .append
       (
@@ -174,38 +202,46 @@ Asignar alumnos a Servicio Social
           .append
           (
             numero
+            )
           )
-        )
         .append
         (
           $('<td>')
           .append
           (
             copia
+            )
           )
-        )
         .append
         (
           $('<td>')
           .append
           (
-            '<input type="number" class="form-control" placeholder="100" name="cantidades[]" required>'
+            '<input type="number" class="form-control" placeholder="100" name="horas_ganadas[]" required>'
+            )
           )
-        )
+        .append
+        (
+          $('<td>')
+          .append
+          (
+            copiaEstado
+            )
+          )
         .append
         (
           $('<td>').attr('align','center')
           .append
           (
             '<button type="button" class="btn btn-danger" click="funcionEliminarProducto()" type="button"><span class="fa fa-remove"></span></button>'
+            )
           )
-        )
-      );
+        );
       //Initialize Select2 Elements
-        $(".select2").select2();
-        $(".select2").select2();
-        numero++;
-        numeroEstudiante++;
+      $(".select2").select2();
+      $(".select2").select2();
+      numero++;
+      numeroEstudiante++;
 
     }
     

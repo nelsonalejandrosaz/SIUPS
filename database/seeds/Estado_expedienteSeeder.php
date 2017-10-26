@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use App\Estado_expediente;
 
+// Este son los estados del expediente del estudiante
+
 class Estado_expedienteSeeder extends Seeder
 {
     /**
@@ -13,7 +15,7 @@ class Estado_expedienteSeeder extends Seeder
     public function run()
     {
         Estado_expediente::create(['nombre'=>'No abierto']);
-        Estado_expediente::create(['nombre'=>'Disponible']);
+        Estado_expediente::create(['nombre'=>'En curso']);
         Estado_expediente::create(['nombre'=>'Finalizado']);
     }
 }

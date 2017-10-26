@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use App\Estado;
 
+// Estos son los estados del SS
+
 class EstadosSeeder extends Seeder
 {
     /**
