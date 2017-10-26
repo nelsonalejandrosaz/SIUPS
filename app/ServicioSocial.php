@@ -33,4 +33,8 @@ class ServicioSocial extends Model
     {
         return $this->belongsTo('App\Escuela');
     }
+     public function expediente_serviciosocials()
+    {
+        return $this->hasMany('App\Expediente_servicio_social');
+    }
 }

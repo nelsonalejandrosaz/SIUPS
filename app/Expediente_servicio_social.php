@@ -8,6 +8,8 @@ class Expediente_servicio_social extends Model
 {
     //
      protected $fillable = [
-        'id_expediente_alumno','id_servicio_social';
+        'expediente_alumno_id','servicio_social_id','horas_ganadas','estado_ss_estudiante',
     ];
+
+    protected $table='expediente_serviciosocials';
 }

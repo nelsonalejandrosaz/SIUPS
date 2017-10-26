@@ -36,7 +36,7 @@ Asignar alumnos a Servicio Social
     <h3 class="box-title">Detalles del Servicio Social</h3>
   </div><!-- /.box-header -->
   <!-- form start -->
-  <form class="form-horizontal" action="" method="POST">
+  <form class="form-horizontal" action="{{ route('asignacionServicioPost' , ['id' => $servicioSocial->id]) }}" method="post">
     {{ csrf_field() }}
     <div class="box-body">
 
@@ -121,29 +121,39 @@ Asignar alumnos a Servicio Social
             </button>
           </th>
         </tr>
+
+        @if($hayalumnos)
+        @foreach($alumnos_asignados as $alumno)
         <tr>
+
           <td>
             1
           </td>
           <td>
-            <select class="form-control select2" style="width: 100%;" name="tutor_id" id="selectProductos">
+            <select class="form-control select2" style="width: 100%;" name="estudiantes[]" id="selectProductos">
               <option selected value="" disabled>Seleccione el alumno</option>
+
+
               @foreach($alumnos_escuela as $alumno_escuela)
-              {{-- @if($alumno->id == $servicioSocial->tutor_id) --}}
-              {{-- <option selected value="{{ $Tutor->id }}">{{ $Tutor->nombre }} {{$Tutor->apellido}}</option> --}}
-              {{-- @else --}}
-              <option value="{{ $alumno_escuela->carnet }}">{{ $alumno_escuela->carnet }} | {{$alumno_escuela->alumno->apellido}} {{$alumno_escuela->alumno->nombre}}</option>
-              {{-- @endif --}}
+              
+              @if($alumno_escuela->expediente->id == $alumno->expediente_alumno_id)
+              <option selected value="{{ $alumno_escuela->expediente->id }}">{{ $alumno_escuela->carnet }} | {{$alumno_escuela->alumno->apellido}} {{$alumno_escuela->alumno->nombre}}</option>
+              
+              @else
+              <option value="{{ $alumno_escuela->expediente->id }}">{{ $alumno_escuela->carnet }} | {{$alumno_escuela->alumno->apellido}} {{$alumno_escuela->alumno->nombre}}</option>
+              @endif
               @endforeach
             </select>
           </td>
           <td>
-            <input type="number" class="form-control" value="0" name="horas_ganadas[]" required>
+            <input type="number" class="form-control" name="horas_ganadas[]" required value="{{$alumno->horas_ganadas}}">
           </td>
           <td>
-            <select class="form-control select2" style="width: 100%;" name="estado_ss_estudiante" id="selectEstado">
+            <select class="form-control select2" style="width: 100%;" name="estado_ss_estudiante[]" id="selectEstado">
              @foreach($estados as $estado)
-             @if($estado->codigo != 'DIS')
+             @if($estado->codigo != 'DIS' && $alumno->estado_ss_estudiante==$estado->id)
+             <option selected value="{{ $estado->id }}" >{{ $estado->nombre }}</option>
+             @else
              <option value="{{ $estado->id }}" >{{ $estado->nombre }}</option>
              @endif
              @endforeach
@@ -153,15 +163,49 @@ Asignar alumnos a Servicio Social
 
          </td>
        </tr>
-     </table>
-   </div>
+       @endforeach
+       
+       @else
+       <tr>
+        <td>
+          1
+        </td>
+        <td>
+          <select class="form-control select2" style="width: 100%;" name="estudiantes[]" id="selectProductos">
+            <option selected value="" disabled>Seleccione el alumno</option>
+            @foreach($alumnos_escuela as $alumno_escuela)
+
+            <option value="{{ $alumno_escuela->expediente->id }}">{{ $alumno_escuela->carnet }} | {{$alumno_escuela->alumno->apellido}} {{$alumno_escuela->alumno->nombre}}</option>
+
+            @endforeach
+          </select>
+        </td>
+        <td>
+          <input type="number" class="form-control" value="0" name="horas_ganadas[]" required>
+        </td>
+        <td>
+          <select class="form-control select2" style="width: 100%;" name="estado_ss_estudiante[]" id="selectEstado">
+           @foreach($estados as $estado)
+           @if($estado->codigo != 'DIS')
+           <option value="{{ $estado->id }}" >{{ $estado->nombre }}</option>
+           @endif
+           @endforeach
+         </select>
+       </td>
+       <td align="center">
+
+       </td>
+     </tr>
+     @endif
+   </table>
+ </div>
 
 
 
 
- </div><!-- /.box-body -->
+</div><!-- /.box-body -->
 
- <div class="box-footer">
+<div class="box-footer">
   <a href="" class="btn btn-lg btn-default">Cancelar</a>
   <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
 </div>

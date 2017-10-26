@@ -15,8 +15,10 @@ class CreateExpedienteServiciosocials extends Migration
     {
         Schema::create('expediente_serviciosocials', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_expediente_alumno');
-            $table->integer('id_servicio_social');
+            $table->integer('expediente_alumno_id');
+            $table->integer('servicio_social_id');
+            $table->integer('horas_ganadas');
+            $table->integer('estado_ss_estudiante');
             $table->timestamps();
         });
     }
