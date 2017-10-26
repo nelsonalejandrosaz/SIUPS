@@ -25,12 +25,18 @@ class ExpedienteController extends Controller
     public function ExpedienteVer($carnet)
     {
         //validando que un coordinador no pueda entrar al expediente de otro alumno de otra escuela, solo de su escuela y el jefe que puede ver todos
-        $alumno_escuela=Alumno_escuela::where('carnet',$carnet)->first();
+        $alumno_escuelas=Alumno_escuela::where('carnet',$carnet)->get();
+        foreach ($alumno_escuelas as $alumno_escuela ) {
+            # code...
+       
     if ( Auth::user()->escuela_id == $alumno_escuela->escuela->id || Auth::user()->rol[0]->nombre=='jefe') {
 
-    	$alumno_escuela = Alumno_escuela::where('carnet',$carnet)->first();
+    	//$alumno_escuela = Alumno_escuela::where('carnet',$carnet)->first();
     	return view('expediente.expedienteVer')->with(['alumno_escuela' =>$alumno_escuela]);
     }
-     return redirect()->route('permisoDenegado');
 }
+
+  return redirect()->route('permisoDenegado');
+}
+   
 }

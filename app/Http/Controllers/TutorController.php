@@ -55,7 +55,7 @@ class TutorController extends Controller
      public function verTutor($id)
   	{
       $tutor = Tutor::find($id);
-      return view('tutor.tutorVer')->with(['tutor' => $tutor]);
+      return view('tutor.tutorver')->with(['tutor' => $tutor]);
   	}
 
 

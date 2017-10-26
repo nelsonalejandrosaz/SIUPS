@@ -96,6 +96,9 @@ class ServicioSocialController extends Controller
        'horas_totales' => $request->input('horas_totales'),
        'numero_estudiantes' => $request->input('numero_estudiantes'),
        'modalidad_id' => $request->input('modalidad_id'),]);
+
+      // session()->flash('message', 'success');
+      // session()->flash('content', 'Servicio Social ingresado corectamente');
      
       return redirect()->route('servicioSocialVer',['id' => $ServicioSocial->id]) ;
       
