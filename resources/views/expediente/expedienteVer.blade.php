@@ -82,7 +82,11 @@
           </tr>
           <tr>
             <th>1</th>
-            <th></th>
+            <th>
+               @foreach($ServicioSocial as $serviciosocial)
+              
+              @endforeach
+            </th>
             <th></th>
             <th></th>
             <th></th>

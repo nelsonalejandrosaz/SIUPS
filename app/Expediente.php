@@ -19,4 +19,9 @@ class Expediente extends Model
     {
         return $this->belongsTo('App\Estado_expediente');
     }
+    public function serviciossociales()
+    {
+        return $this->hasMany('App\Expediente_servicio_social','expediente_alumno_id');
+    }
+
 }

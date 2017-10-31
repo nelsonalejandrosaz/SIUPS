@@ -11,5 +11,6 @@ class Expediente_servicio_social extends Model
         'expediente_alumno_id','servicio_social_id','horas_ganadas','estado_ss_estudiante',
     ];
 
+    
     protected $table='expediente_serviciosocials';
 }
