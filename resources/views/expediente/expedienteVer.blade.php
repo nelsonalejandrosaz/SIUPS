@@ -39,7 +39,7 @@
           <h4>Escuela de ingenieria de {{ $alumno_escuela->escuela->nombre }}</h4>
           <h4>Subunidad de proyeccion Social</h4>
           <br>
-          <h4>Resumen de Servicio Social Desarrollado</h4>
+          <h4>Resumen Servicio Social Desarrollado</h4>
         <br>
         </div>
         <table class="table">
