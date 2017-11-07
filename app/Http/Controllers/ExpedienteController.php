@@ -37,15 +37,31 @@ class ExpedienteController extends Controller
        $estadoSS = Estado::all();
         $i=0;
 
-       $alumno_escuela=Alumno_escuela::where([['carnet',$carnet], ['escuela_id',Auth::user()->escuela_id]])->first();
 
-       $expe_ss=$alumno_escuela->expediente->serviciossociales;
+         if ( Auth::user()->rol[0]->nombre=='jefe') {
+            $alumno_escuela=Alumno_escuela::where('carnet',$carnet)->first();
+        }
+        else {
+       $alumno_escuela=Alumno_escuela::where([['carnet',$carnet], ['escuela_id',Auth::user()->escuela_id]])->first();
+        }
+
+        $existe_escuela=isset($alumno_escuela);
+        //dd($alumno_escuela);
+        if ($existe_escuela)
+            {
+                 $expe_ss=$alumno_escuela->expediente->serviciossociales;
+
+         return view('expediente.expedienteVer')->with(['alumno_escuela' =>$alumno_escuela])->with(['ss' =>$ss])->with(['expediente_servicios' =>$expediente_servicios])->with(['expediente' =>$expediente])->with(['tutor' =>$tutor])->with(['estadoSS' =>$estadoSS])->with(['expe_ss' =>$expe_ss]);
+            }
+        else{
+                return redirect()->route('permisoDenegado');
+          }
+
+      
        // dd($expe_ss);
 
 
- return view('expediente.expedienteVer')->with(['alumno_escuela' =>$alumno_escuela])->with(['ss' =>$ss])->with(['expediente_servicios' =>$expediente_servicios])->with(['expediente' =>$expediente])->with(['tutor' =>$tutor])->with(['estadoSS' =>$estadoSS])->with(['expe_ss' =>$expe_ss]);
-
-  return redirect()->route('permisoDenegado');
+ 
 }
    
 }
