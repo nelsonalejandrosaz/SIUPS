@@ -169,6 +169,9 @@ Route::name('asignacionServicioEliminar')->delete('/asignacion/{id}','Asignacion
 *Fin de la rutas para asignacion de servicio social
 *************************************/
 
+Route::get('error', function(){
+	abort(404);
+});
 
 // Rutas para buscar municipios
 Route::name('municipiosPorDep')->get('/municipios/{id}', 'ServicioSocialController@municipiosPorDepartamento');

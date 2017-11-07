@@ -33,7 +33,7 @@ class AlumnoController extends Controller
    Excel::load(Input::file('csv_file'), function($hoja){
      $hoja->each(function($fila){
       $alumno = new Alumno;
-      $alumno->carnet = $fila->carnet;
+      $alumno->carnet = strtoupper($fila->carnet);
       $alumno->nombre = $fila->nombre;
       $alumno->apellido = $fila->apellido;
       $alumno->direccion = $fila->direccion;
@@ -44,15 +44,15 @@ class AlumnoController extends Controller
       Alumno::firstOrCreate($alumno->toArray());
       $alumno = Alumno::where('carnet','=',$fila->carnet)->first();
       $escuela = new Escuela;
-				$escuela = Escuela::where('codigo','=',$fila->codigo_escuela)->first(); //revisar
-				$alumno_escuela = new Alumno_escuela;
-				$alumno_escuela->alumno()->associate($alumno);
-				$alumno_escuela->escuela()->associate($escuela);
-				// $alumno_escuela->save();
-				$ae = Alumno_escuela::firstOrCreate(['carnet' => $alumno->carnet, 'escuela_id' => $escuela->id]);
+        $escuela = Escuela::where('codigo','=',$fila->codigo_escuela)->first(); //revisar
+        $alumno_escuela = new Alumno_escuela;
+        $alumno_escuela->alumno()->associate($alumno);
+        $alumno_escuela->escuela()->associate($escuela);
+        // $alumno_escuela->save();
+        $ae = Alumno_escuela::firstOrCreate(['carnet' => $alumno->carnet, 'escuela_id' => $escuela->id]);
         Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1, 'observaciones' => 'Ninguna']);
-				// Alumno::firstOrCreate($fila->toArray());
-				// return $fila;
+        // Alumno::firstOrCreate($fila->toArray());
+        // return $fila;
       });
    });
    session()->flash('mensaje', 'CSV cargado');
@@ -62,7 +62,7 @@ class AlumnoController extends Controller
  public function registroAlumno()
  {
   return view('alumnos.alumno_registro_manual');
-}
+  }
 
 public function guardarAlumno(Request $request)
 {
@@ -74,7 +74,7 @@ public function guardarAlumno(Request $request)
     'correo'=>'email',
   ]);
   $alumno = new Alumno;
-  $alumno->carnet = $request->carnet;
+  $alumno->carnet = strtoupper($request->carnet);
   $alumno->nombre = $request->nombre;
   $alumno->apellido = $request->apellido;
   $alumno->telefono = $request->telefono;
@@ -101,7 +101,11 @@ public function guardarAlumno(Request $request)
     foreach ($alumnos_escuela as $alumno_escuela) {
       if ($alumno_escuela->escuela_id == Auth::user()->escuela_id) {
           // Si el alumno es de la misma escuela de devuelve el error
-        session()->flash('advertencia', 'Alumno ya existe');
+        // Se devuelve el mensaje de exito
+        session()->flash('mensaje.tipo', 'danger');
+        session()->flash('mensaje.icono', 'fa-remove');
+        session()->flash('mensaje.titulo', 'Error');
+        session()->flash('mensaje.contenido', 'El alumno ya existe en esta escuela');
         return redirect()->route('alumnoNuevo') ;
       }
     }
@@ -111,27 +115,31 @@ public function guardarAlumno(Request $request)
     $ae = Alumno_escuela::create(['carnet' => $alumno->carnet, 'escuela_id' => $escuela->id]);
       // Se crea el Expediente del alumno con el estado sin abrir
     Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1, 'observaciones' => 'Ninguna']);
-    session()->flash('mensaje', 'Alumno ingresado con exito');
+
+    // Se devuelve el mensaje de exito
+    session()->flash('mensaje.tipo', 'success');
+    session()->flash('mensaje.icono', 'fa-check');
+    session()->flash('mensaje.titulo', 'Exito');
+    session()->flash('mensaje.contenido', 'Alumno guardado correctamente');
     return redirect()->route('alumnoVer',['carnet'=>$alumno->carnet]) ;         
   }
 }
 
-public function editarAlumno($carnet)
-{
- $alumno_escuela=Alumno_escuela::where('carnet',$carnet)->first();
- if ( Auth::user()->escuela_id == $alumno_escuela->escuela->id || Auth::user()->rol[0]->nombre=='jefe') {
-
-  $alumno = Alumno::find($carnet);
-  return view('alumnos.alumno_editar')->with(['alumno' => $alumno]);
-}
-return redirect()->route('permisoDenegado');
-}
-
-
+  public function editarAlumno($carnet)
+  {
+    $ae = Alumno_escuela::where([['carnet',$carnet],['escuela_id',Auth::user()->escuela_id],])->first();
+    $existe = isset($ae);
+    if ($existe) {
+      $alumno = $ae->alumno;
+      return view('alumnos.alumno_editar')->with(['alumno' => $alumno]);
+    } else {
+      abort(404);
+    }
+  }
 
 public function editarAlumnoGuardar(Request $request){
   $alumno = Alumno::find($request->carnet);
-  $alumno->carnet = $request->carnet;
+  $alumno->carnet = strtoupper($request->carnet);
   $alumno->nombre = $request->nombre;
   $alumno->apellido = $request->apellido;
   $alumno->telefono = $request->telefono;
@@ -140,23 +148,36 @@ public function editarAlumnoGuardar(Request $request){
   $alumno->correo = $request->correo;
   $alumno->direccion = $request->direccion;
   $alumno->update();
-  session()->flash('mensaje', 'Alumno modificado corectamente');
+  // Se devuelve el mensaje de exito{
+  session()->flash('mensaje.tipo', 'success');
+  session()->flash('mensaje.icono', 'fa-check');
+  session()->flash('mensaje.titulo', 'Exito');
+  session()->flash('mensaje.contenido', 'Alumno modificado correctamente');
   return redirect()->route('alumnoVer',['carnet'=>$alumno->carnet]) ;
 }
 
+
 public function verAlumno($carnet)
 {
-    //para que un coordinador de otra escuela no pueda ver los alumnos de otra escuela si introduce el carnet
-  $alumno_escuelas=Alumno_escuela::where('carnet',$carnet)->get();
-  foreach ($alumno_escuelas as $alumno_escuela) {
-      # code...
-    if ( Auth::user()->escuela_id == $alumno_escuela->escuela->id || Auth::user()->rol[0]->nombre=='jefe') {
 
-      $alumno = Alumno::where('carnet',$carnet)->first();
+  if (Auth::user()->rol[0]->nombre=='jefe') {
+    $alumno = Alumno::where('carnet',$carnet)->first();
+    $existe = isset($alumno);
+    if ($existe) {
+      return view('alumnos.alumno_ver')->with(['alumno' => $alumno]);      
+    } else {
+      abort(404);
+    }    
+  } else {
+    $ae = Alumno_escuela::where([['carnet',$carnet],['escuela_id',Auth::user()->escuela_id],])->first();
+    $existe = isset($ae);
+    if ($existe) {
+      $alumno = $ae->alumno;
       return view('alumnos.alumno_ver')->with(['alumno' => $alumno]);
+    } else {
+      abort(404);
     }
-   
   }
-   return redirect()->route('permisoDenegado');
 }
+
 }

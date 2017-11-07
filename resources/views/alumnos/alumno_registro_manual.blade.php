@@ -28,6 +28,8 @@
     </div>
 @endif
 
+@include('partials.mensajes')
+
 <!--comienza la vista del formulario de registro alumnos-->
 <div class="row">
   <div class="col-xs-12" >
