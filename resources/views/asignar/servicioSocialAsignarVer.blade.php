@@ -27,29 +27,10 @@ Asignar alumnos a Servicio Social
 
 {{-- Include de los mensajes de errror --}}
 @include('partials.alertaerror')
-@include('partials.mensajes')
-@include('partials.modal')
+@include('partials.alertamensajes')
 
 
 <!-- Form de la asignacion de alumnos al servicio social -->
-<div class="hidden">
-  <select class="form-control select2" style="width: 100%;" name="estudiantes[]" id="selectProductos">
-    <option selected value="" disabled>Seleccione el alumno</option>
-    @foreach($alumnos_escuela as $alumno_escuela)
-
-    <option value="{{ $alumno_escuela->expediente->id }}">{{ $alumno_escuela->carnet }} | {{$alumno_escuela->alumno->apellido}} {{$alumno_escuela->alumno->nombre}}</option>
-
-    @endforeach
-  </select>
-  <select class="form-control select2" style="width: 100%;" name="estado_ss_estudiante[]" id="selectEstado">
-   @foreach($estados as $estado)
-   @if($estado->codigo != 'DIS')
-   <option value="{{ $estado->id }}" >{{ $estado->nombre }}</option>
-   @endif
-   @endforeach
- </select>
-</div>
-
 <div class="box box-primary">
   <div class="box-header with-border">
     <h3 class="box-title">Detalles del Servicio Social</h3>
@@ -179,9 +160,7 @@ Asignar alumnos a Servicio Social
            </select>
          </td>
          <td align="center">
-          <button type="button" class="btn btn-danger" type="button" data-toggle="modal" data-target="#modal-danger" data-expss="{{$alumno->id}}" data-carnet="Aqui va carnet">
-            <span class="fa fa-remove"></span>
-          </button>
+
          </td>
          @php($i++)
        </tr>
@@ -196,12 +175,29 @@ Asignar alumnos a Servicio Social
  </div><!-- /.box-body -->
 
  <div class="box-footer">
-  <a href="{{route('servicioSocialLista')}}" class="btn btn-lg btn-default">Cancelar</a>
+  <a href="" class="btn btn-lg btn-default">Cancelar</a>
   <button type="submit" class="btn btn-lg btn-success pull-right">Guardar</button>
 </div>
 </form>
 </div><!-- /.box -->
 
+
+<div class="hidden">
+  <select class="form-control select2" style="width: 100%;" name="estudiantes[]" id="selectProductos">
+    <option selected value="" disabled>Seleccione el alumno</option>
+    @foreach($alumnos_escuela as $alumno_escuela)
+
+    <option value="{{ $alumno_escuela->expediente->id }}">{{ $alumno_escuela->carnet }} | {{$alumno_escuela->alumno->apellido}} {{$alumno_escuela->alumno->nombre}}</option>
+
+    @endforeach
+  </select>
+  <select class="form-control select2" style="width: 100%;" name="estado_ss_estudiante[]" id="selectEstado">
+   @foreach($estados as $estado)
+   @if($estado->codigo != 'DIS')
+   <option value="{{ $estado->id }}" >{{ $estado->nombre }}</option>
+   @endif
+   @endforeach
+ </select>
  @endsection
 
  {{-- Seccion para insertar JS extras a los que se cargan por defecto --}}
@@ -213,7 +209,7 @@ Asignar alumnos a Servicio Social
   $(document).on('ready', funcionPrincipal());
 
   function funcionPrincipal() {
-    $("body").on( "click", ".btnSG",funcionEliminarProducto);
+    $("body").on( "click", ".btn-danger",funcionEliminarProducto);
     $(".select2").select2();
   }
   var numeroEstudiante = $('.filaClase').length;
@@ -266,7 +262,7 @@ Asignar alumnos a Servicio Social
           $('<td>').attr('align','center')
           .append
           (
-            '<button type="button" class="btn btn-danger btnSG" type="button"><span class="fa fa-remove"></span></button>'
+            '<button type="button" class="btn btn-danger" click="funcionEliminarProducto()" type="button"><span class="fa fa-remove"></span></button>'
             )
           )
         );
@@ -288,25 +284,6 @@ Asignar alumnos a Servicio Social
     numero--;
     numeroEstudiante--;
   }
-
-  $('#modal-danger').on('show.bs.modal', function (event) {
-    var botonEliminar = $(event.relatedTarget) // Button that triggered the modal
-    var botonEliminarConfirmar = $('#btnEliminar')
-    var carnet = botonEliminar.data('carnet')
-    var idexpss = botonEliminar.data('expss')
-    var modal = $(this)
-    // var recipient = button.data('whatever') // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    botonEliminarConfirmar.click(function() {
-      botonEliminar.parent().parent().remove();
-      numero--;
-      numeroEstudiante--;
-      modal.find('#formEliminar').submit()
-    });
-    modal.find('#carnet').text(carnet)
-    modal.find('#formEliminar').attr("action", "/asignacion/" + idexpss)
-  })
 
 </script>
 {{-- Fin de funcion para cargar mas filas de productos --}}
