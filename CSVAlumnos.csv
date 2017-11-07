@@ -1,0 +1,31 @@
+carnet,nombre,apellido,direccion,telefono,correo,lugar_trabajo,telefono_trabajo,codigo_escuela
+AA17001,Jose,Aleman,Direccion 1,77777701,correo@algo.com,Trabajo 1,22222201,I10501
+BA17002,Juan,Benitez,Direccion 2,77777702,correo@algo.com,Trabajo 2,22222202,I10502
+CA17003,Maria,Carballo,Direccion 3,77777703,correo@algo.com,Trabajo 3,22222203,I10503
+DA17004,Pedro ,Dainez,Direccion 4,77777704,correo@algo.com,Trabajo 4,22222204,I10504
+EA17005,Julio,Espinoza,Direccion 5,77777705,correo@algo.com,Trabajo 5,22222205,I10506
+FA17006,Carmelo,Figueroa,Direccion 6,77777706,correo@algo.com,Trabajo 6,22222206,I10511
+GA17007,Carmen,Guillen,Direccion 7,77777707,correo@algo.com,Trabajo 7,22222207,I10515
+HA17008,Daniel,Hernandez,Direccion 8,77777708,correo@algo.com,Trabajo 8,22222208,A10507
+LA17009,Vilma,Lopez,Direccion 9,77777709,correo@algo.com,Trabajo 9,22222209,I10501
+MA17010,Ester,Martinez,Direccion 10,77777710,correo@algo.com,Trabajo 10,22222210,I10502
+OA17011,Francisco,Orantes,Direccion 11,77777711,correo@algo.com,Trabajo 11,22222211,I10503
+PA17012,Ana,Perez,Direccion 12,77777712,correo@algo.com,Trabajo 12,22222212,I10504
+RA17013,Michelle,Rivera,Direccion 13,77777713,correo@algo.com,Trabajo 13,22222213,I10506
+SA17014,Fernanda,Salgado,Direccion 14,77777714,correo@algo.com,Trabajo 14,22222214,I10511
+AA17015,Valeria,Aleman,Direccion 15,77777715,correo@algo.com,Trabajo 15,22222215,I10515
+BA17016,Alberto,Benitez,Direccion 16,77777716,correo@algo.com,Trabajo 16,22222216,A10507
+CA17017,Elias,Carballo,Direccion 17,77777717,correo@algo.com,Trabajo 17,22222217,I10501
+DA17018,Noel,Dainez,Direccion 18,77777718,correo@algo.com,Trabajo 18,22222218,I10502
+EA17019,Iker,Espinoza,Direccion 19,77777719,correo@algo.com,Trabajo 19,22222219,I10503
+FA17020,Antonio,Figueroa,Direccion 20,77777720,correo@algo.com,Trabajo 20,22222220,I10504
+GA17021,Alejandra,Guillen,Direccion 21,77777721,correo@algo.com,Trabajo 21,22222221,I10506
+HA17022,Cristiano,Hernandez,Direccion 22,77777722,correo@algo.com,Trabajo 22,22222222,I10511
+LA17023,Marcos,Lopez,Direccion 23,77777723,correo@algo.com,Trabajo 23,22222223,I10515
+MA17024,Keylor,Martinez,Direccion 24,77777724,correo@algo.com,Trabajo 24,22222224,A10507
+AA15001,Jose,Abichela,Direccion 1,77777701,correo@algo.com,Trabajo 1,22222201,I10501
+BA15002,Juan,Bersallo,Direccion 2,77777702,correo@algo.com,Trabajo 2,22222202,I10502
+CA15003,Maria,Carrillo,Direccion 3,77777703,correo@algo.com,Trabajo 3,22222203,I10503
+DA15004,Pedro ,Dario,Direccion 4,77777704,correo@algo.com,Trabajo 4,22222204,I10504
+LA15023,Marcos,Elmar,Direccion 23,77777723,correo@algo.com,Trabajo 23,22222223,I10515
+SR13073,Nelson Alejandro,Saz Rivera,Mejicanos,77892352,nelsonalejandrosaz@gmail.com,S&S,22222222,I10515 

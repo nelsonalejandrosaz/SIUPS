@@ -20,6 +20,7 @@ class CreateExpedienteServiciosocials extends Migration
             $table->integer('horas_ganadas');
             $table->integer('estado_ss_estudiante');
             $table->timestamps();
+            $table->unique(['expediente_alumno_id', 'servicio_social_id'],'exp_ss_unq');
         });
     }
 

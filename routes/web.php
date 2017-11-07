@@ -162,6 +162,8 @@ Route::name('expedienteVer')->get('/expediente/{carnet}','ExpedienteController@E
 ***************************************/
 Route::name('asignacionServicio')->get('/asignacion/{id}','AsignacionServicioController@AsignacionServicio')->middleware('coordinador');
 Route::name('asignacionServicioPost')->post('/asignacion','AsignacionServicioController@AsignacionServicioPost')->middleware('coordinador');
+Route::name('asignacionServicioEliminar')->delete('/asignacion/{id}','AsignacionServicioController@AsignacionServicioEliminar')->middleware('coordinador');
+
 
 /************************************
 *Fin de la rutas para asignacion de servicio social

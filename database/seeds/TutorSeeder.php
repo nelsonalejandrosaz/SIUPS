@@ -12,7 +12,7 @@ class TutorSeeder extends Seeder
      */
     public function run()
     {
-        Tutor::create(['nombre' => 'tutor 1', 'apellido' => 'apel1', 'carnet'=>'va12334','dui' => '1234567890','correo'=>'b1@b1.com']);
-        Tutor::create(['nombre' => 'tutor 2', 'apellido' => 'apel1', 'carnet'=>'va12334','dui' => '1234567880','correo'=>'b1@b1.com']);
+        Tutor::create(['nombre' => 'Emilio Antonio', 'apellido' => 'Rivas Castro', 'carnet'=>'RC12334','dui' => '1234567890','correo'=>'b1@b1.com']);
+        Tutor::create(['nombre' => 'Karina Maria', 'apellido' => 'Hernadez Guerra', 'carnet'=>'HG12334','dui' => '1234567880','correo'=>'b1@b1.com']);
     }
 }
