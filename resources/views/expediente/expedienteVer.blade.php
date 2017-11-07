@@ -63,7 +63,7 @@
             <td>Telefono de trabajo: {{ $alumno_escuela->alumno->telefono_trabajo }}</td>
         </table>
         <br>
-        <table class="table table-bordered table-hover">
+        <table border="3">
           <tr>
             <th style="width: 5%" rowspan="2">No</th>
             <th style="width: 20%" rowspan="2">Servicio Social</th>
@@ -80,46 +80,79 @@
             <th>Directos</th>
             <th>Indirectos</th>
           </tr>
-          <tr>
-            <th>1</th>
-            <th>
-               @foreach($ServicioSocial as $serviciosocial)
-              
+
+           <tbody>
+             @foreach($expe_ss as $fila)
+                
+    <tr class="alternar">
+            <td> </td>
+            <td style="border:1px solid;padding:3px 3px 3px;">
+            <!-- nombre de los servicio sociales hehcos por el elumno -->
+
+                {{$fila->ssexp->nombre}} 
+        
+            </td>
+            <td >
+            <!-- tutores -->
+            @php($existe=isset($fila->ssexp->tutor))
+             @if($existe)
+             {{$fila->ssexp->tutor->nombre}} 
+            @else
+              Sin Tutor
+            @endif
+
+            </td>
+            <td>
+
+           
+             <!--  fecha inicio del ss -->
+           <!--     @foreach($expediente_servicios as $uu) 
+                   @foreach($expediente as $exp)
+
+                   @if($uu->expediente_alumno_id == $exp->id)
+                    {{$uu->horas_ganadas}}
+                   @endif
+
               @endforeach
-            </th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-          <tr>
-            <th>2</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-          <tr>
-            <th>3</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
+              @endforeach -->
+            </td>
+            <td>
+             <!--  fecha finalizacion del ss -->
+               
+            </td>
+            <td >
+             
+           <!--   Horas ganadas/asignadas  saacads de la tabla expediente_serviciosocials -->
+
+               {{$fila->horas_ganadas}} 
+            </td>
+            <td>
+              <!-- Monto del SS -->
+               {{$fila->ssexp->monto}} 
+              
+
+            </td>
+            <td >
+               <!-- Beneficiarios directos-->
+                 {{$fila->ssexp->beneficiarios_directos}} 
+            </td>
+            <td>
+ <!-- Beneficiarios indirectos-->
+              {{$fila->ssexp->beneficiarios_indirectos}} 
+
+            </td>
+            <td>
+<!-- estado de los servicios sociales del expediente del alumno -->
+{{$fila->ssexp->estado->nombre}} 
+              
+
+            </td>
+            <td>
+          
+            </td>
+         
+   </tr>
+            @endforeach
         </table>
         <div>
           <br>
@@ -136,5 +169,14 @@
 
 {{-- Seccion para insertar JS extras a los que se cargan por defecto --}}
 @section('JSExtras')
+
+<style>
+  td.rollover:hover{
+   background-color:#CED8F6;
+
+  }
+
+   tr:hover td{background:#EFF2FB;}
+</style>
 
 @endsection

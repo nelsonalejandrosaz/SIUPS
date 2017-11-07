@@ -17,11 +17,14 @@ class Expediente extends Model
 
     public function estado_expediente()
     {
-        return $this->belongsTo('App\Estado_expediente');
+        return $this->belongsTo('App\Estado_expediente'); //has many (?)
     }
     public function serviciossociales()
     {
         return $this->hasMany('App\Expediente_servicio_social','expediente_alumno_id');
     }
+
+
+
 
 }
