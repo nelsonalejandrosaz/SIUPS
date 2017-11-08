@@ -24,7 +24,7 @@ class JefeMiddleware
         }
       }
   }
-        return redirect('permisoDenegado');
+        abort(403);
     }
 
 }

@@ -27,7 +27,7 @@ Ver Servicio Social
 
 {{-- Include de los mensajes de errror --}}
 @include('partials.alertaerror')
-@include('partials.alertamensajes')
+@include('partials.mensajes')
 
 <!--comienza la vista del formulario de registro Servicio Social-->
 <div class="row">
@@ -53,6 +53,14 @@ Ver Servicio Social
               <label class="col-sm-3 control-label">Nombre:</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" placeholder="Nombre del Proyecto" name="nombre" value="{{$servicioSocial->nombre}}" disabled="true">
+              </div>
+            </div>
+
+            {{-- Descripcion SS --}}
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><b>Descripcion:*</b></label>
+              <div class="col-sm-9">
+                <textarea disabled class="form-control" placeholder="Descripcion del Proyecto" name="descripcion">{{$servicioSocial->descripcion}}</textarea>
               </div>
             </div>
 

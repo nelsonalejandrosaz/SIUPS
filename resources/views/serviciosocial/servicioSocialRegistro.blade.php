@@ -35,6 +35,8 @@ Nuevo Servicio Social
     <div class="box box-primary">
       <div class="box-header with-border">
         <h3 class="box-title">Datos del Servicio Social</h3>
+        <a href="{{ route('beneficiarioNuevo') }}" class="btn btn-md btn-primary pull-right"><span class="fa fa-university"></span> Beneficiario Nuevo</a>
+        <a style="margin-right: 5px" href="{{ route('tutorNuevo') }}" class="btn btn-md btn-primary pull-right"><span class="fa fa-male"></span> Tutor Nuevo</a>
       </div><!-- /.box-header -->
       <form class="form-horizontal" action="{{ route('servicioSocialNuevoPost') }}" method="post">
         {{ csrf_field() }}
@@ -49,9 +51,17 @@ Nuevo Servicio Social
             
             {{-- Nombre SS --}}
             <div class="form-group">
-              <label class="col-sm-3 control-label">Nombre:*</label>
+              <label class="col-sm-3 control-label"><b>Nombre:*</b></label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" placeholder="Nombre del Proyecto" name="nombre" value="{{old('nombre')}}">
+              </div>
+            </div>
+
+            {{-- Descripcion SS --}}
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><b>Descripcion:*</b></label>
+              <div class="col-sm-9">
+                <textarea class="form-control" placeholder="Descripcion del Proyecto" name="descripcion">{{old('descripcion')}}</textarea>
               </div>
             </div>
 
@@ -73,7 +83,7 @@ Nuevo Servicio Social
 
            {{-- Fecha ingreso --}}
            <div class="form-group">
-            <label class="col-sm-3 control-label">Inicio del Servicio social:*</label>
+            <label class="col-sm-3 control-label"><b>Inicio del Servicio social:*</b></label>
             <div class="col-sm-9">
               <div class="input-group date">
                 <div class="input-group-addon">
@@ -107,7 +117,7 @@ Nuevo Servicio Social
 
         {{-- Numero de alumnos --}}
         <div class="form-group">
-          <label class="col-sm-3 control-label">Numero de alumnos:*</label>
+          <label class="col-sm-3 control-label"><b>Numero de alumnos:*</b></label>
           <div class="col-sm-9">
             <input type="number" class="form-control" placeholder="5" name="numero_estudiantes" value="{{old('numero_estudiantes')}}" min="1">
           </div>
@@ -119,7 +129,7 @@ Nuevo Servicio Social
         <h4 class="box-title">Datos de solicitante del Servicio Social</h4>
         {{-- Solicitante SS --}}
         <div class="form-group">
-          <label class="col-sm-3 control-label">Entidad beneficiaria:*</label>
+          <label class="col-sm-3 control-label"><b>Entidad beneficiaria:*</b></label>
           <div class="col-sm-9">
             <select class="form-control select2" style="width: 100%;" name="beneficiario_id">
              <option selected value="" disabled>Seleccione el Beneficiario </option>
@@ -145,7 +155,7 @@ Nuevo Servicio Social
 
      {{-- Departamento SS --}}
      <div class="form-group">
-      <label class="col-sm-3 control-label">Departamento:*</label>
+      <label class="col-sm-3 control-label"><b>Departamento:*</b></label>
       <div class="col-sm-9">
         <select class="form-control select2" id="select2Dep" style="width: 100%;" name="departamento_id">
           <option selected value="" disabled>Seleccione el departamento </option>
@@ -158,7 +168,7 @@ Nuevo Servicio Social
 
    {{-- Municipio SS --}}
    <div class="form-group">
-    <label class="col-sm-3 control-label">Municipio:*</label>
+    <label class="col-sm-3 control-label"><b>Municipio:*</b></label>
     <div class="col-sm-9">
       <select class="form-control select2" id="select2Mup" style="width: 100%;" name="municipio_id">
        <option selected value="" disabled>Seleccione el departamento </option>

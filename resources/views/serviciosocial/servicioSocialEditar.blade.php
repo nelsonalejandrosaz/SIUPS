@@ -50,15 +50,23 @@ Editar Servicio Social
             
             {{-- Nombre SS --}}
             <div class="form-group">
-              <label class="col-sm-3 control-label">Nombre:*</label>
+              <label class="col-sm-3 control-label"><b>Nombre:*</b></label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" placeholder="Nombre del Proyecto" name="nombre" value="{{$servicioSocial->nombre}}">
               </div>
             </div>
 
+            {{-- Descripcion SS --}}
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><b>Descripcion:*</b></label>
+              <div class="col-sm-9">
+                <textarea class="form-control" placeholder="Descripcion del Proyecto" name="descripcion">{{$servicioSocial->descripcion}}</textarea>
+              </div>
+            </div>
+
             {{-- Modalidad SS --}}
             <div class="form-group">
-              <label class="col-sm-3 control-label">Modalidad:*</label>
+              <label class="col-sm-3 control-label"><b>Modalidad:*</b></label>
               <div class="col-sm-9">
                 <select class="form-control select2" style="width: 100%;" name="modalidad_id">
                  @foreach($modalidades as $modalidad)
@@ -75,7 +83,7 @@ Editar Servicio Social
 
            {{-- Fecha ingreso --}}
            <div class="form-group">
-            <label class="col-sm-3 control-label">Inicio del Servicio social:*</label>
+            <label class="col-sm-3 control-label"><b>Inicio del Servicio social:*</b></label>
             <div class="col-sm-9">
               <div class="input-group date">
                 <div class="input-group-addon">
@@ -109,7 +117,7 @@ Editar Servicio Social
 
         {{-- Numero de alumnos --}}
         <div class="form-group">
-          <label class="col-sm-3 control-label">Numero de alumnos:*</label>
+          <label class="col-sm-3 control-label"><b>Numero de alumnos:*</b></label>
           <div class="col-sm-9">
             <input type="number" class="form-control" name="numero_estudiantes" value="{{$servicioSocial->numero_estudiantes}}" min="1">
           </div>
@@ -140,7 +148,7 @@ Editar Servicio Social
         <h4 class="box-title">Datos de solicitante del Servicio Social</h4>
         {{-- Solicitante SS --}}
         <div class="form-group">
-          <label class="col-sm-3 control-label">Entidad beneficiaria:*</label>
+          <label class="col-sm-3 control-label"><b>Entidad beneficiaria:*</b></label>
           <div class="col-sm-9">
             <select class="form-control select2" style="width: 100%;" name="beneficiario_id">
              @foreach($Beneficiarios as $Beneficiario)
@@ -175,7 +183,7 @@ Editar Servicio Social
 
      {{-- Departamento SS --}}
      <div class="form-group">
-      <label class="col-sm-3 control-label">Departamento:*</label>
+      <label class="col-sm-3 control-label"><b>Departamento:*</b></label>
       <div class="col-sm-9">
         <select class="form-control select2" id="select2Dep" style="width: 100%;" name="departamento_id">
          @foreach($departamentos as $departamento)
@@ -191,7 +199,7 @@ Editar Servicio Social
 
    {{-- Municipio SS --}}
    <div class="form-group">
-    <label class="col-sm-3 control-label">Municipio:*</label>
+    <label class="col-sm-3 control-label"><b>Municipio:*</b></label>
     <div class="col-sm-9">
       <select class="form-control select2" id="select2Mup" style="width: 100%;" name="municipio_id">
        @foreach($municipios as $municipio)

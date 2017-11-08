@@ -32,16 +32,14 @@ Route::group(['middleware' => 'auth'], function () {
 	/********************************
 	*Rutas para gestion alumnos
 	********************************/
-	Route::name('alumnoLista')->get('/alumnos', 'AlumnoController@AlumnosLista');
-	Route::name('alumnoCargaCSV')->get('/alumnos/cargaCSV', function () {
-	    return view('alumnos.alumnos_carga_masiva');
-	})->middleware('coordinador');
-	Route::name('alumnoNuevo')->get('/alumnos/nuevo','AlumnoController@registroAlumno')->middleware('coordinador');
-	Route::name('alumnoNuevoPost')->post('/alumnos/nuevo','AlumnoController@guardarAlumno')->middleware('coordinador');
-	Route::name('alumnoVer')->get('/alumnos/{carnet}', 'AlumnoController@verAlumno')->middleware('Jefe_Coordinador');
-	Route::name('alumnoEditar')->get('/alumnos/{carnet}/editar', 'AlumnoController@editarAlumno')->middleware('coordinador');
-	Route::name('alumnoEditarPost')->post('/alumnos/{carnet}/editar','AlumnoController@editarAlumnoGuardar')->middleware('coordinador');
-	Route::name('alumnoCargaCSVPost')->post('import_csv_file', 'AlumnoController@import_csv_file')->middleware('coordinador');
+	Route::name('alumnoLista')->get('/alumno', 'AlumnoController@AlumnosLista');
+	Route::name('alumnoNuevoCSV')->get('/alumno/cargaCSV','AlumnoController@AlumnoNuevoCVS')->middleware('coordinador');
+	Route::name('alumnoNuevoCSVPost')->post('/alumno/cargaCSV', 'AlumnoController@AlumnoNuevoCVSPost')->middleware('coordinador');
+	Route::name('alumnoNuevo')->get('/alumno/nuevo','AlumnoController@AlumnoNuevo')->middleware('coordinador');
+	Route::name('alumnoNuevoPost')->post('/alumno/nuevo','AlumnoController@AlumnoNuevoPost')->middleware('coordinador');
+	Route::name('alumnoVer')->get('/alumno/{carnet}', 'AlumnoController@AlumnoVer')->middleware('Jefe_Coordinador');
+	Route::name('alumnoEditar')->get('/alumno/{carnet}/editar', 'AlumnoController@AlumnoEditar')->middleware('coordinador');
+	Route::name('alumnoEditarPost')->post('/alumno/{carnet}/editar','AlumnoController@AlumnoEditarPost')->middleware('coordinador');
 	/********************************
 	* Fin Rutas para gestion alumnos
 	********************************/
@@ -106,11 +104,11 @@ Route::name('usuarioEditarPost')->post('/usuarios/{id}/editar','UsuarioControlle
 **      NUEVAS RUTAS PARA TUTORES      ***
 ******************************************/
 
-Route::name('tutoresLista')->get('/tutores', 'TutorController@TutoresLista')->middleware('Jefe_Coordinador');
+Route::name('tutorLista')->get('/tutores', 'TutorController@TutoresLista')->middleware('Jefe_Coordinador');
 
-Route::name('agregarTutor')->get('Agregar/Tutor','TutorController@AgregarTutor')->middleware('coordinador');
+Route::name('tutorNuevo')->get('Agregar/Tutor','TutorController@AgregarTutor')->middleware('coordinador');
 
-Route::name('TutorNuevoPost')->post('Tutores/nuevo','TutorController@guardarTutor')->middleware('coordinador');
+Route::name('tutorNuevoPost')->post('Tutores/nuevo','TutorController@guardarTutor')->middleware('coordinador');
 
 Route::name('TutorVer')->get('/Tutores/{id}', 'TutorController@verTutor')->middleware('Jefe_Coordinador');
 

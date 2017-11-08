@@ -17,16 +17,19 @@
       <div class="box box-primary">
         <div class="box-header">
           <h3 class="box-title">Lista de alumnos</h3>
+          <a href="{{ route('alumnoNuevo') }}" class="btn btn-md btn-primary pull-right"><span class="fa fa-plus"></span> Alumno Nuevo</a>
+
+          <a style="margin-right: 5px" href="{{ route('alumnoNuevoCSV') }}" class="btn btn-md btn-primary pull-right"><span class="fa fa-plus"></span> Alumno Nuevo CSV</a>
         </div><!-- /.box-header -->
         <div class="box-body table-responsive">
           <table id="tablaAlumnos" class="table table-hover">
             <thead>
               <tr>
-                <th>Carnet</th>
-                <th>Apellidos</th>
-                <th>Nombres</th>
-                <th>Escuela</th>
-                <th>Accion</th>
+                <th style="width: 1%">Carnet</th>
+                <th style="width: 20%">Apellidos</th>
+                <th style="width: 20%">Nombres</th>
+                <th style="width: 35%">Escuela</th>
+                <th style="width: 15%">Accion</th>
               </tr>
             </thead>
             <tbody>
@@ -41,6 +44,7 @@
                 <a href="{{ route('alumnoEditar', ['carnet' => $alumno_escuela->alumno->carnet]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
                 @endif  
                 <a href="{{ route('alumnoVer', ['carnet' => $alumno_escuela->alumno->carnet]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a>
+                <a href="{{ route('expedienteVer', ['carnet' => $alumno_escuela->carnet]) }}" class="btn bg-navy"><span class="fa fa-file-text"></span></a> 
               </td>
             </tr>
             @endforeach

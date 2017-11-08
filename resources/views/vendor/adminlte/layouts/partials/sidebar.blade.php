@@ -41,13 +41,13 @@
             <!-- Links para la gestion de alumnos -->
             @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" || Auth::user()->rol[0]->nombre == "jefe" )
             <li class="treeview">
-                <a href="#"><i class='fa fa-users'></i> <span>Estudiantes</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-users'></i> <span>Alumnos</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
+                    <li><a href="{{ route('alumnoLista') }}">Lista de alumnos</a></li>
                     @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
-                        <li><a href="{{ route('alumnoNuevo') }}">Nuevo estudiante</a></li>
-                        <li><a href="{{ route('alumnoCargaCSV') }}">Ingreso por CSV</a></li>
+                        <li><a href="{{ route('alumnoNuevo') }}">Nuevo alumno</a></li>
+                        <li><a href="{{ route('alumnoNuevoCSV') }}">Nuevo alumno por CSV</a></li>
                     @endif
-                    <li><a href="{{ route('alumnoLista') }}">Lista de estudiantes</a></li>
                 </ul>
             </li>
             @endif
@@ -57,8 +57,8 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-newspaper-o'></i> <span>Expedientes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Expedientes en curso</a></li>
                     <li><a href="{{ route('expedienteLista') }}">Lista de expedientes</a></li>
+                    {{-- <li><a href="#">Expedientes en curso</a></li> --}}
                 </ul>
             </li>
             @endif
@@ -68,9 +68,9 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-briefcase'></i> <span>Servicios Sociales</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('servicioSocialLista')}}">Lista Servicios Sociales</a></li>
+                    <li><a href="{{route('servicioSocialLista')}}">Lista de Servicios Sociales</a></li>
                      @if( Auth::user()->rol[0]->nombre == "coordinador_Sups")
-                    <li><a href="{{route('servicioSocialNuevo')}}">Ingresar Servicio Social</a></li>
+                    <li><a href="{{route('servicioSocialNuevo')}}">Servicio Social Nuevo</a></li>
                      @endif
                 </ul>
             </li>
@@ -109,12 +109,12 @@
 
             @if( Auth::user()->rol[0]->nombre == "coordinador_Sups"|| Auth::user()->rol[0]->nombre == "jefe" )
             <li class="treeview">
-                <a href="#"><i class='fa fa-users'></i> <span>Tutores</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-male'></i> <span>Tutores</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     @if( Auth::user()->rol[0]->nombre == "coordinador_Sups")
-                    <li><a href="{{ route('agregarTutor') }}">Ingresar nuevo tutor</a></li>
+                    <li><a href="{{ route('tutorNuevo') }}">Ingresar nuevo tutor</a></li>
                     @endif
-                    <li><a href="{{ route('tutoresLista') }}">Lista de tutores</a></li>
+                    <li><a href="{{ route('tutorLista') }}">Lista de tutores</a></li>
                 </ul>
             </li>
             @endif

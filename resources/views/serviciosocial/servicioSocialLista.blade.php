@@ -31,6 +31,7 @@
       <div class="box box-primary">
         <div class="box-header">
           <h3 class="box-title">Lista de Servicio Social</h3>
+          <a href="{{ route('servicioSocialNuevo') }}" class="btn btn-md btn-primary pull-right"><span class="fa fa-plus"></span> Servicio Social Nuevo</a>
         </div><!-- /.box-header -->
         <div class="box-body table-responsive">
           <table id="tablaServicioSocial" class="table table-hover">

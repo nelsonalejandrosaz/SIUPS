@@ -27,7 +27,7 @@
      
       <div id="notificacion_resul_fcdu"></div>
 
-      <form  id="f_cargar_datos_usuarios" name="f_cargar_datos_usuarios" method="post"  action="{{ route('alumnoCargaCSVPost') }}" class="formarchivo" enctype="multipart/form-data" >                
+      <form  id="f_cargar_datos_usuarios" name="f_cargar_datos_usuarios" method="post"  action="{{ route('alumnoNuevoCSVPost') }}" class="formarchivo" enctype="multipart/form-data" >                
       
       
        <input type="hidden" name="_token" id="_token"  value="<?= csrf_token(); ?>"> 

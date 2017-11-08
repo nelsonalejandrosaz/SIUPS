@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Alumno_escuela;
+use App\ServicioSocial;
+use Illuminate\Support\Facades\Auth;
 
 class CoordinadorController extends Controller
 {
@@ -15,6 +18,12 @@ class CoordinadorController extends Controller
 
   public function index()
   {
-    return view('home/homeCoordinador');
+  	$escuelaId = Auth::user()->escuela_id;
+	$ae = Alumno_escuela::where('escuela_id',$escuelaId)->get();
+	$numeroAlumnos = sizeof($ae);
+	$serviciosSociales = ServicioSocial::where('escuela_id',$escuelaId)->get();
+	$numeroSS = sizeof($serviciosSociales);
+	// dd($numeroAlumnos);
+    return view('home/homeCoordinador')->with(['numeroAlumnos' => $numeroAlumnos])->with(['numeroSS' => $numeroSS]);
   }
 }

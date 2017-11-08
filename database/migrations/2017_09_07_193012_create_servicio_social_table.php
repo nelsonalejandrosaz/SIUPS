@@ -18,6 +18,7 @@ class CreateServicioSocialTable extends Migration
             $table->increments('id');
             $table->integer('escuela_id')->unsigned();
             $table->string('nombre');
+            $table->string('descripcion')->nullable();
             $table->integer('tutor_id')->unsigned()->nullable();
             $table->integer('beneficiario_id')->unsigned();
             $table->integer('municipio_id')->unsigned();

@@ -26,7 +26,12 @@ class AlumnoController extends Controller
     return view('alumnos.alumnos_lista')->with(['alumnos_escuela' => $alumnos_escuela]);
   }
 
-  public function import_csv_file(Request $request){
+  public function AlumnoNuevoCVS()
+  {
+    return view('alumnos.alumnos_carga_masiva');
+  }
+
+  public function AlumnoNuevoCVSPost(Request $request){
    $this->validate($request,[
     'csv_file'=>'required',
   ]);
@@ -59,12 +64,12 @@ class AlumnoController extends Controller
    return redirect()->route('alumnoLista');
  }
 
- public function registroAlumno()
+ public function AlumnoNuevo()
  {
   return view('alumnos.alumno_registro_manual');
   }
 
-public function guardarAlumno(Request $request)
+public function AlumnoNuevoPost(Request $request)
 {
     //dd($request->all());
   $this->validate($request, [
@@ -109,23 +114,22 @@ public function guardarAlumno(Request $request)
         return redirect()->route('alumnoNuevo') ;
       }
     }
-      // Se busca la escuela del coordinador
+    // Se busca la escuela del coordinador
     $escuela = Escuela::where('id', Auth::user()->escuela_id)->first();
     //se crea el nuevo expediente con el mismo alumno que ya existia
     $ae = Alumno_escuela::create(['carnet' => $alumno->carnet, 'escuela_id' => $escuela->id]);
-      // Se crea el Expediente del alumno con el estado sin abrir
+    // Se crea el Expediente del alumno con el estado sin abrir
     Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1, 'observaciones' => 'Ninguna']);
-
-    // Se devuelve el mensaje de exito
+    // Se devuelve el mensaje de exito{
     session()->flash('mensaje.tipo', 'success');
     session()->flash('mensaje.icono', 'fa-check');
     session()->flash('mensaje.titulo', 'Exito');
-    session()->flash('mensaje.contenido', 'Alumno guardado correctamente');
-    return redirect()->route('alumnoVer',['carnet'=>$alumno->carnet]) ;         
+    session()->flash('mensaje.contenido', 'Alumno ingresado correctamente');
+    return redirect()->route('alumnoVer',['carnet'=>$alumno->carnet]);
   }
 }
 
-  public function editarAlumno($carnet)
+  public function AlumnoEditar($carnet)
   {
     $ae = Alumno_escuela::where([['carnet',$carnet],['escuela_id',Auth::user()->escuela_id],])->first();
     $existe = isset($ae);
@@ -137,7 +141,14 @@ public function guardarAlumno(Request $request)
     }
   }
 
-public function editarAlumnoGuardar(Request $request){
+public function AlumnoEditarPost(Request $request){
+  //dd($request->all());
+  $this->validate($request, [
+    'carnet'=>'required|size:7',
+    'nombre'=>'required',
+    'apellido'=>'required',
+    'correo'=>'email',
+  ]);
   $alumno = Alumno::find($request->carnet);
   $alumno->carnet = strtoupper($request->carnet);
   $alumno->nombre = $request->nombre;
@@ -157,7 +168,7 @@ public function editarAlumnoGuardar(Request $request){
 }
 
 
-public function verAlumno($carnet)
+public function AlumnoVer($carnet)
 {
 
   if (Auth::user()->rol[0]->nombre=='jefe') {
