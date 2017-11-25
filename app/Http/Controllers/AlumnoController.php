@@ -37,17 +37,21 @@ class AlumnoController extends Controller
   ]);
    Excel::load(Input::file('csv_file'), function($hoja){
      $hoja->each(function($fila){
-      $alumno = new Alumno;
-      $alumno->carnet = strtoupper($fila->carnet);
-      $alumno->nombre = $fila->nombre;
-      $alumno->apellido = $fila->apellido;
-      $alumno->direccion = $fila->direccion;
-      $alumno->telefono = $fila->telefono;
-      $alumno->correo = $fila->correo;
-      $alumno->lugar_trabajo = $fila->lugar_trabajo;
-      $alumno->telefono_trabajo = $fila->telefono_trabajo;
-      Alumno::firstOrCreate($alumno->toArray());
-      $alumno = Alumno::where('carnet','=',$fila->carnet)->first();
+      // Se busca si el alumno existe, si este no existe
+      if ((Alumno::where('carnet','=',$fila->carnet)->first()) == null) {
+        $alumno = new Alumno;
+        $alumno->carnet = strtoupper($fila->carnet);
+        $alumno->nombre = $fila->nombre;
+        $alumno->apellido = $fila->apellido;
+        $alumno->direccion = $fila->direccion;
+        $alumno->telefono = $fila->telefono;
+        $alumno->correo = $fila->correo;
+        $alumno->lugar_trabajo = $fila->lugar_trabajo;
+        $alumno->telefono_trabajo = $fila->telefono_trabajo;
+        $alumno = Alumno::firstOrCreate($alumno->toArray());
+      } else {
+        $alumno = Alumno::where('carnet',$fila->carnet)->first();
+      }
       $escuela = new Escuela;
         $escuela = Escuela::where('codigo','=',$fila->codigo_escuela)->first(); //revisar
         $alumno_escuela = new Alumno_escuela;
@@ -60,14 +64,18 @@ class AlumnoController extends Controller
         // return $fila;
       });
    });
-   session()->flash('mensaje', 'CSV cargado');
+   // Se devuelve el mensaje de exito
+   session()->flash('mensaje.tipo', 'success');
+   session()->flash('mensaje.icono', 'fa-check');
+   session()->flash('mensaje.titulo', 'Exito');
+   session()->flash('mensaje.contenido', 'Alumnos ingresados correctamente');
    return redirect()->route('alumnoLista');
  }
 
  public function AlumnoNuevo()
  {
   return view('alumnos.alumno_registro_manual');
-  }
+}
 
 public function AlumnoNuevoPost(Request $request)
 {
@@ -120,7 +128,7 @@ public function AlumnoNuevoPost(Request $request)
     $ae = Alumno_escuela::create(['carnet' => $alumno->carnet, 'escuela_id' => $escuela->id]);
     // Se crea el Expediente del alumno con el estado sin abrir
     Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1, 'observaciones' => 'Ninguna']);
-    // Se devuelve el mensaje de exito{
+    // Se devuelve el mensaje de exito
     session()->flash('mensaje.tipo', 'success');
     session()->flash('mensaje.icono', 'fa-check');
     session()->flash('mensaje.titulo', 'Exito');
@@ -129,17 +137,17 @@ public function AlumnoNuevoPost(Request $request)
   }
 }
 
-  public function AlumnoEditar($carnet)
-  {
-    $ae = Alumno_escuela::where([['carnet',$carnet],['escuela_id',Auth::user()->escuela_id],])->first();
-    $existe = isset($ae);
-    if ($existe) {
-      $alumno = $ae->alumno;
-      return view('alumnos.alumno_editar')->with(['alumno' => $alumno]);
-    } else {
-      abort(404);
-    }
+public function AlumnoEditar($carnet)
+{
+  $ae = Alumno_escuela::where([['carnet',$carnet],['escuela_id',Auth::user()->escuela_id],])->first();
+  $existe = isset($ae);
+  if ($existe) {
+    $alumno = $ae->alumno;
+    return view('alumnos.alumno_editar')->with(['alumno' => $alumno]);
+  } else {
+    abort(404);
   }
+}
 
 public function AlumnoEditarPost(Request $request){
   //dd($request->all());
@@ -150,6 +158,10 @@ public function AlumnoEditarPost(Request $request){
     'correo'=>'email',
   ]);
   $alumno = Alumno::find($request->carnet);
+  $existe = isset($alumno);
+  if (!$existe) {
+    abort(403);
+  }
   $alumno->carnet = strtoupper($request->carnet);
   $alumno->nombre = $request->nombre;
   $alumno->apellido = $request->apellido;

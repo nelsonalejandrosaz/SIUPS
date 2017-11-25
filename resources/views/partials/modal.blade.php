@@ -14,8 +14,8 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline" id="btnEliminar">Save changes</button>
+          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-outline" id="btnEliminar">Eliminar</button>
         </div>
       </div>
       <!-- /.modal-content -->

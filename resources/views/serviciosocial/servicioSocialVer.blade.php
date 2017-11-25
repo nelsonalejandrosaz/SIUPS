@@ -58,7 +58,7 @@ Ver Servicio Social
 
             {{-- Descripcion SS --}}
             <div class="form-group">
-              <label class="col-sm-3 control-label"><b>Descripcion:*</b></label>
+              <label class="col-sm-3 control-label">Descripcion:</label>
               <div class="col-sm-9">
                 <textarea disabled class="form-control" placeholder="Descripcion del Proyecto" name="descripcion">{{$servicioSocial->descripcion}}</textarea>
               </div>
