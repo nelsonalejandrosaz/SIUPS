@@ -42,6 +42,8 @@
                 <th>Estado</th>
                 <th>Observaciones</th>
                 <th>Accion</th>
+                 <th>ver</th>
+                     
               </tr>
             </thead>
             <tbody>
@@ -54,7 +56,14 @@
               <td>{{$alumno_escuela->expediente->observaciones}}</td>
               <td align="center">
                 <a href="{{ route('expedienteVer', ['carnet' => $alumno_escuela->carnet]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a> 
+
+                
+
               </td>
+               <td><a href="{{ route('certificado_alumno', ['carnet' => $alumno_escuela->carnet]) }}" target="_blank" ><button class="btn btn-block btn-primary btn-xs">Ver</button></a></td>
+
+               <td><a href="{{ route('certificado_alumno_descargar', ['carnet' => $alumno_escuela->carnet]) }}" target="_blank" ><button class="btn btn-block btn-success btn-xs">Descargar</button></a></td>
+                   
             </tr>
             @endforeach
             </tbody>

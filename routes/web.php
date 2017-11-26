@@ -1,5 +1,5 @@
 <?php
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -173,3 +173,11 @@ Route::get('error', function(){
 
 // Rutas para buscar municipios
 Route::name('municipiosPorDep')->get('/municipios/{id}', 'ServicioSocialController@municipiosPorDepartamento');
+
+
+
+//rutas para certificado
+Route::name('certificado_alumno')->get('/certificado/{carnet}', 'PdfController@pdfview');
+Route::name('certificado_alumno_descargar')->get('/certificado_descargar/{carnet}', 'PdfController@pdfdescargar');
+
+
