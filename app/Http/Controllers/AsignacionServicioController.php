@@ -10,6 +10,7 @@ use App\Alumno_escuela;
 use Illuminate\Support\Facades\Auth;
 use App\Estado;
 use App\Expediente_servicio_social;
+use App\Http\Controllers\ExpedienteController;
 
 class AsignacionServicioController extends Controller
 {
@@ -65,6 +66,7 @@ class AsignacionServicioController extends Controller
                 ]);
             }
         }
+        ExpedienteController::sumarHorasExpediente();
         session()->flash('mensaje.tipo', 'success');
         session()->flash('mensaje.icono', 'fa-check');
         session()->flash('mensaje.titulo', 'Exito');
@@ -83,5 +85,6 @@ class AsignacionServicioController extends Controller
         session()->flash('mensaje.contenido', 'El alumno fue eliminado del Servicio Social');
         return redirect()->route('asignacionServicio', ['id' => $id]);
     }
+
 
 }

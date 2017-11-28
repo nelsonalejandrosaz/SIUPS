@@ -23,6 +23,7 @@ class ExpedienteController extends Controller
             $alumnos_escuela = Alumno_escuela::where('escuela_id',Auth::user()->escuela_id)->get();            
         }
         // $alumnos_escuela = Alumno_escuela::all();
+        // $this->sumarHorasExpediente();
         return view('expediente.expedienteLista')->with(['alumnos_escuela' =>$alumnos_escuela]);
     }
     
@@ -60,5 +61,29 @@ else{
 
 
 }
+
+    public static function sumarHorasExpediente()
+    {
+        // $aes = Alumno_escuela::where('carnet',$carnet)->get();
+        $aes = Alumno_escuela::all();
+        // dd($aes);
+        foreach ($aes as $ae) {
+            $serviciosSociales = $ae->expediente->serviciossociales;
+            $cantidadss = sizeof($serviciosSociales);
+            if ($cantidadss > 0) {
+              $ae->expediente->estado_expediente_id = 2;
+            }
+            // dd($ae->expediente);
+            $totalHoras = 0;
+            foreach ($serviciosSociales as $servicioSocial) {
+                $totalHoras = $totalHoras + $servicioSocial->horas_ganadas;
+            }
+            $ae->expediente->totalHoras = $totalHoras;
+            if ($totalHoras >= 500) {
+              $ae->expediente->estado_expediente_id = 3;
+            }
+            $ae->expediente->save();
+        }
+    }
 
 }
