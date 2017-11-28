@@ -2,7 +2,7 @@
 
 {{-- Titulo de la pagina --}}
 @section('htmlheader_title')
-  Lista de expedientes
+  Lista de certificados
 @endsection
 
 {{-- Seccion para agregar estilos CSS extras a los que se cargan por defecto --}}
@@ -12,7 +12,7 @@
 
 {{-- Titulo del header --}}
 @section('contentheader_title')
-  Lista de expedientes
+  Lista de certificados
 @endsection
 
 {{-- Descripcion del header OPCIONAL --}}
@@ -30,7 +30,7 @@
     <div class="col-xs-12">
       <div class="box box-primary">
         <div class="box-header">
-          <h3 class="box-title">Expedientes</h3>
+          <h3 class="box-title">Alumnos con Certificados</h3>
         </div><!-- /.box-header -->
         <div class="box-body table-responsive">
           <table id="tablaBeneficiarios" class="table table-hover">
@@ -42,7 +42,7 @@
                 <th>Estado</th>
                 <th>Observaciones</th>
                 <th>Accion</th>
-               
+                 <th>ver</th>
                      
               </tr>
             </thead>
@@ -59,6 +59,10 @@
 
                 
 
+              </td>
+               <td><a href="{{ route('certificado_alumno', ['carnet' => $alumno_escuela->carnet]) }}" target="_blank" ><button class="btn btn-block btn-primary btn-xs">Ver</button></a></td>
+
+               <td><a href="{{ route('certificado_alumno_descargar', ['carnet' => $alumno_escuela->carnet]) }}" target="_blank" ><button class="btn btn-block btn-success btn-xs">Descargar</button></a></td>
                    
             </tr>
             @endforeach

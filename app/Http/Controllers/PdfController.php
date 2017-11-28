@@ -103,7 +103,16 @@ class PdfController extends Controller
         
     }
 
-
+ public function CertificadosLista()
+    {
+        if (Auth::user()->rol[0]->nombre == 'jefe') {
+            $alumnos_escuela = Alumno_escuela::all();    
+        } else {
+            $alumnos_escuela = Alumno_escuela::where('escuela_id',Auth::user()->escuela_id)->get();            
+        }
+        // $alumnos_escuela = Alumno_escuela::all();
+        return view('certificado.certificadosLista')->with(['alumnos_escuela' =>$alumnos_escuela]);
+    }
 
     /**
      * Show the form for creating a new resource.

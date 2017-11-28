@@ -177,7 +177,10 @@ Route::name('municipiosPorDep')->get('/municipios/{id}', 'ServicioSocialControll
 
 
 //rutas para certificado
+Route::name('certificadoLista')->get('/certificado/lista', 'PdfController@CertificadosLista')->middleware('Jefe_Coordinador');
 Route::name('certificado_alumno')->get('/certificado/{carnet}', 'PdfController@pdfview');
 Route::name('certificado_alumno_descargar')->get('/certificado_descargar/{carnet}', 'PdfController@pdfdescargar');
 
+//rutas para reporte
+Route::name('reporteIndex')->get('/reportes/index', 'ReporteController@reporteIndex')->middleware('Jefe_Coordinador');
 
