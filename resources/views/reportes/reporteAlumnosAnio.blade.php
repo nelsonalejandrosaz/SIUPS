@@ -1,4 +1,6 @@
+<div class="row">
 Alumnos que finalizaron su servicio social en el anio:  {{$anio}}
+
 
  <table >
             <thead>
@@ -30,5 +32,5 @@ Alumnos que finalizaron su servicio social en el anio:  {{$anio}}
 
 
 
-
+</div>
 
