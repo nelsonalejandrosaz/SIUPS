@@ -36,7 +36,8 @@
 
          <!-- <div class="container" style="margin-top:30px;"> -->
     <div class="row well">
-   
+
+ 
        
       <div class="col-xs-10">
        <div class="panel panel-success">
@@ -44,16 +45,28 @@
         <div class="panel-body">
 
             Ingrese el año en que desea obtener reporte de alumnos que realizaron su Servicio Social <br>
-            <input   type="number"  title="Ingrese un año"  id="degradacionSeleccionada" size="40" >
+            <input   type="number" id="anio" name="anio" title="Ingrese un año"   size="40" >
 
+
+            <button id="btn_anio" class="btn btn-block btn-primary btn-xs">Ver Reporte</button>
 <!-- </div> -->
 </div>
 </div>
 
         </div><!-- /.box-body -->
       </div><!-- /.box -->
+
+   
     </div>
   </div>
 
+@endsection
+
+@section('JSExtras')
+$(document).ready(function() {
+    $('#btn_anio').click(function(){
+        window.location = $(this).val();
+    });
+});
 @endsection
 
