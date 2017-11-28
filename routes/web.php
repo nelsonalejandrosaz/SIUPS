@@ -150,7 +150,7 @@ Route::name('servicioSocialVer')->get('/ServicioSocial/{id}/ver', 'ServicioSocia
 *Rutas para Expediente
 ********************************/
 Route::name('expedienteLista')->get('/expediente', 'ExpedienteController@ExpedienteLista')->middleware('Jefe_Coordinador');
-Route::name('expedienteVer')->get('/expediente/{carnet}','ExpedienteController@ExpedienteVer')->middleware('Jefe_Coordinador');
+Route::name('expedienteVer')->get('/expediente/{carnet}/{escuela}','ExpedienteController@ExpedienteVer')->middleware('Jefe_Coordinador');
 /************************************
 *Fin de la rutas para expediente
 *************************************/
