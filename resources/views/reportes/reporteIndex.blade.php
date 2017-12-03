@@ -36,7 +36,7 @@
 
          <!-- <div class="container" style="margin-top:30px;"> -->
     <div class="row well">
-
+ <!-- <form class="form-horizontal" action="{{ route('reporteAnioEditarPost') }}" method="post"> -->
  
        
       <div class="col-xs-10">
@@ -46,14 +46,22 @@
 
             Ingrese el año en que desea obtener reporte de alumnos que realizaron su Servicio Social <br>
             <input   type="number" id="anio" name="anio" title="Ingrese un año"   size="40" >
+<br><br>
+<table width="300">
 
-
-            <button id="btn_anio" class="btn btn-block btn-primary btn-xs">Ver Reporte</button>
+  <tr>
+            <td width="150">
+            <button href="#" id="btn_anio" class="btn btn-block btn-primary btn-xs" style='width:100px; height:40px'>Ver Reporte</button> </td>
+            <td width="150">
+          <button class="btn btn-block btn-success btn-xs" style='width:100px; height:40px'>Descargar</button> 
+          </td></tr>
+          </table>
 <!-- </div> -->
 </div>
 </div>
 
         </div><!-- /.box-body -->
+     <!--    </form> -->
       </div><!-- /.box -->
 
    

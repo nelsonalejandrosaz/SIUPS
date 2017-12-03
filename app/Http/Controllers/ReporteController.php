@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Alumno_escuela;
 use App\Expediente;
 use App\Expediente_servicio_social;
+use Input; 
+use Response;
+use Dompdf\Dompdf;
+use PDF;
 
 class ReporteController extends Controller
 {
@@ -22,7 +26,8 @@ class ReporteController extends Controller
     {
 
        // $alumno_escuelas = DB::table("alumno_escuelas")->get();
-
+//$a = Input::get('anio');
+//return Response($a);
  $alumno_escuelas=Alumno_escuela::all();
  $anioo = date('Y');
  $mes = date('M');
@@ -37,10 +42,10 @@ class ReporteController extends Controller
  $expediente_servicios= Expediente_servicio_social::all();
    
       $expediente= Expediente::all();
-     
+   $contador=1;  
      
 
- view()->share(compact('alumno_escuelas', 'anio', 'mes', 'dia', 'expediente_servicios','expediente', ''));
+ view()->share(compact('alumno_escuelas', 'anio', 'mes', 'dia', 'expediente_servicios','expediente', 'contador'));
 
          if($request->has('download')){
             // Set extra option
@@ -52,5 +57,27 @@ class ReporteController extends Controller
          }
         return view('reportes.reporteAlumnosAnio');
     }
+
+
+     public function pdfdescargar($anio, Request $request)
+    {
+      $alumno_escuelas=Alumno_escuela::all();
+ $anioo = date('Y');
+ $mes = date('M');
+ $dia = date('d');
+
+   $contador=1; 
+ $anio = Expediente::whereYear('fecha_cierre', $anio)->get();    
+ $expediente_servicios= Expediente_servicio_social::all();
+   
+      $expediente= Expediente::all();
+view()->share(compact('alumno_escuelas', 'anio', 'mes', 'dia', 'expediente_servicios','expediente', 'contador'));
+
+             PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+            // pass view file
+             $pdf = PDF::loadView('reportes.reporteAlumnosAnio');
+            // download pdf
+             return $pdf->download('alumnos.pdf');
+  	}
 
 }
