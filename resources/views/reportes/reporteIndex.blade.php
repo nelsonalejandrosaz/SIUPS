@@ -44,7 +44,7 @@
         <div class="panel-heading">GENERAR REPORTE </div> 
         <div class="panel-body">
 
-            Ingrese el año en que desea obtener reporte de alumnos que realizaron su Servicio Social <br>
+            Ingrese el año y la escuela en que desea obtener reporte de alumnos que realizaron su Servicio Social <br>
             <input   type="number" id="anio" name="anio" title="Ingrese un año"   size="40" >
             <select class="form-control select2" style="width: 100%;" name="escuela" id="escuela">
               <option selected value="0">Todas las escuelas</option>
