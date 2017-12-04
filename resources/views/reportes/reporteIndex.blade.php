@@ -46,6 +46,12 @@
 
             Ingrese el año en que desea obtener reporte de alumnos que realizaron su Servicio Social <br>
             <input   type="number" id="anio" name="anio" title="Ingrese un año"   size="40" >
+            <select class="form-control select2" style="width: 100%;" name="estudiantes[]" id="selectProductos">
+              <option selected value="0">Todas las escuelas</option>
+              @foreach($escuelas as $escuela)
+              <option value="{{ $escuela->id }}">{{ $escuela->nombre }}</option>
+              @endforeach
+            </select>
 <br><br>
              
 

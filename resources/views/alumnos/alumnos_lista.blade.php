@@ -44,7 +44,7 @@
                 <a href="{{ route('alumnoEditar', ['carnet' => $alumno_escuela->alumno->carnet]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
                 @endif  
                 <a href="{{ route('alumnoVer', ['carnet' => $alumno_escuela->alumno->carnet]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a>
-                <a href="{{ route('expedienteVer', ['carnet' => $alumno_escuela->carnet]) }}" class="btn bg-navy"><span class="fa fa-file-text"></span></a> 
+                <a href="{{ route('expedienteVer', ['carnet' => $alumno_escuela->carnet, 'escuela' => $alumno_escuela->escuela->id]) }}" class="btn bg-navy"><span class="fa fa-file-text"></span></a> 
               </td>
             </tr>
             @endforeach

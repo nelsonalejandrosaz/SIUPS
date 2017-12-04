@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Alumno_escuela;
 use App\Expediente;
+use App\Escuela;
 use App\Expediente_servicio_social;
 use Input; 
 use Response;
@@ -18,8 +19,8 @@ class ReporteController extends Controller
 
     public function reporteIndex()
     {
-       
-        return view('reportes.reporteIndex');
+        $escuelas = Escuela::all();
+        return view('reportes.reporteIndex')->with(['escuelas' => $escuelas]);
     }
 
      public function pdfview(Request $request, $anio)
