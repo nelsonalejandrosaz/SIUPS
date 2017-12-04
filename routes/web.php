@@ -183,6 +183,11 @@ Route::name('certificado_alumno_descargar')->get('/certificado_descargar/{carnet
 
 //rutas para reporte
 Route::name('reporteIndex')->get('/reportes/index', 'ReporteController@reporteIndex')->middleware('Jefe_Coordinador');
+
+Route::name('reporte')->post('/reportes/post','ReporteController@reporte');
+Route::name('reporteDescargar')->post('/reportes/descargar','ReporteController@reporteDescargar');
+
 Route::name('reporteAnio')->get('/reportes/{anio}', 'ReporteController@pdfview');
-Route::name('reporteAnioEditarPost')->post('/reportes/post','ReporteController@pdfview');
+
+
 Route::name('reporte_descargar')->get('/reportes/{anio}/descargar', 'ReporteController@pdfdescargar');

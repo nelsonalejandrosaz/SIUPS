@@ -108,8 +108,8 @@ table {
               <div class="box">
                 <div class="box-header with-border">
                 <h2> Reporte de Alumnos </h2>
-                <h4>Alumnos que finalizaron su Servicio Social en el anio:  ____</h4>
-                  <h3 style="display:none;" class="box-title">Reporte Por de Alumnos {{$anio}}</h3>
+                <h4>Alumnos que finalizaron su Servicio Social en el año: <u> {{$r}} </u></h4>
+                 
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table  class="table-1 table table-bordered ">
@@ -125,7 +125,7 @@ table {
             </thead>
 
             <tbody>
-             @foreach($anio as $anio)
+             @foreach($anioCierre as $anio)
               <tr >
               <td>{{$contador}}</td>
               <td>{{$anio->alumno_escuela->carnet}}</td>
