@@ -53,7 +53,7 @@
             @endif
             <!-- Fin links gestion de alumnos -->
             <!-- Links para la gestion de expedientes -->
-            @if( Auth::user()->rol[0]->nombre != "admin" )
+           @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" || Auth::user()->rol[0]->nombre == "jefe" )
             <li class="treeview">
                 <a href="#"><i class='fa fa-newspaper-o'></i> <span>Expedientes</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
@@ -134,6 +134,7 @@
 
 
 <!-- Menu certificados -->
+@if( Auth::user()->rol[0]->nombre == "secretaria" )
              <li class="treeview">
               <a href="#">
                 <i class="fa fa-file-text"></i> <span>Certificados</span> <i class="fa fa-angle-left pull-right"></i>
@@ -143,8 +144,9 @@
                 
               </ul>
             </li> 
-
+@endif
 <!-- Menu reporte -->
+  @if( Auth::user()->rol[0]->nombre == "jefe" )
              <li class="treeview">
               <a href="#">
                 <i class="fa fa-file-pdf-o"></i> <span>Reportes</span> <i class="fa fa-angle-left pull-right"></i>
@@ -154,7 +156,7 @@
                 
               </ul>
             </li> 
-
+@endif
 
 
         </ul><!-- /.sidebar-menu -->
