@@ -22,6 +22,6 @@ class SecretariaMiddleware
         }
       }
   }
-        return redirect('permisoDenegado');
+        abort(403);
     }
 }

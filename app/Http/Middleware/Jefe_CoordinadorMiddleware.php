@@ -24,7 +24,7 @@ class Jefe_CoordinadorMiddleware
         }
       }
   }
-        return redirect('permisoDenegado');
+        abort(403);
     }
 
 }

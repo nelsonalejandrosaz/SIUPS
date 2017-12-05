@@ -22,7 +22,7 @@ class CoordinadorMiddleware
         }
       }
   }
-        return redirect('permisoDenegado');
+        abort(403);
     }
 
 }
