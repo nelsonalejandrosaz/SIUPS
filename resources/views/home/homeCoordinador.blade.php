@@ -69,7 +69,7 @@ home
 								<div class="icon">
 									<i class="fa fa-play"></i>
 								</div>
-								<a href="{{route('servicioSocialLista')}}" class="small-box-footer">Ver lista <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="{{route('expedienteLista')}}" class="small-box-footer">Ver lista <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 						<!-- ./col -->
@@ -84,7 +84,7 @@ home
 								<div class="icon">
 									<i class="fa fa-check-circle"></i>
 								</div>
-								<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="{{route('expedienteLista')}}" class="small-box-footer">Ver lista <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 						<!-- ./col -->
@@ -99,7 +99,7 @@ home
 								<div class="icon">
 									<i class="fa fa-stop"></i>
 								</div>
-								<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="{{route('servicioSocialLista')}}" class="small-box-footer">Ver lista <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 						<!-- ./col -->
@@ -150,7 +150,7 @@ home
 								<div class="icon">
 									<i class="glyphicon glyphicon-plus-sign"></i>
 								</div>
-								<a href="{{route('alumnoLista')}}" class="small-box-footer">Ver lista <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="{{route('servicioSocialLista')}}" class="small-box-footer">Ver lista <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 						<!-- ./col -->
@@ -178,7 +178,7 @@ home
 								<div class="icon">
 									<i class="glyphicon glyphicon-ok-sign"></i>
 								</div>
-								<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="{{route('servicioSocialLista')}}" class="small-box-footer">Ver lista <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 						<!-- ./col -->
@@ -192,7 +192,7 @@ home
 								<div class="icon">
 									<i class="glyphicon glyphicon-exclamation-sign"></i>
 								</div>
-								<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="{{route('servicioSocialLista')}}" class="small-box-footer">Ver lista <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 						<!-- ./col -->
