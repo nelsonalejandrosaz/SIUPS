@@ -23,6 +23,6 @@ class AdminMiddleware
          }
        }
    }
-         return redirect('permisoDenegado');
+       abort(403);
      }
 }
