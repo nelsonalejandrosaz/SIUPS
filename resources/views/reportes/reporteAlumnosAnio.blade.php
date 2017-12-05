@@ -108,7 +108,8 @@ table {
               <div class="box">
                 <div class="box-header with-border">
                 <h2> Reporte de Alumnos </h2>
-                <h4>Alumnos que finalizaron su Servicio Social en el año: <u> {{$r}} </u></h4>
+                <h4>Alumnos que finalizaron su Servicio Social en el año: <u> {{$r}} </u></h4> 
+                 
                  
                 </div><!-- /.box-header -->
                 <div class="box-body">
@@ -120,22 +121,27 @@ table {
                 <th style="text-align: left;">Nombre</th>
                 <th style="text-align: left;">Apellido</th>
                 <th style="text-align: left;">Fecha Cierre</th>
-                <th style="text-align: left;">Escuela</th>
+                 <th style="text-align: left;">Escuela</th>
+                
            </tr>
             </thead>
 
             <tbody>
-             @foreach($anioCierre as $anio)
+             @foreach($reportAnioEscu as $anio)
               <tr >
               <td>{{$contador}}</td>
-              <td>{{$anio->alumno_escuela->carnet}}</td>
-              <td>{{$anio->alumno_escuela->alumno->nombre}}</td>
-              <td>{{$anio->alumno_escuela->alumno->apellido}}</td>
-              <td>{{$anio->alumno_escuela->expediente->fecha_cierre}}</td>
-              <td><span class="badge bg-red">{{$anio->alumno_escuela->escuela->nombre}}</span></td>    
+              <td>{{$anio->carnet}}</td>
+              <td>{{$anio->nombre}}</td>
+              <td>{{$anio->apellido}}</td>
+              <td>{{$anio->fecha_cierre}}</td>
+             <td>{{$anio->esnom}}</td>
+             
+
             </tr>
            <td style="display: none"> {{$contador=$contador+1}}</td>
             @endforeach
+
+           
             </tbody>
             <tfoot>
             </tfoot>

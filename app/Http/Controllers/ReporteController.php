@@ -12,6 +12,7 @@ use Input;
 use Response;
 use Dompdf\Dompdf;
 use PDF;
+use DB;
 
 class ReporteController extends Controller
 {
@@ -83,22 +84,46 @@ view()->share(compact('alumno_escuelas', 'anio', 'mes', 'dia', 'expediente_servi
 
   	public function reporte(Request $request)
   	{
-  		$r = $request->get('anio');
-		// return $request->get('anio');
+  		$escuela = $request->get('escuela');
+  		if ($escuela=='0')
+  		{
+  			$r = $request->get('anio');
+  		// $alumno_escuela=Alumno_escuela::where('escuela_id',$escuela)->get();
+ $reportAnioEscu = DB::table('expedientes')
+            ->join('alumno_escuelas', 'expedientes.alumno_escuela_id', '=', 'alumno_escuelas.id')
+            ->join('alumnos', 'alumnos.carnet', '=', 'alumno_escuelas.carnet')
+            ->join('escuelas', 'escuelas.id', '=', 'alumno_escuelas.escuela_id')
+ ->select('alumnos.carnet','alumnos.nombre','alumnos.apellido','expedientes.fecha_cierre','escuelas.nombre as esnom')->whereYear('fecha_cierre',$r)->get();
+  		}
+  		else {
+	$r = $request->get('anio');
+  		// $alumno_escuela=Alumno_escuela::where('escuela_id',$escuela)->get();
+ $reportAnioEscu = DB::table('expedientes')
+            ->join('alumno_escuelas', 'expedientes.alumno_escuela_id', '=', 'alumno_escuelas.id')
+            ->join('alumnos', 'alumnos.carnet', '=', 'alumno_escuelas.carnet')
+            ->join('escuelas', 'escuelas.id', '=', 'alumno_escuelas.escuela_id')
+ ->select('alumnos.carnet','alumnos.nombre','alumnos.apellido','expedientes.fecha_cierre','escuelas.nombre as esnom' )->whereYear('fecha_cierre',$r)->where('escuelas.id',$escuela)->get();
+}
+ $escuelaNombre = Escuela::where('id', $escuela)->get();
+//dd($escuelaNombre);		
+	// return $request->get('anio');
   // 		dd($request->all());
-    
  $alumno_escuelas=Alumno_escuela::all();
  $anioo = date('Y');
  $mes = date('M');
  $dia = date('d');
 
- $anioCierre = Expediente::whereYear('fecha_cierre', $r)->get();
+ //$anioCierre = Expediente::whereYear('fecha_cierre', $r)->get();
+//$escuela = Escuela::where('id', $esc)->get();
+
+$anioCierre=Expediente::whereYear('fecha_cierre',$r)->get();
+
  $expediente_servicios= Expediente_servicio_social::all();
    
    $expediente= Expediente::all();
    $contador=1;  
      
-view()->share(compact('alumno_escuelas', 'anioCierre','r', 'mes', 'dia', 'expediente_servicios','expediente', 'contador'));
+view()->share(compact('alumno_escuelas', 'anioCierre','r', 'mes', 'dia', 'expediente_servicios','expediente', 'contador','escuela','reportAnioEscu','escuelaNombre'));
 
          if($request->has('download')){
             // Set extra option
@@ -114,22 +139,39 @@ view()->share(compact('alumno_escuelas', 'anioCierre','r', 'mes', 'dia', 'expedi
 
 		public function reporteDescargar(Request $request)
   	{
-  		$r = $request->get('anio');
-		// return $request->get('anio');
-  // 		dd($request->all());
-    
+  		$escuela = $request->get('escuela');
+  		if ($escuela=='0')
+  		{
+  			$r = $request->get('anio');
+  		// $alumno_escuela=Alumno_escuela::where('escuela_id',$escuela)->get();
+ $reportAnioEscu = DB::table('expedientes')
+            ->join('alumno_escuelas', 'expedientes.alumno_escuela_id', '=', 'alumno_escuelas.id')
+            ->join('alumnos', 'alumnos.carnet', '=', 'alumno_escuelas.carnet')
+            ->join('escuelas', 'escuelas.id', '=', 'alumno_escuelas.escuela_id')
+ ->select('alumnos.carnet','alumnos.nombre','alumnos.apellido','expedientes.fecha_cierre','escuelas.nombre as esnom')->whereYear('fecha_cierre',$r)->get();
+  		}
+  		else {
+	$r = $request->get('anio');
+  		// $alumno_escuela=Alumno_escuela::where('escuela_id',$escuela)->get();
+ $reportAnioEscu = DB::table('expedientes')
+            ->join('alumno_escuelas', 'expedientes.alumno_escuela_id', '=', 'alumno_escuelas.id')
+            ->join('alumnos', 'alumnos.carnet', '=', 'alumno_escuelas.carnet')
+            ->join('escuelas', 'escuelas.id', '=', 'alumno_escuelas.escuela_id')
+ ->select('alumnos.carnet','alumnos.nombre','alumnos.apellido','expedientes.fecha_cierre','escuelas.nombre as esnom' )->whereYear('fecha_cierre',$r)->where('escuelas.id',$escuela)->get();
+}
+ $escuelaNombre = Escuela::where('id', $escuela)->get();
+
  $alumno_escuelas=Alumno_escuela::all();
  $anioo = date('Y');
  $mes = date('M');
  $dia = date('d');
 
- $anioCierre = Expediente::whereYear('fecha_cierre', $r)->get();
- $expediente_servicios= Expediente_servicio_social::all();
-   
-   $expediente= Expediente::all();
+
+$anioCierre=Expediente::whereYear('fecha_cierre',$r)->get();
+
    $contador=1;  
      
-view()->share(compact('alumno_escuelas', 'anioCierre','r', 'mes', 'dia', 'expediente_servicios','expediente', 'contador'));
+view()->share(compact('anioCierre','r', 'mes', 'dia', 'contador','escuela','reportAnioEscu','escuelaNombre'));
 
          
             // Set extra option
