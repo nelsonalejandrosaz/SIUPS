@@ -132,7 +132,7 @@
             </li>
             @endif
 
-
+            @if( Auth::user()->rol[0]->nombre == "jefe")
 <!-- Menu certificados -->
              <li class="treeview">
               <a href="#">
@@ -143,6 +143,7 @@
                 
               </ul>
             </li> 
+            @endif
 
 <!-- Menu reporte -->
              <li class="treeview">

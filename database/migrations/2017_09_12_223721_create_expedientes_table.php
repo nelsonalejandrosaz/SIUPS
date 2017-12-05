@@ -22,6 +22,8 @@ class CreateExpedientesTable extends Migration
             $table->integer('totalHoras')->nullable();
             $table->integer('totalMontos')->nullable();
             $table->integer('estado_expediente_id')->unsigned();
+            $table->string('ingresadoPor')->nullable();
+            $table->string('modificadoPor')->nullable(); 
             $table->timestamps();
         });
     }

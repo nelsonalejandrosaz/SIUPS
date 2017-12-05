@@ -8,7 +8,7 @@ class ServicioSocial extends Model
 {
     //
      protected $fillable = [
-        'nombre','descripcion','escuela_id','tutor_id','beneficiario_id','municipio_id','fecha_ingreso','fecha_fin','monto','beneficiarios_directos','beneficiarios_indirectos','estado_id','horas_totales','numero_estudiantes','modalidad_id',
+        'nombre','descripcion','escuela_id','tutor_id','beneficiario_id','municipio_id','fecha_ingreso','fecha_fin','monto','beneficiarios_directos','beneficiarios_indirectos','estado_id','horas_totales','numero_estudiantes','modalidad_id', 'ingresadoPor', 'modificadoPor',
     ];
 
     protected $table='servicio_social';

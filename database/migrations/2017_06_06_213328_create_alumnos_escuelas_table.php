@@ -17,6 +17,7 @@ class CreateAlumnosEscuelasTable extends Migration
             $table->increments('id');
             $table->string('carnet');
             $table->integer('escuela_id')->unsigned();
+            $table->string('ingresadoPor')->nullable();
             $table->timestamps();
         });
     }

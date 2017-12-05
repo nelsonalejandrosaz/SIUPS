@@ -8,7 +8,7 @@ class Alumno_escuela extends Model
 {
     //
      protected $fillable = [
-        'carnet','escuela_id',
+        'carnet','escuela_id', 'ingresadoPor',
     ];
 
     public function alumno()

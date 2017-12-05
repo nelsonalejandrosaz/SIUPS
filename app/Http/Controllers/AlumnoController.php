@@ -48,6 +48,7 @@ class AlumnoController extends Controller
         $alumno->correo = $fila->correo;
         $alumno->lugar_trabajo = $fila->lugar_trabajo;
         $alumno->telefono_trabajo = $fila->telefono_trabajo;
+        $alumno->ingresadoPor = Auth::user()->email;
         $alumno = Alumno::firstOrCreate($alumno->toArray());
       } else {
         $alumno = Alumno::where('carnet',$fila->carnet)->first();
@@ -58,7 +59,7 @@ class AlumnoController extends Controller
         $alumno_escuela->alumno()->associate($alumno);
         $alumno_escuela->escuela()->associate($escuela);
         // $alumno_escuela->save();
-        $ae = Alumno_escuela::firstOrCreate(['carnet' => $alumno->carnet, 'escuela_id' => $escuela->id]);
+        $ae = Alumno_escuela::firstOrCreate(['carnet' => $alumno->carnet, 'escuela_id' => $escuela->id, 'ingresadoPor' => Auth::user()->email]);
         Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1, 'observaciones' => 'Ninguna']);
         // Alumno::firstOrCreate($fila->toArray());
         // return $fila;
@@ -95,6 +96,7 @@ public function AlumnoNuevoPost(Request $request)
   $alumno->telefono_trabajo = $request->telefono_trabajo;
   $alumno->correo = $request->correo;
   $alumno->direccion = $request->direccion;
+  $alumno->ingresadoPor = Auth::user()->email;
 
     // Se busca si el alumno existe, si este no existe
   if ((Alumno::where('carnet','=',$request->carnet)->first()) == null) {
@@ -170,6 +172,7 @@ public function AlumnoEditarPost(Request $request){
   $alumno->telefono_trabajo = $request->telefono_trabajo;
   $alumno->correo = $request->correo;
   $alumno->direccion = $request->direccion;
+  $alumno->modificadoPor = Auth::user()->email;
   $alumno->update();
   // Se devuelve el mensaje de exito{
   session()->flash('mensaje.tipo', 'success');

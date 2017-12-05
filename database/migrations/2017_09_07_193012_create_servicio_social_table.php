@@ -31,6 +31,8 @@ class CreateServicioSocialTable extends Migration
             $table->integer('horas_totales')->nullable();
             $table->integer('numero_estudiantes');
             $table->integer('modalidad_id')->unsigned();
+            $table->string('ingresadoPor')->nullable();
+            $table->string('modificadoPor')->nullable(); 
             $table->timestamps();
         });
     }

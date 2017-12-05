@@ -96,7 +96,9 @@ public function ServicioSocialGuardar(Request $request){
     'estado_id' => $request->input('estado_id'),
     'horas_totales' => $request->input('horas_totales'),
     'numero_estudiantes' => $request->input('numero_estudiantes'),
-    'modalidad_id' => $request->input('modalidad_id'),]);
+    'modalidad_id' => $request->input('modalidad_id'),
+    'ingresadoPor' => Auth::user()->email,
+  ]);
 
   // Se muestra el mensaje de ingreso correcto 
   session()->flash('mensaje.tipo', 'success');
@@ -146,6 +148,8 @@ public function ServicioSocialEditarPost(Request $request, $id)
   $servicioSocial->horas_totales = $request->input('horas_totales');
   $servicioSocial->numero_estudiantes = $request->input('numero_estudiantes');
   $servicioSocial->modalidad_id = $request->input('modalidad_id');
+  $servicioSocial->modificadoPor = Auth::user()->email;
+  // dd(Auth::user()->email);
   $servicioSocial->save();
   // Se muestra el mensaje de ingreso correcto 
   session()->flash('mensaje.tipo', 'success');

@@ -23,7 +23,9 @@ class CreateAlumnosTable extends Migration
             $table->string('telefono',100)->nullable();
             $table->string('correo',100)->nullable();
             $table->string('lugar_trabajo',100)->nullable();
-            $table->string('telefono_trabajo',100)->nullable(); 
+            $table->string('telefono_trabajo',100)->nullable();
+            $table->string('ingresadoPor')->nullable();
+            $table->string('modificadoPor')->nullable(); 
             $table->timestamps();
         });
     }
