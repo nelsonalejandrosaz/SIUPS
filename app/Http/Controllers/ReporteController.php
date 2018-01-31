@@ -123,9 +123,11 @@ $anioCierre=Expediente::whereYear('fecha_cierre',$r)->get();
    $expediente= Expediente::all();
    $contador=1;  
      
-view()->share(compact('alumno_escuelas', 'anioCierre','r', 'mes', 'dia', 'expediente_servicios','expediente', 'contador','escuela','reportAnioEscu','escuelaNombre'));
+//view()->share(compact('alumno_escuelas', 'anioCierre','r', 'mes', 'dia', 'expediente_servicios','expediente', 'contador','escuela','reportAnioEscu','escuelaNombre'));
 
-         if($request->has('download')){
+$view = \View::make("reportes.reporteAlumnosAnio")->with(compact('alumno_escuelas', 'anioCierre','r', 'mes', 'dia', 'expediente_servicios','expediente', 'contador','escuela','reportAnioEscu','escuelaNombre'))->render();
+
+         /*if($request->has('download')){
             // Set extra option
              PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
             // pass view file
@@ -133,7 +135,12 @@ view()->share(compact('alumno_escuelas', 'anioCierre','r', 'mes', 'dia', 'expedi
             // download pdf
              return $pdf->download('alumnos.pdf');
          }
-        return view('reportes.reporteAlumnosAnio');
+        return view('reportes.reporteAlumnosAnio');*/
+
+         $pdf = \App::make('dompdf.wrapper');
+
+        $pdf->loadHTML($view);
+        return $pdf->stream($r.'_'.$escuela.'.pdf');
 	}
 
 

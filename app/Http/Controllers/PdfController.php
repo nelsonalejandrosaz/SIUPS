@@ -66,18 +66,27 @@ class PdfController extends Controller
   $mes = date('M');
     $dia = date('d');
 
-         view()->share(compact('alumno_escuelas', 'anio', 'mes', 'dia'));
+
+$view = \View::make("certificado.certificado")->with(compact('alumno_escuelas', 'anio', 'mes', 'dia'))->render();
 
 
-         if($request->has('download')){
-            // Set extra option
-             PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
-            // pass view file
-             $pdf = PDF::loadView('certificado.certificado');
-            // download pdf
-             return $pdf->download($carnet.'.pdf');
-         }
-        return view('certificado.certificado');
+         $pdf = \App::make('dompdf.wrapper');
+
+        $pdf->loadHTML($view);
+        return $pdf->stream($carnet.'.pdf');
+
+        // view()->share(compact('alumno_escuelas', 'anio', 'mes', 'dia'));
+
+
+        //  if($request->has('download')){
+        //     // Set extra option
+        //      PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+        //     // pass view file
+        //      $pdf = PDF::loadView('certificado.certificado');
+        //     // download pdf
+        //      return $pdf->download($carnet.'.pdf');
+        //  }
+        // return view('certificado.certificado');
     }
 
     public function pdfdescargar($carnet, Request $request)

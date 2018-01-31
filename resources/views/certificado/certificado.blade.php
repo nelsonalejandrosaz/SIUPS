@@ -1,5 +1,4 @@
 
-<a href="{{ route('certificado_alumno_descargar', ['carnet' => $alumno_escuelas->carnet]) }}">Download PDF</a>
 
 <!--comienza la vista del formulario de registro alumnos-->
 <div class="row">
