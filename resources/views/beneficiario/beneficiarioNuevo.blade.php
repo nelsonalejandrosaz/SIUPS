@@ -7,7 +7,9 @@
 
 {{-- Seccion para agregar estilos CSS extras a los que se cargan por defecto --}}
 @section('CSSExtras')
-
+<!-- Select2 -->
+{{-- Sirve para se pueda buscar en los select --}}
+<link rel="stylesheet" href="{{asset('/plugins/select2.min.css')}}">
 @endsection
 
 {{-- Titulo del header --}}
@@ -38,7 +40,7 @@
         {{ csrf_field() }}
           <!-- inicio box-body -->
           <div class="box-body">
-              <div class="col-xs-6">
+              <div class="col-xs-5">
                 <h4 class="box-title">Datos del contacto</h4>
                 {{-- nombre --}}
                 <div class="form-group">
@@ -76,7 +78,7 @@
                   </div>
                 </div>
               </div>
-            <div class="col-xs-6">
+            <div class="col-xs-7">
               <h4 class="box-title">Datos de organizacion</h4>
               {{-- nombre organizacion --}}
               <div class="form-group">
@@ -92,6 +94,20 @@
                   <input type="text" class="form-control" placeholder="2222-2222" name="telefono_organizacion" value="{{ old('telefono_organizacion') }}" minlength="8" maxlength="11">
                 </div>
               </div>
+
+              {{-- Tipo beneficiario --}}
+               <div class="form-group">
+                <label class="col-sm-2 control-label">Tipo:</label>
+                <div class="col-sm-10">
+                  <select class="form-control select2" id="select2tipo" style="width: 100%;" name="tipo_id">
+                    <option selected value="" disabled>Seleccione el tipo </option>
+                   @foreach($tipos as $tipo)
+                   <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
+                   @endforeach
+                 </select>
+               </div>
+             </div>
+
               {{-- correo --}}
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Correo:</label>
@@ -99,6 +115,30 @@
                 <input type="email" class="form-control" placeholder="ejemplo@algo.com" name="correo_organizacion" value="{{ old('correo_organizacion') }}">
                 </div>
               </div>
+
+              {{-- Departamento SS --}}
+               <div class="form-group">
+                <label class="col-sm-2 control-label">Departamento:</label>
+                <div class="col-sm-10">
+                  <select class="form-control select2" id="select2Dep" style="width: 100%;" name="departamento_id">
+                    <option selected value="" disabled>Seleccione el departamento </option>
+                   @foreach($departamentos as $departamento)
+                   <option value="{{ $departamento->id }}" @if(old('departamento_id')==$departamento->id){{'selected'}}@endif>{{ $departamento->nombre }}</option>
+                   @endforeach
+                 </select>
+               </div>
+             </div>
+
+             {{-- Municipio SS --}}
+             <div class="form-group">
+              <label class="col-sm-2 control-label">Municipio:</label>
+              <div class="col-sm-10">
+                <select class="form-control select2" id="select2Mup" style="width: 100%;" name="municipio_id">
+                    <option selected value="" disabled>Seleccione el municipio </option>
+                  </select>
+                </div>
+              </div>
+
               {{-- direccion organizacion --}}
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Direccion:</label>
@@ -121,5 +161,28 @@
 
 {{-- Seccion para insertar JS extras a los que se cargan por defecto --}}
 @section('JSExtras')
+<!-- Select2 -->
+<script src="{{asset('/plugins/select2.full.min.js')}}"></script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $(".select2").select2();
+    $select2Dep = $('#select2Dep');
+    $select2Mup = $('#select2Mup');
+    // $select2Dep.select2();
+    // $select2Mup.select2();
 
+    $select2Dep.change(function(event){
+      $.get("/municipios/"+$select2Dep.val(),function(response,state){
+        $select2Mup.select2('destroy');
+        $select2Mup.empty();
+        for (var i = 0; i < response.length; i++) {
+          $('#select2Mup').append("<option value='"+response[i].id+"'>"+response[i].nombre+"</option>");
+        }
+        $select2Mup.select2();
+      })
+    })
+
+  });
+</script>
 @endsection

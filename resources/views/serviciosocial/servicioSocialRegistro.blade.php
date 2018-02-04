@@ -171,7 +171,7 @@ Nuevo Servicio Social
     <label class="col-sm-3 control-label"><b>Municipio:*</b></label>
     <div class="col-sm-9">
       <select class="form-control select2" id="select2Mup" style="width: 100%;" name="municipio_id">
-       <option selected value="" disabled>Seleccione el departamento </option>
+       <option selected value="" disabled>Seleccione el municipio </option>
      </select>
    </div>
  </div>
