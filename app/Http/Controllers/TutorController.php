@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tutor;
+use App\Especialidad;
 
 class TutorController extends Controller
 {
+
+
+
+
    public function TutoresLista(){
 		$tutores=Tutor::all();
 		return view('tutor.tutoresLista')->with(['tutores' => $tutores]);
@@ -16,8 +21,8 @@ class TutorController extends Controller
 
 
     public function AgregarTutor(){
-    	
-    	return view ('tutor.tutorAgregar');
+      $especialidads = Especialidad::all();
+    	return view ('tutor.tutorAgregar')->with(['especialidads' => $especialidads]) ;
     }
 
 
@@ -25,11 +30,12 @@ class TutorController extends Controller
     public function guardarTutor(Request $request)
   	{
     $this->validate($request, [
-        'dui'=>'required|size:10',
+
         'nombre'=>'required',
         'apellido'=>'required',
         'correo'=>'email',
-        
+        'especialidad_id'=> 'required',
+
       ]);
 
      if((Tutor::where('dui','=',$request->dui)->first()) == null)
@@ -44,9 +50,9 @@ class TutorController extends Controller
     	]);
     return redirect()->route('TutorVer',['id'=>$Tutor->id]) ;
     }
-    else { 
-      //si ya existe muestra mensaje error 
-      session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor'); 
+    else {
+      //si ya existe muestra mensaje error
+      session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor');
       return redirect()->route('agregarTutor') ;}
     }
 
@@ -88,13 +94,13 @@ class TutorController extends Controller
     	$tutor->dui = $request->input('dui');
     	$tutor->carnet = $request->input('carnet');
     	$tutor->save();
-    	
+
    		return redirect()->route('TutorVer',['id'=>$tutor->id]) ;
       session()->flash('mensaje', 'Tutor modificado corectamente');
     }
-  	else { 
-      //si ya existe muestra mensaje error 
-      session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor'); 
+  	else {
+      //si ya existe muestra mensaje error
+      session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor');
        return view('tutor.tutorEditar')->with(['tutor' => $tutor]);
      }
     }
