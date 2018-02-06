@@ -177,15 +177,19 @@ Route::name('municipiosPorDep')->get('/municipios/{id}', 'ServicioSocialControll
 
 
 //rutas para certificado
-Route::name('certificadoLista')->get('/certificado/lista', 'PdfController@CertificadosLista')->middleware('secretaria');
-Route::name('certificado_alumno')->get('/certificado/{carnet}', 'PdfController@pdfview')->middleware('secretaria');;
-Route::name('certificado_alumno_descargar')->get('/certificado_descargar/{carnet}', 'PdfController@pdfdescargar')->middleware('secretaria');;
+Route::name('certificadoLista')->get('/certificado/lista', 'PdfController@CertificadosLista');
+Route::name('certificado_alumno')->get('/certificado/{carnet}', 'PdfController@pdfview');
+Route::name('certificado_alumno_descargar')->get('/certificado_descargar/{carnet}', 'PdfController@pdfdescargar');
+Route::name('validarCertificado')->post('/validar','ExpedienteController@validarCertificado');
+
 
 //rutas para reporte
 Route::name('reporteIndex')->get('/reportes/index', 'ReporteController@reporteIndex')->middleware('jefe');
 
 Route::name('reporte')->post('/reportes/post','ReporteController@reporte')->middleware('jefe');
 Route::name('reporteDescargar')->post('/reportes/descargar','ReporteController@reporteDescargar')->middleware('jefe');
+
+
 
 Route::name('reporteAnio')->get('/reportes/{anio}', 'ReporteController@pdfview');
 
