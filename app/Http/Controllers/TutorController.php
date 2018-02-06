@@ -15,6 +15,7 @@ class TutorController extends Controller
 
    public function TutoresLista(){
 		$tutores=Tutor::all();
+    $especialidads = Especialidad::all();
 		return view('tutor.tutoresLista')->with(['tutores' => $tutores]);
 	}
 
@@ -34,7 +35,7 @@ class TutorController extends Controller
         'nombre'=>'required',
         'apellido'=>'required',
         'correo'=>'email',
-        'especialidad_id'=> 'required',
+        'especialidad_id'=>'required',
 
       ]);
 
@@ -47,13 +48,15 @@ class TutorController extends Controller
     	'correo' => $request->input('correo'),
     	'dui' => $request->get('dui'),
     	'carnet'=>$request->get('carnet'),
+      'especialidad_id'=>$request->input('especialidad_id'),
     	]);
     return redirect()->route('TutorVer',['id'=>$Tutor->id]) ;
     }
     else {
       //si ya existe muestra mensaje error
       session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor');
-      return redirect()->route('agregarTutor') ;}
+      return redirect()->route('tutor.tutorNuevo');
+        }
     }
 
 
@@ -76,10 +79,10 @@ class TutorController extends Controller
   	public function editarTutorGuardar(Request $request, $id)
   	{
        $this->validate($request, [
-        'dui'=>'required|size:10',
         'nombre'=>'required',
         'apellido'=>'required',
         'correo'=>'email',
+        'especialidad_id'=>'required',
         ]);
        //verifica que dui de tutor nos e repita
         $tutor = Tutor::find($id);
@@ -91,6 +94,7 @@ class TutorController extends Controller
     	$tutor->nombre = $request->input('nombre');
     	$tutor->apellido = $request->input('apellido');
     	$tutor->correo = $request->input('correo');
+      $tutor->especialidad_id = $request->input('especialidad_id');
     	$tutor->dui = $request->input('dui');
     	$tutor->carnet = $request->input('carnet');
     	$tutor->save();

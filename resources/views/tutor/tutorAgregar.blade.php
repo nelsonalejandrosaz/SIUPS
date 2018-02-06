@@ -92,7 +92,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Carnet:</label>
                   <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="2222-2222" name="carnet" value="{{ old('carnet') }}">
+                  <input type="text" class="form-control" placeholder="**####" name="carnet" value="{{ old('carnet') }}">
                   </div>
                 </div>
             </div>

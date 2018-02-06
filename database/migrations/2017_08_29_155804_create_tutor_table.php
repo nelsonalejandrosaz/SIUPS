@@ -17,6 +17,7 @@ class CreateTutorTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellido');
+            $table->integer('especialidad_id')->unsigned();
             $table->string('carnet')->nullable();
             $table->string('dui',10)->unique();
             $table->string('correo');

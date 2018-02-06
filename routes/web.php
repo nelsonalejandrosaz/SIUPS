@@ -1,5 +1,5 @@
-<?php
- 
+  <?php
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -105,16 +105,11 @@ Route::name('usuarioEditarPost')->post('/usuarios/{id}/editar','UsuarioControlle
 ******************************************/
 
 Route::name('tutorLista')->get('/tutores', 'TutorController@TutoresLista')->middleware('Jefe_Coordinador');
-
 Route::name('tutorNuevo')->get('Agregar/Tutor','TutorController@AgregarTutor')->middleware('coordinador');
-
 Route::name('tutorNuevoPost')->post('Tutores/nuevo','TutorController@guardarTutor')->middleware('coordinador');
-
 Route::name('TutorVer')->get('/Tutores/{id}', 'TutorController@verTutor')->middleware('Jefe_Coordinador');
-
 Route::name('TutorEditar')->get('/Tutores/{id}/editar', 'TutorController@editarTutor')->middleware('coordinador');
-
-	Route::name('TutorEditarPost')->post('/Tutores/{id}/editar','TutorController@editarTutorGuardar')->middleware('coordinador');
+Route::name('TutorEditarPost')->post('/Tutores/{id}/editar','TutorController@editarTutorGuardar')->middleware('coordinador');
 
 /******************************************
 **      NUEVAS RUTAS PARA TUTORES       ***
@@ -134,7 +129,7 @@ Route::name('beneficiarioVer')->get('/beneficiario/{id}/ver', 'BeneficiarioContr
 
 
 /********************************
-*Rutas para Servicio Social 
+*Rutas para Servicio Social
 ********************************/
 Route::name('servicioSocialLista')->get('/ServicioSocial/Lista','ServicioSocialController@ServicioSocialLista')->middleware('Jefe_Coordinador');
 Route::name('servicioSocialNuevo')->get('/ServicioSocial/nuevo','ServicioSocialController@ServicioSocialRegistro')->middleware('coordinador');
@@ -183,10 +178,7 @@ Route::name('certificado_alumno_descargar')->get('/certificado_descargar/{carnet
 
 //rutas para reporte
 Route::name('reporteIndex')->get('/reportes/index', 'ReporteController@reporteIndex')->middleware('jefe');
-
 Route::name('reporte')->post('/reportes/post','ReporteController@reporte')->middleware('jefe');
 Route::name('reporteDescargar')->post('/reportes/descargar','ReporteController@reporteDescargar')->middleware('jefe');
-
 Route::name('reporteAnio')->get('/reportes/{anio}', 'ReporteController@pdfview');
-
 Route::name('reporte_descargar')->get('/reportes/{anio}/descargar', 'ReporteController@pdfdescargar');
