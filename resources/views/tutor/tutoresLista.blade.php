@@ -10,7 +10,7 @@
 
 @section('main-content')
 
- 
+
 	<div class="row">
     <div class="col-xs-12">
       <div class="box box-primary">
@@ -23,8 +23,9 @@
               <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>dui</th>
-                <th>email</th>
+                <th>Dui</th>
+                <th>Email</th>
+								<th style="width:15% ">Especialidad</th>
               </tr>
             </thead>
             <tbody>
@@ -34,10 +35,11 @@
               <td>{{$tutor->apellido}}</td>
               <td>{{$tutor->dui}}</td>
               <td>{{$tutor->correo}}</td>
+							<td>{{$tutor->especialidad_id}}</td>
               <td align="center">
                 @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" )
                 <a href="{{ route('TutorEditar', ['id' => $tutor->id]) }}" class="btn btn-warning"><span class="fa fa-edit"></span></a>
-                @endif  
+                @endif
                 <a href="{{ route('TutorVer', ['id' => $tutor->id]) }}" class="btn btn-info"><span class="fa fa-eye"></span></a>
               </td>
             </tr>

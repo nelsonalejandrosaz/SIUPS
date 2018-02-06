@@ -7,7 +7,9 @@
 
 {{-- Seccion para agregar estilos CSS extras a los que se cargan por defecto --}}
 @section('CSSExtras')
-
+<!-- Select2 -->
+{{-- Sirve para se pueda buscar en los select --}}
+<link rel="stylesheet" href="{{asset('/plugins/select2.min.css')}}">
 @endsection
 
 {{-- Titulo del header --}}
@@ -38,7 +40,7 @@
         {{ csrf_field() }}
           <!-- inicio box-body -->
           <div class="box-body">
-              <div class="col-xs-6">
+              <div class="col-xs-5">
                 <h4 class="box-title">Datos del contacto</h4>
                 {{-- nombre --}}
                 <div class="form-group">
@@ -76,7 +78,7 @@
                   </div>
                 </div>
               </div>
-            <div class="col-xs-6">
+            <div class="col-xs-7">
               <h4 class="box-title">Datos de organizacion</h4>
               {{-- nombre organizacion --}}
               <div class="form-group">
@@ -92,6 +94,23 @@
                   <input type="text" class="form-control" value="{{ $beneficiario->telefono_organizacion }}" name="telefonoOrganizacion" disabled="true">
                 </div>
               </div>
+
+              {{-- Tipo beneficiario --}}
+               <div class="form-group">
+                <label class="col-sm-2 control-label">Tipo:</label>
+                <div class="col-sm-10">
+                  <select class="form-control select2" id="select2tipo" style="width: 100%;" name="tipo_id" disabled="true">
+                   @foreach($tipos as $tipo)
+                   @if($tipo->id == $beneficiario->tipo->id)
+                     <option selected value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
+                     @else
+                     <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
+                     @endif
+                   @endforeach
+                 </select>
+               </div>
+             </div>
+
               {{-- correo --}}
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Correo :</label>
@@ -99,6 +118,39 @@
                 <input type="email" class="form-control" value="{{ $beneficiario->correo_organizacion }}" name="correoOrganizacion" disabled="true">
                 </div>
               </div>
+
+              {{-- Departamento SS --}}
+                 <div class="form-group">
+                  <label class="col-sm-2 control-label">Departamento:</label>
+                  <div class="col-sm-10">
+                    <select class="form-control select2" style="width: 100%;" name="departamento_id" disabled="true">
+                     @foreach($departamentos as $departamento)
+                      @if($departamento->id == $beneficiario->municipio->departamento_id)
+                     <option selected value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+                     @else
+                     <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+                     @endif
+                     @endforeach
+                   </select>
+                 </div>
+               </div>
+
+               {{-- Municipio SS --}}
+               <div class="form-group">
+                <label class="col-sm-2 control-label">Municipio:</label>
+                <div class="col-sm-10">
+                  <select class="form-control select2" style="width: 100%;" name="municipio_id" disabled="true">
+                   @foreach($municipios as $municipio)
+                    @if($municipio->id == $beneficiario->municipio_id)
+                   <option selected value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
+                   @else
+                   <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
+                   @endif
+                   @endforeach
+                 </select>
+               </div>
+             </div>
+
               {{-- direccion organizacion --}}
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">Direccion :</label>
@@ -123,5 +175,13 @@
 
 {{-- Seccion para insertar JS extras a los que se cargan por defecto --}}
 @section('JSExtras')
+<!-- Select2 -->
+<script src="{{asset('/plugins/select2.full.min.js')}}"></script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $(".select2").select2();
 
+  });
+</script>
 @endsection

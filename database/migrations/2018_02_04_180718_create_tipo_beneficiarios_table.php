@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTutorTable extends Migration
+class CreateTipoBeneficiariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateTutorTable extends Migration
      */
     public function up()
     {
-        Schema::create('tutors', function (Blueprint $table) {
+        Schema::create('Tipo_beneficiarios', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->string('apellido');
-            $table->integer('especialidad_id')->unsigned();
-            $table->string('carnet')->nullable();
-            $table->string('dui',10)->unique();
-            $table->string('correo');
             $table->timestamps();
+            $table->string('nombre');
         });
     }
 
@@ -32,6 +27,6 @@ class CreateTutorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tutors');
+        Schema::dropIfExists('Tipo_beneficiarios');
     }
 }
