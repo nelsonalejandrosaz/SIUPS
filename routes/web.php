@@ -1,4 +1,4 @@
-  <?php
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -21,58 +21,155 @@
 |
 */
 /********************************
-*Rutas para Servicio Sociales Disponibles al publico
-********************************/
-Route::name('serviciosDisponibles')->get('/serviciosDisponibles','ServicioSocialController@ServiciosDisponibles');
-Route::name('serviciosDisponiblesVer')->get('/serviciosDisponibles/{id}/ver','ServicioSocialController@ServiciosDisponiblesVer');
+ *Rutas para Servicio Sociales Disponibles al publico
+ ********************************/
+Route::get('/serviciosDisponibles', 'ServicioSocialController@ServiciosDisponibles')->name('serviciosDisponibles');
+Route::get('/serviciosDisponibles/{id}/ver', 'ServicioSocialController@ServiciosDisponiblesVer')->name('serviciosDisponiblesVer');
 /**********************************
-**********************************/
+ **********************************/
 
 Route::group(['middleware' => 'auth'], function () {
-	/********************************
-	*Rutas para gestion alumnos
-	********************************/
-	Route::name('alumnoLista')->get('/alumno', 'AlumnoController@AlumnosLista');
-	Route::name('alumnoNuevoCSV')->get('/alumno/cargaCSV','AlumnoController@AlumnoNuevoCVS')->middleware('coordinador');
-	Route::name('alumnoNuevoCSVPost')->post('/alumno/cargaCSV', 'AlumnoController@AlumnoNuevoCVSPost')->middleware('coordinador');
-	Route::name('alumnoNuevo')->get('/alumno/nuevo','AlumnoController@AlumnoNuevo')->middleware('coordinador');
-	Route::name('alumnoNuevoPost')->post('/alumno/nuevo','AlumnoController@AlumnoNuevoPost')->middleware('coordinador');
-	Route::name('alumnoVer')->get('/alumno/{carnet}', 'AlumnoController@AlumnoVer')->middleware('Jefe_Coordinador');
-	Route::name('alumnoEditar')->get('/alumno/{carnet}/editar', 'AlumnoController@AlumnoEditar')->middleware('coordinador');
-	Route::name('alumnoEditarPost')->post('/alumno/{carnet}/editar','AlumnoController@AlumnoEditarPost')->middleware('coordinador');
-	/********************************
-	* Fin Rutas para gestion alumnos
-	********************************/
+
+    /********************************
+     *Rutas para gestion alumnos
+     ********************************/
+    Route::get('/alumno', 'AlumnoController@AlumnosLista')->name('alumnoLista');
+    Route::get('/alumno/cargaCSV', 'AlumnoController@AlumnoNuevoCVS')->name('alumnoNuevoCSV');
+    Route::post('/alumno/cargaCSV', 'AlumnoController@AlumnoNuevoCVSPost')->name('alumnoNuevoCSVPost');
+    Route::get('/alumno/nuevo', 'AlumnoController@AlumnoNuevo')->name('alumnoNuevo');
+    Route::post('/alumno/nuevo', 'AlumnoController@AlumnoNuevoPost')->name('alumnoNuevoPost');
+    Route::get('/alumno/{carnet}', 'AlumnoController@AlumnoVer')->name('alumnoVer');
+    Route::get('/alumno/{carnet}/editar', 'AlumnoController@AlumnoEditar')->name('alumnoEditar');
+    Route::post('/alumno/{carnet}/editar', 'AlumnoController@AlumnoEditarPost')->name('alumnoEditarPost');
+    /********************************
+     * Fin Rutas para gestion alumnos
+     ********************************/
+
+    /********************************
+     *Rutas para gestion Usuario
+     ********************************/
+    Route::get('/usuario', 'UsuarioController@AlumnosLista')->name('usuarioLista');
+    Route::get('/usuario/nuevo', 'UsuarioController@registroAlumno')->name('usuarioNuevo');
+    Route::post('/usuario/nuevo', 'UsuarioController@guardarAlumno')->name('usuarioNuevoPost');
+    Route::get('/usuario/{id}/editar', 'UsuarioController@editarAlumno')->name('usuarioEditar');
+    Route::post('/usuario/{id}/editar', 'UsuarioController@editarAlumnoGuardar')->name('usuarioEditarPost');
+    /********************************
+     * Fin Rutas para gestion Usuario
+     ********************************/
+
+    /********************************
+     *Rutas para validar roles
+     ********************************/
+    Route::get('home/jefe', 'JefeController@index')->name('inicioJefe');
+    Route::get('home/secretaria', 'SecretariaController@index')->name('inicioSecretaria');
+    Route::get('home/admin', 'AdminController@index')->name('inicioAdmin');
+    Route::get('home/coordinador', 'CoordinadorController@index')->name('inicioCoordinador');
+    /********************************
+     * Fin Rutas para validar roles
+     ********************************/
+
+    /******************************************
+     **      NUEVAS RUTAS PARA USUARIO    Arnulfo   ***
+     ******************************************/
+
+    Route::get('/usuarios', 'UsuarioController@UsuariosLista')->name('usuariosLista');
+
+    Route::get('Agregar/usuario', 'UsuarioController@AgregarUsuario')->name('agregarusuario');
+
+    Route::post('usuarios/nuevo', 'UsuarioController@guardarusuario')->name('usuarioNuevoPost');
+
+    Route::get('/usuarios/{id}', 'UsuarioController@verUsuario')->name('usuarioVer');
+
+    Route::get('/usuarios/{id}/editar', 'UsuarioController@editarUsuario')->name('usuarioEditar');
+
+    Route::post('/usuarios/{id}/editar', 'UsuarioController@editarUsuarioGuardar')->name('usuarioEditarPost');
+
+    /******************************************
+     **     FIN NUEVAS RUTAS PARA USUARIO       ***
+     ******************************************/
+
+    /******************************************
+     **      NUEVAS RUTAS PARA TUTORES      ***
+     ******************************************/
+
+    Route::get('/tutores', 'TutorController@TutoresLista')->name('tutorLista');
+    Route::get('Agregar/Tutor', 'TutorController@AgregarTutor')->name('tutorNuevo');
+    Route::post('Tutores/nuevo', 'TutorController@guardarTutor')->name('tutorNuevoPost');
+    Route::get('/Tutores/{id}', 'TutorController@verTutor')->name('TutorVer');
+    Route::get('/Tutores/{id}/editar', 'TutorController@editarTutor')->name('TutorEditar');
+    Route::post('/Tutores/{id}/editar', 'TutorController@editarTutorGuardar')->name('TutorEditarPost');
+
+    /******************************************
+     **      NUEVAS RUTAS PARA TUTORES       ***
+     ******************************************/
+
+
+    /******************************************
+     **      NUEVAS RUTAS PARA BENEFICIARIOS  ***
+     ******************************************/
+    Route::get('/beneficiario', 'BeneficiarioController@BeneficiarioLista')->name('beneficiarioLista');
+    Route::get('/beneficiario/nuevo', 'BeneficiarioController@BeneficiarioNuevo')->name('beneficiarioNuevo');
+    Route::post('/beneficiario/nuevo', 'BeneficiarioController@BeneficiarioNuevoPost')->name('beneficiarioNuevoPost');
+    Route::get('/beneficiario/{id}/editar', 'BeneficiarioController@BeneficiarioEditar')->name('beneficiarioEditar');
+    Route::post('/beneficiario/{id}/editar', 'BeneficiarioController@BeneficiarioEditarPost')->name('beneficiarioEditarPost');
+    Route::get('/beneficiario/{id}/ver', 'BeneficiarioController@BeneficiarioVer')->name('beneficiarioVer');
+
+
+    /********************************
+     *Rutas para Servicio Social
+     ********************************/
+    Route::get('/ServicioSocial/Lista', 'ServicioSocialController@ServicioSocialLista')->name('servicioSocialLista');
+    Route::get('/ServicioSocial/nuevo', 'ServicioSocialController@ServicioSocialRegistro')->name('servicioSocialNuevo');
+    Route::post('/ServicioSocial/nuevo', 'ServicioSocialController@ServicioSocialGuardar')->name('servicioSocialNuevoPost');
+    Route::get('/ServicioSocial/{id}/editar', 'ServicioSocialController@ServicioSocialEditar')->name('servicioSocialEditar');
+    Route::post('/ServicioSocial/{id}/editar', 'ServicioSocialController@ServicioSocialEditarPost')->name('servicioSocialEditarPost');
+    Route::get('/ServicioSocial/{id}/ver', 'ServicioSocialController@ServicioSocialVer')->name('servicioSocialVer');
+    /************************************
+     *Fin de la rutas para servicio social
+     *************************************/
+
+    /********************************
+     *Rutas para Expediente
+     ********************************/
+    Route::get('/expediente', 'ExpedienteController@ExpedienteLista')->name('expedienteLista');
+    Route::get('/expediente/{carnet}/{escuela}', 'ExpedienteController@ExpedienteVer')->   name('expedienteVer');
+    /************************************
+     *Fin de la rutas para expediente
+     *************************************/
+
+    /****************************************
+     *Rutas para Asignacion de Servicio Social
+     ***************************************/
+    Route::get('/asignacion/{id}', 'AsignacionServicioController@AsignacionServicio')->name('asignacionServicio');
+    Route::post('/asignacion', 'AsignacionServicioController@AsignacionServicioPost')->name('asignacionServicioPost');
+    Route::delete('/asignacion/{id}', 'AsignacionServicioController@AsignacionServicioEliminar')-> name('asignacionServicioEliminar');
+
+    // Rutas para buscar municipios
+    Route::get('/municipios/{id}', 'ServicioSocialController@municipiosPorDepartamento')->name('municipiosPorDep');
+
+
+    //rutas para certificado
+    Route::get('/certificado/lista', 'PdfController@CertificadosLista')->name('certificadoLista');
+    Route::get('/certificado/{carnet}', 'PdfController@pdfview')->name('certificado_alumno');
+    Route::get('/certificado_descargar/{carnet}', 'PdfController@pdfdescargar')->name('certificado_alumno_descargar');
+    Route::post('/validar', 'ExpedienteController@validarCertificado')->name('validarCertificado');
+
+
+    //rutas para reporte
+    Route::get('/reportes/index', 'ReporteController@reporteIndex')->name('reporteIndex');
+    Route::post('/reportes/post', 'ReporteController@reporte')->name('reporte');
+    Route::post('/reportes/descargar', 'ReporteController@reporteDescargar')->name('reporteDescargar');
+    Route::get('/reportes/{anio}', 'ReporteController@pdfview')->name('reporteAnio');
+    Route::get('/reportes/{anio}/descargar', 'ReporteController@pdfdescargar')->name('reporte_descargar');
+
 });
 
-Route::group(['middleware' => 'admin'], function () {
-/********************************
-	*Rutas para gestion Usuario
-	********************************/
-	Route::name('usuarioLista')->get('/usuario', 'UsuarioController@AlumnosLista');
-	Route::name('usuarioNuevo')->get('/usuario/nuevo','UsuarioController@registroAlumno');
-	Route::name('usuarioNuevoPost')->post('/usuario/nuevo','UsuarioController@guardarAlumno');
-	Route::name('usuarioEditar')->get('/usuario/{id}/editar', 'UsuarioController@editarAlumno');
-	Route::name('usuarioEditarPost')->post('/usuario/{id}/editar','UsuarioController@editarAlumnoGuardar');
-	/********************************
-	* Fin Rutas para gestion Usuario
-	********************************/
-});
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-/********************************
-*Rutas para validar roles
-********************************/
-Route::name('inicioJefe')->get('home/jefe', 'JefeController@index');
-Route::name('inicioSecretaria')->get('home/secretaria', 'SecretariaController@index');
-Route::name('inicioAdmin')->get('home/admin', 'AdminController@index');
-Route::name('inicioCoordinador')->get('home/coordinador', 'CoordinadorController@index');
-/********************************
-* Fin Rutas para validar roles
-********************************/
+
 
 Route::name('permisoDenegado')->get('permisoDenegado', function () {
     return view('errores.permisoDenegado');
@@ -80,113 +177,15 @@ Route::name('permisoDenegado')->get('permisoDenegado', function () {
 });
 
 
-/******************************************
-**      NUEVAS RUTAS PARA USUARIO    Arnulfo   ***
-******************************************/
 
-Route::name('usuariosLista')->get('/usuarios', 'UsuarioController@UsuariosLista')->middleware('jefe');
-
-Route::name('agregarusuario')->get('Agregar/usuario','UsuarioController@AgregarUsuario')->middleware('jefe');
-
-Route::name('usuarioNuevoPost')->post('usuarios/nuevo','UsuarioController@guardarusuario')->middleware('jefe');
-
-Route::name('usuarioVer')->get('/usuarios/{id}', 'UsuarioController@verUsuario')->middleware('jefe');
-
-Route::name('usuarioEditar')->get('/usuarios/{id}/editar', 'UsuarioController@editarUsuario')->middleware('jefe');
-
-Route::name('usuarioEditarPost')->post('/usuarios/{id}/editar','UsuarioController@editarUsuarioGuardar')->middleware('jefe');
-
-/******************************************
-**     FIN NUEVAS RUTAS PARA USUARIO       ***
-******************************************/
-
-/******************************************
-**      NUEVAS RUTAS PARA TUTORES      ***
-******************************************/
-
-Route::name('tutorLista')->get('/tutores', 'TutorController@TutoresLista')->middleware('Jefe_Coordinador');
-Route::name('tutorNuevo')->get('Agregar/Tutor','TutorController@AgregarTutor')->middleware('coordinador');
-Route::name('tutorNuevoPost')->post('Tutores/nuevo','TutorController@guardarTutor')->middleware('coordinador');
-Route::name('TutorVer')->get('/Tutores/{id}', 'TutorController@verTutor')->middleware('Jefe_Coordinador');
-Route::name('TutorEditar')->get('/Tutores/{id}/editar', 'TutorController@editarTutor')->middleware('coordinador');
-Route::name('TutorEditarPost')->post('/Tutores/{id}/editar','TutorController@editarTutorGuardar')->middleware('coordinador');
-
-/******************************************
-**      NUEVAS RUTAS PARA TUTORES       ***
-******************************************/
-
-
-/******************************************
-**      NUEVAS RUTAS PARA BENEFICIARIOS  ***
-******************************************/
-Route::name('beneficiarioLista')->get('/beneficiario', 'BeneficiarioController@BeneficiarioLista')->middleware('Jefe_Coordinador');
-Route::name('beneficiarioNuevo')->get('/beneficiario/nuevo','BeneficiarioController@BeneficiarioNuevo')->middleware('coordinador');
-Route::name('beneficiarioNuevoPost')->post('/beneficiario/nuevo','BeneficiarioController@BeneficiarioNuevoPost')->middleware('coordinador');
-Route::name('beneficiarioEditar')->get('/beneficiario/{id}/editar', 'BeneficiarioController@BeneficiarioEditar')->middleware('coordinador');
-Route::name('beneficiarioEditarPost')->post('/beneficiario/{id}/editar','BeneficiarioController@BeneficiarioEditarPost')->middleware('coordinador');
-Route::name('beneficiarioVer')->get('/beneficiario/{id}/ver', 'BeneficiarioController@BeneficiarioVer')->middleware('Jefe_Coordinador');
-
-
-
-/********************************
-*Rutas para Servicio Social
-********************************/
-Route::name('servicioSocialLista')->get('/ServicioSocial/Lista','ServicioSocialController@ServicioSocialLista')->middleware('Jefe_Coordinador');
-Route::name('servicioSocialNuevo')->get('/ServicioSocial/nuevo','ServicioSocialController@ServicioSocialRegistro')->middleware('coordinador');
-Route::name('servicioSocialNuevoPost')->post('/ServicioSocial/nuevo','ServicioSocialController@ServicioSocialGuardar')->middleware('coordinador');
-Route::name('servicioSocialEditar')->get('/ServicioSocial/{id}/editar', 'ServicioSocialController@ServicioSocialEditar');
-Route::name('servicioSocialEditarPost')->post('/ServicioSocial/{id}/editar','ServicioSocialController@ServicioSocialEditarPost');
-Route::name('servicioSocialVer')->get('/ServicioSocial/{id}/ver', 'ServicioSocialController@ServicioSocialVer');
-/************************************
-*Fin de la rutas para servicio social
-*************************************/
-
-/********************************
-*Rutas para Expediente
-********************************/
-Route::name('expedienteLista')->get('/expediente', 'ExpedienteController@ExpedienteLista')->middleware('Jefe_Coordinador');
-Route::name('expedienteVer')->get('/expediente/{carnet}/{escuela}','ExpedienteController@ExpedienteVer')->middleware('Jefe_Coordinador');
-/************************************
-*Fin de la rutas para expediente
-*************************************/
-
-/****************************************
-*Rutas para Asignacion de Servicio Social
-***************************************/
-Route::name('asignacionServicio')->get('/asignacion/{id}','AsignacionServicioController@AsignacionServicio')->middleware('coordinador');
-Route::name('asignacionServicioPost')->post('/asignacion','AsignacionServicioController@AsignacionServicioPost')->middleware('coordinador');
-Route::name('asignacionServicioEliminar')->delete('/asignacion/{id}','AsignacionServicioController@AsignacionServicioEliminar')->middleware('coordinador');
 
 
 /************************************
-*Fin de la rutas para asignacion de servicio social
-*************************************/
+ *Fin de la rutas para asignacion de servicio social
+ *************************************/
 
-Route::get('error', function(){
-	abort(404);
+Route::get('error', function () {
+    abort(404);
 });
 
-// Rutas para buscar municipios
-Route::name('municipiosPorDep')->get('/municipios/{id}', 'ServicioSocialController@municipiosPorDepartamento');
 
-
-
-//rutas para certificado
-Route::name('certificadoLista')->get('/certificado/lista', 'PdfController@CertificadosLista');
-Route::name('certificado_alumno')->get('/certificado/{carnet}', 'PdfController@pdfview');
-Route::name('certificado_alumno_descargar')->get('/certificado_descargar/{carnet}', 'PdfController@pdfdescargar');
-Route::name('validarCertificado')->post('/validar','ExpedienteController@validarCertificado');
-
-
-//rutas para reporte
-Route::name('reporteIndex')->get('/reportes/index', 'ReporteController@reporteIndex')->middleware('jefe');
-Route::name('reporte')->post('/reportes/post','ReporteController@reporte')->middleware('jefe');
-Route::name('reporteDescargar')->post('/reportes/descargar','ReporteController@reporteDescargar')->middleware('jefe');
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 208d51bbe4381352c504672245e11b92df0a7041
-Route::name('reporteAnio')->get('/reportes/{anio}', 'ReporteController@pdfview');
-Route::name('reporte_descargar')->get('/reportes/{anio}/descargar', 'ReporteController@pdfdescargar');

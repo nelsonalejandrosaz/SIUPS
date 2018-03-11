@@ -116,6 +116,18 @@ $view = \View::make("certificado.certificado")->with(compact('alumno_escuelas', 
     {
         if (Auth::user()->rol[0]->nombre == 'jefe') {
             $alumnos_escuela = Alumno_escuela::all();    
+        } elseif (Auth::user()->rol[0]->nombre == 'secretaria')
+        {
+//            dd('boinas');
+            $alumnos_escuela_todos = Alumno_escuela::all();
+            $alumnos_escuela = [];
+            foreach ($alumnos_escuela_todos as $ae)
+            {
+                if ($ae->expediente->certificado == 1)
+                {
+                    array_push($alumnos_escuela,$ae);
+                }
+            }
         } else {
             $alumnos_escuela = Alumno_escuela::where('escuela_id',Auth::user()->escuela_id)->get();            
         }

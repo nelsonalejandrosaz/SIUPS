@@ -66,7 +66,7 @@
                       </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
-                    <a href=" {{ route('tutoresLista') }} " class="btn btn-lg btn-default">Ver Lista</a>
+                    <a href=" {{ route('tutorLista') }} " class="btn btn-lg btn-default">Ver Lista</a>
                     @if( Auth::user()->rol[0]->nombre == "coordinador_Sups")
                     <a href="{{ route('TutorEditar',['id'=>$tutor->id]) }}" class="btn btn-lg btn-warning pull-right">Editar</a>
                     @endif

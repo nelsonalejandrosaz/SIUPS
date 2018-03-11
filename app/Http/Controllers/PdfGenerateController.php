@@ -7,11 +7,8 @@ use Illuminate\Http\Request;
 use DB;
 use PDF;
 
-use Illuminate\Http\Request;
-
 class PdfGenerateController extends Controller
 {
-    //
 
      public function pdfview(Request $request)
     {
