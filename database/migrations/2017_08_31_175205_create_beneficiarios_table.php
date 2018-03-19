@@ -24,6 +24,8 @@ class CreateBeneficiariosTable extends Migration
             $table->string('telefono_organizacion')->nullable();
             $table->string('correo_organizacion')->nullable();
             $table->string('direccion_organizacion')->nullable();
+            $table->integer('municipio_id')->unsigned();
+            $table->integer('tipo_id')->unsigned();
             $table->timestamps();
         });
     }

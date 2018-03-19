@@ -132,7 +132,7 @@
             </li>
             @endif
 
-            @if( Auth::user()->rol[0]->nombre == "jefe")
+            @if( Auth::user()->rol[0]->nombre == "jefe" || Auth::user()->rol[0]->nombre == "secretaria")
 <!-- Menu certificados -->
              <li class="treeview">
               <a href="#">

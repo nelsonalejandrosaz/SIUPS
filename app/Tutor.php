@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tutor extends Model
 {
     protected $fillable = [
-        'nombre','apellido','carnet','dui','correo',
+        'nombre','apellido','carnet','especialidad_id','dui','correo',
     ];
 
     public function tutor_ss()

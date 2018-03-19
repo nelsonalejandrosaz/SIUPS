@@ -76,7 +76,7 @@
                       </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
-                    <a href="{{ route('tutoresLista') }}" class="btn btn-lg btn-default">Cancelar</a>
+                    <a href="{{ route('tutorLista') }}" class="btn btn-lg btn-default">Cancelar</a>
                     <button type="submit" class="btn btn-lg btn-success pull-right">Guardar cambios</button>
                   </div><!-- /.box-footer -->
 

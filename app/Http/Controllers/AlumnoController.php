@@ -106,7 +106,7 @@ public function AlumnoNuevoPost(Request $request)
     $escuela = Escuela::where('id', Auth::user()->escuela_id)->first();
     $ae = Alumno_escuela::create(['carnet' => $alumno->carnet, 'escuela_id' => $escuela->id]);
       // Se crea el Expediente del alumno con el estado sin abrir
-    Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1, 'observaciones' => 'Ninguna']);
+    Expediente::create(['alumno_escuela_id' => $ae->id, 'estado_expediente_id' => 1, 'observaciones' => 'Ninguna','certificado' => 0]);
     session()->flash('mensaje', 'Alumno ingresado con exito');
     return redirect()->route('alumnoVer',['carnet'=>$alumno->carnet]);
   } else { 

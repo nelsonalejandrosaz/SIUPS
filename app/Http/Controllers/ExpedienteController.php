@@ -13,6 +13,8 @@ use App\Tutor;
 use App\Estado;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 
 class ExpedienteController extends Controller
 {
@@ -68,6 +70,8 @@ else{
         // $aes = Alumno_escuela::where('carnet',$carnet)->get();
         $aes = Alumno_escuela::all();
         $date = Carbon::now();
+
+       
         // dd($aes);
         foreach ($aes as $ae) {
             $serviciosSociales = $ae->expediente->serviciossociales;
@@ -83,10 +87,33 @@ else{
             $ae->expediente->totalHoras = $totalHoras;
             if ($totalHoras >= 500) {
               $ae->expediente->estado_expediente_id = 3;
+            
               $ae->expediente->fecha_cierre = $date;
             }
             $ae->expediente->save();
         }
     }
+
+
+     public function validarCertificado(Request $request){
+      $c = $request->input('idexp');
+      
+      $expediente = Expediente::find($c);
+      $expediente->certificado = 1;
+      $expediente->save();
+
+
+     
+     // return redirect()->route('beneficiarioVer',['id' => $beneficiario->id]) ;
+
+      return response()->json([
+                    "success" => "true","msg"=>"Registro guardado correctamente"
+
+        ]);
+
+    }
+
+
+  
 
 }

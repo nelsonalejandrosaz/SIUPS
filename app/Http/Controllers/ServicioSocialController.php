@@ -21,7 +21,7 @@ class ServicioSocialController extends Controller
 
  public function ServiciosDisponibles()
  {
-   $serviciossociales = ServicioSocial::all();      
+   $serviciossociales = ServicioSocial::all();
      //return view('serviciosocial.servicioSocialLista')-with(['SocialServicios' => $SocialServicios]);
    return view('serviciosDisponibles.serviciosDisponibles')->with(['serviciossociales' => $serviciossociales]);;
 
@@ -45,7 +45,7 @@ public function ServicioSocialLista()
   $serviciossociales = ServicioSocial::all();
 } else {
   $serviciossociales = ServicioSocial::where('escuela_id', Auth::user()->escuela_id)->get();
-}        
+}
      //return view('serviciosocial.servicioSocialLista')-with(['SocialServicios' => $SocialServicios]);
 return view('serviciosocial.servicioSocialLista')->with(['serviciossociales' => $serviciossociales]);;
 
@@ -100,7 +100,7 @@ public function ServicioSocialGuardar(Request $request){
     'ingresadoPor' => Auth::user()->email,
   ]);
 
-  // Se muestra el mensaje de ingreso correcto 
+  // Se muestra el mensaje de ingreso correcto
   session()->flash('mensaje.tipo', 'success');
   session()->flash('mensaje.icono', 'fa-check');
   session()->flash('mensaje.titulo', 'Exito');
@@ -108,7 +108,7 @@ public function ServicioSocialGuardar(Request $request){
   return redirect()->route('servicioSocialVer',['id' => $ServicioSocial->id]);
 }
 
-  //Funcion para editar un servicio social 
+  //Funcion para editar un servicio social
 public function ServicioSocialEditar($id)
 {
   $servicioSocial = ServicioSocial::find($id);
@@ -120,7 +120,7 @@ public function ServicioSocialEditar($id)
     $municipios = Municipio::where('departamento_id',$servicioSocial->municipio->departamento_id)->get();
     $modalidades = Modalidad::all();
     return view('serviciosocial.servicioSocialEditar')->with(['servicioSocial' => $servicioSocial])->with(['Beneficiarios' => $Beneficiarios])->with(['Tutors' => $Tutors])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['modalidades'=>$modalidades])->with(['estados'=>$estados]);
-  } 
+  }
   return redirect()->route('permisoDenegado');
 }
     //funcion Post para editar al servicio social
@@ -151,7 +151,7 @@ public function ServicioSocialEditarPost(Request $request, $id)
   $servicioSocial->modificadoPor = Auth::user()->email;
   // dd(Auth::user()->email);
   $servicioSocial->save();
-  // Se muestra el mensaje de ingreso correcto 
+  // Se muestra el mensaje de ingreso correcto
   session()->flash('mensaje.tipo', 'success');
   session()->flash('mensaje.icono', 'fa-check');
   session()->flash('mensaje.titulo', 'Exito');

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Beneficiario;
+use App\Departamento;
+use App\Municipio;
+use App\Tipo_beneficiario;
 
 class BeneficiarioController extends Controller
 {
@@ -15,8 +18,10 @@ class BeneficiarioController extends Controller
 		}
 
 	public function BeneficiarioNuevo(){
-
-    	return view ('beneficiario.beneficiarioNuevo');
+      $departamentos = Departamento::all();
+      $municipios = Municipio::all();
+      $tipos = Tipo_beneficiario::all();
+    	return view ('beneficiario.beneficiarioNuevo')->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['tipos' => $tipos]);
     }
 
     public function BeneficiarioNuevoPost(Request $request){
@@ -27,12 +32,14 @@ class BeneficiarioController extends Controller
         'dui' 			=> 'required|min:9|max:10',
         'correo'		=> 'email|nullable',
         'correo_organizacion' => 'email|nullable',
+        'municipio_id'=>'required',
+        'tipo_id' => 'required',
 	    ]);
 	    // Fin validacion
       // si el dui que estan metiendo no existe lo crea
       if((Beneficiario::where('dui','=',$request->dui)->first()) == null)
     {
-	    $beneficiario=Beneficiario::create($request->only('nombre','apellido','dui','correo','telefono','organizacion','telefono_organizacion','correo_organizacion','direccion_organizacion'));
+	    $beneficiario=Beneficiario::create($request->only('nombre','apellido','dui','correo','telefono','organizacion','telefono_organizacion','correo_organizacion','direccion_organizacion','municipio_id', 'tipo_id'));
 	    session()->flash('message.level', 'success');
       session()->flash('message.content', 'El beneficiario fue agregado con Exito');
     	return redirect()->route('beneficiarioVer',['id'=>$beneficiario->id]);
@@ -47,7 +54,10 @@ class BeneficiarioController extends Controller
     public function beneficiarioEditar($id)
   	{
       $beneficiario = Beneficiario::find($id);
-      return view('beneficiario.beneficiarioEditar')->with(['beneficiario' => $beneficiario]);
+      $departamentos = Departamento::all();
+      $tipos = Tipo_beneficiario::all();
+      $municipios = Municipio::where('departamento_id',$beneficiario->municipio->departamento_id)->get();
+      return view('beneficiario.beneficiarioEditar')->with(['beneficiario' => $beneficiario])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['tipos' => $tipos]);
   	}
 
   	public function beneficiarioEditarPost(Request $request, $id)
@@ -76,6 +86,9 @@ class BeneficiarioController extends Controller
     	$beneficiario->telefono_organizacion = $request->input('telefono_organizacion');
     	$beneficiario->correo_organizacion = $request->input('correo_organizacion');
     	$beneficiario->direccion_organizacion = $request->input('direccion_organizacion');
+      $beneficiario->municipio_id = $request->input('municipio_id');
+      $beneficiario->tipo_id = $request->input('tipo_id');
+      
     	$beneficiario->save();
     	session()->flash('mensaje', 'Beneficiario modificado corectamente');
    		return redirect()->route('beneficiarioVer',['id' => $beneficiario->id]) ;
@@ -91,7 +104,10 @@ class BeneficiarioController extends Controller
     public function beneficiarioVer($id)
     {
       $beneficiario = Beneficiario::find($id);
-      return view('beneficiario.beneficiarioVer')->with(['beneficiario' => $beneficiario]);
+      $departamentos = Departamento::all();
+      $municipios = Municipio::all();
+      $tipos = Tipo_beneficiario::all();
+      return view('beneficiario.beneficiarioVer')->with(['beneficiario' => $beneficiario])->with(['departamentos' => $departamentos])->with(['municipios' => $municipios])->with(['tipos' => $tipos]);
     }
 
 }

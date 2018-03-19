@@ -21,7 +21,7 @@
 
 {{-- Descripcion del header OPCIONAL --}}
 @section('contentheader_description')
- 
+
 @endsection
 
 {{-- Seccion principal de la aplicacion --}}
@@ -58,7 +58,7 @@
                     <input type="text" class="form-control" placeholder="Pérez" name="apellido" value="{{ old('apellido') }}">
                   </div>
                 </div>
-                
+
                 {{-- correo --}}
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Correo:*</label>
@@ -69,10 +69,21 @@
               </div>
             <div class="col-xs-6">
               <h4 class="box-title">Datos de puesto</h4>
-              
+              {{-- Especialidad --}}
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Especialidad:*</label>
+                <div class="col-sm-10">
+                  <select class="form-control select2" style="width: 100%;" name="especialidad_id">
+                    <option selected value="" disabled>Seleccione la Especialidad</option>
+                    @foreach($especialidads as $especialidad)
+                    <option value="{{ $especialidad->id }}"@if(old('especialidad_id')==$especialidad->id){{'selected'}} @endif>{{ $especialidad->tipo }}</option>
+                  @endforeach
+                 </select>
+                </div>
+              </div>
               {{-- DUI --}}
                 <div class="form-group">
-                  <label class="col-sm-2 control-label">DUI:*</label>
+                  <label class="col-sm-2 control-label">DUI:</label>
                   <div class="col-sm-10">
                   <input type="text" class="form-control" placeholder="04058030-9" name="dui" value="{{ old('dui') }}" pattern="[0-9]{8}?[-]{1}?[0-9]{1}">
                   </div>
@@ -81,7 +92,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">Carnet:</label>
                   <div class="col-sm-10">
-                  <input type="text" class="form-control" placeholder="2222-2222" name="carnet" value="{{ old('carnet') }}">
+                  <input type="text" class="form-control" placeholder="**####" name="carnet" value="{{ old('carnet') }}">
                   </div>
                 </div>
             </div>

@@ -37,7 +37,7 @@
          <!-- <div class="container" style="margin-top:30px;"> -->
     <div class="row well">
 
- <form  method="POST">
+ <form  method="POST" target="_blank">
       {{ csrf_field() }} 
       <div class="col-xs-10">
        <div class="panel panel-success">
@@ -62,9 +62,9 @@
 <table width="300">
 
   <tr>
-            <td width="150">  <button formaction="{{ route('reporte') }}" type="submit" class="btn btn-block btn-primary btn-xs" style='width:100px; height:40px'>Ver Reporte</button> </td>
+            <td width="150">  <button formaction="{{ route('reporte') }}" type="submit" class="btn btn-block btn-primary btn-xs"  style='width:100px; height:40px' target="_blank">Ver Reporte</button> </td>
             <td width="150">
-          <button formaction="{{ route('reporteDescargar') }}" type="submit" class="btn btn-block btn-success btn-xs" id="download" name="download" style='width:100px; height:40px'>Descargar</button> 
+          <button formaction="{{ route('reporteDescargar') }}" type="submit" class="btn btn-block btn-success btn-xs" id="download" name="download" target="_blank" style='width:100px; height:40px'>Descargar</button> 
           </td></tr>
           </table>
           <br><br>

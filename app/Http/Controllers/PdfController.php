@@ -66,18 +66,27 @@ class PdfController extends Controller
   $mes = date('M');
     $dia = date('d');
 
-         view()->share(compact('alumno_escuelas', 'anio', 'mes', 'dia'));
+
+$view = \View::make("certificado.certificado")->with(compact('alumno_escuelas', 'anio', 'mes', 'dia'))->render();
 
 
-         if($request->has('download')){
-            // Set extra option
-             PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
-            // pass view file
-             $pdf = PDF::loadView('certificado.certificado');
-            // download pdf
-             return $pdf->download($carnet.'.pdf');
-         }
-        return view('certificado.certificado');
+         $pdf = \App::make('dompdf.wrapper');
+
+        $pdf->loadHTML($view);
+        return $pdf->stream($carnet.'.pdf');
+
+        // view()->share(compact('alumno_escuelas', 'anio', 'mes', 'dia'));
+
+
+        //  if($request->has('download')){
+        //     // Set extra option
+        //      PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+        //     // pass view file
+        //      $pdf = PDF::loadView('certificado.certificado');
+        //     // download pdf
+        //      return $pdf->download($carnet.'.pdf');
+        //  }
+        // return view('certificado.certificado');
     }
 
     public function pdfdescargar($carnet, Request $request)
@@ -107,6 +116,18 @@ class PdfController extends Controller
     {
         if (Auth::user()->rol[0]->nombre == 'jefe') {
             $alumnos_escuela = Alumno_escuela::all();    
+        } elseif (Auth::user()->rol[0]->nombre == 'secretaria')
+        {
+//            dd('boinas');
+            $alumnos_escuela_todos = Alumno_escuela::all();
+            $alumnos_escuela = [];
+            foreach ($alumnos_escuela_todos as $ae)
+            {
+                if ($ae->expediente->certificado == 1)
+                {
+                    array_push($alumnos_escuela,$ae);
+                }
+            }
         } else {
             $alumnos_escuela = Alumno_escuela::where('escuela_id',Auth::user()->escuela_id)->get();            
         }

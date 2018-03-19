@@ -5,19 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Tutor;
+use App\Especialidad;
 
 class TutorController extends Controller
 {
+
+
+
+
    public function TutoresLista(){
 		$tutores=Tutor::all();
+    $especialidads = Especialidad::all();
 		return view('tutor.tutoresLista')->with(['tutores' => $tutores]);
 	}
 
 
 
     public function AgregarTutor(){
-    	
-    	return view ('tutor.tutorAgregar');
+      $especialidads = Especialidad::all();
+    	return view ('tutor.tutorAgregar')->with(['especialidads' => $especialidads]) ;
     }
 
 
@@ -25,11 +31,12 @@ class TutorController extends Controller
     public function guardarTutor(Request $request)
   	{
     $this->validate($request, [
-        'dui'=>'required|size:10',
+
         'nombre'=>'required',
         'apellido'=>'required',
         'correo'=>'email',
-        
+        'especialidad_id'=>'required',
+
       ]);
 
      if((Tutor::where('dui','=',$request->dui)->first()) == null)
@@ -41,13 +48,15 @@ class TutorController extends Controller
     	'correo' => $request->input('correo'),
     	'dui' => $request->get('dui'),
     	'carnet'=>$request->get('carnet'),
+      'especialidad_id'=>$request->input('especialidad_id'),
     	]);
     return redirect()->route('TutorVer',['id'=>$Tutor->id]) ;
     }
-    else { 
-      //si ya existe muestra mensaje error 
-      session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor'); 
-      return redirect()->route('agregarTutor') ;}
+    else {
+      //si ya existe muestra mensaje error
+      session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor');
+      return redirect()->route('tutor.tutorNuevo');
+        }
     }
 
 
@@ -70,10 +79,10 @@ class TutorController extends Controller
   	public function editarTutorGuardar(Request $request, $id)
   	{
        $this->validate($request, [
-        'dui'=>'required|size:10',
         'nombre'=>'required',
         'apellido'=>'required',
         'correo'=>'email',
+        'especialidad_id'=>'required',
         ]);
        //verifica que dui de tutor nos e repita
         $tutor = Tutor::find($id);
@@ -85,16 +94,17 @@ class TutorController extends Controller
     	$tutor->nombre = $request->input('nombre');
     	$tutor->apellido = $request->input('apellido');
     	$tutor->correo = $request->input('correo');
+      $tutor->especialidad_id = $request->input('especialidad_id');
     	$tutor->dui = $request->input('dui');
     	$tutor->carnet = $request->input('carnet');
     	$tutor->save();
-    	
+
    		return redirect()->route('TutorVer',['id'=>$tutor->id]) ;
       session()->flash('mensaje', 'Tutor modificado corectamente');
     }
-  	else { 
-      //si ya existe muestra mensaje error 
-      session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor'); 
+  	else {
+      //si ya existe muestra mensaje error
+      session()->flash('message.content', 'Dui de ese tutor ya existe, ingrese nuevo Tutor');
        return view('tutor.tutorEditar')->with(['tutor' => $tutor]);
      }
     }
