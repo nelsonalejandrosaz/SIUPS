@@ -30,7 +30,8 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('adminlte::auth.login');
+//        return view('adminlte::auth.login');
+        return view('vendor.adminlte.auth.login');
     }
 
     /**
