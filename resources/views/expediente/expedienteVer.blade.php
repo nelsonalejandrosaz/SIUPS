@@ -117,6 +117,7 @@
                                     <!--   Horas ganadas/asignadas  saacads de la tabla expediente_serviciosocials -->
 
                                     {{$fila->horas_ganadas}}
+
                                 </td>
                                 <td>
                                     <!-- Monto del SS -->
@@ -145,6 +146,57 @@
 
                             </tr>
                         @endforeach
+
+                        <!--CONTAR HORAS AL FINAL-->
+                          <tr>
+                                <td></td>
+                                <td>
+                                    <!-- nombre de los servicio sociales hehcos por el elumno -->
+
+                                  
+
+                                </td>
+                                <td>
+                                    <!-- tutores -->
+                                 
+
+                                </td>
+                                <td>
+                                   
+
+                                </td>
+                                <td>
+                                    TOTAL
+                                <td>
+
+                                    <!--   Horas ganadas/asignadas  saacads de la tabla expediente_serviciosocials -->
+
+                                    {{$totalHoras}}
+                                </td>
+                                <td>
+                                    <!-- Monto del SS -->
+                                  
+
+                                </td>
+                                <td>
+                                    <!-- Beneficiarios directos-->
+                                   
+                                </td>
+                                <td>
+                                    <!-- Beneficiarios indirectos-->
+                                  
+
+                                </td>
+                                <td>
+                                    <!-- estado de los servicios sociales del expediente del alumno -->
+
+
+                                </td>
+                                <td>
+
+                                </td>
+
+                            </tr>
                     </table>
                     <div>
                         <br>

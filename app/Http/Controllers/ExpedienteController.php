@@ -40,6 +40,18 @@ class ExpedienteController extends Controller
       $estadoSS = Estado::all();
       $i=0;
 
+      /* AGREGO PARA EL RECUENTO DE LAS HORAS*/
+
+       $aes = Alumno_escuela::all();
+        foreach ($aes as $ae) {
+            $serviciosSociales = $ae->expediente->serviciossociales;
+            
+            $totalHoras = 0;
+            foreach ($serviciosSociales as $servicioSocial) {
+                $totalHoras = $totalHoras + $servicioSocial->horas_ganadas;
+            }
+        }
+      /* FIN AGREGO PARA EL RECUENTO DE LAS HORAS*/
 
      if ( Auth::user()->rol[0]->nombre=='jefe') {
         $alumno_escuela=Alumno_escuela::where([['carnet',$carnet], ['escuela_id',$escuela]])->first();
@@ -54,7 +66,7 @@ class ExpedienteController extends Controller
  {
    $expe_ss=$alumno_escuela->expediente->serviciossociales;
 
-   return view('expediente.expedienteVer')->with(['alumno_escuela' =>$alumno_escuela])->with(['ss' =>$ss])->with(['expediente_servicios' =>$expediente_servicios])->with(['expediente' =>$expediente])->with(['tutor' =>$tutor])->with(['estadoSS' =>$estadoSS])->with(['expe_ss' =>$expe_ss]);
+   return view('expediente.expedienteVer')->with(['alumno_escuela' =>$alumno_escuela])->with(['ss' =>$ss])->with(['expediente_servicios' =>$expediente_servicios])->with(['expediente' =>$expediente])->with(['tutor' =>$tutor])->with(['estadoSS' =>$estadoSS])->with(['expe_ss' =>$expe_ss])->with(['totalHoras' =>$totalHoras]);
 }
 else{
     abort(403);
