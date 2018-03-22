@@ -164,6 +164,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
+    //rutas para memorias
+    Route::get('/memorias/certificado_index', 'MemoriaCertificadoController@certificadoMemoriaIndex')->name('certificadosMemoria');
+    Route::post('/memoria/certificado/post', 'MemoriaCertificadoController@certificadoMemo')->name('certificadoMemo');
+
+    Route::post('/memoriaJefe/certificado/post', 'MemoriaCertificadoController@certificadoMemoJefe')->name('certificadoMemoJefe');
+
+
 
 Route::get('/', function () {
     return view('welcome');

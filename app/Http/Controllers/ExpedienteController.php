@@ -81,15 +81,18 @@ else{
             }
             // dd($ae->expediente);
             $totalHoras = 0;
+            $tiene_certificado = 0;
             foreach ($serviciosSociales as $servicioSocial) {
                 $totalHoras = $totalHoras + $servicioSocial->horas_ganadas;
             }
             $ae->expediente->totalHoras = $totalHoras;
             if ($totalHoras >= 500) {
               $ae->expediente->estado_expediente_id = 3;
-            
+             
+             // $certificado=1;
               $ae->expediente->fecha_cierre = $date;
             }
+            
             $ae->expediente->save();
         }
     }
