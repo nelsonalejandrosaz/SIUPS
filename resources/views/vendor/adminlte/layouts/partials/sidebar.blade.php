@@ -157,7 +157,8 @@
             </li> 
 
 
- <!-- Menu reporte -->
+ <!-- Menu memorias -->
+   @if( Auth::user()->rol[0]->nombre == "coordinador_Sups" || Auth::user()->rol[0]->nombre == "jefe")
              <li class="treeview">
               <a href="#">
                 <i class="fa fa-fw fa-database"></i> <span>Memorias</span> <i class="fa fa-angle-left pull-right"></i>
@@ -167,7 +168,7 @@
                 
               </ul>
             </li> 
-
+    @endif
         </ul><!-- /.sidebar-menu -->
 
        

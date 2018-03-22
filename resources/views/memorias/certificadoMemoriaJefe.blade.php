@@ -23,8 +23,8 @@ FACULTAD DE INGENIERIA Y ARQUITECTURA <br>
               <tr >
               <th style="text-align: center;width: 6%">No.</th>
                 <th  style="text-align: center; width: 14%">Carnet</th>
-                <th style="text-align: center;">Nombres</th>
-                <th style="text-align: center;">Apellidos</th>
+                <th style="text-align: center;width: 23.5%">Nombres</th>
+                <th style="text-align: center;width: 23.5%">Apellidos</th>
                 <th style="text-align: center; width: 12%">Fecha</th>
                  <th style="text-align: center; width:21%">Escuela</th>
                 
