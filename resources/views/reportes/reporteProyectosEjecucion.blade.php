@@ -1,137 +1,64 @@
-<style>
- 
- .col-md-12 {
-    width: 100%;
-} 
-
-body {
-  font-family: ‘Arial Black’, Gadget, sans-serif;
-  margin: 10mm 10mm 10mm 10mm;
-
-}
-.box {
-    position: relative;
-    border-radius: 3px;
-    background: #ffffff;
-    border-top: 3px solid #d2d6de;
-    margin-bottom: 20px;
-    width: 100%;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-    background-color: #ECF0F5;
-}
-
-.box-header {
-    color: #444;
-    display: block;
-    padding: 10px;
-    position: relative;
-}
-
-.box-header.with-border {
-    border-bottom: 1px solid #f4f4f4;
-}
 
 
+<!--comienza la vista del formulario de registro alumnos-->
+<div class="row">
+  <div class="col-md-12">
+    <!-- Horizontal Form -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <div style="text-align:left">
+          <p class="">UNIVERSIDAD DE EL SALVADOR <br> FACULTAD DE INGENIERIA Y ARQUITECTURA <br>
+            @if($user == 2)
+            UNIDAD DE PROYECCION SOCIAL
+            @endif
+            @if($user == 3)
+            ESCUELA DE INGENIERIA DE SISTEMAS INFORMATICOS</p>
+            @endif
+            @if($user == 4)
+            ESCUELA DE INGENIERIA ELECTRICA</p>
+            @endif
+            @if($user == 5)
+            ESCUELA DE INGENIERIA INDUSTRIAL</p>
+            @endif
+            @if($user == 6)
+            ESCUELA DE INGENIERIA DE MECANICA</p>
+            @endif
+            @if($user == 7)
+            ESCUELA DE INGENIERIA DE CIVIL</p>
+            @endif
+            @if($user == 8)
+            ESCUELA DE INGENIERIA QUIMICA Y ALIMENTOS</p>
+            @endif
+            @if($user == 9)
+            ESCUELA DE ARQUITECTURA</p>
+            @endif
+          </div>
+          <br></br> 
+          <p style="text-align: center;"> <b><i>MEMORIA DE LABORES PERIODO DE _ A _ DEL AÑO {{$anio}}</i><BR></BR>Cuadro resumen proyectos EN EJECUCION</b></P>
 
-.box-body {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    padding: 10px;
-
-}
-
-
-.box-footer {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-top: 1px solid #f4f4f4;
-    padding: 10px;
-    background-color: #fff;
-}
-
-
-.table-bordered {
-    border: 1px solid #f4f4f4;
-}
-
-
-.table {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
-}
-
-table {
-    background-color: transparent;
- border-collapse: collapse;
-
-
-}
-
-
-
- .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td .prueba {
-    
-  border-bottom: 1px solid #08088A;
-}
-
-
-.badge {
-    display: inline-block;
-    min-width: 20px;
-  
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 2;
-    color: #000000;
-  
-    white-space: nowrap;
-    vertical-align: middle;
-    background-color: #777;
-    border-radius: 9px;
-}
-
-.bg-red {
-    background-color: transparent ;
-}
-
-
-
-
-</style>
-<body>
-<div class="col-md-12">
-              <div class="box">
-                <div class="box-header with-border">
-                  <h2> Reporte de Proyectos </h2>
-                  <h4> Proyectos que estan en ejecucion</h4> 
-                 
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table  class="table-1 table table-bordered ">
-                    <thead>
+        <br></br>
+        <br></br>     
+       <table style="border: 1px solid; border-collapse: collapse; margin: 15px;
+  padding: 15px;"  >
+                    <thead >
                       <tr >
-                        <th style="text-align: left;">Nombre del proyecto</th>
-                        <th  style="text-align: left;">Lugar de ejecucion</th>
-                        <th style="text-align: left;">Beneficiarios Directos</th>
-                        <th style="text-align: left;">Fecha inicial</th>
-                        <th style="text-align: left;">Estudiantes</th>
+                        <th style="text-align: center;">Nombre del proyecto</th>
+                        <th  style="text-align: center;">Lugar de ejecucion</th>
+                        <th style="text-align: center;">Beneficiarios Directos</th>
+                        <th style="text-align: center;">Fecha inicial</th>
+                        <th style="text-align: center;">Estudiantes</th>
                         
                       </tr>
                     </thead>
 
-                    <tbody>
-                     @foreach($servicios_sociales as $ss)
+                    <tbody ">
+                     @foreach(  $servicios_sociales as $ss)
                       <tr >
-                        <td>{{$ss->nombre}}</td>
-                        <td>{{$ss->isocode}}</td>
+                        <td>{{$ss->ss_nombre}}</td>
+                        <td>{{$ss->mun_nombre}} / {{$ss->dep_nombre}}</td>
                         <td>{{$ss->beneficiarios_directos}}</td>
                         <td>{{$ss->fecha_ingreso}}</td>
-                        <td></td>
+                        <td>{{$ss->alu_nombre}}, {{$ss->alu_apellido}}</td>
                         
                       </tr>
                    
@@ -142,17 +69,8 @@ table {
             <tfoot>
             </tfoot>
          </table>
-                </div><!-- /.box-body -->
-                <div class="box-footer clearfix">
+
+
+</div></div></div></div></body></html>
                   
-                </div>
-              </div><!-- /.box -->
-
-              
-            </div>
-
-  
-</body>
-</html>
-
-
+               
