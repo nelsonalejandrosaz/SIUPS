@@ -152,6 +152,7 @@
               </a>
               <ul class="treeview-menu">
                 <li class="active"><a href="{{ route('reporteIndex') }}"  ><i class="fa fa-circle-o"></i> Alumnos </a></li>
+                <li class="active"><a href="{{ route('proyectosIndex') }}"  ><i class="fa fa-circle-o"></i> Proyectos en ejecucion </a></li>
                 
               </ul>
             </li> 

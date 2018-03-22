@@ -162,6 +162,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/reportes/{anio}', 'ReporteController@pdfview')->name('reporteAnio');
     Route::get('/reportes/{anio}/descargar', 'ReporteController@pdfdescargar')->name('reporte_descargar');
 
+    Route::get('/proyectos/reportesIndex', 'ReporteController@proyectosIndex')->name('proyectosIndex');
+    Route::post('/proyectos/enEjecucion', 'ReporteController@proyectos')->name('proyectos');
+
 });
 
 

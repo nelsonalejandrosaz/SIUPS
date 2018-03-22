@@ -8,6 +8,7 @@ use App\Alumno_escuela;
 use App\Expediente;
 use App\Escuela;
 use App\Expediente_servicio_social;
+use App\ServicioSocial;
 use Input; 
 use Response;
 use Dompdf\Dompdf;
@@ -189,5 +190,20 @@ view()->share(compact('anioCierre','r', 'mes', 'dia', 'contador','escuela','repo
              return $pdf->download('alumnos.pdf');
      
 	}
+
+  public function proyectosIndex()
+  {
+      return view('reportes.proyectosEjecucionIndex');
+  }
+
+
+  public function proyectos()
+  {
+      $servicios_sociales=ServicioSocial::where('modalidad_id',1)->get();
+      $view = \View::make("reportes.reporteProyectosEjecucion")->with(compact('servicios_sociales'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('ProyectosEnEjecucion'.'.pdf');
+  }
 
 }
