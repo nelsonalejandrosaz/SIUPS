@@ -128,7 +128,7 @@ table {
                      @foreach($servicios_sociales as $ss)
                       <tr >
                         <td>{{$ss->nombre}}</td>
-                        <td></td>
+                        <td>{{$ss->isocode}}</td>
                         <td>{{$ss->beneficiarios_directos}}</td>
                         <td>{{$ss->fecha_ingreso}}</td>
                         <td></td>

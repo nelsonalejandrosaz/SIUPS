@@ -9,6 +9,7 @@ use App\Expediente;
 use App\Escuela;
 use App\Expediente_servicio_social;
 use App\ServicioSocial;
+use Illuminate\Support\Facades\Auth;
 use Input; 
 use Response;
 use Dompdf\Dompdf;
@@ -199,7 +200,33 @@ view()->share(compact('anioCierre','r', 'mes', 'dia', 'contador','escuela','repo
 
   public function proyectos()
   {
-      $servicios_sociales=ServicioSocial::where('modalidad_id',1)->get();
+      //$first=ServicioSocial::where('modalidad_id',1)->get();
+    if (Auth::user()->rol[0]->id == 2) 
+      {
+        $servicios_sociales = DB::table('servicio_social')
+            ->join('municipios', 'servicio_social.municipio_id', '=', 'municipios.id')
+            ->join('departamentos', 'municipios.id', '=', 'departamentos.id')->where([
+                ['modalidad_id',1],
+                ['estado_id',2],
+                
+            ])->get();
+      } else 
+      {
+        $servicios_sociales = DB::table('servicio_social')
+            ->join('municipios', 'servicio_social.municipio_id', '=', 'municipios.id')
+            ->join('departamentos', 'municipios.id', '=', 'departamentos.id')->where([
+                ['modalidad_id',1],
+                ['estado_id',2],
+                ['escuela_id', Auth::user()->escuela_id],
+            ])->get();
+
+      }
+      
+
+
+
+
+      //$servicios_sociales=ServicioSocial::where('estado_id',2)->unionAll($first)->get();
       $view = \View::make("reportes.reporteProyectosEjecucion")->with(compact('servicios_sociales'))->render();
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
