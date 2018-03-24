@@ -8,6 +8,8 @@ use App\Alumno_escuela;
 use App\Expediente;
 use App\Escuela;
 use App\Expediente_servicio_social;
+use App\ServicioSocial;
+use Illuminate\Support\Facades\Auth;
 use Input; 
 use Response;
 use Dompdf\Dompdf;
@@ -189,5 +191,63 @@ view()->share(compact('anioCierre','r', 'mes', 'dia', 'contador','escuela','repo
              return $pdf->download('alumnos.pdf');
      
 	}
+
+  public function proyectosIndex()
+  {
+      return view('reportes.proyectosEjecucionIndex');
+  }
+
+
+  public function proyectos()
+  {
+    $user = Auth::user()->rol[0]->id;  
+    if (Auth::user()->rol[0]->id == 2) 
+      {
+        $servicios_sociales = DB::table('servicio_social')
+            ->join('municipios', 'servicio_social.municipio_id', '=', 'municipios.id')
+            ->join('departamentos', 'municipios.departamento_id', '=', 'departamentos.id')
+            ->join('expediente_serviciosocials',  'expediente_serviciosocials.servicio_social_id','=','servicio_social.id')
+            ->join('expedientes', 'expedientes.id', '=', 'expediente_serviciosocials.expediente_alumno_id')
+            ->join('alumno_escuelas','expedientes.alumno_escuela_id', '=', 'alumno_escuelas.id')
+            ->join('alumnos','alumno_escuelas.carnet','=','alumnos.carnet')
+
+            ->where([
+                ['servicio_social.modalidad_id',1],
+                ['servicio_social.estado_id',2],
+                
+            ])
+            ->select('servicio_social.nombre as ss_nombre','municipios.nombre as mun_nombre','departamentos.nombre as dep_nombre', 'servicio_social.beneficiarios_directos', 'servicio_social.fecha_ingreso', 'alumnos.nombre as alu_nombre', 'alumnos.apellido as alu_apellido')
+            ->get();
+      } else 
+      {
+        $servicios_sociales = DB::table('servicio_social')
+            ->join('municipios', 'servicio_social.municipio_id', '=', 'municipios.id')
+            ->join('departamentos', 'municipios.departamento_id', '=', 'departamentos.id')
+            ->join('expediente_serviciosocials',  'expediente_serviciosocials.servicio_social_id','=','servicio_social.id')
+            ->join('expedientes', 'expedientes.id', '=', 'expediente_serviciosocials.expediente_alumno_id')
+            ->join('alumno_escuelas','expedientes.alumno_escuela_id', '=', 'alumno_escuelas.id')
+            ->join('alumnos','alumno_escuelas.carnet','=','alumnos.carnet')
+
+            ->where([
+                ['servicio_social.modalidad_id',1],
+                ['servicio_social.estado_id',2],
+                ['servicio_social.escuela_id', Auth::user()->escuela_id],
+            ])
+            ->select('servicio_social.nombre as ss_nombre','municipios.nombre as mun_nombre','departamentos.nombre as dep_nombre', 'servicio_social.beneficiarios_directos', 'servicio_social.fecha_ingreso', 'alumnos.nombre as alu_nombre', 'alumnos.apellido as alu_apellido')
+            ->get();
+
+      }
+      
+
+
+
+
+      //$servicios_sociales=ServicioSocial::where('estado_id',2)->unionAll($first)->get();
+      $anio=date('Y');
+      $view = \View::make("reportes.reporteProyectosEjecucion")->with(compact('servicios_sociales','user','anio'))->render();
+      $pdf = \App::make('dompdf.wrapper');
+      $pdf->loadHTML($view);
+      return $pdf->stream('ProyectosEnEjecucion'.'.pdf');
+  }
 
 }
