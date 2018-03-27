@@ -31,11 +31,14 @@ class AsignacionServicioController extends Controller
         // Se busca es servicio social correspondiente
         $id = $request->id;
         $servicioSocial = ServicioSocial::find($id);
-        // Se asigna el estado del servicio social y se persiste 
+        //Asignacion de la fecha de finalizacion si el estudiante da por finalizado sin que el servicio social este finalizado
+        
+
+        // Se asigna el estado del servicio social y se persiste
         $servicioSocial->estado_id = $request->input('estado_id');
         $servicioSocial->save();
 
-        // Guardando las variables recibidas del request 
+        // Guardando las variables recibidas del request
         $estudiantes = $request->input('estudiantes');
         $horas_ganadas = $request->input('horas_ganadas');
         $estado_ss_estudiante = $request->input('estado_ss_estudiante');
@@ -52,6 +55,7 @@ class AsignacionServicioController extends Controller
             ])->first();
             // Se guarda en una variable si existe
             $existe = isset($expediente_servicio_social);
+
             // Si existen alumnos en ese servicio solo se actualizan los datos si no se crean sus relaciones
             if ($existe) {
                 $expediente_servicio_social->horas_ganadas = $horas_ganadas[$i];

@@ -15,6 +15,7 @@ use App\Escuela;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
+use Carbon\Carbon;
 
 class ServicioSocialController extends Controller
 {
@@ -82,6 +83,9 @@ public function ServicioSocialGuardar(Request $request){
     //         $serviciosocial->tutorSS = $request->horasaSS;
 
   $ServicioSocial = ServicioSocial::create([
+    //Validacion de que la fecha final no sea mayor a 18 meses y si es mayor
+    //el estado del SS cambia de estado a abandonado
+
     'nombre' =>$request->input('nombre'),
     'descripcion' => $request->input('descripcion'),
     'escuela_id' => Auth::user()->escuela_id,
@@ -150,14 +154,43 @@ public function ServicioSocialEditarPost(Request $request, $id)
   $servicioSocial->modalidad_id = $request->input('modalidad_id');
   $servicioSocial->modificadoPor = Auth::user()->email;
   // dd(Auth::user()->email);
-  $servicioSocial->save();
-  // Se muestra el mensaje de ingreso correcto
-  session()->flash('mensaje.tipo', 'success');
-  session()->flash('mensaje.icono', 'fa-check');
-  session()->flash('mensaje.titulo', 'Exito');
-  session()->flash('mensaje.contenido', 'Servicio Social modificado correctamente');
-  return redirect()->route('servicioSocialVer',['id' => $servicioSocial->id]);
-}
+
+
+  if(empty($servicioSocial->fecha_fin)==true)
+  {
+    protected  
+    $fechaahora = Carbon::now();
+    $fechainicioSS = Carbon::now();
+    $fechainicioSS = $servicioSocial->fecha_ingreso;
+    $final = $fechainicioSS->addMonths(18);
+
+    if($fechaahora >= $final )
+    {
+      $servicioSocial->estado_id = 3;
+      $servicioSocial->save();
+    }else {
+      $servicioSocial->save();
+    }
+
+
+  }else{
+      $fechacolocada->servicioSocial->fecha_fin;
+      $fechainicioSS->servicioSocial->fecha_ingreso;
+      $final = $fechainicioSS->addMonths(18);
+      if($fechacolocada >= $final){
+        session()->flash('mensaje.contenido', 'Fecha limite de SS es entre 3 y 18 meses');
+      }
+      else {
+        $servicioSocial->save();
+      }
+    }
+    // Se muestra el mensaje de ingreso correcto
+    session()->flash('mensaje.tipo', 'success');
+    session()->flash('mensaje.icono', 'fa-check');
+    session()->flash('mensaje.titulo', 'Exito');
+    session()->flash('mensaje.contenido', 'Servicio Social modificado correctamente');
+    return redirect()->route('servicioSocialVer',['id' => $servicioSocial->id]);
+  }
 
 
 
