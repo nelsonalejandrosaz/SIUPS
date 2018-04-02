@@ -155,30 +155,31 @@ public function ServicioSocialEditarPost(Request $request, $id)
   $servicioSocial->modificadoPor = Auth::user()->email;
   // dd(Auth::user()->email);
 
+  $fechaahora = Carbon::Now();
+  $fechainicioSS = Carbon::Now();
+  $fechainicioSS = $servicioSocial->fecha_ingreso;
+  $final = Carbon::Parse($fechainicioSS)->addMonths(18);
 
   if(empty($servicioSocial->fecha_fin)==true)
   {
-    protected  
-    $fechaahora = Carbon::now();
-    $fechainicioSS = Carbon::now();
-    $fechainicioSS = $servicioSocial->fecha_ingreso;
-    $final = $fechainicioSS->addMonths(18);
-
     if($fechaahora >= $final )
     {
       $servicioSocial->estado_id = 3;
       $servicioSocial->save();
     }else {
+      $servicioSocial->estado_id = 2;
       $servicioSocial->save();
     }
 
-
   }else{
-      $fechacolocada->servicioSocial->fecha_fin;
-      $fechainicioSS->servicioSocial->fecha_ingreso;
-      $final = $fechainicioSS->addMonths(18);
+      $fechacolocada = Carbon::Now();
+      $fechainicioSS = Carbon::Now();
+      $fechacolocada = $servicioSocial->fecha_fin = $request->input('fecha_fin');
+      $fechainicioSS = $servicioSocial->fecha_ingreso;
+      $final = Carbon::Parse($fechainicioSS)->addMonths(18);
       if($fechacolocada >= $final){
         session()->flash('mensaje.contenido', 'Fecha limite de SS es entre 3 y 18 meses');
+
       }
       else {
         $servicioSocial->save();
